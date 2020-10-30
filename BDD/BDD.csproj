@@ -72,22 +72,9 @@
     <Compile Include="Entities\Formateur.cs" />
     <Compile Include="Entities\Formation.cs" />
     <Compile Include="Entities\FormationSession.cs" />
-    <Compile Include="Entities\Personne.cs" />
     <Compile Include="Migrations\202010301658429_init%24.cs" />
     <Compile Include="Migrations\202010301658429_init%24.Designer.cs">
       <DependentUpon>202010301658429_init%24.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010301706458_admin.cs" />
-    <Compile Include="Migrations\202010301706458_admin.Designer.cs">
-      <DependentUpon>202010301706458_admin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010301708513_heritageAdmin.cs" />
-    <Compile Include="Migrations\202010301708513_heritageAdmin.Designer.cs">
-      <DependentUpon>202010301708513_heritageAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010301711299_heritageAttendantFormateur.cs" />
-    <Compile Include="Migrations\202010301711299_heritageAttendantFormateur.Designer.cs">
-      <DependentUpon>202010301711299_heritageAttendantFormateur.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Program.cs" />
@@ -103,15 +90,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010301658429_init%24.resx">
       <DependentUpon>202010301658429_init%24.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010301706458_admin.resx">
-      <DependentUpon>202010301706458_admin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010301708513_heritageAdmin.resx">
-      <DependentUpon>202010301708513_heritageAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010301711299_heritageAttendantFormateur.resx">
-      <DependentUpon>202010301711299_heritageAttendantFormateur.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
