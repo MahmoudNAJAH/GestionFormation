@@ -10,6 +10,7 @@ namespace BDD.Entities
     public class BDDContext : DbContext
     {
         public DbSet<Attendant> Attendants { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<Formateur> Formateurs { get; set; }
         public DbSet<Cursus> Cursus { get; set; }
         public DbSet<CursusSession> CursusSessions { get; set; }
