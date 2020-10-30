@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionFormation", "GestionFormation\GestionFormation.csproj", "{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestBDD", "TestUnitaire\TestBDD.csproj", "{E9E333CC-06A2-4B68-AF72-CBA62E62B543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDD", "BDD\BDD.csproj", "{D08BC586-E830-4BFD-B11F-B894F14EA99B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9E333CC-06A2-4B68-AF72-CBA62E62B543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9E333CC-06A2-4B68-AF72-CBA62E62B543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9E333CC-06A2-4B68-AF72-CBA62E62B543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9E333CC-06A2-4B68-AF72-CBA62E62B543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D08BC586-E830-4BFD-B11F-B894F14EA99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D08BC586-E830-4BFD-B11F-B894F14EA99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D08BC586-E830-4BFD-B11F-B894F14EA99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D08BC586-E830-4BFD-B11F-B894F14EA99B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
