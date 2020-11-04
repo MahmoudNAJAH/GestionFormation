@@ -9,14 +9,14 @@ namespace Projetdawan.Entities
 {
     class BDDContext:DbContext
     {
-        public DbSet<Cursus> Cursuss;
-        public DbSet<Formation> Formations;
-        public DbSet<Formateur> Formateurs;
-        public DbSet<Stagiaire> Stagiaires;
-        public DbSet<Message> Messages;
-        public DbSet<Chat> Chats;
-        public DbSet<Session_De_Formation> SessionFormations;
-        public DbSet<Session_De_Cursus> SessionCursus;
+        public DbSet<Cursus> Cursuss { get; set; }
+        public DbSet<Formation> Formations { get; set; }
+        public DbSet<Formateur> Formateurs { get; set; }
+        public DbSet<Stagiaire> Stagiaires { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<Session_De_Formation> SessionFormations { get; set; }
+        public DbSet<Session_De_Cursus> SessionCursus { get; set; }
 
     }
 }
