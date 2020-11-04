@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionFormation", "GestionFormation\GestionFormation.csproj", "{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projetdawan", "..\..\source\repos\Projetdawan\Projetdawan.csproj", "{1249A3BA-1BF8-430A-957D-75956DBABC9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetgestionDeFormation", "ProjetgestionDeFormation\ProjetgestionDeFormation.csproj", "{34BEA2DE-522C-4C10-9EA6-60A2E5E2808D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1963F1E8-0E2B-43C5-894E-F21DF94B65DC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1249A3BA-1BF8-430A-957D-75956DBABC9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1249A3BA-1BF8-430A-957D-75956DBABC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1249A3BA-1BF8-430A-957D-75956DBABC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1249A3BA-1BF8-430A-957D-75956DBABC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34BEA2DE-522C-4C10-9EA6-60A2E5E2808D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34BEA2DE-522C-4C10-9EA6-60A2E5E2808D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34BEA2DE-522C-4C10-9EA6-60A2E5E2808D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34BEA2DE-522C-4C10-9EA6-60A2E5E2808D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
