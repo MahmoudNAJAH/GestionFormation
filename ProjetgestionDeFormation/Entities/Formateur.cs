@@ -16,6 +16,6 @@ namespace Projetdawan.Entities
         [MaxLength(50)]
         public string E_mail { get; set; }
 
-        List<Session_De_Formation> SessionsFormations { get; set; }
+        public List<Session_De_Formation> SessionsFormations { get; set; }
     }
 }

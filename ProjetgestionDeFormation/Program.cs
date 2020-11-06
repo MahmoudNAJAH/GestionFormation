@@ -57,7 +57,7 @@ namespace ProjetgestionDeFormation
                     context.Formateurs.Add(f);
                     context.SaveChanges();
                 }
-
+                Console.WriteLine("formateur ajouté ");
                 Session_De_Cursus Sc = new Session_De_Cursus();
                 using (BDDContext context = new BDDContext())
                 {

@@ -18,6 +18,6 @@ namespace Projetdawan.Entities
         public DateTime Date_de_Naissance { get; set; }
         [MaxLength(8)]
         public string Mot_De_Passe { get; set; }
-        List<Session_De_Cursus> SessionsCursus { get; set; }
+      public   List<Session_De_Cursus> SessionsCursus { get; set; }
     }
 }
