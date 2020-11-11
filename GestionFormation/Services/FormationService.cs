@@ -16,6 +16,19 @@ namespace GestionFormation.Services
             return FormationFactory.GetFormationList(FormationDAO.FindAll());
         }
 
-        
+        internal static object GetFormation(int id)
+        {
+            return FormationFactory.GetFormation(FormationDAO.FindById(id));
+        }
+
+        internal static object EditFormation(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void Create(FormationDTO f)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

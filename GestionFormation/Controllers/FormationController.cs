@@ -20,13 +20,13 @@ namespace GestionFormation.Controllers
         // GET: Formation/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(FormationService.GetFormation(id));
         }
 
         // GET: Formation/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new FormationDTO());
         }
 
         // POST: Formation/Create
@@ -35,8 +35,8 @@ namespace GestionFormation.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
 
+                FormationService.Create(f);
                 return RedirectToAction("Index");
             }
             catch
@@ -48,12 +48,12 @@ namespace GestionFormation.Controllers
         // GET: Formation/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(FormationService.GetFormation(id));
         }
 
         // POST: Formation/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormationDTO f)
         {
             try
             {

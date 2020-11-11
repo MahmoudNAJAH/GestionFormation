@@ -1,0 +1,45 @@
+﻿@model IEnumerable<GestionFormation.DTO.SessionDeFormationDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SessionDeCursusId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomFormation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomFormateur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SessionDeCursusId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomFormation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomFormateur)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SessionDeFormationId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SessionDeFormationId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SessionDeFormationId })
+        </td>
+    </tr>
+}
+
+</table>

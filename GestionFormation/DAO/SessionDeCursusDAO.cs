@@ -6,52 +6,52 @@ using System.Web;
 
 namespace GestionFormation.DAO
 {
-    public class SessionDeCursusDAO
+    public class SessionDeFormationDAO
     {
-        public static void Crate(SessionDeCursus sdc)
+        public static void Crate(SessionDeFormation sdf)
         {
             using (BDDContext context = new BDDContext())
             {
-                context.SessionDeCursus.Add(sdc);
+                context.SessionDeFormation.Add(sdf);
 
                 context.SaveChanges();
             }
         }
-        public static SessionDeCursus FindById(int sessionDeCursusId)
+        public static SessionDeFormation FindById(int sessionDeFormationId)
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeCursus.FirstOrDefault(sdc => sdc.SessionDeCursusId == sessionDeCursusId);
+                return context.SessionDeFormation.FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
             }
         }
 
-        public static List<SessionDeCursus> FindAll()
+        public static List<SessionDeFormation> FindAll()
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeCursus.ToList();
+                return context.SessionDeFormation.ToList();
             }
         }
 
-        public static void Update(SessionDeCursus sdc)
+        public static void Update(SessionDeFormation sdf)
         {
             using (BDDContext context = new BDDContext())
             {
-                SessionDeCursus sdcDansDB = FindById(sdc.SessionDeCursusId);
-                if (sdc.Apprenants != null) sdcDansDB.Apprenants = sdc.Apprenants;
-                if (sdc.Cursus != null) sdcDansDB.Cursus = sdc.Cursus;
-                if (sdc.SessionsDeFormations != null) sdcDansDB.SessionsDeFormations = sdc.SessionsDeFormations;                
+                SessionDeFormation sdfDansDB = FindById(sdf.SessionDeFormationId);
+                if (sdf.Formateur != null) sdfDansDB.Formateur = sdf.Formateur;
+                if (sdf.Formation != null) sdfDansDB.Formation = sdf.Formation;
+                if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = sdf.SessionDeCursus;                
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(SessionDeCursus sdc)
+        public static void Delete(SessionDeFormation sdf)
         {
             using (BDDContext context = new BDDContext())
             {
 
-                context.SessionDeCursus.Remove(sdc);
+                context.SessionDeFormation.Remove(sdf);
                 context.SaveChanges();
 
             }

@@ -40,7 +40,7 @@ namespace GestionFormation.DAO
             {
                 Apprenant apDansDB = FindById(ap.ApprenantId);
                 if (ap.Nom != null) apDansDB.Nom = ap.Nom;
-                if (ap.Nom != null) apDansDB.Prenom = ap.Prenom;
+                if (ap.Prenom != null) apDansDB.Prenom = ap.Prenom;
                 if (ap.Messages != null) apDansDB.Messages = ap.Messages;
                 if (ap.Email != null) apDansDB.Email = ap.Email;
                 if (ap.SessionDeCursus != null) apDansDB.SessionDeCursus = ap.SessionDeCursus;

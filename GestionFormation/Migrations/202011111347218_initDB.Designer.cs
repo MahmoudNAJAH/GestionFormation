@@ -7,13 +7,13 @@ namespace GestionFormation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ajoutAdminmotdepasse : IMigrationMetadata
+    public sealed partial class initDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ajoutAdminmotdepasse));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "202010312131337_ajout Admin, mot de passe"; }
+            get { return "202011111347218_initDB"; }
         }
         
         string IMigrationMetadata.Source
