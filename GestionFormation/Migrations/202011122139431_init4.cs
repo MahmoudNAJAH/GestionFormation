@@ -3,7 +3,7 @@ namespace GestionFormation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initDB : DbMigration
+    public partial class init4 : DbMigration
     {
         public override void Up()
         {
@@ -37,13 +37,13 @@ namespace GestionFormation.Migrations
                     {
                         MessageId = c.Int(nullable: false, identity: true),
                         DateDePublication = c.DateTime(nullable: false),
-                        ApprenantId = c.Int(nullable: false),
+                        Apprenant_ApprenantId = c.Int(),
                         Chat_ChatId = c.Int(),
                     })
                 .PrimaryKey(t => t.MessageId)
-                .ForeignKey("dbo.Apprenants", t => t.ApprenantId, cascadeDelete: true)
+                .ForeignKey("dbo.Apprenants", t => t.Apprenant_ApprenantId)
                 .ForeignKey("dbo.Chats", t => t.Chat_ChatId)
-                .Index(t => t.ApprenantId)
+                .Index(t => t.Apprenant_ApprenantId)
                 .Index(t => t.Chat_ChatId);
             
             CreateTable(
@@ -51,11 +51,11 @@ namespace GestionFormation.Migrations
                 c => new
                     {
                         SessionDeCursusId = c.Int(nullable: false, identity: true),
-                        CursusId = c.Int(nullable: false),
+                        Cursus_CursusId = c.Int(),
                     })
                 .PrimaryKey(t => t.SessionDeCursusId)
-                .ForeignKey("dbo.Cursus", t => t.CursusId, cascadeDelete: true)
-                .Index(t => t.CursusId);
+                .ForeignKey("dbo.Cursus", t => t.Cursus_CursusId)
+                .Index(t => t.Cursus_CursusId);
             
             CreateTable(
                 "dbo.Cursus",
@@ -82,24 +82,17 @@ namespace GestionFormation.Migrations
                 c => new
                     {
                         SessionDeFormationId = c.Int(nullable: false, identity: true),
-                        FormateurId = c.Int(nullable: false),
-                        FormationId = c.Int(nullable: false),
-                        SessionDeCursusId = c.Int(nullable: false),
                         Formateur_FormateurId = c.Int(),
-                        Formateur_FormateurId1 = c.Int(),
-                        Formation_FormateurId = c.Int(),
+                        Formation_FormationId = c.Int(),
+                        SessionDeCursus_SessionDeCursusId = c.Int(),
                     })
                 .PrimaryKey(t => t.SessionDeFormationId)
                 .ForeignKey("dbo.Formateurs", t => t.Formateur_FormateurId)
-                .ForeignKey("dbo.Formateurs", t => t.Formateur_FormateurId1)
-                .ForeignKey("dbo.Formateurs", t => t.Formation_FormateurId)
-                .ForeignKey("dbo.SessionDeCursus", t => t.SessionDeCursusId, cascadeDelete: true)
-                .ForeignKey("dbo.Formations", t => t.FormationId, cascadeDelete: true)
-                .Index(t => t.FormationId)
-                .Index(t => t.SessionDeCursusId)
+                .ForeignKey("dbo.Formations", t => t.Formation_FormationId)
+                .ForeignKey("dbo.SessionDeCursus", t => t.SessionDeCursus_SessionDeCursusId)
                 .Index(t => t.Formateur_FormateurId)
-                .Index(t => t.Formateur_FormateurId1)
-                .Index(t => t.Formation_FormateurId);
+                .Index(t => t.Formation_FormationId)
+                .Index(t => t.SessionDeCursus_SessionDeCursusId);
             
             CreateTable(
                 "dbo.Formateurs",
@@ -118,11 +111,11 @@ namespace GestionFormation.Migrations
                 c => new
                     {
                         ChatId = c.Int(nullable: false, identity: true),
-                        SessionDeCursusId = c.Int(nullable: false),
+                        SessionDeCursus_SessionDeCursusId = c.Int(),
                     })
                 .PrimaryKey(t => t.ChatId)
-                .ForeignKey("dbo.SessionDeCursus", t => t.SessionDeCursusId, cascadeDelete: true)
-                .Index(t => t.SessionDeCursusId);
+                .ForeignKey("dbo.SessionDeCursus", t => t.SessionDeCursus_SessionDeCursusId)
+                .Index(t => t.SessionDeCursus_SessionDeCursusId);
             
             CreateTable(
                 "dbo.SessionDeCursusApprenants",
@@ -154,32 +147,28 @@ namespace GestionFormation.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Chats", "SessionDeCursusId", "dbo.SessionDeCursus");
+            DropForeignKey("dbo.Chats", "SessionDeCursus_SessionDeCursusId", "dbo.SessionDeCursus");
             DropForeignKey("dbo.Messages", "Chat_ChatId", "dbo.Chats");
-            DropForeignKey("dbo.SessionDeCursus", "CursusId", "dbo.Cursus");
-            DropForeignKey("dbo.SessionDeFormations", "FormationId", "dbo.Formations");
-            DropForeignKey("dbo.SessionDeFormations", "SessionDeCursusId", "dbo.SessionDeCursus");
-            DropForeignKey("dbo.SessionDeFormations", "Formation_FormateurId", "dbo.Formateurs");
-            DropForeignKey("dbo.SessionDeFormations", "Formateur_FormateurId1", "dbo.Formateurs");
+            DropForeignKey("dbo.SessionDeCursus", "Cursus_CursusId", "dbo.Cursus");
+            DropForeignKey("dbo.SessionDeFormations", "SessionDeCursus_SessionDeCursusId", "dbo.SessionDeCursus");
+            DropForeignKey("dbo.SessionDeFormations", "Formation_FormationId", "dbo.Formations");
             DropForeignKey("dbo.SessionDeFormations", "Formateur_FormateurId", "dbo.Formateurs");
             DropForeignKey("dbo.FormationCursus", "Cursus_CursusId", "dbo.Cursus");
             DropForeignKey("dbo.FormationCursus", "Formation_FormationId", "dbo.Formations");
             DropForeignKey("dbo.SessionDeCursusApprenants", "Apprenant_ApprenantId", "dbo.Apprenants");
             DropForeignKey("dbo.SessionDeCursusApprenants", "SessionDeCursus_SessionDeCursusId", "dbo.SessionDeCursus");
-            DropForeignKey("dbo.Messages", "ApprenantId", "dbo.Apprenants");
+            DropForeignKey("dbo.Messages", "Apprenant_ApprenantId", "dbo.Apprenants");
             DropIndex("dbo.FormationCursus", new[] { "Cursus_CursusId" });
             DropIndex("dbo.FormationCursus", new[] { "Formation_FormationId" });
             DropIndex("dbo.SessionDeCursusApprenants", new[] { "Apprenant_ApprenantId" });
             DropIndex("dbo.SessionDeCursusApprenants", new[] { "SessionDeCursus_SessionDeCursusId" });
-            DropIndex("dbo.Chats", new[] { "SessionDeCursusId" });
-            DropIndex("dbo.SessionDeFormations", new[] { "Formation_FormateurId" });
-            DropIndex("dbo.SessionDeFormations", new[] { "Formateur_FormateurId1" });
+            DropIndex("dbo.Chats", new[] { "SessionDeCursus_SessionDeCursusId" });
+            DropIndex("dbo.SessionDeFormations", new[] { "SessionDeCursus_SessionDeCursusId" });
+            DropIndex("dbo.SessionDeFormations", new[] { "Formation_FormationId" });
             DropIndex("dbo.SessionDeFormations", new[] { "Formateur_FormateurId" });
-            DropIndex("dbo.SessionDeFormations", new[] { "SessionDeCursusId" });
-            DropIndex("dbo.SessionDeFormations", new[] { "FormationId" });
-            DropIndex("dbo.SessionDeCursus", new[] { "CursusId" });
+            DropIndex("dbo.SessionDeCursus", new[] { "Cursus_CursusId" });
             DropIndex("dbo.Messages", new[] { "Chat_ChatId" });
-            DropIndex("dbo.Messages", new[] { "ApprenantId" });
+            DropIndex("dbo.Messages", new[] { "Apprenant_ApprenantId" });
             DropTable("dbo.FormationCursus");
             DropTable("dbo.SessionDeCursusApprenants");
             DropTable("dbo.Chats");

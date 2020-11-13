@@ -129,7 +129,7 @@
     <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\SessionDeFormationsController.cs" />
     <Compile Include="DAO\FormateurDAO.cs" />
-    <Compile Include="DAO\SessionDeFormationDAO.cs" />
+    <Compile Include="DAO\SessionDeCursusDAO.cs" />
     <Compile Include="DTO\FormationDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ApprenantDAO.cs" />
@@ -137,7 +137,7 @@
     <Compile Include="DAO\Class1.cs" />
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
-    <Compile Include="DAO\SessionDeCursusDAO.cs" />
+    <Compile Include="DAO\SessionDeFormationDAO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
@@ -153,9 +153,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011111347218_initDB.cs" />
-    <Compile Include="Migrations\202011111347218_initDB.Designer.cs">
-      <DependentUpon>202011111347218_initDB.cs</DependentUpon>
+    <Compile Include="Migrations\202011122139431_init4.cs" />
+    <Compile Include="Migrations\202011122139431_init4.Designer.cs">
+      <DependentUpon>202011122139431_init4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,8 +221,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011111347218_initDB.resx">
-      <DependentUpon>202011111347218_initDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011122139431_init4.resx">
+      <DependentUpon>202011122139431_init4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

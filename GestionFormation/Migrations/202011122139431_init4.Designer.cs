@@ -7,13 +7,13 @@ namespace GestionFormation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initDB : IMigrationMetadata
+    public sealed partial class init4 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init4));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011111347218_initDB"; }
+            get { return "202011122139431_init4"; }
         }
         
         string IMigrationMetadata.Source

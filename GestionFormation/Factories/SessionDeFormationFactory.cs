@@ -30,9 +30,9 @@ namespace GestionFormation.Factories
             return new SessionDeFormation
             {
                 SessionDeFormationId = sdf.SessionDeFormationId,
-                FormateurId = sdf.FormateurId,
-                FormationId = sdf.FormationId,
-                SessionDeCursusId = sdf.SessionDeCursusId
+                //FormateurId = sdf.FormateurId,
+                //FormationId = sdf.FormationId,
+                //SessionDeCursusId = sdf.SessionDeCursusId
 
             };
         }
@@ -43,11 +43,11 @@ namespace GestionFormation.Factories
             return new SessionDeFormationDTO
             {
                 SessionDeFormationId = sdf.SessionDeFormationId,
-                FormateurId = sdf.FormateurId,
-                FormationId = sdf.FormationId,
-                SessionDeCursusId = sdf.SessionDeCursusId,
+                //FormateurId = sdf.FormateurId,
+                //FormationId = sdf.FormationId,
+                SessionDeCursusId = (sdf.SessionDeCursus == null) ? 0:sdf.SessionDeCursus.SessionDeCursusId,
                 NomFormateur = sdf.Formateur?.Nom + " " + sdf.Formateur?.Prenom,
-                NomFormation = sdf.Formation.Nom
+                NomFormation = sdf.Formation?.Nom
 
             };
         }

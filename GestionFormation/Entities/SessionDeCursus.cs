@@ -9,7 +9,6 @@ namespace GestionFormation.Entities
         public virtual List<Apprenant> Apprenants { get; set; }
         public virtual List<SessionDeFormation> SessionsDeFormations { get; set; }
         
-        public int CursusId { get; set; }
         public Cursus Cursus { get; set; }
     }
 }
