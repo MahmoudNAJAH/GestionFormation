@@ -9,12 +9,11 @@ namespace GestionFormation.DAO
 {
     public class ApprenantDAO
     {
-        public static void Crate(Apprenant ap)
+        public static void Create(Apprenant ap)
         {
             using (BDDContext context = new BDDContext())
             {
                 context.Apprenants.Add(ap);
-
                 context.SaveChanges();
             }
         }
@@ -53,10 +52,8 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-
                 context.Apprenants.Remove(ap);
                 context.SaveChanges();
-
             }
         }
     }

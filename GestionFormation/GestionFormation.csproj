@@ -134,7 +134,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ApprenantDAO.cs" />
     <Compile Include="DAO\BDDContext.cs" />
-    <Compile Include="DAO\Class1.cs" />
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />

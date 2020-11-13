@@ -8,7 +8,7 @@ namespace GestionFormation.DAO
 {
     public class SessionDeFormationDAO
     {
-        public static void Crate(SessionDeFormation sdf)
+        public static void Create(SessionDeFormation sdf)
         {
             using (BDDContext context = new BDDContext())
             {

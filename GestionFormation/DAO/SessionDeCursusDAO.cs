@@ -8,7 +8,7 @@ namespace GestionFormation.DAO
 {
     public class SessionDeCursusDAO
     {
-        public static void Crate(SessionDeCursus sdc)
+        public static void Create(SessionDeCursus sdc)
         {
             using (BDDContext context = new BDDContext())
             {

@@ -9,7 +9,7 @@ namespace Gestionformation.DAO
 {
     public class FormateurDAO
     {
-        public static void Crate(Formateur fr)
+        public static void Create(Formateur fr)
         {
             using (BDDContext context = new BDDContext())
             {
