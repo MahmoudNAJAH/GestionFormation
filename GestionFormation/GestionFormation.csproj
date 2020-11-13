@@ -156,6 +156,10 @@
     <Compile Include="Migrations\202011122139431_init4.Designer.cs">
       <DependentUpon>202011122139431_init4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011131501275_DateDureFormation.cs" />
+    <Compile Include="Migrations\202011131501275_DateDureFormation.Designer.cs">
+      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SessionDeFormationService.cs" />
@@ -222,6 +226,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202011122139431_init4.resx">
       <DependentUpon>202011122139431_init4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011131501275_DateDureFormation.resx">
+      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
