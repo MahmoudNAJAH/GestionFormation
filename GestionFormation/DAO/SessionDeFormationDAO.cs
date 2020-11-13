@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
+                return context.SessionDeFormation.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
             }
         }
 

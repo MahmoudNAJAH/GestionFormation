@@ -140,6 +140,7 @@
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
     <Compile Include="Entities\Chat.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="Services\EmploiDuTempsService.cs" />
     <Compile Include="Services\SessionDeFormationService.cs" />
     <Compile Include="Services\FormationService.cs" />
+    <Compile Include="Services\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

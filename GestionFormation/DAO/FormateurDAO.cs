@@ -22,7 +22,7 @@ namespace Gestionformation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formateurs.FirstOrDefault(fr => fr.FormateurId == FormateurId);
+                return context.Formateurs.Include("SessionDeFormations").FirstOrDefault(fr => fr.FormateurId == FormateurId);
             }
         }
 
@@ -30,7 +30,7 @@ namespace Gestionformation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formateurs.ToList();
+                return context.Formateurs.Include("SessionDeFormations").ToList();
             }
         }
 

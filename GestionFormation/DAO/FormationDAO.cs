@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formations.FirstOrDefault(fn => fn.FormationId == formationId);
+                return context.Formations.Include("Cursus").Include("SessionsDeFormations").FirstOrDefault(fn => fn.FormationId == formationId);
             }
         }
 
@@ -29,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formations.ToList();
+                return context.Formations.Include("Cursus").Include("SessionsDeFormations").ToList();
             }
         }
 

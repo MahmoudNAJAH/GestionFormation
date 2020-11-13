@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == apprenantId);
+                return context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(ap => ap.ApprenantId == apprenantId);
             }
         }
 
@@ -29,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Apprenants.ToList();
+                return context.Apprenants.Include("Messages").Include("SessionDeCursus").ToList();
             }
         }
 
