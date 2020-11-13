@@ -30,8 +30,8 @@ namespace GestionFormation.Factories
             return new SessionDeFormation
             {
                 SessionDeFormationId = sdf.SessionDeFormationId,
-                //FormateurId = sdf.FormateurId,
-                //FormationId = sdf.FormationId,
+                //Formateur = FormateurDAO.getbyId(sdf.SessionDeFormationId),
+                //Formation = sdf.FormationId,
                 //SessionDeCursusId = sdf.SessionDeCursusId
 
             };
