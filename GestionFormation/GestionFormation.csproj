@@ -139,6 +139,7 @@
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />
+    <Compile Include="DTO\JourneeDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Entities\Admin.cs" />

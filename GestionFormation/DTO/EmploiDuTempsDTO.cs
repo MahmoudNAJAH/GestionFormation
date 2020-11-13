@@ -13,13 +13,13 @@ namespace GestionFormation.DTO
     public class EmploiDuTempsDTO
     {
         private UserDTO User { get; set; }
-        public List<Tuple<DateTime, Formation, Formateur>> ListDates { get; set; }
+        public List<JourneeDTO> ListDates = new List<JourneeDTO>();
 
         public EmploiDuTempsDTO(UserDTO user)
         {
             User = user;
 
-            ListDates = new List<Tuple<DateTime, Formation, Formateur>>();
+            FillListDates();
         }
 
         public void FillListDates()
@@ -29,6 +29,8 @@ namespace GestionFormation.DTO
             foreach(SessionDeFormation SessionForm in SessionDeFormations)
             {
                 DateTime DateTraitement = SessionForm.DateDebut;
+
+                if (SessionForm.Formation.Dure == null) continue;
 
                 //On va remplir l'EDT, on boucle sur la durée de la FormationSession
                 for (int i_dure = 0; i_dure < SessionForm.Formation.Dure; i_dure++)
@@ -46,7 +48,7 @@ namespace GestionFormation.DTO
                         while (EstWeekEnd(DateTraitement)) DateTraitement.AddDays(1);
                     }
                     
-                    ListDates.Add(new Tuple<DateTime, Formation, Formateur>(DateTraitement, SessionForm.Formation, SessionForm.Formateur));
+                    ListDates.Add(new JourneeDTO { Date = DateTraitement, Formation = SessionForm.Formation, Formateur = SessionForm.Formateur });
                 }
             }
         }

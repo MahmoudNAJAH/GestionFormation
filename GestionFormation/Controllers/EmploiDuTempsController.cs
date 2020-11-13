@@ -3,6 +3,7 @@ using GestionFormation.Entities;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,12 +25,17 @@ namespace GestionFormation.Controllers
         // GET: EmploiDuTemps
         public ActionResult Index()
         {
-            DateTime now = DateTime.Now;
+            //List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeekTuple( EDT.ListDates, DateTime.Now);
 
-            int WeekNumber = now.DayOfWeek;
+            return View(EDT.ListDates);
+        }
 
+        [HttpPost]
+        public ActionResult Index(DateTime dateReference)
+        {
+            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeekTuple(EDT.ListDates, dateReference);
 
-            return View();
+            return View(WeeklyEDT);
         }
     }
 }
