@@ -210,11 +210,11 @@
     <Content Include="Views\SessionDeFormations\Index.cshtml" />
     <Content Include="Views\SessionDeFormations\Create.cshtml" />
     <Content Include="Views\SessionDeFormations\AddUpdateFormation.cshtml" />
+    <Content Include="Views\EmploiDuTemps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\EmploiDuTemps\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
