@@ -39,9 +39,11 @@ namespace GestionFormation.DAO
             {
                 SessionDeFormation sdfDansDB = context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(s => s.SessionDeFormationId == sdf.SessionDeFormationId);
                 if (sdf.DateDebut != null) sdfDansDB.DateDebut = sdf.DateDebut;
-                if (sdf.Formateur != null) sdfDansDB.Formateur = sdf.Formateur;
-                if (sdf.Formation != null) sdfDansDB.Formation = sdf.Formation;
-                if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = sdf.SessionDeCursus;                
+
+                //Foreign keys
+                if (sdf.Formateur != null) sdfDansDB.Formateur = context.Formateurs.FirstOrDefault(s => s.FormateurId == sdf.Formateur.FormateurId);
+                if (sdf.Formation != null) sdfDansDB.Formation = context.Formations.FirstOrDefault(s => s.FormationId == sdf.Formation.FormationId);
+                if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = context.SessionDeCursus.FirstOrDefault(s => s.SessionDeCursusId == sdf.SessionDeCursus.SessionDeCursusId);
 
                 context.SaveChanges();
             }

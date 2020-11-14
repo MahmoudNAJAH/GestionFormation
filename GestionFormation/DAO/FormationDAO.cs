@@ -40,8 +40,22 @@ namespace GestionFormation.DAO
                 Formation fnDansDB = context.Formations.Include("Cursus").Include("SessionsDeFormations").FirstOrDefault(f => f.FormationId == fn.FormationId);
                 if (fn.Nom != null) fnDansDB.Nom = fn.Nom;
                 if (fn.Description != null) fnDansDB.Description = fn.Description;
-                if (fn.Cursus != null) fnDansDB.Cursus = fn.Cursus;
-                if (fn.SessionsDeFormations != null) fnDansDB.SessionsDeFormations = fn.SessionsDeFormations;               
+                if (fn?.Dure != null) fnDansDB.Dure = fn.Dure;
+
+                //Foreign keys
+                if (fn.Cursus != null)
+                {
+                    fnDansDB.Cursus = new List<Cursus>();
+                    foreach(Cursus curs in fn.Cursus)
+                        fnDansDB.Cursus.Add(context.Cursus.FirstOrDefault(c => c.CursusId == curs.CursusId));
+
+                }
+                if (fn.SessionsDeFormations != null)
+                {
+                    fnDansDB.SessionsDeFormations = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation curs in fn.SessionsDeFormations)
+                        fnDansDB.SessionsDeFormations.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == curs.SessionDeFormationId));
+                }
 
                 context.SaveChanges();
             }

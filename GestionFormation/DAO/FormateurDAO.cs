@@ -42,7 +42,14 @@ namespace Gestionformation.DAO
                 if (fr.Nom != null) frDansDB.Nom = fr.Nom;
                 if (fr.Prenom != null) frDansDB.Prenom = fr.Prenom;
                 if (fr.Email != null) frDansDB.Email = fr.Email;
-                if (fr.SessionDeFormations != null) frDansDB.SessionDeFormations = fr.SessionDeFormations;               
+
+                //Foreign keys
+                if (fr.SessionDeFormations != null)
+                {
+                    frDansDB.SessionDeFormations = new List<SessionDeFormation>();
+                    foreach(SessionDeFormation ses in fr.SessionDeFormations)
+                        frDansDB.SessionDeFormations.Add(context.SessionDeFormations.FirstOrDefault(s => s.SessionDeFormationId == ses.SessionDeFormationId));
+                }
 
                 context.SaveChanges();
             }

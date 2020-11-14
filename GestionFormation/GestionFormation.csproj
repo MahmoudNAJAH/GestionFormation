@@ -156,13 +156,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011122139431_init4.cs" />
-    <Compile Include="Migrations\202011122139431_init4.Designer.cs">
-      <DependentUpon>202011122139431_init4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011131501275_DateDureFormation.cs" />
-    <Compile Include="Migrations\202011131501275_DateDureFormation.Designer.cs">
-      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    <Compile Include="Migrations\202011141114043_Initjspcb.cs" />
+    <Compile Include="Migrations\202011141114043_Initjspcb.Designer.cs">
+      <DependentUpon>202011141114043_Initjspcb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,11 +227,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011122139431_init4.resx">
-      <DependentUpon>202011122139431_init4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011131501275_DateDureFormation.resx">
-      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011141114043_Initjspcb.resx">
+      <DependentUpon>202011141114043_Initjspcb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -43,8 +43,19 @@ namespace GestionFormation.DAO
                 if (ap.Email != null) apDansDB.Email = ap.Email;
                 if (ap.MotDePasse != null) apDansDB.MotDePasse = ap.MotDePasse;
 
-                if (ap.Messages != null) apDansDB.Messages = ap.Messages;
-                if (ap.SessionDeCursus != null) apDansDB.SessionDeCursus = ap.SessionDeCursus;
+                //foreign keys
+                if (ap.Messages != null)
+                {
+                    apDansDB.Messages = new List<Message>();
+                    foreach (Message mes in ap.Messages)
+                        apDansDB.Messages.Add(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
+                }
+                if (ap.SessionDeCursus != null)
+                {
+                    apDansDB.SessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus mes in ap.SessionDeCursus)
+                        apDansDB.SessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == mes.SessionDeCursusId));
+                }
 
                 context.SaveChanges();
             }

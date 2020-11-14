@@ -84,7 +84,8 @@ namespace Tests_GestionFormation.DAO
             SessionDeCursus app3 = SessionDeCursusDAO.FindById(app.SessionDeCursusId);
 
             Assert.IsNotNull(app3);
-
+            Assert.IsNotNull(app3.Cursus);
+            
             Assert.AreEqual(2, app3.Cursus.CursusId);
 
             SessionDeCursusDAO.Delete(app.SessionDeCursusId);

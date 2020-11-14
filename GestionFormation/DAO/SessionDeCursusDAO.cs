@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeCursus.Include("Apprenants").Include("SessionsDeFormations").FirstOrDefault(sdc => sdc.SessionDeCursusId == sessionDeCursusId);
+                return context.SessionDeCursus.Include("Cursus").Include("Apprenants").Include("SessionsDeFormations").FirstOrDefault(sdc => sdc.SessionDeCursusId == sessionDeCursusId);
             }
         }
 
@@ -38,9 +38,21 @@ namespace GestionFormation.DAO
             using (BDDContext context = new BDDContext())
             {
                 SessionDeCursus sdcDansDB = context.SessionDeCursus.Include("Cursus").Include("Apprenants").Include("SessionsDeFormations").FirstOrDefault(s => s.SessionDeCursusId == sdc.SessionDeCursusId);
-                if (sdc.Apprenants != null) sdcDansDB.Apprenants = sdc.Apprenants;
-                if (sdc.Cursus != null) sdcDansDB.Cursus = sdc.Cursus;
-                if (sdc.SessionsDeFormations != null) sdcDansDB.SessionsDeFormations = sdc.SessionsDeFormations;                
+                
+                //Foreign keys
+                if (sdc.Cursus != null) sdcDansDB.Cursus = context.Cursus.FirstOrDefault(c => c.CursusId == sdc.Cursus.CursusId);
+                if (sdc.Apprenants != null)
+                {
+                    sdcDansDB.Apprenants = new List<Apprenant>();
+                    foreach (Apprenant app in sdc.Apprenants)
+                        sdcDansDB.Apprenants.Add(context.Apprenants.FirstOrDefault(c => c.ApprenantId == app.ApprenantId));
+                }
+                if (sdc.SessionsDeFormations != null)
+                {
+                    sdcDansDB.SessionsDeFormations = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation ses in sdc.SessionsDeFormations)
+                        sdcDansDB.SessionsDeFormations.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == ses.SessionDeFormationId));
+                }
 
                 context.SaveChanges();
             }
