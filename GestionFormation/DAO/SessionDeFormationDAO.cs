@@ -12,7 +12,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                context.SessionDeFormation.Add(sdf);
+                context.SessionDeFormations.Add(sdf);
 
                 context.SaveChanges();
             }
@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
+                return context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
             }
         }
 
@@ -29,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.Include("Formateur").Include("Formation").Include("SessionDeCursus").ToList();
+                return context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").ToList();
             }
         }
 
@@ -37,7 +37,8 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                SessionDeFormation sdfDansDB = FindById(sdf.SessionDeFormationId);
+                SessionDeFormation sdfDansDB = context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(s => s.SessionDeFormationId == sdf.SessionDeFormationId);
+                if (sdf.DateDebut != null) sdfDansDB.DateDebut = sdf.DateDebut;
                 if (sdf.Formateur != null) sdfDansDB.Formateur = sdf.Formateur;
                 if (sdf.Formation != null) sdfDansDB.Formation = sdf.Formation;
                 if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = sdf.SessionDeCursus;                
@@ -46,12 +47,12 @@ namespace GestionFormation.DAO
             }
         }
 
-        public static void Delete(SessionDeFormation sdf)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
 
-                context.SessionDeFormation.Remove(sdf);
+                context.SessionDeFormations.Remove(context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(s => s.SessionDeFormationId == id));
                 context.SaveChanges();
 
             }

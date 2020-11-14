@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\Test_ApprenantDAO.cs" />
+    <Compile Include="DAO\Test_FormationDAO.cs" />
+    <Compile Include="DAO\Test_SessionDeCursusDAO.cs" />
+    <Compile Include="DAO\Test_SessionDeFormationDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace Gestionformation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Formateur frDansDB = FindById(fr.FormateurId);
+                Formateur frDansDB = context.Formateurs.Include("SessionDeFormations").FirstOrDefault(f => f.FormateurId == fr.FormateurId);
                 if (fr.Nom != null) frDansDB.Nom = fr.Nom;
                 if (fr.Prenom != null) frDansDB.Prenom = fr.Prenom;
                 if (fr.Email != null) frDansDB.Email = fr.Email;
@@ -48,12 +48,12 @@ namespace Gestionformation.DAO
             }
         }
 
-        public static void Delete(Formateur fr)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
 
-                context.Formateurs.Remove(fr);
+                context.Formateurs.Remove(context.Formateurs.FirstOrDefault(f => f.FormateurId == id));
                 context.SaveChanges();
 
             }

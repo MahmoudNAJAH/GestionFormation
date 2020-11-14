@@ -8,8 +8,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests_GestionFormation.DAO
 {
     [TestClass]
-    public class Test_ApprenantDAO
+    public class Test_FormationDAO
     {
+        
         [TestMethod]
         public void Test_Create()
         {
@@ -95,9 +96,6 @@ namespace Tests_GestionFormation.DAO
                 MotDePasse = "MotDePasse2"
             };
 
-            app2.SessionDeCursus = new List<SessionDeCursus>();
-            app2.SessionDeCursus.Add(SessionDeCursusDAO.FindById(1));
-
             ApprenantDAO.Update(app2);
 
             Apprenant app3 = ApprenantDAO.FindById(app2.ApprenantId);
@@ -151,7 +149,7 @@ namespace Tests_GestionFormation.DAO
             Assert.IsNotNull(Apprenants);
             Assert.AreEqual(nbApprenant, Apprenants.Count);
 
-            foreach(Apprenant app in Apprenants)
+            foreach (Apprenant app in Apprenants)
             {
                 Assert.IsNotNull(app);
 
@@ -182,5 +180,6 @@ namespace Tests_GestionFormation.DAO
                 }
             }
         }
+        
     }
 }

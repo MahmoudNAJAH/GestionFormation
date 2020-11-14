@@ -37,7 +37,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Formation fnDansDB = FindById(fn.FormationId);
+                Formation fnDansDB = context.Formations.Include("Cursus").Include("SessionsDeFormations").FirstOrDefault(f => f.FormationId == fn.FormationId);
                 if (fn.Nom != null) fnDansDB.Nom = fn.Nom;
                 if (fn.Description != null) fnDansDB.Description = fn.Description;
                 if (fn.Cursus != null) fnDansDB.Cursus = fn.Cursus;
@@ -47,14 +47,12 @@ namespace GestionFormation.DAO
             }
         }
 
-        public static void Delete(Formation fn)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-
-                context.Formations.Remove(fn);
+                context.Formations.Remove(context.Formations.FirstOrDefault(f => f.FormationId == id));
                 context.SaveChanges();
-
             }
         }
     }

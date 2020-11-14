@@ -17,7 +17,7 @@ namespace GestionFormation.DAO
         public DbSet<Formateur> Formateurs { get; set; }
         public DbSet<Formation> Formations { get; set; }
         public DbSet<SessionDeCursus> SessionDeCursus { get; set; }
-        public DbSet<SessionDeFormation> SessionDeFormation { get; set; }
+        public DbSet<SessionDeFormation> SessionDeFormations { get; set; }
 
     }
 }
