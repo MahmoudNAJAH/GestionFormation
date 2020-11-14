@@ -37,7 +37,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Apprenant apDansDB = FindById(ap.ApprenantId);
+                Apprenant apDansDB = context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(app => app.ApprenantId == ap.ApprenantId);
                 if (ap.Nom != null) apDansDB.Nom = ap.Nom;
                 if (ap.Prenom != null) apDansDB.Prenom = ap.Prenom;
                 if (ap.Email != null) apDansDB.Email = ap.Email;
