@@ -66,7 +66,7 @@ namespace Tests_GestionFormation.DAO
             using (BDDContext context = new BDDContext())
                 Assert.IsNotNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
 
-            ApprenantDAO.Delete(app);
+            ApprenantDAO.Delete(app.ApprenantId);
 
             using (BDDContext context = new BDDContext())
                 Assert.IsNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
@@ -75,6 +75,38 @@ namespace Tests_GestionFormation.DAO
         [TestMethod]
         public void Test_Update()
         {
+            Apprenant app = new Apprenant
+            {
+                ApprenantId = 99999999,
+                Nom = "Nom",
+                Prenom = "Prenom",
+                Email = "Email",
+                MotDePasse = "MotDePasse"
+            };
+
+            ApprenantDAO.Create(app);
+
+            Apprenant app2 = new Apprenant
+            {
+                ApprenantId = app.ApprenantId,
+                Nom = "Nom2",
+                Prenom = "Prenom2",
+                Email = "Email2",
+                MotDePasse = "MotDePasse2"
+            };
+
+            ApprenantDAO.Update(app2);
+
+            Apprenant app3 = ApprenantDAO.FindById(app2.ApprenantId);
+
+            Assert.IsNotNull(app3);
+
+            Assert.AreEqual("Nom2", app3.Nom);
+            Assert.AreEqual("Prenom2", app3.Prenom);
+            Assert.AreEqual("Email2", app3.Email);
+            Assert.AreEqual("MotDePasse2", app3.MotDePasse);
+
+            ApprenantDAO.Delete(app.ApprenantId);
 
         }
 

@@ -40,19 +40,21 @@ namespace GestionFormation.DAO
                 Apprenant apDansDB = FindById(ap.ApprenantId);
                 if (ap.Nom != null) apDansDB.Nom = ap.Nom;
                 if (ap.Prenom != null) apDansDB.Prenom = ap.Prenom;
-                if (ap.Messages != null) apDansDB.Messages = ap.Messages;
                 if (ap.Email != null) apDansDB.Email = ap.Email;
+                if (ap.MotDePasse != null) apDansDB.MotDePasse = ap.MotDePasse;
+
+                if (ap.Messages != null) apDansDB.Messages = ap.Messages;
                 if (ap.SessionDeCursus != null) apDansDB.SessionDeCursus = ap.SessionDeCursus;
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Apprenant ap)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-                context.Apprenants.Remove(ap);
+                context.Apprenants.Remove(context.Apprenants.FirstOrDefault(app => app.ApprenantId == id));
                 context.SaveChanges();
             }
         }
