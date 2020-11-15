@@ -14,34 +14,39 @@ namespace Tests_GestionFormation.DAO
         [TestMethod]
         public void Test_Create()
         {
-            Apprenant app = new Apprenant
+            Formation app = new Formation
             {
-                ApprenantId = 9999999,
                 Nom = "Nom",
-                Prenom = "Prenom",
-                Email = "Email",
-                MotDePasse = "MotDePasse"
+                Description = "Description",
+                Dure = 5,
             };
-
+            /*
+            app.SessionsDeFormations = new List<SessionDeFormation>();
+            app.SessionsDeFormations.Add(new SessionDeFormation { DateDebut = new DateTime(9999, 02, 05)});
+            */
+            /*
+            app.Cursus = new List<Cursus>();
+            app.Cursus.Add(CursusDAO.FindById(1));
+            app.Cursus.Add(CursusDAO.FindById(2));
+            */
             using (BDDContext context = new BDDContext())
-                //On vérifie que l'apprenant n'existe pas avant de le créer
-                Assert.IsNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
+                //On vérifie que la Formation n'existe pas avant de le créer
+                Assert.IsNull(context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId));
 
-            ApprenantDAO.Create(app);
+            FormationDAO.Create(app);
 
             using (BDDContext context = new BDDContext())
             {
-                Apprenant appContext = context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId);
+                Formation appContext = context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId);
 
                 Assert.IsNotNull(appContext);
 
                 Assert.AreEqual("Nom", appContext.Nom);
-                Assert.AreEqual("Prenom", appContext.Prenom);
-                Assert.AreEqual("Email", appContext.Email);
-                Assert.AreEqual("MotDePasse", appContext.MotDePasse);
+                Assert.AreEqual("Description", appContext.Description);
+                Assert.AreEqual(5, appContext.Dure);
 
                 //On le supprime pour ne pas poluer la database
-                context.Apprenants.Remove(appContext);
+                context.Formations.Remove(appContext);
                 context.SaveChanges();
             }
         }
@@ -50,133 +55,132 @@ namespace Tests_GestionFormation.DAO
         [TestMethod]
         public void Test_Delete()
         {
-            Apprenant app = new Apprenant
+            Formation app = new Formation
             {
-                ApprenantId = 99999999,
+                FormationId = 99999999,
                 Nom = "Nom",
-                Prenom = "Prenom",
-                Email = "Email",
-                MotDePasse = "MotDePasse"
+                Description = "Description",
+                Dure = 5,
             };
 
             using (BDDContext context = new BDDContext())
-                Assert.IsNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
+                Assert.IsNull(context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId));
 
-            ApprenantDAO.Create(app);
-
-            using (BDDContext context = new BDDContext())
-                Assert.IsNotNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
-
-            ApprenantDAO.Delete(app.ApprenantId);
+            FormationDAO.Create(app);
 
             using (BDDContext context = new BDDContext())
-                Assert.IsNull(context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == app.ApprenantId));
+                Assert.IsNotNull(context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId));
+
+            FormationDAO.Delete(app.FormationId);
+
+            using (BDDContext context = new BDDContext())
+                Assert.IsNull(context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId));
         }
 
         [TestMethod]
         public void Test_Update()
         {
-            Apprenant app = new Apprenant
+            Formation app = new Formation
             {
-                ApprenantId = 99999999,
+                FormationId = 99999999,
                 Nom = "Nom",
-                Prenom = "Prenom",
-                Email = "Email",
-                MotDePasse = "MotDePasse"
+                Description = "Description",
+                Dure = 5,
             };
 
-            ApprenantDAO.Create(app);
+            app.SessionsDeFormations = new List<SessionDeFormation>();
+            app.SessionsDeFormations.Add(SessionDeFormationDAO.FindById(1));
+            app.SessionsDeFormations.Add(SessionDeFormationDAO.FindById(2));
 
-            Apprenant app2 = new Apprenant
+            FormationDAO.Create(app);
+
+            Formation app2 = new Formation
             {
-                ApprenantId = app.ApprenantId,
+                FormationId = app.FormationId,
                 Nom = "Nom2",
-                Prenom = "Prenom2",
-                Email = "Email2",
-                MotDePasse = "MotDePasse2"
+                Description = "Description2",
+                Dure = 6,
             };
 
-            ApprenantDAO.Update(app2);
+            app2.SessionsDeFormations = new List<SessionDeFormation>();
+            app2.SessionsDeFormations.Add(SessionDeFormationDAO.FindById(1));
+            app2.SessionsDeFormations.Add(SessionDeFormationDAO.FindById(3));
 
-            Apprenant app3 = ApprenantDAO.FindById(app2.ApprenantId);
+            FormationDAO.Update(app2);
+
+            Formation app3 = FormationDAO.FindById(app.FormationId);
 
             Assert.IsNotNull(app3);
 
             Assert.AreEqual("Nom2", app3.Nom);
-            Assert.AreEqual("Prenom2", app3.Prenom);
-            Assert.AreEqual("Email2", app3.Email);
-            Assert.AreEqual("MotDePasse2", app3.MotDePasse);
+            Assert.AreEqual("Description2", app3.Description);
+            Assert.AreEqual(6, app3.Dure);
 
-            ApprenantDAO.Delete(app.ApprenantId);
+            Assert.IsNotNull(app3.SessionsDeFormations);
+            Assert.AreEqual(2, app3.SessionsDeFormations.Count());
+            Assert.AreEqual(1, app3.SessionsDeFormations[0].SessionDeFormationId);
+            Assert.AreEqual(3, app3.SessionsDeFormations[1].SessionDeFormationId);
+
+            FormationDAO.Delete(app.FormationId);
 
         }
 
         [TestMethod]
         public void Test_FindById()
         {
-            //INSERT INTO apprenants (Prenom, Nom, Email, MotDePasse) VALUES ('Hermione', 'Granger', 'Hermione.Granger@dawan.com', '1234')
-            Apprenant app = ApprenantDAO.FindById(1);
+            //INSERT INTO Formations (Nom ,Dure) VALUES ('Formation C# Initiation : Programmer en objet (5 jours)', 5)
+            Formation app = FormationDAO.FindById(1);
 
             Assert.IsNotNull(app);
 
-            Assert.AreEqual(1, app.ApprenantId);
-            Assert.AreEqual("Granger", app.Nom);
-            Assert.AreEqual("Hermione", app.Prenom);
-            Assert.AreEqual("Hermione.Granger@dawan.com", app.Email);
-            Assert.AreEqual("1234", app.MotDePasse);
+            Assert.AreEqual(1, app.FormationId);
+            Assert.AreEqual("Formation C# Initiation : Programmer en objet (5 jours)", app.Nom);
+            Assert.AreEqual(5, app.Dure);
 
-            Assert.IsNotNull(app.SessionDeCursus);
-            Assert.AreEqual(1, app.SessionDeCursus[0].SessionDeCursusId);
+            //INSERT INTO dbo.FormationCursus(Cursus_CursusId, Formation_FormationId) VALUES(1, 1)
+            Assert.IsNotNull(app.Cursus);
+            Assert.AreEqual(1, app.Cursus[0].CursusId);
 
-            //On a pas ajouté de Messages dans la Bdd
-            //Mais si ca marche pour Session de Cursus, a priori c'est bon pour Messages
-
-            //Assert.IsNotNull(app.Messages);
-            //Assert.AreEqual(1, app.Messages[0].MessageId);
-            //Assert.AreEqual(1, app.Messages[0].DateDePublication);
+            //INSERT INTO SessionDeFormations (SessionDeCursus_SessionDeCursusId, Formation_FormationId, Formateur_FormateurId, DateDebut) VALUES (1, 1, 1, '01-11-20')
+            Assert.IsNotNull(app.SessionsDeFormations);
+            Assert.AreEqual(1, app.SessionsDeFormations[0].SessionDeFormationId);
+            Assert.AreEqual(new DateTime(2020, 11, 01), app.SessionsDeFormations[0].DateDebut);
         }
 
         [TestMethod]
         public void Test_FindAll()
         {
-            int nbApprenant;
+            int nbFormation;
 
             using (BDDContext context = new BDDContext())
-                nbApprenant = context.Apprenants.Count();
+                nbFormation = context.Formations.Count();
 
-            List<Apprenant> Apprenants = ApprenantDAO.FindAll();
+            List<Formation> Formations = FormationDAO.FindAll();
 
-            Assert.IsNotNull(Apprenants);
-            Assert.AreEqual(nbApprenant, Apprenants.Count);
+            Assert.IsNotNull(Formations);
+            Assert.AreEqual(nbFormation, Formations.Count);
 
-            foreach (Apprenant app in Apprenants)
+            foreach (Formation app in Formations)
             {
                 Assert.IsNotNull(app);
 
-                //On check si tout va bien pour les deux premiers
+                //On check si tout va bien pour le premier
 
-                //INSERT INTO apprenants (Prenom, Nom, Email, MotDePasse) VALUES ('Hermione', 'Granger', 'Hermione.Granger@dawan.com', '1234')
-                if (app.ApprenantId == 1)
+                //INSERT INTO Formations (Nom ,Dure) VALUES ('Formation C# Initiation : Programmer en objet (5 jours)', 5)
+                if (app.FormationId == 1)
                 {
-                    Assert.AreEqual("Granger", app.Nom);
-                    Assert.AreEqual("Hermione", app.Prenom);
-                    Assert.AreEqual("Hermione.Granger@dawan.com", app.Email);
-                    Assert.AreEqual("1234", app.MotDePasse);
+                    Assert.AreEqual(1, app.FormationId);
+                    Assert.AreEqual("Formation C# Initiation : Programmer en objet (5 jours)", app.Nom);
+                    Assert.AreEqual(5, app.Dure);
 
-                    Assert.IsNotNull(app.SessionDeCursus);
-                    Assert.AreEqual(1, app.SessionDeCursus[0].SessionDeCursusId);
-                }
+                    //INSERT INTO dbo.FormationCursus(Cursus_CursusId, Formation_FormationId) VALUES(1, 1)
+                    Assert.IsNotNull(app.Cursus);
+                    Assert.AreEqual(1, app.Cursus[0].CursusId);
 
-                //INSERT INTO apprenants (Prenom, Nom, Email, MotDePasse) VALUES ('Ron', 'Weasley', 'Ron.Weasley@dawan.com', '1234')
-                if (app.ApprenantId == 2)
-                {
-                    Assert.AreEqual("Weasley", app.Nom);
-                    Assert.AreEqual("Ron", app.Prenom);
-                    Assert.AreEqual("Ron.Weasley@dawan.com", app.Email);
-                    Assert.AreEqual("1234", app.MotDePasse);
-
-                    Assert.IsNotNull(app.SessionDeCursus);
-                    Assert.AreEqual(1, app.SessionDeCursus[0].SessionDeCursusId);
+                    //INSERT INTO SessionDeFormations (SessionDeCursus_SessionDeCursusId, Formation_FormationId, Formateur_FormateurId, DateDebut) VALUES (1, 1, 1, '01-11-20')
+                    Assert.IsNotNull(app.SessionsDeFormations);
+                    Assert.AreEqual(1, app.SessionsDeFormations[0].SessionDeFormationId);
+                    Assert.AreEqual(new DateTime(2020, 11, 01), app.SessionsDeFormations[0].DateDebut);
                 }
             }
         }

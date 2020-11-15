@@ -12,11 +12,30 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                /*
+                if (fn.Cursus != null)
+                {
+                    List<Cursus> listCursus = new List<Cursus>();
+                    foreach (Cursus curs in fn.Cursus)
+                        //Pas de contrainte de Multiplicité ici : List des deux côtés
+                        listCursus.Add(context.Cursus.FirstOrDefault(c => c.CursusId == curs.CursusId));
+                    fn.Cursus = listCursus;
+                }
+                if (fn.SessionsDeFormations != null)
+                {
+                    List<SessionDeFormation> listSessionDeFormation = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation ses in fn.SessionsDeFormations)
+                        //Pour la contrainte de Multiplicité : le cas où l'objet cible n'as pas de list de l'objet mère mais seulement son id
+                        if(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == ses.SessionDeFormationId).Formation?.FormationId == null)
+                            listSessionDeFormation.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == ses.SessionDeFormationId));
+                    fn.SessionsDeFormations = listSessionDeFormation;
+                }
+                */
                 context.Formations.Add(fn);
-
                 context.SaveChanges();
             }
         }
+
         public static Formation FindById(int formationId)
         {
             using (BDDContext context = new BDDContext())
