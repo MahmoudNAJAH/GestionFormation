@@ -8,7 +8,7 @@ namespace GestionFormation.DAO
 {
     public class FormationDAO
     {
-        public static void Crate(Formation fn)
+        public static void Create(Formation fn)
         {
             using (BDDContext context = new BDDContext())
             {

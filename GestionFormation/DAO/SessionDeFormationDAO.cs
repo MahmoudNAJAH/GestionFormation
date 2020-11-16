@@ -3,12 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace GestionFormation.DAO
 {
     public class SessionDeFormationDAO
     {
-        public static void Crate(SessionDeFormation sdf)
+        public static void Create(SessionDeFormation sdf)
         {
             using (BDDContext context = new BDDContext())
             {
@@ -29,7 +30,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.Include("Formateur").Include("Formation").Include("SessionDeCursus").ToList();
+                return context.SessionDeFormation.Include(x => x.Formateur).Include("Formation").Include("SessionDeCursus").ToList();
             }
         }
 
