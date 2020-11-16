@@ -31,6 +31,14 @@ namespace GestionFormation.DAO
                     fn.SessionsDeFormations = listSessionDeFormation;
                 }
                 */
+
+                Formation form = new Formation()
+                {
+                    Nom = fn.Nom,
+                    Description = fn.Description,
+                    Dure = fn.Dure
+                };
+
                 context.Formations.Add(fn);
                 context.SaveChanges();
             }

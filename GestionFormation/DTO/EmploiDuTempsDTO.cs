@@ -30,32 +30,30 @@ namespace GestionFormation.DTO
             {
                 DateTime DateTraitement = SessionForm.DateDebut;
 
-                if (SessionForm.Formation.Dure == null) continue;
+                if (DateTraitement == null) continue;
+                if (SessionForm.Formation?.Dure == null) continue;
 
                 //On va remplir l'EDT, on boucle sur la durée de la FormationSession
                 for (int i_dure = 0; i_dure < SessionForm.Formation.Dure; i_dure++)
                 {
                     //Quand on passe à i_dure++, on passe au jours suivant en ajoutant DateTraitement+1days
                     //Mais le premier jours de la formation est pour SessionForm.DateDebut => i_dure = 0
-                    if (i_dure != 0) DateTraitement.AddDays(1);
-
+                    if (i_dure != 0) 
+                        DateTraitement = DateTraitement.AddDays(1);
+                    
                     //Pour que DateTraitement soit un jours ouvrable
                     while (EstFerie(DateTraitement) || EstWeekEnd(DateTraitement))
-                    {
-                        //Si ce jours est férié, on passe au suivant
-                        while (EstFerie(DateTraitement)) DateTraitement.AddDays(1);
-                        //Si week end, on se met au lundi suivant
-                        while (EstWeekEnd(DateTraitement)) DateTraitement.AddDays(1);
-                    }
-                    
+                        DateTraitement = DateTraitement.AddDays(1);
+
                     ListDates.Add(new JourneeDTO { Date = DateTraitement, Formation = SessionForm.Formation, Formateur = SessionForm.Formateur });
                 }
             }
         }
 
-        public List<SessionDeFormation> GetSessionDeFormations()
+        private List<SessionDeFormation> GetSessionDeFormations()
         {
             List<SessionDeFormation> listForm = new List<SessionDeFormation>();
+            
 
             switch (User.Role)
             {
@@ -65,14 +63,25 @@ namespace GestionFormation.DTO
 
                     foreach(SessionDeCursus SessionCursus in listSessionDeCursus)
                     {
-                        listForm.AddRange(SessionDeCursusDAO.FindById(SessionCursus.SessionDeCursusId).SessionsDeFormations);
+                        //on récupère les sessions Formations, mais leurs objets sont vides (Formation, Formateur etc..)
+                        List<SessionDeFormation> listSessionFormations = new List<SessionDeFormation>();
+                        listSessionFormations.AddRange(SessionDeCursusDAO.FindById(SessionCursus.SessionDeCursusId).SessionsDeFormations);
+
+                        //On les recharge en récupérant leurs objets à l'aide de FindById
+                        foreach(SessionDeFormation ses in listSessionFormations)
+                            listForm.Add(SessionDeFormationDAO.FindById(ses.SessionDeFormationId));
                     }
 
                     break;
 
                 case UserRole.FORMATEUR:
 
-                    listForm.AddRange(FormateurDAO.FindById(User.Id).SessionDeFormations);
+                    List<SessionDeFormation> listSessionFormation = new List<SessionDeFormation>();
+                    listSessionFormation = FormateurDAO.FindById(User.Id).SessionDeFormations;
+
+                    foreach (SessionDeFormation ses in listSessionFormation)
+                        listForm.Add(SessionDeFormationDAO.FindById(ses.SessionDeFormationId));
+                        //listForm.Add(ses);
 
                     break;
 
@@ -86,7 +95,7 @@ namespace GestionFormation.DTO
             return listForm;
         }
 
-        private bool EstFerie(DateTime date)
+        private static bool EstFerie(DateTime date)
         {
             List<DateTime> JoursFeries = new List<DateTime>
             {
@@ -106,19 +115,19 @@ namespace GestionFormation.DTO
 
             foreach (DateTime d in JoursFeries)
                 //Je ne sais pas si (date == d) fonctionne correctement, alors dans le doute ...
-                if (date.Day == d.Day && date.Month == d.Month) return false;
+                if (date.Day == d.Day && date.Month == d.Month) return true;
 
-            return true;
+            return false;
         }
 
-        private bool EstWeekEnd(DateTime date)
+        private static bool EstWeekEnd(DateTime date)
         {
             //Dimanche = 0, Lundi = 1 ......, Samedi = 6 
             if ((int)date.DayOfWeek == 0 || (int)date.DayOfWeek == 6) return true;
             else return false;
         }
 
-        private List<DateTime> CalculPaque(DateTime date)
+        private static List<DateTime> CalculPaque(DateTime date)
         {
             // Calcul du jour de pâques (algorithme de Oudin (1940))
             //Calcul du nombre d'or - 1

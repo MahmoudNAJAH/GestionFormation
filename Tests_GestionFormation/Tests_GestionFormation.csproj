@@ -60,6 +60,7 @@
     <Compile Include="DAO\Test_FormationDAO.cs" />
     <Compile Include="DAO\Test_SessionDeCursusDAO.cs" />
     <Compile Include="DAO\Test_SessionDeFormationDAO.cs" />
+    <Compile Include="DTO\Test_EmploiDuTempsDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

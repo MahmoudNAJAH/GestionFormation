@@ -10,11 +10,5 @@ namespace GestionFormation.Entities
         public Formation Formation { get; set; }
         public SessionDeCursus SessionDeCursus { get; set; }
 
-        public SessionDeFormation()
-        {
-            Formateur = new Formateur();
-            Formation = new Formation();
-            SessionDeCursus = new SessionDeCursus();
-        }
     }
 }
