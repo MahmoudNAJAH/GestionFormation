@@ -27,7 +27,7 @@ namespace GestionFormation.Services
                 message.Subject = emailAEnvoyer.Subject;
                 message.Body = emailAEnvoyer.Content;
 
-                //FileStyleUriParser 
+                
                 Attachment attachment = new Attachment();
                 message.Attachments.Add(attachment);
 
