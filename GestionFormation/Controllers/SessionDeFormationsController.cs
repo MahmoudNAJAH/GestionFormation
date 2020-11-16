@@ -37,7 +37,6 @@ namespace GestionDeFormation.Controllers
         {
             try
             {
-
                 SessionDeFormationService.Create(f);
                 return RedirectToAction("Index");
             }

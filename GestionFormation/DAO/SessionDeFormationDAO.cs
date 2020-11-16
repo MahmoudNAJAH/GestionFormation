@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace GestionFormation.DAO
 {
@@ -29,7 +30,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.Include("Formateur").Include("Formation").Include("SessionDeCursus").ToList();
+                return context.SessionDeFormation.Include(x => x.Formateur).Include("Formation").Include("SessionDeCursus").ToList();
             }
         }
 
