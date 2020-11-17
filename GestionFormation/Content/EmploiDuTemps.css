@@ -1,0 +1,95 @@
+﻿
+.edt-body{
+    width: 100%;
+    min-height: 700px;
+
+    padding-top: 20px;
+
+    /*background-color: purple;*/
+}
+
+.edt-titre{
+    display: block;
+    
+    padding: 0;
+    margin-bottom: 40px;
+
+    text-align: center;
+    font-size: 26px;
+
+    /*background-color: cornflowerblue;*/
+}
+
+.edt-semaine{
+    width: 100%;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.edt-header-semaine{
+
+}
+
+.edt-body-semaine{
+}
+
+.edt-column{
+    min-width: 14.286%;
+    border: 1px solid black;
+}
+
+.edt-header-column {
+    text-align: center;
+    padding-top: 10px;
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.edt-body-column{
+    
+    /*background-color: rgba(0, 255, 33, 0.5);*/
+}
+
+.edt-container-journee{
+    min-height: 500px;
+    text-align: center;
+    width: 100%;
+}
+
+.edt-container-journee-ue{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.edt-journee-formation {
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.edt-journee-formateur {
+    
+}
+
+.edt-btn-next-link {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    padding-top: 5px;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.edt-btn-next-link:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #333333;
+}
+
+
+.edt-btn-next-gauche{
+    margin-left: 20px;
+    margin-right: 900px;
+}
