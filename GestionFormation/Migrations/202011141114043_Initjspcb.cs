@@ -3,7 +3,7 @@ namespace GestionFormation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init4 : DbMigration
+    public partial class Initjspcb : DbMigration
     {
         public override void Up()
         {
@@ -74,6 +74,7 @@ namespace GestionFormation.Migrations
                         FormationId = c.Int(nullable: false, identity: true),
                         Nom = c.String(),
                         Description = c.String(),
+                        Dure = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.FormationId);
             
@@ -82,6 +83,7 @@ namespace GestionFormation.Migrations
                 c => new
                     {
                         SessionDeFormationId = c.Int(nullable: false, identity: true),
+                        DateDebut = c.DateTime(nullable: false),
                         Formateur_FormateurId = c.Int(),
                         Formation_FormationId = c.Int(),
                         SessionDeCursus_SessionDeCursusId = c.Int(),

@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 
 namespace GestionFormation.DAO
 {
@@ -13,7 +12,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                context.SessionDeFormation.Add(sdf);
+                context.SessionDeFormations.Add(sdf);
 
                 context.SaveChanges();
             }
@@ -22,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
+                return context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(sdf => sdf.SessionDeFormationId == sessionDeFormationId);
             }
         }
 
@@ -30,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.SessionDeFormation.Include(x => x.Formateur).Include("Formation").Include("SessionDeCursus").ToList();
+                return context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").ToList();
             }
         }
 
@@ -38,21 +37,24 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                SessionDeFormation sdfDansDB = FindById(sdf.SessionDeFormationId);
-                if (sdf.Formateur != null) sdfDansDB.Formateur = sdf.Formateur;
-                if (sdf.Formation != null) sdfDansDB.Formation = sdf.Formation;
-                if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = sdf.SessionDeCursus;                
+                SessionDeFormation sdfDansDB = context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(s => s.SessionDeFormationId == sdf.SessionDeFormationId);
+                if (sdf.DateDebut != null) sdfDansDB.DateDebut = sdf.DateDebut;
+
+                //Foreign keys
+                if (sdf.Formateur != null) sdfDansDB.Formateur = context.Formateurs.FirstOrDefault(s => s.FormateurId == sdf.Formateur.FormateurId);
+                if (sdf.Formation != null) sdfDansDB.Formation = context.Formations.FirstOrDefault(s => s.FormationId == sdf.Formation.FormationId);
+                if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = context.SessionDeCursus.FirstOrDefault(s => s.SessionDeCursusId == sdf.SessionDeCursus.SessionDeCursusId);
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(SessionDeFormation sdf)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
 
-                context.SessionDeFormation.Remove(sdf);
+                context.SessionDeFormations.Remove(context.SessionDeFormations.Include("Formateur").Include("Formation").Include("SessionDeCursus").FirstOrDefault(s => s.SessionDeFormationId == id));
                 context.SaveChanges();
 
             }

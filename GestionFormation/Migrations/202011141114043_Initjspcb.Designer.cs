@@ -7,13 +7,13 @@ namespace GestionFormation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DateDureFormation : IMigrationMetadata
+    public sealed partial class Initjspcb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DateDureFormation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initjspcb));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011131501275_DateDureFormation"; }
+            get { return "202011141114043_Initjspcb"; }
         }
         
         string IMigrationMetadata.Source

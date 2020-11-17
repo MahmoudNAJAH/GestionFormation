@@ -9,15 +9,15 @@ namespace GestionFormation.DAO
 {
     public class BDDContext : DbContext
     {
-        public DbSet<Apprenant> Apprenants { get; set; }
-        public DbSet<Admin> Admins { get; set; }
-        public DbSet<Chat> Chats { get; set; }
-        public DbSet<Cursus> Cursus { get; set; }
-        public DbSet<Message> Messages { get; set; }
-        public DbSet<Formateur> Formateurs { get; set; }
-        public DbSet<Formation> Formations { get; set; }
-        public DbSet<SessionDeCursus> SessionDeCursus { get; set; }
-        public DbSet<SessionDeFormation> SessionDeFormation { get; set; }
+        public virtual DbSet<Apprenant> Apprenants { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
+        public virtual DbSet<Cursus> Cursus { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Formateur> Formateurs { get; set; }
+        public virtual DbSet<Formation> Formations { get; set; }
+        public virtual DbSet<SessionDeCursus> SessionDeCursus { get; set; }
+        public virtual DbSet<SessionDeFormation> SessionDeFormations { get; set; }
 
     }
 }
