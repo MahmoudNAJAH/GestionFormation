@@ -126,9 +126,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
-    <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\SessionDeFormationsController.cs" />
