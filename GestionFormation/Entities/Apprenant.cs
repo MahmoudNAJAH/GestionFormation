@@ -12,7 +12,7 @@ namespace GestionFormation.Entities
         public string Nom { get; set; }
         public string Prenom { get; set; }
         public string Email { get; set; }
-        public string  MotDePasse { get; set; }
+        public byte[]  MotDePasse { get; set; }
         public virtual List<SessionDeCursus> SessionDeCursus { get; set; }
         public virtual List<Message> Messages { get; set; }
 

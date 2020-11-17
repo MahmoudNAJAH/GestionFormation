@@ -7,13 +7,13 @@ namespace GestionFormation.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class adddb5 : IMigrationMetadata
+    public sealed partial class AjoutMDP : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(adddb5));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AjoutMDP));
         
         string IMigrationMetadata.Id
         {
-            get { return "202011171008275_adddb5"; }
+            get { return "202011171422065_AjoutMDP"; }
         }
         
         string IMigrationMetadata.Source

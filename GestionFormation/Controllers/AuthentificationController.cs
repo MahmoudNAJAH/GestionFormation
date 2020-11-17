@@ -1,5 +1,7 @@
 ﻿using GestionFormation.DAO;
+using GestionFormation.DTO;
 using GestionFormation.Entities;
+using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace GestionFormation.Controllers
 {
     public class AuthentificationController : Controller
     {
+
+        
         // GET: Authentification : donc l'authentfication controller est le controlleur qui me permet 
         //de faire la page de connexion 
 
@@ -21,23 +25,41 @@ namespace GestionFormation.Controllers
         public ActionResult Login(string redirectTo = null)
         {
             ViewBag.Referer = redirectTo;
-            return View(new Apprenant());
+            return View(new LoginDTO());
         }
 
 
         [HttpPost]
 
-        public ActionResult Login(Apprenant p, string referer)
+        public ActionResult Login(LoginDTO p , string referer)
         {
             Apprenant ap = ApprenantDAO.FindByLgMD(p.Email);
             // ici j'ai recupéréer l'apprenant qui corresspond au mem mail et password entré dans la 
             //fonction Login
-           
-            if (ap != null && ap.MotDePasse==p.MotDePasse)
+
+            
+
+            //CryptageMotDePasse hash2 = new CryptageMotDePasse(p.MotDePasse);
+            //byte[] hashBytes2 = hash2.ToArray();
+
+            //Apprenant apprenant = new Apprenant();
+            //apprenant.MotDePasse = hashBytes2;
+            //ApprenantDAO.Create(apprenant);
+            if (ap != null )
             {
                 //session =  propriété du controleur
                 // elle spécifique à un utilisateur qur un navigateur (stocké coté serveur)
                 //Donc Pas partagé entre les utilisateurs 
+
+              
+
+                byte[] hashBytes = ap.MotDePasse;//read from store.
+             CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+
+                if (!hash.Verify(p.MotDePasse))
+                    throw new System.UnauthorizedAccessException();
+
+
                 Session.Add("userConnected", ap);
 
                 if (!string.IsNullOrEmpty(referer)) return Redirect(referer);

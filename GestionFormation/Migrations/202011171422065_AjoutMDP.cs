@@ -3,7 +3,7 @@ namespace GestionFormation.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initjspcb : DbMigration
+    public partial class AjoutMDP : DbMigration
     {
         public override void Up()
         {
@@ -15,7 +15,7 @@ namespace GestionFormation.Migrations
                         Nom = c.String(),
                         Prenom = c.String(),
                         Email = c.String(),
-                        MotDePasse = c.String(),
+                        MotDePasse = c.Binary(),
                     })
                 .PrimaryKey(t => t.AdminId);
             
@@ -27,7 +27,7 @@ namespace GestionFormation.Migrations
                         Nom = c.String(),
                         Prenom = c.String(),
                         Email = c.String(),
-                        MotDePasse = c.String(),
+                        MotDePasse = c.Binary(),
                     })
                 .PrimaryKey(t => t.ApprenantId);
             
@@ -104,7 +104,7 @@ namespace GestionFormation.Migrations
                         Nom = c.String(),
                         Prenom = c.String(),
                         Email = c.String(),
-                        MotDePasse = c.String(),
+                        MotDePasse = c.Binary(),
                     })
                 .PrimaryKey(t => t.FormateurId);
             
