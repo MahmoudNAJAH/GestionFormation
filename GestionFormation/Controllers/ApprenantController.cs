@@ -14,14 +14,14 @@ namespace GestionFormation.Controllers
         [LoginRequiredFilter]
         public ActionResult Index()
         {
-            return View(ApprenantDAO.FindAll());
+            return View();
         }
 
         // GET: Apprenant/Details/5
-        //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
+        public ActionResult Details(int id)
+        {
+            return View(ApprenantDAO.FindById(id));
+        }
 
         //// GET: Apprenant/Create
         //public ActionResult Create()
