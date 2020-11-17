@@ -14,7 +14,7 @@ namespace GestionFormation.Services
         {
             List<JourneeDTO> result = new List<JourneeDTO>();
 
-            result.AddRange(allDays.FindAll(it => it.Date == dateReference));
+            result.AddRange(allDays.FindAll(it => it.Date.ToString("dd/MM/yyyy") == dateReference.ToString("dd/MM/yyyy")));
 
             // -- On veut envoyer Les journee qui sont la même semaine que ma dateReference
 
