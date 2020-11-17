@@ -70,6 +70,33 @@ namespace GestionFormation.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message envoyé avec piece jointe.
+        /// </summary>
+        public static string FichierEnvoye {
+            get {
+                return ResourceManager.GetString("FichierEnvoye", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le fichier est trop volumineux.
+        /// </summary>
+        public static string FichierTropVolumineux {
+            get {
+                return ResourceManager.GetString("FichierTropVolumineux", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Message envoyé sans piece jointe.
+        /// </summary>
+        public static string FichierVide {
+            get {
+                return ResourceManager.GetString("FichierVide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à smtp.gmail.com.
         /// </summary>
         public static string GmailHost {
@@ -93,6 +120,15 @@ namespace GestionFormation.Properties {
         public static string MotDePasse {
             get {
                 return ResourceManager.GetString("MotDePasse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à 1048576.
+        /// </summary>
+        public static string TailleMaxPieceJointe {
+            get {
+                return ResourceManager.GetString("TailleMaxPieceJointe", resourceCulture);
             }
         }
     }

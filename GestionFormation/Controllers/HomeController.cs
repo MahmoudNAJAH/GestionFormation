@@ -1,4 +1,5 @@
-﻿using GestionFormation.Services;
+﻿using GestionFormation.DTO;
+using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,17 @@ namespace GestionFormation.Controllers
 
         public ActionResult Index()
         {
+            if (TempData["emailAEnvoyerDTO"] !=null) { 
+            ViewBag.emailAEnvoyerDTO = (EmailAEnvoyerDTO)TempData["emailAEnvoyerDTO"];
+                }
+            
+            if (TempData["emailMessage"] !=null) {
+                ViewBag.EmailMessage = TempData["emailMessage"];
+            }
+
+            
+
+
             return View();
         }
 

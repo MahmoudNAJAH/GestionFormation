@@ -14,5 +14,8 @@ namespace GestionFormation.DTO
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public string Subject { get; set; }
+        public string AttachementPath { get; set; }
+
+
     }
 }

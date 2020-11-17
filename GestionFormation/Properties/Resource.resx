@@ -121,6 +121,18 @@
     <value>projetformationdawan@gmail.com</value>
     <comment>pour l'envoi de mail</comment>
   </data>
+  <data name="FichierEnvoye" xml:space="preserve">
+    <value>Message envoyé avec piece jointe</value>
+    <comment>pour l'envoi de mail</comment>
+  </data>
+  <data name="FichierTropVolumineux" xml:space="preserve">
+    <value>Le fichier est trop volumineux</value>
+    <comment>pour l'envoi de mail</comment>
+  </data>
+  <data name="FichierVide" xml:space="preserve">
+    <value>Message envoyé sans piece jointe</value>
+    <comment>pour l'envoi de mail</comment>
+  </data>
   <data name="GmailHost" xml:space="preserve">
     <value>smtp.gmail.com</value>
     <comment>pour l'envoi de mail</comment>
@@ -131,6 +143,10 @@
   </data>
   <data name="MotDePasse" xml:space="preserve">
     <value>dawan742</value>
+    <comment>pour l'envoi de mail</comment>
+  </data>
+  <data name="TailleMaxPieceJointe" xml:space="preserve">
+    <value>1048576</value>
     <comment>pour l'envoi de mail</comment>
   </data>
 </root>
