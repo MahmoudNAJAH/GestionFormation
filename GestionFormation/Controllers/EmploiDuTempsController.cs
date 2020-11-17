@@ -19,6 +19,8 @@ namespace GestionFormation.Controllers
         public EmploiDuTempsController()
         {
             //On charge toutes les dates + formations + formateur dans mon controller
+
+            //Pour le moment, on charge l'emploi du temps de Hermione
             EDT = new EmploiDuTempsDTO(new UserDTO { Id = 1, Role = UserRole.ATTENDANT });
         }
 
@@ -27,13 +29,17 @@ namespace GestionFormation.Controllers
         {
             List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek( EDT.ListDates, DateTime.Now);
 
-            //return View(EDT.ListDates);
+            //Pour affichage et changement de semaine
+            ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(DateTime.Now);
+
             return View(WeeklyEDT);
         }
         
         public ActionResult NextWeek(DateTime dateReference)
         {
             List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(EDT.ListDates, dateReference);
+
+            ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(dateReference);
 
             return View("Index", WeeklyEDT);
         }

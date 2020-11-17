@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<GestionFormation.DTO.JourneeDTO>
 
 @{
-    ViewBag.Title = "Index";
+    //Pour le Calcul du numéro de la semaine
+    System.Globalization.DateTimeFormatInfo dfi = System.Globalization.DateTimeFormatInfo.CurrentInfo;
+    System.Globalization.Calendar cal = dfi.Calendar;
+    int WeekIndex = cal.GetWeekOfYear(ViewBag.DateLundi, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) - 1;
+
+    ViewBag.Title = "Emploi du temps de la Semaine " + WeekIndex;
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -48,6 +50,6 @@
 </table>
 
 
-    @Html.ActionLink("Semaine Précédente", "NextWeek", new { dateReference = Model.ElementAt(2).Date.AddDays(-7) }, FormMethod.Post)
+    @Html.ActionLink("Semaine Précédente", "NextWeek", new { dateReference = ViewBag.DateLundi.AddDays(-7) })
     <hr />
-    @Html.ActionLink("Semaine Suivante", "NextWeek", new { dateReference = Model.ElementAt(2).Date.AddDays(7) }, FormMethod.Post)
+    @Html.ActionLink("Semaine Suivante", "NextWeek", new { dateReference = ViewBag.DateLundi.AddDays(7) })

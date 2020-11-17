@@ -49,7 +49,64 @@ namespace GestionFormation.Services
                     result.AddRange(allDays.FindAll(it => it.Date.ToString("dd/MM/yyyy") == nowAdd.ToString("dd/MM/yyyy")));
                 }
             }
+            return TrierParDate(result);
+        }
+
+        public static List<JourneeDTO> TrierParDate(List<JourneeDTO> allDays)
+        {
+            List<JourneeDTO> result = new List<JourneeDTO>();
+
+            //Tant qu'on a pas traiter toutes les dates
+            while(allDays.Count >0)
+            {
+                //Pour stocker la plus petite date
+                DateTime date_Min = allDays[0].Date;
+
+                //On cherche la plus petite date
+                for(int index = 0; index < allDays.Count; index++ )
+                    if(allDays[index].Date < date_Min)
+                        date_Min = allDays[index].Date;
+
+                //On traite les journees correspondantes
+                for (int index = 0; index < allDays.Count; index++)
+                    if (allDays[index].Date == date_Min)
+                    {
+                        result.Add(allDays[index]);
+                        allDays.RemoveAt(index);
+                    }
+            }
+
             return result;
+        }
+
+        public static DateTime DatePreviousMonday(DateTime dateReference)
+        {
+            switch(dateReference.DayOfWeek)
+            {
+                case DayOfWeek.Monday:
+                    return dateReference;
+
+                case DayOfWeek.Tuesday:
+                    return dateReference.AddDays(-1);
+
+                case DayOfWeek.Wednesday:
+                    return dateReference.AddDays(-2);
+
+                case DayOfWeek.Thursday:
+                    return dateReference.AddDays(-3);
+
+                case DayOfWeek.Friday:
+                    return dateReference.AddDays(-4);
+
+                case DayOfWeek.Saturday:
+                    return dateReference.AddDays(-5);
+
+                case DayOfWeek.Sunday:
+                    return dateReference.AddDays(-6);
+
+                default:
+                    return dateReference;
+            }
         }
     }
 }
