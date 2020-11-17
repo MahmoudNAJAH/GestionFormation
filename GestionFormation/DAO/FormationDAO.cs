@@ -12,16 +12,43 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                context.Formations.Add(fn);
+                /*
+                if (fn.Cursus != null)
+                {
+                    List<Cursus> listCursus = new List<Cursus>();
+                    foreach (Cursus curs in fn.Cursus)
+                        //Pas de contrainte de Multiplicité ici : List des deux côtés
+                        listCursus.Add(context.Cursus.FirstOrDefault(c => c.CursusId == curs.CursusId));
+                    fn.Cursus = listCursus;
+                }
+                if (fn.SessionsDeFormations != null)
+                {
+                    List<SessionDeFormation> listSessionDeFormation = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation ses in fn.SessionsDeFormations)
+                        //Pour la contrainte de Multiplicité : le cas où l'objet cible n'as pas de list de l'objet mère mais seulement son id
+                        if(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == ses.SessionDeFormationId).Formation?.FormationId == null)
+                            listSessionDeFormation.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == ses.SessionDeFormationId));
+                    fn.SessionsDeFormations = listSessionDeFormation;
+                }
+                */
 
+                Formation form = new Formation()
+                {
+                    Nom = fn.Nom,
+                    Description = fn.Description,
+                    Dure = fn.Dure
+                };
+
+                context.Formations.Add(fn);
                 context.SaveChanges();
             }
         }
+
         public static Formation FindById(int formationId)
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formations.FirstOrDefault(fn => fn.FormationId == formationId);
+                return context.Formations.Include("Cursus").Include("SessionsDeFormations").FirstOrDefault(fn => fn.FormationId == formationId);
             }
         }
 
@@ -29,7 +56,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Formations.ToList();
+                return context.Formations.Include("Cursus").Include("SessionsDeFormations").ToList();
             }
         }
 
@@ -37,24 +64,36 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Formation fnDansDB = FindById(fn.FormationId);
+                Formation fnDansDB = context.Formations.Include("Cursus").Include("SessionsDeFormations").FirstOrDefault(f => f.FormationId == fn.FormationId);
                 if (fn.Nom != null) fnDansDB.Nom = fn.Nom;
                 if (fn.Description != null) fnDansDB.Description = fn.Description;
-                if (fn.Cursus != null) fnDansDB.Cursus = fn.Cursus;
-                if (fn.SessionsDeFormations != null) fnDansDB.SessionsDeFormations = fn.SessionsDeFormations;               
+                if (fn?.Dure != null) fnDansDB.Dure = fn.Dure;
+
+                //Foreign keys
+                if (fn.Cursus != null)
+                {
+                    fnDansDB.Cursus = new List<Cursus>();
+                    foreach(Cursus curs in fn.Cursus)
+                        fnDansDB.Cursus.Add(context.Cursus.FirstOrDefault(c => c.CursusId == curs.CursusId));
+
+                }
+                if (fn.SessionsDeFormations != null)
+                {
+                    fnDansDB.SessionsDeFormations = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation curs in fn.SessionsDeFormations)
+                        fnDansDB.SessionsDeFormations.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == curs.SessionDeFormationId));
+                }
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Formation fn)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-
-                context.Formations.Remove(fn);
+                context.Formations.Remove(context.Formations.FirstOrDefault(f => f.FormationId == id));
                 context.SaveChanges();
-
             }
         }
     }

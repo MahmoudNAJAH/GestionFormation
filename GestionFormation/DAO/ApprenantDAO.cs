@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Apprenants.FirstOrDefault(ap => ap.ApprenantId == apprenantId);
+                return context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(ap => ap.ApprenantId == apprenantId);
             }
         }
 
@@ -29,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Apprenants.ToList();
+                return context.Apprenants.Include("Messages").Include("SessionDeCursus").ToList();
             }
         }
 
@@ -37,22 +37,35 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Apprenant apDansDB = FindById(ap.ApprenantId);
+                Apprenant apDansDB = context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(app => app.ApprenantId == ap.ApprenantId);
                 if (ap.Nom != null) apDansDB.Nom = ap.Nom;
                 if (ap.Prenom != null) apDansDB.Prenom = ap.Prenom;
-                if (ap.Messages != null) apDansDB.Messages = ap.Messages;
                 if (ap.Email != null) apDansDB.Email = ap.Email;
-                if (ap.SessionDeCursus != null) apDansDB.SessionDeCursus = ap.SessionDeCursus;
+                if (ap.MotDePasse != null) apDansDB.MotDePasse = ap.MotDePasse;
+
+                //foreign keys
+                if (ap.Messages != null)
+                {
+                    apDansDB.Messages = new List<Message>();
+                    foreach (Message mes in ap.Messages)
+                        apDansDB.Messages.Add(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
+                }
+                if (ap.SessionDeCursus != null)
+                {
+                    apDansDB.SessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus mes in ap.SessionDeCursus)
+                        apDansDB.SessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == mes.SessionDeCursusId));
+                }
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Apprenant ap)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-                context.Apprenants.Remove(ap);
+                context.Apprenants.Remove(context.Apprenants.FirstOrDefault(app => app.ApprenantId == id));
                 context.SaveChanges();
             }
         }
