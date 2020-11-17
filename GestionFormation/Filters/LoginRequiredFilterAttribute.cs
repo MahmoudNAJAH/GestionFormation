@@ -1,4 +1,5 @@
-﻿using GestionFormation.Entities;
+﻿using GestionFormation.DTO;
+using GestionFormation.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace GestionFormation.Filters
         {
             // on récupère l'utillisateur de la session
             
-            Apprenant ap=(Apprenant)filterContext.HttpContext.Session["userConnected"];
+            UserDTO ap = (UserDTO)filterContext.HttpContext.Session["userConnected"];
 
             // si l'apprenant n'est pas connecté
             if (ap == null)

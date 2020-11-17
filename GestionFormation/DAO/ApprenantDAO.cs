@@ -74,14 +74,9 @@ namespace GestionFormation.DAO
         {
             using(BDDContext context = new BDDContext())
             {
-
                 Apprenant ap = context.Apprenants.FirstOrDefault(a => a.Email == mail);
                 return (ap);
             }
-            
-            
-            
-            
         }
     }
 }

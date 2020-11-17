@@ -144,6 +144,7 @@
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />
+    <Compile Include="DTO\.cs" />
     <Compile Include="DTO\JourneeDTO.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
