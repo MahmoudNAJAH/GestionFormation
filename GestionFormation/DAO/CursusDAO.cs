@@ -21,7 +21,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Cursus.FirstOrDefault(c => c.CursusId == cursusId);
+                return context.Cursus.Include("Formations").Include("SessionDeCursus").FirstOrDefault(c => c.CursusId == cursusId);
             }
         }
 
@@ -29,7 +29,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Cursus.ToList();
+                return context.Cursus.Include("Formations").Include("SessionDeCursus").ToList();
             }
         }
 
@@ -37,24 +37,34 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                Cursus cDansDB = FindById(c.CursusId);
+                Cursus cDansDB = context.Cursus.Include("Formations").Include("SessionDeCursus").FirstOrDefault(Curs => Curs.CursusId == c.CursusId);
                 if (c.Nom != null) cDansDB.Nom = c.Nom;
                 if (c.Description != null) cDansDB.Description = c.Description;
-                if (c.Formations != null) cDansDB.Formations = c.Formations;
-                if (c.SessionDeCursus != null) cDansDB.SessionDeCursus = c.SessionDeCursus;
+
+                //foreign keys
+                if (c.Formations != null)
+                {
+                    cDansDB.Formations = new List<Formation>();
+                    foreach(Formation form in c.Formations)
+                        cDansDB.Formations.Add(context.Formations.FirstOrDefault(f => f.FormationId == form.FormationId));
+                }
+                if (c.SessionDeCursus != null)
+                {
+                    cDansDB.SessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus form in c.SessionDeCursus)
+                        cDansDB.SessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(f => f.SessionDeCursusId == form.SessionDeCursusId));
+                }
 
                 context.SaveChanges();
             }
         }
 
-        public static void Delete(Cursus c)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-
-                context.Cursus.Remove(c);
+                context.Cursus.Remove(context.Cursus.FirstOrDefault(Curs => Curs.CursusId == id));
                 context.SaveChanges();
-
             }
         }
     }

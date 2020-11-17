@@ -128,6 +128,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\SessionDeFormationsController.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="DAO\FormateurDAO.cs" />
     <Compile Include="DAO\SessionDeCursusDAO.cs" />
     <Compile Include="DTO\EmailAEnvoyerDTO.cs" />
+    <Compile Include="DTO\EmploiDuTempsDTO.cs" />
     <Compile Include="DTO\FormationDTO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAO\ApprenantDAO.cs" />
@@ -142,7 +144,9 @@
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />
+    <Compile Include="DTO\JourneeDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
     <Compile Include="Entities\Chat.cs" />
@@ -158,13 +162,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202011122139431_init4.cs" />
-    <Compile Include="Migrations\202011122139431_init4.Designer.cs">
-      <DependentUpon>202011122139431_init4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011131501275_DateDureFormation.cs" />
-    <Compile Include="Migrations\202011131501275_DateDureFormation.Designer.cs">
-      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    <Compile Include="Migrations\202011141114043_Initjspcb.cs" />
+    <Compile Include="Migrations\202011141114043_Initjspcb.Designer.cs">
+      <DependentUpon>202011141114043_Initjspcb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202011171008275_adddb5.cs" />
     <Compile Include="Migrations\202011171008275_adddb5.Designer.cs">
@@ -176,6 +176,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\EmploiDuTempsService.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -184,6 +185,7 @@
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\SessionDeFormationService.cs" />
     <Compile Include="Services\FormationService.cs" />
+    <Compile Include="Enum\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -225,6 +227,7 @@
     <Content Include="Views\SessionDeFormations\Index.cshtml" />
     <Content Include="Views\SessionDeFormations\Create.cshtml" />
     <Content Include="Views\SessionDeFormations\AddUpdateFormation.cshtml" />
+    <Content Include="Views\EmploiDuTemps\Index.cshtml" />
     <Content Include="Views\Shared\_EnvoyerEmail.cshtml" />
     <Content Include="Views\Apprenant\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
@@ -249,11 +252,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202011122139431_init4.resx">
-      <DependentUpon>202011122139431_init4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011131501275_DateDureFormation.resx">
-      <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202011141114043_Initjspcb.resx">
+      <DependentUpon>202011141114043_Initjspcb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011171008275_adddb5.resx">
       <DependentUpon>202011171008275_adddb5.cs</DependentUpon>
