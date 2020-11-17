@@ -30,13 +30,12 @@ namespace GestionFormation.Controllers
             //return View(EDT.ListDates);
             return View(WeeklyEDT);
         }
-
-        [HttpPost]
-        public ActionResult Index(DateTime dateReference)
+        
+        public ActionResult NextWeek(DateTime dateReference)
         {
             List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(EDT.ListDates, dateReference);
 
-            return View(WeeklyEDT);
+            return View("Index", WeeklyEDT);
         }
     }
 }

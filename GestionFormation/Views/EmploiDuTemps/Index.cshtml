@@ -46,9 +46,8 @@
     }
 
 </table>
-@*
 
-    @Html.ActionLink("Semaine Précédente","Index",new { dateReference = Model[2].Date.AddDays(-7) })
+
+    @Html.ActionLink("Semaine Précédente", "NextWeek", new { dateReference = Model.ElementAt(2).Date.AddDays(-7) }, FormMethod.Post)
     <hr />
-    @Html.ActionLink("Semaine Suivante", "Index", new { dateReference = Model[2].Date.AddDays(7) })
-*@
+    @Html.ActionLink("Semaine Suivante", "NextWeek", new { dateReference = Model.ElementAt(2).Date.AddDays(7) }, FormMethod.Post)
