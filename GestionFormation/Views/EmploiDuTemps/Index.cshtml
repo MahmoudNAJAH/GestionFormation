@@ -4,48 +4,50 @@
     //Pour le Calcul du numéro de la semaine
     System.Globalization.DateTimeFormatInfo dfi = System.Globalization.DateTimeFormatInfo.CurrentInfo;
     System.Globalization.Calendar cal = dfi.Calendar;
-    int WeekIndex = cal.GetWeekOfYear(ViewBag.DateLundi, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) - 1;
+    int WeekIndex = cal.GetWeekOfYear(ViewBag.DateLundi, dfi.CalendarWeekRule, dfi.FirstDayOfWeek);
 
     ViewBag.Title = "Emploi du temps de la Semaine " + WeekIndex;
 }
 
 <h2>@ViewBag.Title</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Formation.Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Formateur.Nom)
-        </th>
+
+<table class="edt-semaine">
+
+    <tr class="edt-header-semaine">
+
+        @for (int index_jours = 0; index_jours < 7; index_jours++)
+        {
+            <th class="edt-header-column">
+                <p>@ViewBag.DateLundi.AddDays(index_jours).DayOfWeek</p>
+                <p>@ViewBag.DateLundi.AddDays(index_jours).ToString("dd/MM/yyyy")</p>
+            </th>
+        }
+
     </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
+    <tr class="edt-body-semaine">
+
+        @for (int index_jours = 0; index_jours < 7; index_jours++)
+        {
+            //Dans tous les cas, on veut 7 colonnes
+            <td class="edt-body-column">
+                @* On remploi les colonnes *@
+                @foreach (var item in Model)
+                {
+                    if (item.Date.ToString("dd/MM/yyyy") == @ViewBag.DateLundi.AddDays(index_jours).ToString("dd/MM/yyyy"))
+                    {
+                        <p>@item.Formation.Nom</p>
+                        <p>avec</p>
+                        <p>@item.Formateur.Nom  @item.Formateur.Prenom </p>
+                        <br />
+                    }
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Formation.Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Formateur.Nom)
-            </td>
-            
-            <td>
-                @*
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                *@
-            </td>
-        </tr>
-    }
+        }
+
+
+    </tr>
 
 </table>
 
