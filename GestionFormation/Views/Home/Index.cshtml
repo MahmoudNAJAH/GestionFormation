@@ -1,6 +1,11 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+@if (Session["userConnected"] != null)
+{
+    <h3>Bonjour @(((GestionFormation.Entities.Apprenant)Session["userConnected"]).Prenom) !!!</h3>
+    @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
+}
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

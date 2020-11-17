@@ -56,5 +56,19 @@ namespace GestionFormation.DAO
                 context.SaveChanges();
             }
         }
+
+        public static Apprenant FindByLgMD(string mail)
+        {
+            using(BDDContext context = new BDDContext())
+            {
+
+                Apprenant ap = context.Apprenants.FirstOrDefault(a => a.Email == mail);
+                return (ap);
+            }
+            
+            
+            
+            
+        }
     }
 }

@@ -126,6 +126,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ApprenantController.cs" />
+    <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\SessionDeFormationsController.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Entities\SessionDeFormation.cs" />
     <Compile Include="Factories\SessionDeFormationFactory.cs" />
     <Compile Include="Factories\FormationFactory.cs" />
+    <Compile Include="Filters\LoginRequiredFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -162,6 +165,14 @@
     <Compile Include="Migrations\202011131501275_DateDureFormation.cs" />
     <Compile Include="Migrations\202011131501275_DateDureFormation.Designer.cs">
       <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011171008275_adddb5.cs" />
+    <Compile Include="Migrations\202011171008275_adddb5.Designer.cs">
+      <DependentUpon>202011171008275_adddb5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011171012063_remplirkl.cs" />
+    <Compile Include="Migrations\202011171012063_remplirkl.Designer.cs">
+      <DependentUpon>202011171012063_remplirkl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +226,9 @@
     <Content Include="Views\SessionDeFormations\Create.cshtml" />
     <Content Include="Views\SessionDeFormations\AddUpdateFormation.cshtml" />
     <Content Include="Views\Shared\_EnvoyerEmail.cshtml" />
+    <Content Include="Views\Apprenant\Index.cshtml" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Authentification\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -240,6 +254,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011131501275_DateDureFormation.resx">
       <DependentUpon>202011131501275_DateDureFormation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011171008275_adddb5.resx">
+      <DependentUpon>202011171008275_adddb5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011171012063_remplirkl.resx">
+      <DependentUpon>202011171012063_remplirkl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
