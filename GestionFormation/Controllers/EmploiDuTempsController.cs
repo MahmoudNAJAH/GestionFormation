@@ -25,15 +25,16 @@ namespace GestionFormation.Controllers
         // GET: EmploiDuTemps
         public ActionResult Index()
         {
-            //List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeekTuple( EDT.ListDates, DateTime.Now);
+            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek( EDT.ListDates, DateTime.Now);
 
-            return View(EDT.ListDates);
+            //return View(EDT.ListDates);
+            return View(WeeklyEDT);
         }
 
         [HttpPost]
         public ActionResult Index(DateTime dateReference)
         {
-            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeekTuple(EDT.ListDates, dateReference);
+            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(EDT.ListDates, dateReference);
 
             return View(WeeklyEDT);
         }

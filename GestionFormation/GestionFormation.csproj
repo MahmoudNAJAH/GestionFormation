@@ -165,7 +165,7 @@
     <Compile Include="Services\EmploiDuTempsService.cs" />
     <Compile Include="Services\SessionDeFormationService.cs" />
     <Compile Include="Services\FormationService.cs" />
-    <Compile Include="Services\UserRole.cs" />
+    <Compile Include="Enum\UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />

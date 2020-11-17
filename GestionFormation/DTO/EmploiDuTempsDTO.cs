@@ -18,7 +18,6 @@ namespace GestionFormation.DTO
         public EmploiDuTempsDTO(UserDTO user)
         {
             User = user;
-
             FillListDates();
         }
 
