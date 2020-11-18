@@ -20,6 +20,48 @@ namespace GestionFormation.DTO
         public byte[] MotDePasse { get; set; }
         public UserRole Role { get; set; }
 
+        public void GetUserFromEmail(string email)
+        {
+            switch (Role)
+            {
+                case UserRole.ATTENDANT:
+                    Apprenant ap = ApprenantDAO.FindByLgMD(email);
+                    if (ap != null)
+                    {
+                        Id = ap.ApprenantId;
+                        Nom = ap.Nom;
+                        Prenom = ap.Prenom;
+                        Email = ap.Email;
+                        MotDePasse = ap.MotDePasse;
+                    }
+                    break;
+
+                case UserRole.FORMATEUR:
+                    Formateur form = FormateurDAO.FindByLgMD(email);
+                    if (form != null)
+                    {
+                        Id = form.FormateurId;
+                        Nom = form.Nom;
+                        Prenom = form.Prenom;
+                        Email = form.Email;
+                        MotDePasse = form.MotDePasse;
+                    }
+                    break;
+
+                case UserRole.ADMIN:
+                    Admin admin = AdminDAO.FindByLgMD(email);
+                    if (admin != null)
+                    {
+                        Id = admin.AdminId;
+                        Nom = admin.Nom;
+                        Prenom = admin.Prenom;
+                        Email = admin.Email;
+                        MotDePasse = admin.MotDePasse;
+                    }
+                    break;
+            }
+        }
+
         public List<SessionDeFormation> GetSessionDeFormations()
         {
             List<SessionDeFormation> results = new List<SessionDeFormation>();

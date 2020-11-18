@@ -35,43 +35,8 @@ namespace GestionFormation.Controllers
         {
             UserDTO user = new UserDTO { Role = UserRole.ATTENDANT };
 
-            switch(user.Role)
-            {
-                case UserRole.ATTENDANT:
-                    Apprenant ap = ApprenantDAO.FindByLgMD(p.Email);
-                    if(ap != null)
-                    {
-                        user.Id = ap.ApprenantId;
-                        user.Nom = ap.Nom;
-                        user.Prenom = ap.Prenom;
-                        user.Email = ap.Email;
-                        user.MotDePasse = ap.MotDePasse;
-                    }
-                    break;
-                case UserRole.FORMATEUR:
-                    Formateur form = FormateurDAO.FindByLgMD(p.Email);
-                    if(form != null)
-                    {
-                        user.Id = form.FormateurId;
-                        user.Nom = form.Nom;
-                        user.Prenom = form.Prenom;
-                        user.Email = form.Email;
-                        user.MotDePasse = form.MotDePasse;
-                    }
-                    break;
-                case UserRole.ADMIN:
-                    Admin admin = AdminDAO.FindByLgMD(p.Email);
-                    if(admin != null)
-                    {
-                        user.Id = admin.AdminId;
-                        user.Nom = admin.Nom;
-                        user.Prenom = admin.Prenom;
-                        user.Email = admin.Email;
-                        user.MotDePasse = admin.MotDePasse;
-                    }
-                    break;
-            }
-            
+            user.GetUserFromEmail(p.Email);
+                        
             // ici j'ai recupéréer l'apprenant qui corresspond au mem mail et password entré dans la 
             //fonction Login
 
@@ -89,7 +54,7 @@ namespace GestionFormation.Controllers
 
 
                 byte[] hashBytes = user.MotDePasse;//read from store.
-             CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+                CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
 
                 if (!hash.Verify(p.MotDePasse))
                     throw new System.UnauthorizedAccessException();
