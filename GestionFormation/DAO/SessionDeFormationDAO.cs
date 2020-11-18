@@ -44,7 +44,14 @@ namespace GestionFormation.DAO
                 if (sdf.Formateur != null) sdfDansDB.Formateur = context.Formateurs.FirstOrDefault(s => s.FormateurId == sdf.Formateur.FormateurId);
                 if (sdf.Formation != null) sdfDansDB.Formation = context.Formations.FirstOrDefault(s => s.FormationId == sdf.Formation.FormationId);
                 if (sdf.SessionDeCursus != null) sdfDansDB.SessionDeCursus = context.SessionDeCursus.FirstOrDefault(s => s.SessionDeCursusId == sdf.SessionDeCursus.SessionDeCursusId);
-
+                /*
+                if (sdf.SessionDeCursus != null)
+                {
+                    sdfDansDB.SessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus ses in sdf.SessionDeCursus)
+                        sdfDansDB.SessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == ses.SessionDeCursusId));
+                }
+                */
                 context.SaveChanges();
             }
         }

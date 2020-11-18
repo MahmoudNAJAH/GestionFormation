@@ -24,7 +24,8 @@ namespace GestionFormation.DTO
 
         public void FillListDates()
         {
-            List<SessionDeFormation> SessionDeFormations = GetSessionDeFormations();
+            //List<SessionDeFormation> SessionDeFormations = GetSessionDeFormations();
+            List<SessionDeFormation> SessionDeFormations = User.GetSessionDeFormations();
 
             foreach(SessionDeFormation SessionForm in SessionDeFormations)
             {

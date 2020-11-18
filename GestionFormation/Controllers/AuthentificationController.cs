@@ -42,6 +42,8 @@ namespace GestionFormation.Controllers
                     if(ap != null)
                     {
                         user.Id = ap.ApprenantId;
+                        user.Nom = ap.Nom;
+                        user.Prenom = ap.Prenom;
                         user.Email = ap.Email;
                         user.MotDePasse = ap.MotDePasse;
                     }
@@ -51,6 +53,8 @@ namespace GestionFormation.Controllers
                     if(form != null)
                     {
                         user.Id = form.FormateurId;
+                        user.Nom = form.Nom;
+                        user.Prenom = form.Prenom;
                         user.Email = form.Email;
                         user.MotDePasse = form.MotDePasse;
                     }
@@ -60,6 +64,8 @@ namespace GestionFormation.Controllers
                     if(admin != null)
                     {
                         user.Id = admin.AdminId;
+                        user.Nom = admin.Nom;
+                        user.Prenom = admin.Prenom;
                         user.Email = admin.Email;
                         user.MotDePasse = admin.MotDePasse;
                     }
