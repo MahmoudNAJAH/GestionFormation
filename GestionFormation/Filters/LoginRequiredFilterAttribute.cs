@@ -18,7 +18,7 @@ namespace GestionFormation.Filters
             UserDTO ap = (UserDTO)filterContext.HttpContext.Session["userConnected"];
 
             // si l'apprenant n'est pas connecté
-            if (ap == null)
+            if (ap == null || ap?.Id == null)
             {
                 //filterContext.HttpContext.Session["LastUrl"] = filterContext.HttpContext.Request.RawUrl;
                 // On redirive vers /Authentification/Login

@@ -1,4 +1,5 @@
 ﻿using GestionFormation.DTO;
+using GestionFormation.Filters;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;

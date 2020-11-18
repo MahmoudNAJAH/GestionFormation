@@ -22,10 +22,11 @@ namespace GestionFormation.Controllers
             //On charge toutes les dates + formations + formateur dans mon controller
 
             //Pour le moment, on charge l'emploi du temps de Hermione
-            EDT = new EmploiDuTempsDTO((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]);  
+            if(!(System.Web.HttpContext.Current.Session["userConnected"] == null || ((UserDTO)System.Web.HttpContext.Current.Session["userConnected"])?.Id == null))
+                EDT = new EmploiDuTempsDTO((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]);  
         }
 
-
+        
         // GET: EmploiDuTemps
         public ActionResult Index()
         {

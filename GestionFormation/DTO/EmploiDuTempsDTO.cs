@@ -1,6 +1,7 @@
 ﻿using Gestionformation.DAO;
 using GestionFormation.DAO;
 using GestionFormation.Entities;
+using GestionFormation.Filters;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;

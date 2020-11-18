@@ -32,9 +32,10 @@
                     @if (Session["userConnected"] != null)
                     {
                         <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
+                        <li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
                     }
 
-                    <li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
+
 
 
                 </ul>
