@@ -51,6 +51,8 @@ namespace GestionFormation.DTO
             }
         }
 
+        //Avec la maj sur UserDTO, fonction plus nécessaire
+        /*
         private List<SessionDeFormation> GetSessionDeFormations()
         {
             List<SessionDeFormation> listForm = new List<SessionDeFormation>();
@@ -95,6 +97,7 @@ namespace GestionFormation.DTO
 
             return listForm;
         }
+        */
 
         private static bool EstFerie(DateTime date)
         {
