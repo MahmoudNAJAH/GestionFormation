@@ -21,9 +21,9 @@ namespace GestionFormation.Controllers
             //On charge toutes les dates + formations + formateur dans mon controller
 
             //Pour le moment, on charge l'emploi du temps de Hermione
-            
-            //EDT = new EmploiDuTempsDTO((UserDTO)Session["userConnected"]);
             EDT = new EmploiDuTempsDTO(new UserDTO { Id = 1, Role = UserRole.ATTENDANT});
+
+            //EDT = new EmploiDuTempsDTO((UserDTO)Session["userConnected"]);    => POURQUOI CA MARCHE PAS ??????
         }
 
         // GET: EmploiDuTemps
