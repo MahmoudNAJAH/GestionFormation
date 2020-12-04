@@ -25,6 +25,14 @@ namespace GestionFormation.DAO
             }
         }
 
+        public static Admin FindByLgMD(string mail)
+        {
+            using (BDDContext context = new BDDContext())
+            {
+                return context.Admins.FirstOrDefault(a => a.Email == mail);
+            }       
+        }
+
         public static List<Admin> FindAll()
         {
             using (BDDContext context = new BDDContext())

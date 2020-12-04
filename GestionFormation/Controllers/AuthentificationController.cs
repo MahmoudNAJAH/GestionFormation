@@ -1,4 +1,5 @@
-﻿using GestionFormation.DAO;
+﻿using Gestionformation.DAO;
+using GestionFormation.DAO;
 using GestionFormation.DTO;
 using GestionFormation.Entities;
 using GestionFormation.Services;
@@ -30,14 +31,14 @@ namespace GestionFormation.Controllers
 
 
         [HttpPost]
-
         public ActionResult Login(LoginDTO p , string referer)
         {
-            Apprenant ap = ApprenantDAO.FindByLgMD(p.Email);
+            UserDTO user = new UserDTO { Role = UserRole.ATTENDANT };
+
+            user.GetUserFromEmail(p.Email);
+                        
             // ici j'ai recupéréer l'apprenant qui corresspond au mem mail et password entré dans la 
             //fonction Login
-
-            
 
             //CryptageMotDePasse hash2 = new CryptageMotDePasse(p.MotDePasse);
             //byte[] hashBytes2 = hash2.ToArray();
@@ -45,29 +46,28 @@ namespace GestionFormation.Controllers
             //Apprenant apprenant = new Apprenant();
             //apprenant.MotDePasse = hashBytes2;
             //ApprenantDAO.Create(apprenant);
-            if (ap != null )
+            if (user.MotDePasse != null )
             {
                 //session =  propriété du controleur
                 // elle spécifique à un utilisateur qur un navigateur (stocké coté serveur)
                 //Donc Pas partagé entre les utilisateurs 
 
-              
 
-                byte[] hashBytes = ap.MotDePasse;//read from store.
-             CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+                byte[] hashBytes = user.MotDePasse;//read from store.
+                CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
 
                 if (!hash.Verify(p.MotDePasse))
                     throw new System.UnauthorizedAccessException();
 
 
-                Session.Add("userConnected", ap);
+                Session.Add("userConnected", user);
 
                 if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
                 else RedirectToAction("Index", "Home");
             }
             else
             {
-                ViewBag.Message = "Erreuur de connexion ";
+                ViewBag.Message = "Erreur de connexion ";
             }
             ViewBag.Referer = referer;
             return View();

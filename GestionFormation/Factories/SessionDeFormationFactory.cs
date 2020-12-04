@@ -45,7 +45,11 @@ namespace GestionFormation.Factories
                 SessionDeFormationId = sdf.SessionDeFormationId,
                 //FormateurId = sdf.FormateurId,
                 //FormationId = sdf.FormationId,
+
+                //ATTENTION
                 SessionDeCursusId = (sdf.SessionDeCursus == null) ? 0:sdf.SessionDeCursus.SessionDeCursusId,
+
+
                 NomFormateur = sdf.Formateur?.Nom + " " + sdf.Formateur?.Prenom,
                 NomFormation = sdf.Formation?.Nom
 

@@ -1,6 +1,7 @@
 ﻿using Gestionformation.DAO;
 using GestionFormation.DAO;
 using GestionFormation.Entities;
+using GestionFormation.Filters;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,8 @@ namespace GestionFormation.DTO
 
         public void FillListDates()
         {
-            List<SessionDeFormation> SessionDeFormations = GetSessionDeFormations();
+            //List<SessionDeFormation> SessionDeFormations = GetSessionDeFormations();
+            List<SessionDeFormation> SessionDeFormations = User.GetSessionDeFormations();
 
             foreach(SessionDeFormation SessionForm in SessionDeFormations)
             {
@@ -49,6 +51,8 @@ namespace GestionFormation.DTO
             }
         }
 
+        //Avec la maj sur UserDTO, fonction plus nécessaire
+        /*
         private List<SessionDeFormation> GetSessionDeFormations()
         {
             List<SessionDeFormation> listForm = new List<SessionDeFormation>();
@@ -93,6 +97,7 @@ namespace GestionFormation.DTO
 
             return listForm;
         }
+        */
 
         private static bool EstFerie(DateTime date)
         {

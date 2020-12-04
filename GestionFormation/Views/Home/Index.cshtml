@@ -1,10 +1,12 @@
-﻿@{
+﻿@using GestionFormation.DTO
+
+@{
     ViewBag.Title = "Home Page";
     GestionFormation.DTO.EmailAEnvoyerDTO emailAEnvoyerDTO = ViewBag.emailAEnvoyerDTO != null ? ViewBag.emailAEnvoyerDTO: new GestionFormation.DTO.EmailAEnvoyerDTO();
 }
 @if (Session["userConnected"] != null)
 {
-    <h3>Bonjour @(((GestionFormation.Entities.Apprenant)Session["userConnected"]).Prenom) !!!</h3>
+    <h3>Bonjour @(((UserDTO)Session["userConnected"]).Prenom) !!!</h3>
     @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
 }
 

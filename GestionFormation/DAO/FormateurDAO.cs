@@ -26,6 +26,14 @@ namespace Gestionformation.DAO
             }
         }
 
+        public static Formateur FindByLgMD(string mail)
+        {
+            using (BDDContext context = new BDDContext())
+            {
+                return context.Formateurs.FirstOrDefault(a => a.Email == mail);
+            }
+        }
+
         public static List<Formateur> FindAll()
         {
             using (BDDContext context = new BDDContext())
