@@ -202,6 +202,7 @@
     <Compile Include="Services\SessionDeFormationService.cs" />
     <Compile Include="Services\FormationService.cs" />
     <Compile Include="Enum\UserRole.cs" />
+    <Compile Include="WebServices\AdminController.cs" />
     <Compile Include="WebServices\ApprenantAPIController.cs" />
     <Compile Include="WebServices\FormationAPIController.cs" />
   </ItemGroup>

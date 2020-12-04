@@ -14,7 +14,7 @@ namespace GestionFormation.WebServices
         // GET: api/FormationAPI
         public List<Formation> Get()
         {
-            List <Formation> result = FormationDAO.FindAll();
+            List<Formation> result = FormationDAO.FindAll();
 
             return result;
         }
