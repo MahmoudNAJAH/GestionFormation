@@ -19,5 +19,6 @@ namespace GestionFormation.DAO
         public virtual DbSet<SessionDeCursus> SessionDeCursus { get; set; }
         public virtual DbSet<SessionDeFormation> SessionDeFormations { get; set; }
 
+        public System.Data.Entity.DbSet<GestionFormation.DTO.UserDTO> UserDTOes { get; set; }
     }
 }
