@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GestionFormation.DAO;
+using GestionFormation.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,31 +12,40 @@ namespace GestionFormation.WebServices
     public class ApprenantAPIController : ApiController
     {
         // GET: api/ApprenantAPI
-        //on va passer par le User 
-        public IEnumerable<string> Get()
+       
+     
+        public List<Apprenant> GetAllProducts()
         {
-            return new string[] { "value1", "value2" };
+            return ApprenantDAO.FindAll();
         }
 
-        // GET: api/ApprenantAPI/5
-        public string Get(int id)
+
+        public IHttpActionResult GetApprenant(int id)
         {
-            return "value";
+           
+            return Ok(ApprenantDAO.FindById(id));
         }
 
-        // POST: api/ApprenantAPI
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/ApprenantAPI/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// GET: api/ApprenantAPI/5
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
-        // DELETE: api/ApprenantAPI/5
-        public void Delete(int id)
-        {
-        }
+        //// POST: api/ApprenantAPI
+        //public void Post([FromBody]string value)
+        //{
+        //}
+
+        //// PUT: api/ApprenantAPI/5
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
+
+        //// DELETE: api/ApprenantAPI/5
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
