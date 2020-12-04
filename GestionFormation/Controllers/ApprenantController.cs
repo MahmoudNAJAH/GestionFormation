@@ -1,4 +1,5 @@
 ﻿using GestionFormation.DAO;
+using GestionFormation.DTO;
 using GestionFormation.Filters;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,11 @@ namespace GestionFormation.Controllers
         }
 
         // GET: Apprenant/Details/5
-        public ActionResult Details(int id)
-        {
-            return View(ApprenantDAO.FindById(id));
-        }
+        //public ActionResult Details(int id)
+        //{
+            
+        //    return View((UserDTO)Session["userConnected"]);
+        //}
 
         //// GET: Apprenant/Create
         //public ActionResult Create()

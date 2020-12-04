@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestionFormation.Entities.Apprenant>
+﻿@model IEnumerable<GestionFormation.DTO.UserDTO>
 <br />
 <br />
 <img src="~/Images/image1.PNG" alt="logo Dawan" />
@@ -32,10 +32,10 @@
         <th></th>
     </tr>
     <tr>
-        <td>@(((GestionFormation.Entities.Apprenant)Session["userConnected"]).Nom)</td>
-        <td>@(((GestionFormation.Entities.Apprenant)Session["userConnected"]).Prenom)</td>
+        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)</td>
+        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)</td>
         
-        <td>@(((GestionFormation.Entities.Apprenant)Session["userConnected"]).Email)</td>
+        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)</td>
 
     </tr>
 
