@@ -13,6 +13,15 @@ namespace Gestionformation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                if(fr.SessionDeFormations != null)
+                {
+                    List<SessionDeFormation> listSessionDeFormation = new List<SessionDeFormation>();
+                    foreach (SessionDeFormation curs in fr.SessionDeFormations)
+                        //Pas de contrainte de Multiplicité ici : List des deux côtés
+                        listSessionDeFormation.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == curs.SessionDeFormationId));
+                    fr.SessionDeFormations = listSessionDeFormation;
+                }
+
                 context.Formateurs.Add(fr);
 
                 context.SaveChanges();
