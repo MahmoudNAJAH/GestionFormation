@@ -19,7 +19,7 @@ namespace Tests_GestionFormation.DAO
                 Nom = "Nom",
                 Prenom = "Prenom",
                 Email = "Email",
-                MotDePasse = "MotDePasse"
+                //MotDePasse = "MotDePasse"
             };
 
             using (BDDContext context = new BDDContext())
@@ -55,7 +55,7 @@ namespace Tests_GestionFormation.DAO
                 Nom = "Nom",
                 Prenom = "Prenom",
                 Email = "Email",
-                MotDePasse = "MotDePasse"
+                //MotDePasse = "MotDePasse"
             };
 
             using (BDDContext context = new BDDContext())
@@ -81,7 +81,7 @@ namespace Tests_GestionFormation.DAO
                 Nom = "Nom",
                 Prenom = "Prenom",
                 Email = "Email",
-                MotDePasse = "MotDePasse"
+                //MotDePasse = "MotDePasse"
             };
 
             ApprenantDAO.Create(app);
@@ -92,7 +92,7 @@ namespace Tests_GestionFormation.DAO
                 Nom = "Nom2",
                 Prenom = "Prenom2",
                 Email = "Email2",
-                MotDePasse = "MotDePasse2"
+                //MotDePasse = "MotDePasse2"
             };
 
             app2.SessionDeCursus = new List<SessionDeCursus>();

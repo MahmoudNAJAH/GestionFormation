@@ -12,6 +12,22 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                if (c.Formations != null)
+                {
+                    List<Formation> listFormation = new List<Formation>();
+                    foreach (Formation curs in c.Formations)
+                        //Pas de contrainte de Multiplicité ici : List des deux côtés
+                        listFormation.Add(context.Formations.FirstOrDefault(cu => cu.FormationId == curs.FormationId));
+                    c.Formations = listFormation;
+                }
+                if (c.SessionDeCursus != null)
+                {
+                    List<SessionDeCursus> listSessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus ses in c.SessionDeCursus)
+                        listSessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(s => s.SessionDeCursusId == ses.SessionDeCursusId));
+                    c.SessionDeCursus = listSessionDeCursus;
+                }
+
                 context.Cursus.Add(c);
 
                 context.SaveChanges();

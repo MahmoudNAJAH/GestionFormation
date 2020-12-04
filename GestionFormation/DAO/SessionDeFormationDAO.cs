@@ -12,6 +12,15 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                if (sdf.Formateur != null)
+                    sdf.Formateur = context.Formateurs.FirstOrDefault(f => f.FormateurId == sdf.Formateur.FormateurId);
+
+                if (sdf.Formation != null)
+                    sdf.Formation = context.Formations.FirstOrDefault(f => f.FormationId == sdf.Formation.FormationId);
+
+                if (sdf.SessionDeCursus != null)
+                    sdf.SessionDeCursus = context.SessionDeCursus.FirstOrDefault(ses => ses.SessionDeCursusId == sdf.SessionDeCursus.SessionDeCursusId);
+
                 context.SessionDeFormations.Add(sdf);
 
                 context.SaveChanges();

@@ -13,6 +13,21 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                if (ap.Messages != null)
+                {
+                    List<Message> listMessages = new List<Message>();
+                    foreach (Message mes in ap.Messages)
+                        listMessages.Add(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
+                    ap.Messages = listMessages;
+                }
+                if (ap.SessionDeCursus != null)
+                {
+                    List<SessionDeCursus> listSessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus mes in ap.SessionDeCursus)
+                        listSessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == mes.SessionDeCursusId));
+                    ap.SessionDeCursus = listSessionDeCursus;
+                }
+
                 context.Apprenants.Add(ap);
                 context.SaveChanges();
             }

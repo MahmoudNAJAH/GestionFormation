@@ -24,11 +24,11 @@ namespace Tests_GestionFormation.DAO
             app.SessionsDeFormations = new List<SessionDeFormation>();
             app.SessionsDeFormations.Add(new SessionDeFormation { DateDebut = new DateTime(9999, 02, 05)});
             */
-            /*
+            
             app.Cursus = new List<Cursus>();
             app.Cursus.Add(CursusDAO.FindById(1));
             app.Cursus.Add(CursusDAO.FindById(2));
-            */
+            
             using (BDDContext context = new BDDContext())
                 //On vérifie que la Formation n'existe pas avant de le créer
                 Assert.IsNull(context.Formations.FirstOrDefault(ap => ap.FormationId == app.FormationId));
@@ -44,6 +44,12 @@ namespace Tests_GestionFormation.DAO
                 Assert.AreEqual("Nom", appContext.Nom);
                 Assert.AreEqual("Description", appContext.Description);
                 Assert.AreEqual(5, appContext.Dure);
+
+                Assert.AreEqual(1, appContext.Cursus[0].CursusId);
+                Assert.AreEqual("Développeur .NET (POEC ATLAS)", appContext.Cursus[0].Nom);
+
+                Assert.AreEqual(2, appContext.Cursus[1].CursusId);
+                Assert.AreEqual("Développeur JAVA-JEE (POEC ATLAS)", appContext.Cursus[1].Nom);
 
                 //On le supprime pour ne pas poluer la database
                 context.Formations.Remove(appContext);
