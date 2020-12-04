@@ -145,7 +145,6 @@
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\FormationController.cs" />
     <Compile Include="Controllers\SessionDeFormationsController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\FormateurDAO.cs" />
     <Compile Include="DAO\SessionDeCursusDAO.cs" />
