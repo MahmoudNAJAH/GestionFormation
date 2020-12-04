@@ -191,7 +191,7 @@
     <Compile Include="Services\SessionDeFormationService.cs" />
     <Compile Include="Services\FormationService.cs" />
     <Compile Include="Enum\UserRole.cs" />
-    <Compile Include="WebServices\UserDTOesController.cs" />
+    <Compile Include="WebServices\ApprenantAPIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
