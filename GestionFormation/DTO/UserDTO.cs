@@ -157,7 +157,8 @@ namespace GestionFormation.DTO
         public List<Chat> GetChats()
         {
             List<Chat> results = new List<Chat>();
-            // => Manque ChatDAo
+
+            // => Manque ChatDAO
             /*
             List<SessionDeCursus> listSessionDeCursus = GetSessionDeCursus();
             foreach (SessionDeCursus ses in listSessionDeCursus)
