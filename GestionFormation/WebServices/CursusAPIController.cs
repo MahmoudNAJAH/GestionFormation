@@ -15,7 +15,8 @@ namespace GestionFormation.WebServices
         //[Route ("/cursus")]
         public List<Cursus> Get()
         {
-            return CursusService.FindAll();
+            List<Cursus> c = CursusService.FindAll();
+            return c;
         }
 
         // GET: api/CursusAPI/5

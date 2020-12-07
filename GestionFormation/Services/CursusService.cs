@@ -17,7 +17,9 @@ namespace GestionFormation.Services
 
         public static Cursus FindById(int cursusId)
         {
-            return CursusDAO.FindById(cursusId);
+
+            Cursus c = CursusDAO.FindById(cursusId);
+            return c;
         }
 
         internal static void Create(Cursus c)
