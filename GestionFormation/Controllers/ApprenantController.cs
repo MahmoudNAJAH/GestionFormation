@@ -3,6 +3,7 @@ using GestionFormation.DTO;
 using GestionFormation.Entities;
 using GestionFormation.Filters;
 using Newtonsoft.Json;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,52 +17,44 @@ namespace GestionFormation.Controllers
     public class ApprenantController : Controller
     {
         // GET: Apprenant
+        public static UserDTO userconnected;
         [LoginRequiredFilter]
-        public async Task<ActionResult> Index()
+        
+        public ActionResult Index()
         {
             // je dois afficher la page web get byID de web service
-            UserDTO2 app = new UserDTO2();
-            await GetApprenant(app);
+            UserDTO ap = new UserDTO();
+
+
+            ap = (UserDTO)Session["userConnected"];
+            userconnected = ap; 
+        //(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)
+
+
+            // (((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)
+
+
             return View();
         }
 
-        private static async Task GetApprenant(UserDTO2 apprenant)
+        public ActionResult feuillePresence()
         {
-            HttpClient httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44326/api")
-            };
-
-            HttpResponseMessage response = await httpClient.GetAsync("ApprenantAPI");
-
-            if (response.IsSuccessStatusCode)
-            {
-                // installer si nécessaire le package nuget Microsoft.AspNet.WebApi.Client
-                UserDTO2 user = await response.Content.ReadAsAsync<UserDTO2>();
-
-
-            }
+            //int id = ((GestionFormation.DTO.UserDTO)Session["userConnected"]).Id;
+            //UserDTO ap = new UserDTO();
+           
+                //ap.Nom = ((Apprenant)Session["userConnected"]).Nom;
+                //ap.Prenom = ((Apprenant)Session["userConnected"]).Prenom;
+                //ap.Prenom = ((Apprenant)Session["userConnected"]).Email;
+                //ap = (Apprenant)Session["userConnected"];
+                //ap = (UserDTO)(System.Web.HttpContext.Current.Session["userConnected"]);
+            
+            return View(userconnected);
         }
-        public async Task<ActionResult> Create()
+
+       public ActionResult PrintFPresence()
         {
-            UserDTO2 app = null;
-
-            HttpClient httpClient = new HttpClient
-            {
-                BaseAddress = new Uri("https://localhost:44326/api/")
-            };
-
-            HttpResponseMessage response = await httpClient.GetAsync("ApprenantAPI");
-
-            if (response.IsSuccessStatusCode)
-            {
-              UserDTO2  user = await response.Content.ReadAsAsync<UserDTO2>();
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                //UserDTO2 user = JsonConvert.DeserializeObject<UserDTO2>(apiResponse);
-
-            }
-
-            return View(app);
+            var q = new ActionAsPdf("feuillePresence");
+            return q; 
         }
 
 

@@ -4,16 +4,19 @@
 <img src="~/Images/image1.PNG" alt="logo Dawan" />
 <h2>Bienvenue chez Dawan !!</h2>
 
+
 @{
     ViewBag.Title = "Index";
 }
 
 
-
+<p>
+        @Html.ActionLink("Imprimer ma feuille de présence ", "PrintFPresence")
+    </p>
 
 @*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
 <table class="table">
     <tr>
         <th>
@@ -23,7 +26,7 @@
             @Html.DisplayNameFor(model => model.Prenom)
         </th>
         <th>
-           
+
             @Html.DisplayNameFor(model => model.Email)
         </th>
         @*<th>
@@ -32,14 +35,15 @@
         <th></th>
     </tr>
     <tr>
+        
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)</td>
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)</td>
 
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)</td>
-       
+
 
     </tr>
-    
+
     @*<a href="https://localhost:44326/api/ApprenantAPI/@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Id)" />*@
 
 
