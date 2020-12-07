@@ -8,6 +8,10 @@ namespace GestionFormation.Controllers
 {
     public class HomeController : Controller
     {
+        public ActionResult Pageprincipal()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();
@@ -16,13 +20,6 @@ namespace GestionFormation.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
