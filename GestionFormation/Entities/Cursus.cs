@@ -10,7 +10,7 @@ namespace GestionFormation.Entities
         public int CursusId { get; set; }
         public string Nom { get; set; }
         public string Description { get; set; }
-        public virtual List<Formation> Formations { get; set; }
-        public virtual List<SessionDeCursus> SessionDeCursus { get; set; }
+        public  List<Formation> Formations { get; set; }
+        public  List<SessionDeCursus> SessionDeCursus { get; set; }
     }
 }

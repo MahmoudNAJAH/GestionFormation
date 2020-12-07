@@ -54,11 +54,11 @@ namespace GestionFormation.DAO
             }
         }
 
-        public static void Delete(Admin ad)
+        public static void Delete(int id)
         {
             using (BDDContext context = new BDDContext())
             {
-                context.Admins.Remove(ad);
+                context.Admins.Remove(context.Admins.FirstOrDefault(adm => adm.AdminId == id));
                 context.SaveChanges();
             }
         }
