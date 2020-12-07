@@ -244,6 +244,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\EmploiDuTemps.css" />
+    <Content Include="Content\pagecnx.css" />
+    <Content Include="Content\pagedaceuil.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -305,6 +307,8 @@
     <Content Include="Views\Apprenant\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Authentification\Login.cshtml" />
+    <Content Include="Views\Home\pageprincipal.cshtml" />
+    <Content Include="Views\Home\pagecnxstagiaire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
