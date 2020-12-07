@@ -1,9 +1,13 @@
 ﻿using GestionFormation.DAO;
 using GestionFormation.DTO;
+using GestionFormation.Entities;
 using GestionFormation.Filters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,82 +17,53 @@ namespace GestionFormation.Controllers
     {
         // GET: Apprenant
         [LoginRequiredFilter]
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            // je dois afficher la page web get byID de web service
+            UserDTO2 app = new UserDTO2();
+            await GetApprenant(app);
             return View();
         }
 
-        // GET: Apprenant/Details/5
-        //public ActionResult Details(int id)
-        //{
-            
-        //    return View((UserDTO)Session["userConnected"]);
-        //}
+        private static async Task GetApprenant(UserDTO2 apprenant)
+        {
+            HttpClient httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("https://localhost:44326/api")
+            };
 
-        //// GET: Apprenant/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+            HttpResponseMessage response = await httpClient.GetAsync("ApprenantAPI");
 
-        //// POST: Apprenant/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
+            if (response.IsSuccessStatusCode)
+            {
+                // installer si nécessaire le package nuget Microsoft.AspNet.WebApi.Client
+                UserDTO2 user = await response.Content.ReadAsAsync<UserDTO2>();
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
 
-        //// GET: Apprenant/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
+            }
+        }
+        public async Task<ActionResult> Create()
+        {
+            UserDTO2 app = null;
 
-        //// POST: Apprenant/Edit/5
-        //[HttpPost]
-        //public ActionResult Edit(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add update logic here
+            HttpClient httpClient = new HttpClient
+            {
+                BaseAddress = new Uri("https://localhost:44326/api/")
+            };
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            HttpResponseMessage response = await httpClient.GetAsync("ApprenantAPI");
 
-        //// GET: Apprenant/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
+            if (response.IsSuccessStatusCode)
+            {
+              UserDTO2  user = await response.Content.ReadAsAsync<UserDTO2>();
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                //UserDTO2 user = JsonConvert.DeserializeObject<UserDTO2>(apiResponse);
 
-        //// POST: Apprenant/Delete/5
-        //[HttpPost]
-        //public ActionResult Delete(int id, FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
+            }
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+            return View(app);
+        }
+
+
     }
 }

@@ -148,6 +148,7 @@
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\FormateurDAO.cs" />
     <Compile Include="DAO\SessionDeCursusDAO.cs" />
+    <Compile Include="DTO\Client.cs" />
     <Compile Include="DTO\EmailAEnvoyerDTO.cs" />
     <Compile Include="DTO\EmploiDuTempsDTO.cs" />
     <Compile Include="DTO\FormationDTO.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\UserDTO2.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
     <Compile Include="Entities\Chat.cs" />
@@ -252,6 +254,7 @@
     <Content Include="Views\Apprenant\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Authentification\Login.cshtml" />
+    <Content Include="Views\Shared\_vue1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

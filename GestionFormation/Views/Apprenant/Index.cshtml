@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestionFormation.DTO.UserDTO>
+﻿@model IEnumerable<GestionFormation.DTO.UserDTO2>
 <br />
 <br />
 <img src="~/Images/image1.PNG" alt="logo Dawan" />
@@ -9,7 +9,7 @@
 }
 
 
-
+<p> @Html.ActionLink("Create New", "Create")</p>
 
 @*<p>
     @Html.ActionLink("Create New", "Create")
@@ -34,11 +34,13 @@
     <tr>
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)</td>
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)</td>
-        
+
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)</td>
+       
 
     </tr>
-
+    
+    @*<a href="https://localhost:44326/api/ApprenantAPI/@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Id)" />*@
 
 
 
