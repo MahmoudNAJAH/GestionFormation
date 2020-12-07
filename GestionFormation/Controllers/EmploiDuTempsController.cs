@@ -20,8 +20,6 @@ namespace GestionFormation.Controllers
         public EmploiDuTempsController()
         {
             //On charge toutes les dates + formations + formateur dans mon controller
-
-            //Pour le moment, on charge l'emploi du temps de Hermione
             if(!(System.Web.HttpContext.Current.Session["userConnected"] == null || ((UserDTO)System.Web.HttpContext.Current.Session["userConnected"])?.Id == null))
                 EDT = new EmploiDuTempsDTO((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]);  
         }
@@ -32,7 +30,7 @@ namespace GestionFormation.Controllers
         {
             List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek( EDT.ListDates, DateTime.Now);
 
-            ViewBag.User = (UserDTO)Session["userConnected"];   // => Pas de problème
+            ViewBag.User = (UserDTO)Session["userConnected"]; 
 
             //Pour affichage et changement de semaine
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(DateTime.Now);
