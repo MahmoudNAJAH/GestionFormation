@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
+
 
 namespace GestionFormation.DAO
 {
@@ -37,7 +39,10 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Cursus.Include("Formations").Include("SessionDeCursus").FirstOrDefault(c => c.CursusId == cursusId);
+
+                context.Configuration.LazyLoadingEnabled = false;
+                Cursus cu = context.Cursus.Include(c => c.Formations).FirstOrDefault(c => c.CursusId == cursusId);
+                return cu;
             }
         }
 
@@ -45,7 +50,7 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
-                return context.Cursus.Include("Formations").Include("SessionDeCursus").ToList();
+                return context.Cursus.Include(c => c.Formations).Include(c => c.SessionDeCursus).ToList();
             }
         }
 
