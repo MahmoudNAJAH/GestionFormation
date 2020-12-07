@@ -50,6 +50,8 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                context.Configuration.LazyLoadingEnabled = false;
+
                 return context.Cursus.Include(c => c.Formations).Include(c => c.SessionDeCursus).ToList();
             }
         }

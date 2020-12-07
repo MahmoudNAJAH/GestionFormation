@@ -1,6 +1,7 @@
 ﻿using GestionFormation.DAO;
 using GestionFormation.DTO;
 using GestionFormation.Filters;
+using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,19 @@ namespace GestionFormation.Controllers
         [LoginRequiredFilter]
         public ActionResult Index()
         {
+            if (TempData["emailAEnvoyerDTO"] != null)
+            {
+                ViewBag.emailAEnvoyerDTO = (EmailAEnvoyerDTO)TempData["emailAEnvoyerDTO"];
+
+            }
+
+
+            if (TempData["emailMessage"] != null)
+            {
+                ViewBag.EmailMessage = TempData["emailMessage"];
+            }
+
+
             return View();
         }
 

@@ -1,4 +1,5 @@
-﻿using GestionFormation.DAO;
+﻿using Gestionformation.DAO;
+using GestionFormation.DAO;
 using GestionFormation.DTO;
 using GestionFormation.Entities;
 using System;
@@ -12,14 +13,40 @@ using System.Web;
 
 namespace GestionFormation.Services
 {
+    /// <summary>
+    /// Methode BOUCHONNEE !!!!!!!!
+    /// On n'utilise qu'une seule adresse mail !!!!!!!!!!!!!!!!!!!!!!
+    /// </summary>
     public class EmailService
     {
 
         public static void EnvoyerEmail(EmailAEnvoyerDTO emailAEnvoyer)
         {
+            Apprenant ap = ApprenantDAO.FindById(emailAEnvoyer.FromId);
+            string toEmail;
 
-            //string toEmail = AdminDAO.FindById(emailAEnvoyer.ToId).Email;
-            string toEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+            //utile uniquement avec le bouchon
+            string destinataire;
+
+            if (emailAEnvoyer.ToId.StartsWith("A"))
+            {
+                // toEmail = AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
+                toEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+                 destinataire = AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
+                Console.WriteLine($"Email envoyé (mais pas vraiment) à " + AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email);
+
+            }
+            else
+            {
+
+                // toEmail = FormateurDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
+                toEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+                destinataire = FormateurDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
+
+
+                Console.WriteLine($"Email envoyé (mais pas vraiment) à " + FormateurDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email);
+            }
+
 
             //string fromEmail = ApprenantDAO.FindById(emailAEnvoyer.FromId).Email;
             string fromEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
@@ -27,7 +54,9 @@ namespace GestionFormation.Services
             using (MailMessage message = new MailMessage(fromEmail, toEmail))
             {
                 message.Subject = emailAEnvoyer.Subject;
-                message.Body = emailAEnvoyer.Content;
+                message.Body = $"Message envoyé via l'application GestionFormationDawan par: {ap.Prenom} {ap.Nom}  \n\n {emailAEnvoyer.Content} \n\n MESSAGE AUTOMATIQUE. REPONDRE : {ap.Email}."
+                    // A commenter si phase de prod
+                    + $" \n\n envoyé à {destinataire}";
 
 
                 if (emailAEnvoyer.AttachementPath != null)
@@ -50,6 +79,41 @@ namespace GestionFormation.Services
                 }
 
             }
+        }
+
+        public static List<UserDTO> GetDestinatairesPossibles(int id)
+        {
+            List<UserDTO> users = new List<UserDTO>();
+            foreach (Admin a in AdminDAO.FindAll())
+            {
+                UserDTO u = new UserDTO
+                {
+                    Id = a.AdminId,
+                    Nom = a.Nom,
+                    Prenom = a.Prenom,
+                    Role = UserRole.ADMIN
+                    
+                };
+                users.Add(u);
+            }
+            List<Formateur> formateurs = FormateurDAO.FindByApprenantId(id);
+            foreach (Formateur f in formateurs)
+            {
+                UserDTO u = new UserDTO
+                {
+                    Id = f.FormateurId,
+                    Nom = f.Nom,
+                    Prenom = f.Prenom,
+                    Role = UserRole.FORMATEUR
+
+                };
+                users.Add(u);
+
+            }
+
+            return users;
+
+
         }
 
         public static string StockageTransitoire(string chemin, HttpPostedFileBase fichierAEnvoyer)

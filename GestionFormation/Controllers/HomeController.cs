@@ -14,13 +14,8 @@ namespace GestionFormation.Controllers
 
         public ActionResult Index()
         {
-            if (TempData["emailAEnvoyerDTO"] !=null) { 
-            ViewBag.emailAEnvoyerDTO = (EmailAEnvoyerDTO)TempData["emailAEnvoyerDTO"];
-                }
             
-            if (TempData["emailMessage"] !=null) {
-                ViewBag.EmailMessage = TempData["emailMessage"];
-            }
+           
 
             
 

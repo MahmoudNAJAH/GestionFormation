@@ -74,10 +74,11 @@ namespace GestionFormation.DAO
                     foreach (SessionDeFormation curs in fn.SessionsDeFormations)
                         fnDansDB.SessionsDeFormations.Add(context.SessionDeFormations.FirstOrDefault(c => c.SessionDeFormationId == curs.SessionDeFormationId));
                 }
-
                 context.SaveChanges();
             }
         }
+
+        
 
         public static void Delete(int id)
         {

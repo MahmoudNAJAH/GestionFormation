@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Home Page";
-    GestionFormation.DTO.EmailAEnvoyerDTO emailAEnvoyerDTO = ViewBag.emailAEnvoyerDTO != null ? ViewBag.emailAEnvoyerDTO: new GestionFormation.DTO.EmailAEnvoyerDTO();
 }
 @if (Session["userConnected"] != null)
 {
@@ -38,4 +37,3 @@
     </div>
 </div>
 
-@Html.Partial("_EnvoyerEmail", emailAEnvoyerDTO)

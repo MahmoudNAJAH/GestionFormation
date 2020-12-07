@@ -143,6 +143,17 @@ namespace GestionFormation.DTO
             return results;
         }
 
+        //public List<Formateur> GetFormateurs()
+        //{
+        //    List<Formateur> results = new List<Formateur>();
+
+        //    List<SessionDeFormation> listSessionDeFormation = GetSessionDeFormations();
+        //    foreach (SessionDeFormation SessionDeFormation in listSessionDeFormation)
+        //        results.Add(FormationDAO.FindById(SessionDeFormation.Formation.FormationId));
+
+        //    return results;
+        //}
+
         public List<Cursus> GetCursus()
         {
             List<Cursus> results = new List<Cursus>();

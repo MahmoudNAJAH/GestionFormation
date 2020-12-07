@@ -83,5 +83,34 @@ namespace Gestionformation.DAO
 
             }
         }
+
+
+        internal static List<Formateur> FindByApprenantId(int id)
+        {
+            using (BDDContext context = new BDDContext())
+            {
+                // Recupération des id des formateurs ayant une session de formation dont la session de cursus est suivie par l'apprenant ayant pour id (id)
+                // => requete complexe élaborée sous SQL management studio
+           
+                string query = "Select distinct SessionDeFormations.Formateur_FormateurId from SessionDeFormations " +
+                    "join SessionDeCursus on SessionDeCursus.SessionDeCursusId = SessionDeFormations.SessionDeCursus_SessionDeCursusId " +
+                    "join SessionDeCursusApprenants on SessionDeCursus.SessionDeCursusId = SessionDeCursusApprenants.SessionDeCursus_SessionDeCursusId " +
+                    "where SessionDeCursusApprenants.Apprenant_ApprenantId = {0}";
+
+                List<int> formateursIds = context.Database.SqlQuery<int>(query, id).ToList();
+
+
+                // Récupération des formateurs à partir de la liste d'ID
+                List<Formateur> formateurs = new List<Formateur>();
+                foreach (int fId in formateursIds)
+                {
+                    formateurs.Add(context.Formateurs.Include("SessionDeFormations").FirstOrDefault(fr => fr.FormateurId == fId));
+                }
+
+                return formateurs;
+            }
+
+
+        }
     }
 }
