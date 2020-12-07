@@ -1,5 +1,73 @@
-﻿@model IEnumerable<GestionFormation.DTO.JourneeDTO>
+﻿@model DateTime
+
+@{
+    //Pour remplir le tabeau avec les numéro jours
+            bool start = false;
+    int compteur = 1;
+
+    //pour set la class des liens
+    string classLink = "edt-mois-btn-jours";
+}
 
 <div class="edt-month">
-    
+
+    <h2>
+        @Html.ActionLink("<", "NextWeek", "EmploiDuTemps", new { dateReference = (DateTime)TempData["dateReference"], moisReference = ((DateTime)Model).AddMonths(-1) }, null)
+        @(((DateTime)Model).ToString("MMMM"))
+        @Html.ActionLink(">", "NextWeek", "EmploiDuTemps", new { dateReference = (DateTime)TempData["dateReference"], moisReference = ((DateTime)Model).AddMonths(1) }, null)
+    </h2>
+
+    <table class="edt-mois">
+
+        <!-- Header du tableau -> Jours de la semaine + dates -->
+        <tr class="edt-header-semaine">
+
+            <th class="edt-mois-header-column">
+                L
+            </th>
+            <th class="edt-mois-header-column">
+                M
+            </th>
+            <th class="edt-mois-header-column">
+                M
+            </th>
+            <th class="edt-mois-header-column">
+                J
+            </th>
+            <th class="edt-mois-header-column">
+                V
+            </th>
+            <th class="edt-mois-header-column">
+                S
+            </th>
+            <th class="edt-mois-header-column">
+                D
+            </th>
+        </tr>
+
+        @for (int ligne = 0; ligne < 7; ligne++)
+        {
+            <tr>
+                @for (int index_jours = 0; index_jours < 7; index_jours++)
+                {
+                    if ((int)(new DateTime((int)Model.Year, (int)Model.Month, 1).DayOfWeek) == index_jours) {start = true; }
+                    if (start == true && compteur > DateTime.DaysInMonth((int)Model.Year, (int)Model.Month)) { start = false; }
+
+                        <td class="edt-mois-jours">
+
+                            @if (start == true)
+                            {
+                                if (Model.ToString("dd/MM/yyyy") == new DateTime((int)Model.Year, (int)Model.Month, compteur).ToString("dd/MM/yyyy")) { classLink += "  edt-mois-btn-jours-reference"; }
+
+                                @Html.ActionLink($"{compteur}", "NextWeek", "EmploiDuTemps", new { dateReference = new DateTime((int)Model.Year, (int)Model.Month, compteur) }, new { @class = $"{classLink}" })
+                                
+                                <!-- Dans un script pour qu'il ne soit pas visible -->
+                                <!-- Après le link sinon l'incrémentation sera pris en compte dedans -->
+                                <script> @(compteur++) </script>
+                            }
+                        </td>
+                    }
+            </tr>
+        }
+    </table>
 </div>
