@@ -43,61 +43,13 @@ namespace GestionFormation.DTO
                         DateTraitement = DateTraitement.AddDays(1);
                     
                     //Pour que DateTraitement soit un jours ouvrable
-                    while (EstFerie(DateTraitement) || EstWeekEnd(DateTraitement))
+                    while (!EmploiDuTempsService.EstJoursOuvrable(DateTraitement))
                         DateTraitement = DateTraitement.AddDays(1);
 
                     ListDates.Add(new JourneeDTO { Date = DateTraitement, Formation = SessionForm.Formation, Formateur = SessionForm.Formateur });
                 }
             }
         }
-
-        //Avec la maj sur UserDTO, fonction plus nécessaire
-        /*
-        private List<SessionDeFormation> GetSessionDeFormations()
-        {
-            List<SessionDeFormation> listForm = new List<SessionDeFormation>();
-            
-
-            switch (User.Role)
-            {
-                case UserRole.ATTENDANT:
-
-                    List<SessionDeCursus> listSessionDeCursus = (ApprenantDAO.FindById(User.Id)).SessionDeCursus;
-
-                    foreach(SessionDeCursus SessionCursus in listSessionDeCursus)
-                    {
-                        //on récupère les sessions Formations, mais leurs objets sont vides (Formation, Formateur etc..)
-                        List<SessionDeFormation> listSessionFormations = new List<SessionDeFormation>();
-                        listSessionFormations.AddRange(SessionDeCursusDAO.FindById(SessionCursus.SessionDeCursusId).SessionsDeFormations);
-
-                        //On les recharge en récupérant leurs objets à l'aide de FindById
-                        foreach(SessionDeFormation ses in listSessionFormations)
-                            listForm.Add(SessionDeFormationDAO.FindById(ses.SessionDeFormationId));
-                    }
-
-                    break;
-
-                case UserRole.FORMATEUR:
-
-                    List<SessionDeFormation> listSessionFormation = new List<SessionDeFormation>();
-                    listSessionFormation = FormateurDAO.FindById(User.Id).SessionDeFormations;
-
-                    foreach (SessionDeFormation ses in listSessionFormation)
-                        listForm.Add(SessionDeFormationDAO.FindById(ses.SessionDeFormationId));
-                        //listForm.Add(ses);
-
-                    break;
-
-                case UserRole.ADMIN:
-                    break;
-
-                default:
-                    throw new Exception("Erreur : l'utilisateur n'est ni un Formateur ni un Attendant");
-            }
-
-            return listForm;
-        }
-        */
 
         private static bool EstFerie(DateTime date)
         {
