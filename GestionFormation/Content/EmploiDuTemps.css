@@ -1,4 +1,8 @@
-﻿#_EdtBody {
+﻿.container{
+    width: 100%
+}
+
+#_EdtBody {
     width: 85%;
     float: right;
     min-height: 700px;
