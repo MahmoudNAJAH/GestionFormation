@@ -17,10 +17,15 @@
 
 
 
-<label class="checkbox-inline">
-    c#
-</label>
-@Html.CheckBox("cSharp", false)
+@using (Html.BeginForm("PrintEval", "Apprenant", FormMethod.Post))
+{
+    <label class="checkbox-inline">
+        c#
+    </label>
+    @Html.CheckBoxFor(model => model.cSharp)
 
-@Html.ActionLink(" feuille d'évaluation  ", "PrintEval")
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+}
 

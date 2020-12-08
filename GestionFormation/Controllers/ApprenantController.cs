@@ -22,7 +22,7 @@ namespace GestionFormation.Controllers
     {
         // GET: Apprenant
         public static UserDTO userconnected;
-       //public static  List<FicheEval> FeuilleEvaluation = new List<FicheEval>();
+        //public static  List<FicheEval> FeuilleEvaluation = new List<FicheEval>();
         static Calendar cal = new GregorianCalendar();
         [LoginRequiredFilter]
 
@@ -87,51 +87,54 @@ namespace GestionFormation.Controllers
                     }
                 }
             }
-                //récupérer le n° de la semaine 
-                CultureInfo myCI = new CultureInfo("en-US");
+            //récupérer le n° de la semaine 
+            CultureInfo myCI = new CultureInfo("en-US");
 
-                System.Globalization.Calendar myCal = myCI.Calendar;
-                CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+            System.Globalization.Calendar myCal = myCI.Calendar;
+            CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
 
-                DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
-                int week = myCal.GetWeekOfYear(DateTime.Now, myCWR, myFirstDOW);
+            DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+            int week = myCal.GetWeekOfYear(DateTime.Now, myCWR, myFirstDOW);
 
-                //Response.Write("Current Week is " + week.ToString());
-                ViewData["date"] = week;
+            //Response.Write("Current Week is " + week.ToString());
+            ViewData["date"] = week;
 
-                
-           
+
+
             return View(userconnected);
         }
 
 
-            public ActionResult PrintFPresence()
-            {
-                var q = new ActionAsPdf("feuillePresence");
-                return q;
-            }
+        public ActionResult PrintFPresence()
+        {
+            var q = new ActionAsPdf("feuillePresence");
+            return q;
+        }
 
 
         public ActionResult feuilleEvaluation()
         {
-          
-                return View();
-                    
+
+            return View(new FicheEval());
+
         }
-      //[HttpPost]
-      //  public ActionResult feuilleEvaluation(string valeur)
-      //  {
-      //      return new ActionAsPdf("feuilleEvaluation");
+        //[HttpPost]
+        //public ActionResult feuilleEvaluation(FicheEval f)
+        //{
 
-      //  }
+        //    return new ActionAsPdf("feuilleEvaluation");
 
-        public ActionResult PrintEval()
+        //}
+        [HttpPost]
+
+        public ActionResult PrintEval(FicheEval f)
         {
             //ici je dois renvoyer la lfeuille d'evaluation rempli
-            
-                return new ActionAsPdf("feuilleEvaluation");
+
+            return new ActionAsPdf("feuilleEvaluation");
         }
 
 
-        
-} }
+
+    }
+}

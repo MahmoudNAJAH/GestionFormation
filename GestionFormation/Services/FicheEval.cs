@@ -9,6 +9,8 @@ namespace GestionFormation.Services
     {
         public int niveauAcceuil { get; set; }
         public string Excellent { get; set; }
+
+        public bool cSharp { get; set; }
     }
     public class ListFicheEval
     {
