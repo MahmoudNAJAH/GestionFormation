@@ -1,6 +1,10 @@
-﻿@model DateTime
+﻿@using System.Globalization;
+@model DateTime
 
 @{
+    //Pour mettre la première lettre du mois en majuscule
+    TextInfo textInfo = new CultureInfo("fr-FR").TextInfo;
+
     //Pour remplir le tabeau avec les numéro jours
     bool start = false;
     int compteur = 1;
@@ -26,13 +30,13 @@
                         HttpMethod = "GET"                      // Méthode HTTP
                     }
         )
-        <span class="edt-month-header-titre">@(((DateTime)Model).ToString("MMMM yyyy"))</span>
+        <span class="edt-month-header-titre">@(textInfo.ToTitleCase(((DateTime)Model).ToString("MMMM yyyy")))</span>
         @Ajax.ActionLink(
                     ">",                // texte à afficher
                     "NextMonth/" + "1",         // Action
                     "EmploiDuTemps",    // Controller
 
-                    // les options 
+                    // les options
                     new AjaxOptions
                     {
                         UpdateTargetId = "_EdtMonth",           // id de l'élément du DOM à modifier
