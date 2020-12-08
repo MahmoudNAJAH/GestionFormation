@@ -34,6 +34,10 @@ namespace GestionFormation.Controllers
             //Pour affichage et changement de semaine
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(DateTime.Now);
 
+            //Pour set le date reference pour le calendrier
+            TempData["dateReference"] = DateTime.Now;
+            TempData.Keep("dateReference");
+
             //Pour set le mois de référence, utilisée dans la partie "mois" de l'EDT
             TempData["moisReference"] = DateTime.Now;
             //On utilise TempData.Keep(), sinon TempData devient null quand on appel Ajax
@@ -48,6 +52,9 @@ namespace GestionFormation.Controllers
 
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(dateReference);
 
+            TempData["dateReference"] = dateReference;
+            TempData.Keep("dateReference");
+
             TempData["moisReference"] = dateReference;
             TempData.Keep("moisReference");
 
@@ -58,6 +65,7 @@ namespace GestionFormation.Controllers
         {
             TempData["moisReference"] = ((DateTime)TempData["moisReference"]).AddMonths(id);
             TempData.Keep("moisReference");
+            TempData.Keep("dateReference");
 
             if (TempData["moisReference"] == null) return new EmptyResult();
             else return PartialView("_EdtMonth", TempData["moisReference"]);

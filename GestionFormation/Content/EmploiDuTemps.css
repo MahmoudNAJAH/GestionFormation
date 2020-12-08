@@ -1,26 +1,28 @@
-﻿
-.edt-body{
-    width: 100%;
+﻿#_EdtBody {
+    width: 85%;
+    float: right;
     min-height: 700px;
-
     padding-top: 20px;
-
+    padding-right: 2%;
+    padding-left: 2%;
     /*background-color: purple;*/
+    --header-margin-right: 29.82%;
 }
 
-.edt-titre{
-    display: block;
-    
+.edt-titre-block {
     padding: 0;
-    margin-bottom: 40px;
-
-    text-align: center;
+    margin-bottom: 30px;
     font-size: 26px;
-
     /*background-color: cornflowerblue;*/
 }
 
-.edt-semaine{
+.edt-titre-text {
+    margin-right: var(--header-margin-right);
+    vertical-align: 20%;
+    /*background-color: yellow;*/
+}
+
+.edt-semaine {
     width: 100%;
     padding: 0;
     margin-bottom: 15px;
@@ -80,6 +82,7 @@
     color: #fff;
     text-align: center;
     text-decoration: none;
+    font-size: 16px;
 }
 
 .edt-btn-next-link:hover {
@@ -89,7 +92,69 @@
 }
 
 
-.edt-btn-next-gauche{
-    margin-left: 20px;
-    margin-right: 900px;
+.edt-btn-next-gauche {
+    margin-right: var(--header-margin-right);
+}
+
+
+/*_EdtMonth*/
+
+#_EdtMonth {
+    width: 15%;
+    float: left;
+    min-height: 735px;
+    padding-top: 20px;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+    padding-top: 6%;
+
+    /*background-color: green;*/
+}
+
+.edt-month-header{
+    font-size: 20px;
+    padding-left: 4%;
+    /*background-color: blue;*/
+}
+
+.edt-month-header-titre {
+    /*background-color: pink;*/
+    display:inline-block;
+    width: 80%;
+    text-align: center;
+}
+
+.edt-mois-column {
+    /*background-color: purple;*/
+    text-align: center;
+    width: 35px;
+    height: 30px;
+}
+
+.edt-mois-column-header{
+}
+
+.edt-mois-btn-jours {
+    display: block;
+    width: 80%;
+    height: 80%;
+    margin: 10%;
+    border-radius: 100%;
+    /*background-color: white;*/
+    color: black;
+}
+
+.edt-mois-btn-jours a{
+    text-decoration: none;
+}
+
+.edt-mois-btn-jours:hover {
+    background-color: #333333;
+    text-decoration: none;
+    color: white;
+}
+
+.edt-mois-btn-jours-reference {
+    background-color: #337ab7;
+    color: white;
 }

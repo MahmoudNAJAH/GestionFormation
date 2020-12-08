@@ -2,16 +2,17 @@
 
 @{
     //Pour remplir le tabeau avec les numéro jours
-            bool start = false;
+    bool start = false;
     int compteur = 1;
 
     //pour set la class des liens
-    string classLink = "edt-mois-btn-jours";
+    string classLink;
+
 }
 
 <div class="edt-month">
 
-    <h2>
+    <div class="edt-month-header">
         @Ajax.ActionLink(
                     "<",                        // texte à afficher
                     "NextMonth/" + "-1",        // Action
@@ -25,7 +26,7 @@
                         HttpMethod = "GET"                      // Méthode HTTP
                     }
         )
-        @(((DateTime)Model).ToString("MMMM"))
+        <span class="edt-month-header-titre">@(((DateTime)Model).ToString("MMMM yyyy"))</span>
         @Ajax.ActionLink(
                     ">",                // texte à afficher
                     "NextMonth/" + "1",         // Action
@@ -39,37 +40,37 @@
                         HttpMethod = "GET"                      // Méthode HTTP
                     }
         )
-    </h2>
+    </div>
 
     <table class="edt-mois">
 
         <!-- Header du tableau -> Jours de la semaine + dates -->
         <tr class="edt-header-semaine">
 
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 L
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 M
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 M
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 J
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 V
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 S
             </th>
-            <th class="edt-mois-header-column">
+            <th class="edt-mois-column edt-mois-column-header">
                 D
             </th>
         </tr>
 
-        @for (int ligne = 0; ligne < 7; ligne++)
+        @for (int ligne = 0; ligne < 6; ligne++)
         {
             <tr>
                 @for (int index_jours = 0; index_jours < 7; index_jours++)
@@ -81,11 +82,13 @@
                     if (joursSemaine == index_jours) { start = true; }
                     if (start == true && compteur > DateTime.DaysInMonth((int)Model.Year, (int)Model.Month)) { start = false; }
 
-                    <td class="edt-mois-jours">
+                    <td class="edt-mois-column">
 
                         @if (start == true)
                         {
-                            if (Model.ToString("dd/MM/yyyy") == new DateTime((int)Model.Year, (int)Model.Month, compteur).ToString("dd/MM/yyyy")) { classLink += "  edt-mois-btn-jours-reference"; }
+                            <script>@(classLink = "edt-mois-btn-jours")</script>
+
+                            if (((DateTime)TempData["dateReference"]).ToString("dd/MM/yyyy") == new DateTime((int)Model.Year, (int)Model.Month, compteur).ToString("dd/MM/yyyy")) { classLink += "  edt-mois-btn-jours-reference"; }
 
                             @Html.ActionLink($"{compteur}", "NextWeek", "EmploiDuTemps", new { dateReference = new DateTime((int)Model.Year, (int)Model.Month, compteur) }, new { @class = $"{classLink}" })
 

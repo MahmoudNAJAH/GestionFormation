@@ -17,11 +17,15 @@
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 }
 
-@Html.Partial("_EdtBody", Model);
-
 <div id="_EdtMonth">
-    @Html.Partial("_EdtMonth", TempData["moisReference"]);
+    @Html.Partial("_EdtMonth", TempData["moisReference"])
 </div>
+
+<div id="_EdtBody">
+    @Html.Partial("_EdtBody", Model)
+</div>
+
+
 
 
 

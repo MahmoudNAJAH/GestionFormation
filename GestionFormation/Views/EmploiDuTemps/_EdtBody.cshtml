@@ -1,8 +1,10 @@
 ﻿@model IEnumerable<GestionFormation.DTO.JourneeDTO>
 
-<div class="edt-body">
-
-    <span class="edt-titre">@ViewBag.Title</span>
+<div class="edt-titre-block">
+    @Html.ActionLink("Semaine Précédente", "NextWeek", new { dateReference = ViewBag.DateLundi.AddDays(-7) }, new { @class = "edt-btn-next-link edt-btn-next-gauche" })
+    <span class="edt-titre-text">@ViewBag.Title</span>
+    @Html.ActionLink("Semaine Suivante", "NextWeek", "EmploiDuTemps", new { dateReference = ViewBag.DateLundi.AddDays(7) }, new { @class = "edt-btn-next-link" })
+</div>
 
 
     <table class="edt-semaine">
@@ -50,12 +52,3 @@
         </tr>
 
     </table>
-
-
-    @Html.ActionLink("Semaine Précédente", "NextWeek", new { dateReference = ViewBag.DateLundi.AddDays(-7) }, new { @class = "edt-btn-next-link edt-btn-next-gauche" })
-
-    @Html.ActionLink("Semaine Suivante", "NextWeek", "EmploiDuTemps", new { dateReference = ViewBag.DateLundi.AddDays(7) }, new { @class = "edt-btn-next-link" })
-
-
-
-</div>
