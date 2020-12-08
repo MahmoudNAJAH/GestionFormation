@@ -34,29 +34,33 @@ namespace GestionFormation.Controllers
             //Pour affichage et changement de semaine
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(DateTime.Now);
 
-            //On veut dissocier l'affichage du mois avec la semaine dans le cas ou on change de mois dans le calendrier
-            TempData["dateReference"] = DateTime.Now;
             //Pour set le mois de référence, utilisée dans la partie "mois" de l'EDT
             TempData["moisReference"] = DateTime.Now;
+            //On utilise TempData.Keep(), sinon TempData devient null quand on appel Ajax
+            TempData.Keep("moisReference");
 
             return View(WeeklyEDT);
         }
         
-        public ActionResult NextWeek(DateTime dateReference, DateTime? moisReference = null)
+        public ActionResult NextWeek(DateTime dateReference)
         {
             List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(EDT.ListDates, dateReference);
 
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(dateReference);
 
-            TempData["dateReference"] = dateReference;
-
-            //Si null, on set à la date de référence, ie la date utilisé pour affichage de la semaine
-            if (moisReference == null)
-                TempData["moisReference"] = dateReference;
-            else
-                TempData["moisReference"] = moisReference;
+            TempData["moisReference"] = dateReference;
+            TempData.Keep("moisReference");
 
             return View("Index", WeeklyEDT);
+        }
+
+        public ActionResult NextMonth(int id)
+        {
+            TempData["moisReference"] = ((DateTime)TempData["moisReference"]).AddMonths(id);
+            TempData.Keep("moisReference");
+
+            if (TempData["moisReference"] == null) return new EmptyResult();
+            else return PartialView("_EdtMonth", TempData["moisReference"]);
         }
     }
 }

@@ -11,7 +11,17 @@
 
 @Styles.Render("~/Content/EmploiDuTemps.css")
 
+@section scripts
+{
+    @* Ajax pour le mois *@
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+}
 
 @Html.Partial("_EdtBody", Model);
 
-@Html.Partial("_EdtMonth",TempData["moisReference"]);
+<div id="_EdtMonth">
+    @Html.Partial("_EdtMonth", TempData["moisReference"]);
+</div>
+
+
+
