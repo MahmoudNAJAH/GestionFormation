@@ -173,7 +173,8 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
-    <Compile Include="Services\FicheEval.cs" />
+    <Compile Include="DTO\FicheEval.cs" />
+    <Compile Include="DTO\FichePresence.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
     <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />

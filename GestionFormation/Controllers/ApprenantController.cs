@@ -18,6 +18,7 @@ using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 
 namespace GestionFormation.Controllers
 {
+    [LoginRequiredFilter]
     public class ApprenantController : Controller
     {
         // GET: Apprenant
@@ -26,7 +27,7 @@ namespace GestionFormation.Controllers
         static Calendar cal = new GregorianCalendar();
 
         private FicheEval fiche;
-        [LoginRequiredFilter]
+        
 
         public ActionResult Index()
         {
@@ -109,6 +110,7 @@ namespace GestionFormation.Controllers
 
         public ActionResult PrintFPresence()
         {
+          
             var q = new ActionAsPdf("feuillePresence");
             return q;
         }
@@ -116,7 +118,21 @@ namespace GestionFormation.Controllers
 
         public ActionResult feuilleEvaluation()
         {
+            DateTime DateTraitement = new DateTime();
+            DateTime FirstDayOfWeek = new DateTime();
+            //DateTime dt = new DateTime();
+            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            var diff = DateTime.Now.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+            if (diff < 0)
+            {
+                diff += 7;
+            }
+            FirstDayOfWeek = DateTime.Now.AddDays(-diff).Date;
+            FirstDayOfWeek.ToString("dd/mm/yyyy");
+            ViewData["date3"] = FirstDayOfWeek.ToString("dd/MM/yyyy");
 
+            DateTime LastDayOfWeek = FirstDayOfWeek.AddDays(6);
+            ViewData["date4"] = LastDayOfWeek.ToString("dd/MM/yyyy");
             return View(new FicheEval());
 
         }
