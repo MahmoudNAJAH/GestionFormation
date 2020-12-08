@@ -1,41 +1,43 @@
-﻿@using GestionFormation.DTO
-
-@{
-    ViewBag.Title = "Home Page";
-    GestionFormation.DTO.EmailAEnvoyerDTO emailAEnvoyerDTO = ViewBag.emailAEnvoyerDTO != null ? ViewBag.emailAEnvoyerDTO: new GestionFormation.DTO.EmailAEnvoyerDTO();
+﻿@{
+    Layout = null;
 }
-@if (Session["userConnected"] != null)
-{
-    <h3>Bonjour @(((UserDTO)Session["userConnected"]).Prenom) !!!</h3>
-    @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Page principale</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link href="~/Content/pagedacceuil.css" rel="stylesheet">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+</head>
+<body>
+    <img class="mb-4" src="http://www.dawan.fr/images/institutionnel-logo.png" alt="" left="100 " width="150" height="150">
+    <table>
+        <tr>
+            <th>
+                <img class="mb-4" src="https://cdn.icon-icons.com/icons2/77/PNG/128/user_administrator_blue_15072.png" alt="" width="72" height="72">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+                <img class="img2" src="https://cdn.icon-icons.com/icons2/1670/PNG/512/10207manstudentlightskintone_110568.png" alt="" width="72" height="72">
 
-@Html.Partial("_EnvoyerEmail", emailAEnvoyerDTO)
+                <img class="mb-4" src="https://cdn.icon-icons.com/icons2/39/PNG/128/user_person_people_6100.png" alt="" width="72" height="72">
+
+            </th>
+
+            <th>
+
+                @Html.ActionLink("Administrateur","AuthentificationController", "Login" )
+
+                @Html.ActionLink("Apprenant", "Index")
+
+                @Html.ActionLink("Formateur", "pagecnxformat")
+            </th>
+        </tr>
+    </table>
+</body>
+</html>
+

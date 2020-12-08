@@ -187,7 +187,7 @@
     <Compile Include="DAO\CursusDAO.cs" />
     <Compile Include="DAO\FormationDAO.cs" />
     <Compile Include="DAO\SessionDeFormationDAO.cs" />
-    <Compile Include="DTO\.cs" />
+    <Compile Include="DTO\GestionFormation.cs" />
     <Compile Include="DTO\JourneeDTO.cs" />
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
@@ -307,8 +307,9 @@
     <Content Include="Views\Apprenant\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Authentification\Login.cshtml" />
-    <Content Include="Views\Home\pageprincipal.cshtml" />
-    <Content Include="Views\Home\pagecnxstagiaire.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\pagecnxadmin.cshtml" />
+    <Content Include="Views\Home\pagecnxformat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
