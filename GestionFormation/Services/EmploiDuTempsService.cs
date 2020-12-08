@@ -114,7 +114,7 @@ namespace GestionFormation.Services
             return !(EstFerie(date) || EstWeekEnd(date));
         }
 
-        private static bool EstFerie(DateTime date)
+        public static bool EstFerie(DateTime date)
         {
             List<DateTime> JoursFeries = new List<DateTime>
             {

@@ -50,28 +50,36 @@
     background-color: rgba(255, 0, 0, 0.5);
 }
 
-.edt-body-column{
+.edt-body-column {
     /*background-color: rgba(0, 255, 33, 0.5);*/
 }
 
-.edt-container-journee{
+.edt-container-journee {
     min-height: 500px;
     text-align: center;
     width: 100%;
 }
 
-.edt-container-journee-ue{
+.edt-container-journee-ferie {
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, #e0ffff 20px, #e0ffff 40px);
+}
+
+
+.edt-container-journee-ue {
     margin-top: 10px;
     margin-bottom: 30px;
 }
-
+S
 .edt-journee-formation {
     margin-bottom: 7px;
     font-weight: bold;
 }
 
+.edt-journee-formation-nom {
+    font-weight: bold;
+}
+
 .edt-journee-formateur {
-    
 }
 
 .edt-btn-next-link {

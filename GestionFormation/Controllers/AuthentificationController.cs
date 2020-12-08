@@ -52,13 +52,11 @@ namespace GestionFormation.Controllers
                 // elle spécifique à un utilisateur qur un navigateur (stocké coté serveur)
                 //Donc Pas partagé entre les utilisateurs 
 
-
                 byte[] hashBytes = user.MotDePasse;//read from store.
                 CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
 
                 if (!hash.Verify(p.MotDePasse))
                     throw new System.UnauthorizedAccessException();
-
 
                 Session.Add("userConnected", user);
 
