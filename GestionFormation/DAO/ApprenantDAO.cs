@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
+
 
 namespace GestionFormation.DAO
 {
@@ -32,6 +34,16 @@ namespace GestionFormation.DAO
                 context.SaveChanges();
             }
         }
+
+        public static IEnumerable<SessionDeCursus> GetSessionsDeCursus(Apprenant apprenant)
+        {
+            using (BDDContext context = new BDDContext())
+            {
+                context.Configuration.LazyLoadingEnabled = false;
+                return context.SessionDeCursus.Include(sdc=> sdc.Cursus).Where(sdc => sdc.Apprenants.Contains(apprenant));
+            }
+        }
+
         public static Apprenant FindById(int apprenantId)
         {
             using (BDDContext context = new BDDContext())

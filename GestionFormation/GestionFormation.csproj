@@ -188,6 +188,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="DTO\UserForChatDTO.cs" />
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />

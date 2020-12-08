@@ -31,13 +31,16 @@ namespace GestionFormation.Controllers
             return View();
         }
 
-        [LoginRequiredFilter]
         public ActionResult Chat()
         {
             Apprenant ap = ApprenantDAO.FindById(((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]).Id);
+
+            UserForChatDTO userForChat = new UserForChatDTO(ap);
+          
+
+
            // return View(ap);
-           UserDTO u= (UserDTO)System.Web.HttpContext.Current.Session["userConnected"];
-           return View(u);
+           return View(userForChat);
         }
 
         // GET: Apprenant/Details/5
