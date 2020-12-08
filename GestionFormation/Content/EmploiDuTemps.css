@@ -40,7 +40,7 @@
 }
 
 .edt-column{
-    min-width: 14.286%;
+    width: 14.286%;
     border: 1px solid black;
 }
 
@@ -51,7 +51,6 @@
 }
 
 .edt-body-column{
-    
     /*background-color: rgba(0, 255, 33, 0.5);*/
 }
 
