@@ -36,6 +36,8 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                context.Configuration.LazyLoadingEnabled = false;
+
                 return context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(ap => ap.ApprenantId == apprenantId);
             }
         }

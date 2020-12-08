@@ -1,5 +1,6 @@
 ﻿using GestionFormation.DAO;
 using GestionFormation.DTO;
+using GestionFormation.Entities;
 using GestionFormation.Filters;
 using GestionFormation.Services;
 using System;
@@ -27,9 +28,16 @@ namespace GestionFormation.Controllers
             {
                 ViewBag.EmailMessage = TempData["emailMessage"];
             }
-
-
             return View();
+        }
+
+        [LoginRequiredFilter]
+        public ActionResult Chat()
+        {
+            Apprenant ap = ApprenantDAO.FindById(((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]).Id);
+           // return View(ap);
+           UserDTO u= (UserDTO)System.Web.HttpContext.Current.Session["userConnected"];
+           return View(u);
         }
 
         // GET: Apprenant/Details/5
