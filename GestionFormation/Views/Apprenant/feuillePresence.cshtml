@@ -4,10 +4,10 @@
     ViewBag.Title = "Feuille de présence ";
 }
 
-<h2>Details</h2>
+<h2>Feuille de Présence </h2>
 
 <div>
-    <h4>Apprenant</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -33,10 +33,41 @@
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
+
         <dd>
-            <label >Signature</label>
+            <label>Semaine de la Formation</label>
+        </dd>
+        <dd>
+
+            <h4>n° de la semaine </h4>
+            <p>@((ViewData["date"]))</p>
+            <h6>Semaine de formation</h6>
+            <p>
+                @ViewData["date1"]
+                @ViewData["date2"]
+            </p>
+            <h4>Formateur </h4>
+            <p>
+                @ViewBag.Message   @ViewBag.Message1
+
+            </p>
+            <h4> Nom de la Formation </h4>
+            <p>@ViewBag.Message2</p>
+
+            <h4> Cursus </h4>
+            <p>@ViewBag.Message3</p>
         </dd>
 
-    </dl>
+
+        <dd>
+            <label>nombre de jours d'abscence </label>
+            <input type="text">
+            
+        </dd>
+        <dd>
+            <label>Signature</label>
+        </dd>
+
 </div>
+
 

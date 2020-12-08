@@ -173,6 +173,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="Services\FicheEval.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
     <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -320,6 +321,7 @@
     <Content Include="Views\Apprenant\Create.cshtml" />
     <Content Include="Views\Apprenant\Details.cshtml" />
     <Content Include="Views\Shared\_UserConnected.cshtml" />
+    <Content Include="Views\Apprenant\feuilleEvaluation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

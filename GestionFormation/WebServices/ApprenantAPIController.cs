@@ -19,6 +19,7 @@ namespace GestionFormation.WebServices
         public List<Apprenant> Get()
         {
             return ApprenantDAO.FindAll();
+            
         }
 
 

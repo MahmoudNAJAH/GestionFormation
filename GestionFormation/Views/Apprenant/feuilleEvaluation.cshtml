@@ -1,0 +1,26 @@
+﻿@model GestionFormation.Services.FicheEval
+
+
+@*<label>voici</label>
+    <input type="checkbox" name="check1" >*@
+
+<h2>Feuille D'evaluation</h2>
+@*<div>
+        <input type="checkbox" name="chk1">
+        <label for="scales">Scales</label>
+
+
+    </div>*@
+
+@*@Html.CheckBox("cSharp", false)*@
+
+
+
+
+<label class="checkbox-inline">
+    c#
+</label>
+@Html.CheckBox("cSharp", false)
+
+@Html.ActionLink(" feuille d'évaluation  ", "PrintEval")
+
