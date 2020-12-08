@@ -24,6 +24,8 @@ namespace GestionFormation.Controllers
         public static UserDTO userconnected;
         //public static  List<FicheEval> FeuilleEvaluation = new List<FicheEval>();
         static Calendar cal = new GregorianCalendar();
+
+        private FicheEval fiche;
         [LoginRequiredFilter]
 
         public ActionResult Index()
@@ -130,8 +132,7 @@ namespace GestionFormation.Controllers
         public ActionResult PrintEval(FicheEval f)
         {
             //ici je dois renvoyer la lfeuille d'evaluation rempli
-
-            return new ActionAsPdf("feuilleEvaluation");
+            return new ViewAsPdf("feuilleEvaluation", f);
         }
 
 
