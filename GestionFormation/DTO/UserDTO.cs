@@ -11,6 +11,10 @@ using System.Web.Mvc;
 
 namespace GestionFormation.DTO
 {
+    /// <summary>
+    /// La classe utiliser dans Session["userConnected"]
+    /// Elle regroupe les informations de base de l'utilisateur pour être utilisée dans toute l'application
+    /// </summary>
     public class UserDTO
     {
         public int Id { get; set; }
@@ -18,10 +22,23 @@ namespace GestionFormation.DTO
         public string Prenom { get; set; }
         public string Email { get; set; }
         public byte[] MotDePasse { get; set; }
+
+        //Pour différencier Apprenant - Formateur - Admin
         public UserRole Role { get; set; }
 
+        //On ne doit pas avoir d'utilisateur sans Role
+        //Ou ca ferait rien ne fonctionnerait dans l'appli
+        public UserDTO(UserRole Role)
+        {
+            this.Role = Role;
+        }
+
+        //Récupère le user correspondant à l'email donné
         public void GetUserFromEmail(string email)
         {
+            //Le user a nécessairemetn un Role 
+            //On switch dessus pour déterminer le DAO à utiliser
+            //TODO: prévoir un retour défault ?
             switch (Role)
             {
                 case UserRole.ATTENDANT:
@@ -62,6 +79,7 @@ namespace GestionFormation.DTO
             }
         }
 
+        //On récupère les SessionDeFormation de l'utilisateur
         public List<SessionDeFormation> GetSessionDeFormations()
         {
             List<SessionDeFormation> results = new List<SessionDeFormation>();
@@ -95,6 +113,8 @@ namespace GestionFormation.DTO
         }
 
         //ATTENTION : changer la database => dans SessionDeFormation : List<SessionCursus>
+
+        //On récupère les SessionDeCursus de l'utilisateur
         public List<SessionDeCursus> GetSessionDeCursus()
         {
             List<SessionDeCursus> results = new List<SessionDeCursus>();
@@ -132,6 +152,7 @@ namespace GestionFormation.DTO
             return results;
         }
 
+        //On récupère les Formation de l'utilisateur
         public List<Formation> GetFormations()
         {
             List<Formation> results = new List<Formation>();
@@ -143,17 +164,7 @@ namespace GestionFormation.DTO
             return results;
         }
 
-        //public List<Formateur> GetFormateurs()
-        //{
-        //    List<Formateur> results = new List<Formateur>();
-
-        //    List<SessionDeFormation> listSessionDeFormation = GetSessionDeFormations();
-        //    foreach (SessionDeFormation SessionDeFormation in listSessionDeFormation)
-        //        results.Add(FormationDAO.FindById(SessionDeFormation.Formation.FormationId));
-
-        //    return results;
-        //}
-
+        //On récupère les Cursus de l'utilisateur
         public List<Cursus> GetCursus()
         {
             List<Cursus> results = new List<Cursus>();
@@ -165,6 +176,7 @@ namespace GestionFormation.DTO
             return results;
         }
 
+        //TODO
         public List<Chat> GetChats()
         {
             List<Chat> results = new List<Chat>();
@@ -178,6 +190,7 @@ namespace GestionFormation.DTO
             return results;
         }
 
+        //TODO
         public List<Message> GetMessages()
         {
             List<Message> results = new List<Message>();

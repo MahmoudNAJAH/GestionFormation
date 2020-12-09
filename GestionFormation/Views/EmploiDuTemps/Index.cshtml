@@ -9,6 +9,7 @@
     ViewBag.Title = "Emploi du temps de la Semaine " + WeekIndex;
 }
 
+<!-- CSS de l'EDT -->
 @Styles.Render("~/Content/EmploiDuTemps.css")
 
 @section scripts
@@ -17,10 +18,12 @@
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
 }
 
+<!-- Html pour le calendrier du mois à gauche -->
 <div id="_EdtMonth">
     @Html.Partial("_EdtMonth", TempData["moisReference"])
 </div>
 
+<!-- Html pour l'edt de la semaine -->
 <div id="_EdtBody">
     @Html.Partial("_EdtBody", Model)
 </div>

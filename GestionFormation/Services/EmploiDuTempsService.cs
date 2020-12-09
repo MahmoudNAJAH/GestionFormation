@@ -8,50 +8,56 @@ using System.Web;
 
 namespace GestionFormation.Services
 {
+    //Regroupe les méthodes utilisées par/pour l'EDT
     public class EmploiDuTempsService
     {
+        //Dans la listes de date de l'EDT
+        //récupère les dates de la même semaine qu'une date de référence passée en argument
         public static List<JourneeDTO> GetWeek(List<JourneeDTO> allDays, DateTime dateReference)
         {
             List<JourneeDTO> result = new List<JourneeDTO>();
 
+            //on récupère toutes les dates qui correspondent à la date de référence
+            //On suppose qu'on peut avoir plusieurs formation le même jours => FindAll()
             result.AddRange(allDays.FindAll(it => it.Date.ToString("dd/MM/yyyy") == dateReference.ToString("dd/MM/yyyy")));
 
             // -- On veut envoyer Les journee qui sont la même semaine que ma dateReference
 
-            //On récupère la semaine
+            //Initilise les variables pour GetWeekOfYear()
             DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;
             Calendar cal = dfi.Calendar;
-            //int WeekNumber = cal.GetWeekOfYear(DateTime.Now, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) - 1;
 
-            //on ne connait pas la place de DateTime.Now dans la semaine
+            //On ne connait pas la place de dateReference dans la semaine ( Lunid, Mardi, Mercredi ???)
             //En partant de dateReference, on regarde jusqu'a +7 jours et -7 jours pour être sur d'avoir toute la semaine
 
             //On initialise les compteurs
             DateTime nowMinus = dateReference;
             DateTime nowAdd = dateReference;
 
-            //On lance la boucle
+            //On lance la boucle 
             for (int i_jours = 0; i_jours < 7; i_jours++)
             {
                 //On change de jours
                 nowMinus = nowMinus.AddDays(-1);
                 nowAdd = nowAdd.AddDays(1);
 
-                //Si DateTime.now et DateTime-i_jours sont la même semaine, on ajoute
+                //Si dateReference et DateTime-i_jours sont la même semaine, on ajoute
                 if (cal.GetWeekOfYear(dateReference, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) == cal.GetWeekOfYear(nowMinus, dfi.CalendarWeekRule, dfi.FirstDayOfWeek))
                 {
                     result.AddRange(allDays.FindAll(it => it.Date.ToString("dd/MM/yyyy") == nowMinus.ToString("dd/MM/yyyy")));
                 }
 
-                //Si DateTime.now et DateTime+i_jours sont la même semaine, on ajoute
+                //Si dateReference et DateTime+i_jours sont la même semaine, on ajoute
                 if (cal.GetWeekOfYear(dateReference, dfi.CalendarWeekRule, dfi.FirstDayOfWeek) == cal.GetWeekOfYear(nowAdd, dfi.CalendarWeekRule, dfi.FirstDayOfWeek))
                 {
                     result.AddRange(allDays.FindAll(it => it.Date.ToString("dd/MM/yyyy") == nowAdd.ToString("dd/MM/yyyy")));
                 }
             }
+            //On retourne tous les jours de la semaine trier du Lundi au Dimanche
             return TrierParDate(result);
         }
 
+        //Pour trier les jours de la semaine du Lundi au Dimanche
         public static List<JourneeDTO> TrierParDate(List<JourneeDTO> allDays)
         {
             List<JourneeDTO> result = new List<JourneeDTO>();
@@ -79,6 +85,8 @@ namespace GestionFormation.Services
             return result;
         }
 
+        //Pour déterminer la date du Lundi de la même semaine que la dateReference
+        //Utile pour la construction du tableau dans Html où l'on part du Lundi et on AddDays(1) pour chaque colonne
         public static DateTime DatePreviousMonday(DateTime dateReference)
         {
             switch(dateReference.DayOfWeek)
@@ -109,11 +117,13 @@ namespace GestionFormation.Services
             }
         }
 
+        //Pour déterminer sila date donnée en argulent est un jours ouvrable
         public static bool EstJoursOuvrable(DateTime date)
         {
             return !(EstFerie(date) || EstWeekEnd(date));
         }
 
+        //Pour déterminer sila date donnée en argulent est un jours férié
         public static bool EstFerie(DateTime date)
         {
             List<DateTime> JoursFeries = new List<DateTime>
@@ -139,6 +149,7 @@ namespace GestionFormation.Services
             return false;
         }
 
+        //Pour déterminer si week end
         private static bool EstWeekEnd(DateTime date)
         {
             //Dimanche = 0, Lundi = 1 ......, Samedi = 6 
@@ -146,6 +157,8 @@ namespace GestionFormation.Services
             else return false;
         }
 
+        //calcul des jorus férié liès à Pâques
+        //Méthode trouvée sur Internet
         private static List<DateTime> CalculPaque(DateTime date)
         {
             // Calcul du jour de pâques (algorithme de Oudin (1940))

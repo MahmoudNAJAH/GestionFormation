@@ -14,12 +14,6 @@ namespace GestionFormation.Controllers
 
         public ActionResult Index()
         {
-            
-           
-
-            
-
-
             return View();
         }
 
