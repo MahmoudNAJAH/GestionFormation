@@ -25,12 +25,12 @@ namespace GestionFormation.DTO
         public UserForChatDTO(Apprenant ap)
         {
             Id = ap.ApprenantId;
-            Prenom_N_ = ap.Prenom + ap.Nom.Substring(0, 1) + ".";
+            Prenom_N_ = $"{ap.Prenom}" + " " + $"{ap.Nom.Substring(0, 1)}.";
             ListeDesSalons = ApprenantDAO.GetSessionsDeCursus(ap).Select(s =>
                                   new SelectListItem()
                                   {
                                       Text = $"{s.Cursus.Nom}",
-                                      Value = s.SessionDeCursusId.ToString()
+                                      Value = $"{s.SessionDeCursusId}"
 
                                   });
             Role = UserRole.ATTENDANT;

@@ -118,7 +118,6 @@ namespace GestionFormation.Services
 
         public static string StockageTransitoire(string chemin, HttpPostedFileBase fichierAEnvoyer)
         {
-
             //sauvegarde sur le serveur
             fichierAEnvoyer.SaveAs(chemin);
 

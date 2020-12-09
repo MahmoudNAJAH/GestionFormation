@@ -11,10 +11,11 @@ using System.Web.Mvc;
 
 namespace GestionFormation.Controllers
 {
+    [LoginRequiredFilter]
+
     public class ApprenantController : Controller
     {
         // GET: Apprenant
-        [LoginRequiredFilter]
         public ActionResult Index()
         {
             if (TempData["emailAEnvoyerDTO"] != null)
@@ -43,10 +44,17 @@ namespace GestionFormation.Controllers
            return View(userForChat);
         }
 
+        [HttpPost]
+        public ActionResult ShowChat(UserForChatDTO userForChat)
+        {
+            
+            return View("Chat", userForChat);
+        }
+
         // GET: Apprenant/Details/5
         //public ActionResult Details(int id)
         //{
-            
+
         //    return View((UserDTO)Session["userConnected"]);
         //}
 

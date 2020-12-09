@@ -35,12 +35,15 @@ namespace GestionFormation.DAO
             }
         }
 
-        public static IEnumerable<SessionDeCursus> GetSessionsDeCursus(Apprenant apprenant)
+        public static List<SessionDeCursus> GetSessionsDeCursus(Apprenant apprenant)
         {
             using (BDDContext context = new BDDContext())
             {
-                context.Configuration.LazyLoadingEnabled = false;
-                return context.SessionDeCursus.Include(sdc=> sdc.Cursus).Where(sdc => sdc.Apprenants.Contains(apprenant));
+                  return context.Apprenants.Where(a => a.ApprenantId == apprenant.ApprenantId).SelectMany(a=> a.SessionDeCursus).Include(sdc => sdc.Cursus).Distinct().ToList();
+
+                //List<SessionDeCursus> lc = context.SessionDeCursus.Include(sdc => sdc.Cursus).Where(sdc => sdc.Apprenants.Exists(a => a.ApprenantId == apprenant.ApprenantId)).ToList();
+
+                //return lc;
             }
         }
 
@@ -101,7 +104,7 @@ namespace GestionFormation.DAO
 
         public static Apprenant FindByLgMD(string mail)
         {
-            using(BDDContext context = new BDDContext())
+            using (BDDContext context = new BDDContext())
             {
                 Apprenant ap = context.Apprenants.FirstOrDefault(a => a.Email == mail);
                 return (ap);

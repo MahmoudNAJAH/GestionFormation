@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using GestionFormation.DAO;
+using GestionFormation.DTO;
 using GestionFormation.Entities;
 using Microsoft.AspNet.SignalR;
 
@@ -11,41 +12,44 @@ namespace GestionFormation.Services.MessagerieSignalR
 {
     public class ChatHub : Hub
     {
-        public void Send(string senderId, string message)
-        {
-            // Clients.All.addNewMessageToPage(name, message);
+        public static Dictionary<string, UserForChatDTO> Dico = new Dictionary<string, UserForChatDTO>();
 
-            Apprenant ap = ApprenantDAO.FindById(int.Parse(senderId));
+        public void Send(string name, string message, string salon)
+        {
+            // Call the addNewMessageToPage method to update clients.
+            Clients.Group(salon).addNewMessageToPage(name, message);
+        }
+
+        //public void Send(string senderId, string message)
+        //{
+
+        //    Apprenant ap = ApprenantDAO.FindById(int.Parse(senderId));
           
-            Clients.Group("groupName").addChatMessage(senderId, message);
+        //    Clients.Group("bob").addChatMessage(senderId, message);
 
 
-        }
-
-        public Task JoinRoom(string roomName)
+        //}
+   
+        public void JoinRoom(string roomName)
         {
-            return Groups.Add(Context.ConnectionId, roomName);
+             Groups.Add(Context.ConnectionId, roomName);
         }
 
-        public Task LeaveRoom(string roomName)
+        public void LeaveRoom(string roomName)
         {
-            return Groups.Remove(Context.ConnectionId, roomName);
+             Groups.Remove(Context.ConnectionId, roomName);
         }
+
         public override Task OnConnected()
         {
-            string name = Context.User.Identity.Name;
             var context = Context;
+            string room = ("");
+            JoinRoom(room);
 
-                    // Add to each assigned group.
-                    //foreach (var item in user.Rooms)
-                    //{
-                    //    Groups.Add(Context.ConnectionId, item.RoomName);
-                    //}
-
-                    
-                
-            
             return base.OnConnected();
-        }
     }
+
+
+
+}
 }
