@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Web.Http;
 
 namespace GestionFormation.WebServices
@@ -41,16 +42,8 @@ namespace GestionFormation.WebServices
             ap1.SessionDeCursus = ap.SessionDeCursus;
             ap1.Messages = ap.Messages;
 
-            //maintenant j'ai transformé mon mot de passe qui est entré en string en tableau de byte 
-
-
-
-            ap1.MotDePasse = UserDTO2.transformeEnBytes(ap.MotDePasse);
             CryptageMotDePasse password = new CryptageMotDePasse(ap.MotDePasse);
-            var hexString = BitConverter.ToString(password.ToArray()).Replace("-", "");
-            //string chaine = hexString.Replace("0x", "");
-            ap1.MotDePasse = System.Text.Encoding.ASCII.GetBytes(hexString);
-         
+            ap1.MotDePasse = password.ToArray();
             ApprenantDAO.Create(ap1);
             
 
@@ -64,41 +57,48 @@ namespace GestionFormation.WebServices
 
             Apprenant ap1 = new Apprenant();
               ap1.ApprenantId = ap.Id;
-            ap1.Nom = ap.Nom;
-            ap1.Email = ap.Email;
+               ap1.Nom = ap.Nom;
+               ap1.Email = ap.Email;
                
                 ap1.Prenom = ap.Prenom;
                 ap1.SessionDeCursus = ap.SessionDeCursus;
                 ap1.Messages = ap.Messages;
-
-                ap1.MotDePasse = UserDTO2.transformeEnBytes(ap.MotDePasse);
-                CryptageMotDePasse password = new CryptageMotDePasse(ap.MotDePasse);
-                var hexString = BitConverter.ToString(password.ToArray()).Replace("-", "");
-                //string chaine = hexString.Replace("0x", "");
-                ap1.MotDePasse = System.Text.Encoding.ASCII.GetBytes(hexString);
+            CryptageMotDePasse password = new CryptageMotDePasse(ap.MotDePasse);
+            ap1.MotDePasse = password.ToArray();
 
 
-            using (BDDContext context =new BDDContext())
+            using (BDDContext context = new BDDContext())
             {
                 Apprenant apprenant = context.Apprenants.FirstOrDefault(app => app.ApprenantId == id);
-                apprenant.Nom = ap1.Nom; 
+                apprenant.Nom = ap1.Nom;
                 apprenant.Email = ap1.Email;
                 apprenant.Prenom = ap1.Prenom;
-                apprenant.SessionDeCursus = ap1.SessionDeCursus;
-                apprenant.Messages = ap1.Messages;
+                //foreign keys
+                if (ap.Messages != null)
+                {
+                    apprenant.Messages = new List<Message>();
+                    foreach (Message mes in ap.Messages)
+                        apprenant.Messages.Add(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
+                }
+                if (ap.SessionDeCursus != null)
+                {
+                    apprenant.SessionDeCursus = new List<SessionDeCursus>();
+                    foreach (SessionDeCursus mes in ap.SessionDeCursus)
+                        apprenant.SessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == mes.SessionDeCursusId));
+                }
                 apprenant.MotDePasse = ap1.MotDePasse;
                 context.SaveChanges();
 
 
             }
 
-                
-    
 
-           
 
-            
-             
+
+
+
+
+
         }
 
         // DELETE: api/ApprenantAPI/5
