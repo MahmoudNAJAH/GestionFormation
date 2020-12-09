@@ -28,10 +28,10 @@ namespace GestionFormation.DTO
 
         //On ne doit pas avoir d'utilisateur sans Role
         //Ou ca ferait rien ne fonctionnerait dans l'appli
-        public UserDTO(UserRole Role)
-        {
-            this.Role = Role;
-        }
+        //public UserDTO(UserRole Role)
+        //{
+        //    this.Role = Role;
+        //}
 
         //Récupère le user correspondant à l'email donné
         public void GetUserFromEmail(string email)

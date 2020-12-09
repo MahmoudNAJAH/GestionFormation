@@ -33,7 +33,7 @@ namespace GestionFormation.Controllers
         [HttpPost]
         public ActionResult Login(LoginDTO p , string referer)
         {
-            UserDTO user = new UserDTO(UserRole.ATTENDANT);
+            UserDTO user = new UserDTO { Role = UserRole.ATTENDANT };
 
             user.GetUserFromEmail(p.Email);
                         
