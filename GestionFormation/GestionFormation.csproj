@@ -250,6 +250,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\admin.png" />
+    <Content Include="Images\apprenant.png" />
+    <Content Include="Images\dawan.png" />
+    <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -309,7 +313,7 @@
     <Content Include="Views\Apprenant\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Authentification\Login.cshtml" />
-    <Content Include="Views\Home\pageprincipal.cshtml" />
+    <Content Include="Views\Home\PageConnexionChoixRole.cshtml" />
     <Content Include="Views\Home\pagecnxstagiaire.cshtml" />
     <Content Include="Views\EmploiDuTemps\_EdtBody.cshtml" />
     <Content Include="Views\EmploiDuTemps\_EdtMonth.cshtml" />
