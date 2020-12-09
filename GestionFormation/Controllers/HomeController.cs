@@ -12,7 +12,7 @@ namespace GestionFormation.Controllers
     {
         public ActionResult Index()
         {
-            return View("PageConnexionChoixRole");
+            return View();
         }
 
         public ActionResult About()

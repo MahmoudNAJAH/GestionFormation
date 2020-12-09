@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>Page principale</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="~/Content/pagedaceuil.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <form class="form-signin Logo">
+        <img class="mb-4" src="~/images/dawan.png" alt="logo dawan" left="100 " width="225" height="225">
+    </form>
+
+    <form class="form-signin Form">
+        <img class="mb-4 imge-marg" src="~/images/admin.png" alt="administeur" width="72" height="72">
+        <button class="btn btn-lg btn-danger btn-block" onclick="location.href='@Url.Action("Login", "Authentification", new { param = 2 })';return false;" ,>Administrateur</button>
+
+        <img class="img2 imge-marg" src="~/images/apprenant.png" alt="apprenant" width="72" height="72">
+        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='@Url.Action("Login", "Authentification", new { param = 0 })';return false;">Attendant</button>
+
+        <img class="mb-4 imge-marg" src="~/Images/formateur.png" alt="formateur" width="72" height="72">
+        <button class="btn btn-lg btn-success btn-block" onclick="location.href='@Url.Action("Login", "Authentification", new { param = 1 })';return false;">Formateur</button>
+    </form>
+
+</body>
+</html>
+

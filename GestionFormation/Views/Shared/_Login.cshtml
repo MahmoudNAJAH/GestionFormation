@@ -1,6 +1,5 @@
 ﻿@model GestionFormation.DTO.LoginDTO
 
-
 @using (Html.BeginForm("Login", "Authentification", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
@@ -9,7 +8,7 @@
     <h4>Apprenant</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+    @Html.HiddenFor(model => model.Role)
 
     <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -26,6 +25,7 @@
             @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" })
         </div>
     </div>
+
     @if (ViewBag.Referer != null)
     {
         <input type="hidden" name="referer" value="@ViewBag.Referer" />

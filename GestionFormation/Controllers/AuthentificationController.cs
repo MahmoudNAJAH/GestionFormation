@@ -13,27 +13,21 @@ namespace GestionFormation.Controllers
 {
     public class AuthentificationController : Controller
     {
-
-        
-        // GET: Authentification : donc l'authentfication controller est le controlleur qui me permet 
-        //de faire la page de connexion 
-
-
-        public static List<Apprenant> LesApprenants = ApprenantDAO.FindAll();
-        //1-Donc Maintenant j'ai la liste des Apprenantet surtout leur Login( EMAIL et MOTDEPASSE)
-
-
-        public ActionResult Login(string redirectTo = null)
+        public ActionResult PageConnexionChoixRole()
         {
-            ViewBag.Referer = redirectTo;
-            return View(new LoginDTO());
+            return View();
         }
 
-
+        public ActionResult Login(int param = 0, string redirectTo = null)
+        {
+            ViewBag.Referer = redirectTo;
+            return View(new LoginDTO((UserRole)param));
+        }
+         
         [HttpPost]
         public ActionResult Login(LoginDTO p , string referer)
         {
-            UserDTO user = new UserDTO { Role = UserRole.ATTENDANT };
+            UserDTO user = new UserDTO { Role = p.Role };
 
             user.GetUserFromEmail(p.Email);
                         
@@ -68,7 +62,7 @@ namespace GestionFormation.Controllers
                 ViewBag.Message = "Erreur de connexion ";
             }
             ViewBag.Referer = referer;
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
 
