@@ -58,10 +58,12 @@
     min-height: 500px;
     text-align: center;
     width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .edt-container-journee-ferie {
-    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, #e0ffff 20px, #e0ffff 40px);
+    background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255, 0, 0, 0.2) 20px, rgba(255, 0, 0, 0.2) 40px);
 }
 
 
