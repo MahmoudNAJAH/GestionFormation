@@ -11,33 +11,28 @@
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link href="~/Content/pagedacceuil.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="~/Content/pagedaceuil.css" rel="stylesheet">
 
 </head>
 <body>
-    <img class="mb-4" src="http://www.dawan.fr/images/institutionnel-logo.png" alt="" left="100 " width="150" height="150">
-    <table>
-        <tr>
-            <th>
-                <img class="mb-4" src="https://cdn.icon-icons.com/icons2/77/PNG/128/user_administrator_blue_15072.png" alt="" width="72" height="72">
 
-                <img class="img2" src="https://cdn.icon-icons.com/icons2/1670/PNG/512/10207manstudentlightskintone_110568.png" alt="" width="72" height="72">
+    <form class="form-signin">
+        <img class="mb-4" src="~/images/dawan.png" alt="logo dawan" left="100 " width="225" height="225">
+    </form>
+    
+    @*<form class="form-signin">
+        <img class="mb-4" src="~/images/admin.png" alt="administeur" width="72" height="72">
+        <button class="btn btn-lg btn-danger btn-block" onclick="location.href='@Url.Action("pagecnxadmin", "Home")';return false;" ,>Administrateur</button>
 
-                <img class="mb-4" src="https://cdn.icon-icons.com/icons2/39/PNG/128/user_person_people_6100.png" alt="" width="72" height="72">
+        <img class="img2" src="~/images/apprenant.png" alt="apprenant" width="72" height="72">
+        <button class="btn btn-lg btn-primary btn-block" onclick="location.href='@Url.Action("pagecnxapprenant", "Home")';return false;">Apprenant</button>
 
-            </th>
+        <img class="mb-4" src="~/Images/formateur.png" alt="formateur" width="72" height="72">
+        <button class="btn btn-lg btn-success btn-block" onclick="location.href='@Url.Action("pagecnxformat", "Home")';return false;">Formateur</button>
+    </form>*@
 
-            <th>
-
-                @Html.ActionLink("Administrateur","pagecnxadmin" )
-
-                @Html.ActionLink("Apprenant", "pagecnxapprenant")
-
-                @Html.ActionLink("Formateur", "pagecnxformat")
-            </th>
-        </tr>
-    </table>
 </body>
 </html>
 

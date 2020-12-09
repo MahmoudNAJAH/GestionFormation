@@ -50,6 +50,7 @@ namespace GestionFormation.Controllers
 
         public ActionResult Contact()
         {
+
             return View();
         }
     }
