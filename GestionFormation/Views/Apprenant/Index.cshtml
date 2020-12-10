@@ -47,6 +47,7 @@
 
 </table>
 
+@* BlOC POUR ENVOYER DES EMAIL *@
 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseBlockEmail" aria-expanded="false" aria-controls="collapseBlockEmail">
     Ouvrir/Fermer envoi Email
 </button>
@@ -56,4 +57,13 @@
         @Html.Partial("_EnvoyerEmail", emailAEnvoyerDTO)
     </div>
 </div>
+
+@* BLOC POUR LANCER LA MESSAGERIE DANS UNE AUTRE FENETRE ???????????*@
+@Html.ActionLink("Ouvrir une fenetre de chat", "Chat", new { controller = "Apprenant" }, new { target = "_blank" })
+<br/>
+<a href="https://localhost:44326/Apprenant/Chat"
+   target="popup"
+   onclick="window.open('https://localhost:44326/Apprenant/Chat','popup','width=600,height=800,scrollbars=no,resizable=no,titlebar=no,toolbar=no'); return false;">
+    Open Link in Popup
+</a>
 

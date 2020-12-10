@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -14,25 +15,29 @@ namespace GestionFormation.Services.MessagerieSignalR
     {
         public static Dictionary<string, UserForChatDTO> Dico = new Dictionary<string, UserForChatDTO>();
 
-        public void Send(string name, string message, string salon)
+        public void Send(string name, string message, string salon, string senderId)
+        //public void Send(string name, string message, string salon)
         {
+            string date=DateTime.Now.ToString("dd/MMM H:mm");
+            Message m = new Message
+            {
+                Contenu = message,
+                DateDePublication = DateTime.Now,
+            };
+
+            //ChatDAO.AddMessageToDB(m, int.Parse(salon) , int.Parse(senderId));
+            ChatDAO.AddMessageToDB(m, int.Parse(salon) , int.Parse(senderId));
+
             // Call the addNewMessageToPage method to update clients.
-            Clients.Group(salon).addNewMessageToPage(name, message);
+            Clients.Group(salon).addNewMessageToPage(name, message, date);
         }
 
-        //public void Send(string senderId, string message)
-        //{
-
-        //    Apprenant ap = ApprenantDAO.FindById(int.Parse(senderId));
-          
-        //    Clients.Group("bob").addChatMessage(senderId, message);
-
-
-        //}
+       
    
         public void JoinRoom(string roomName)
         {
              Groups.Add(Context.ConnectionId, roomName);
+
         }
 
         public void LeaveRoom(string roomName)
@@ -40,16 +45,26 @@ namespace GestionFormation.Services.MessagerieSignalR
              Groups.Remove(Context.ConnectionId, roomName);
         }
 
-        public override Task OnConnected()
+        /// <summary>
+        /// Recupératon des 100  derniers messages du groupe en BDD
+        /// </summary>
+        /// <param name="salon"></param>
+        public void RecuperatioDesMessagesEnBDD(string salon)
         {
-            var context = Context;
-            string room = ("");
-            JoinRoom(room);
+            Chat chat = ChatDAO.FindBySessionDeCursusId(int.Parse(salon));
 
-            return base.OnConnected();
+            List<Message> messages = chat.Messages.OrderBy(m => m.DateDePublication).Take(Properties.Settings.Default.NbMessageChatRecuperesEnBDDALaConnexion).ToList();
+            foreach (Message m in messages)
+            {
+                string sender = $"{m.Apprenant.Prenom}" + " " + $"{m.Apprenant.Nom.Substring(0, 1)}.";
+                string message = m.Contenu;
+                string date = m.DateDePublication.ToString("dd/MMM H:mm");
+                Clients.Caller.addNewMessageToPage(sender, message, date);
+
+            }
+        }
+
+
+
     }
-
-
-
-}
 }
