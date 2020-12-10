@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="DAO\ChatDAO.cs" />
+    <Compile Include="Controllers\PartageFichierController.cs" />
     <Compile Include="DTO\UserForChatDTO.cs" />
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.cs" />
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.Designer.cs">
@@ -204,6 +205,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Models\DirectoryModel.cs" />
+    <Compile Include="Models\SessionDeCursus_PartageFichier_Model.cs" />
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
@@ -380,10 +383,13 @@
     <Content Include="Views\EmploiDuTemps\_EdtBody.cshtml" />
     <Content Include="Views\EmploiDuTemps\_EdtMonth.cshtml" />
     <Content Include="Views\Apprenant\Chat.cshtml" />
+    <Content Include="Views\Shared\_ChatConnected.cshtml" />
+    <Content Include="Views\PartageFichier\Index.cshtml" />
+    <Content Include="Views\PartageFichier\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Saves\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>
   <ItemGroup>
