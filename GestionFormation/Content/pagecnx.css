@@ -13,7 +13,7 @@ body {
 
 .form-horizontal {
     margin-left: 25%;
-    margin-top: 20%
+    margin-top: 12%
 }
 
 h3 {
@@ -46,5 +46,9 @@ h3 {
 }
 
 .navbar-fixed-top {
-    background-color: brown
+    display : none;
+}
+
+.footer{
+    margin-left:45%
 }
