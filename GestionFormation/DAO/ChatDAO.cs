@@ -14,11 +14,15 @@ namespace GestionFormation.DAO
             using (BDDContext context = new BDDContext())
             {
                 context.Configuration.LazyLoadingEnabled = false;
-                Chat chat = context.Chats.Include(c=> c.Messages).FirstOrDefault(c => c.SessionDeCursus.SessionDeCursusId == sdcId);
+                Chat chat = context.Chats.Include(c=> c.Messages).FirstOrDefault(c => c.SessionDeCursus.SessionDeCursusId == sdcId) ?? new Chat();
                 List<Message> lm = new List<Message>();
-                foreach (Message m in chat.Messages)
+                if (chat != null && chat.Messages != null)
                 {
-                    lm.Add(context.Messages.Include(mess => mess.Apprenant).FirstOrDefault(mess => mess.MessageId == m.MessageId));
+                    foreach (Message m in chat.Messages)
+                    {
+                        lm.Add(context.Messages.Include(mess => mess.Apprenant).FirstOrDefault(mess => mess.MessageId == m.MessageId));
+                    }
+
                 }
                 chat.Messages = lm;
                 return chat;
