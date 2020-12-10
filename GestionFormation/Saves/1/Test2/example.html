@@ -1,0 +1,16 @@
+<html>
+    <body>
+
+
+        <script>
+            if(window.fetch){
+                fetch("https://localhost:44313/api/monument/1")
+                    .then(response => alert(response.json()))
+                    .then(monObjet => document.getElementById("resultat").innerHTML = monObjet["monument-name"])
+                    .catch(error => alert(error));
+            }
+        </script>
+
+        <h1 id="resultat"></h1>
+    </body>
+</html>
