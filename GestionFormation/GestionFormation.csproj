@@ -341,7 +341,6 @@
     <Content Include="Views\EmploiDuTemps\_EdtBody.cshtml" />
     <Content Include="Views\EmploiDuTemps\_EdtMonth.cshtml" />
     <Content Include="Views\Apprenant\Chat.cshtml" />
-    <Content Include="Views\Shared\_ChatConnected.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
