@@ -18,7 +18,7 @@ namespace GestionFormation.Services.MessagerieSignalR
         public void Send(string name, string message, string salon, string senderId)
         //public void Send(string name, string message, string salon)
         {
-            string date=DateTime.Now.ToString("dd/MMM H:mm");
+            string date= $"Aujourd'hui {DateTime.Now.ToString("H:mm")}";
             Message m = new Message
             {
                 Contenu = message,
@@ -58,7 +58,8 @@ namespace GestionFormation.Services.MessagerieSignalR
             {
                 string sender = $"{m.Apprenant.Prenom}" + " " + $"{m.Apprenant.Nom.Substring(0, 1)}.";
                 string message = m.Contenu;
-                string date = m.DateDePublication.ToString("dd/MMM H:mm");
+                string date = (m.DateDePublication.DayOfYear == DateTime.Now.DayOfYear && m.DateDePublication.Year == DateTime.Now.Year) ?
+                     $"Aujourd'hui {m.DateDePublication.ToString("H:mm")}" :  m.DateDePublication.ToString("dd MMM H:mm");
                 Clients.Caller.addNewMessageToPage(sender, message, date);
 
             }
