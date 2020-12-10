@@ -188,8 +188,23 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\ApprenantController.cs" />
     <Compile Include="Controllers\AuthentificationController.cs" />
+    <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="Controllers\PartageFichierController.cs" />
     <Compile Include="DTO\UserForChatDTO.cs" />
+    <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.cs" />
+    <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.Designer.cs">
+      <DependentUpon>202012100942332_ajout de %27contenu%27 dans %27Message%27.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\SessionDeCursus_PartageFichier_Model.cs" />
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
@@ -267,7 +282,17 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap-grid.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-reboot.css" />
+    <Content Include="Content\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\css\bootstrap.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\EmploiDuTemps.css" />
+    <Content Include="Content\js\bootstrap.bundle.js" />
+    <Content Include="Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\bootstrap.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
     <Content Include="favicon.ico" />
@@ -301,6 +326,20 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\css\bootstrap-grid.css.map" />
+    <Content Include="Content\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\css\bootstrap.css.map" />
+    <Content Include="Content\css\bootstrap.min.css.map" />
+    <Content Include="Content\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\js\bootstrap.js.map" />
+    <Content Include="Content\js\bootstrap.min.js.map" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -376,9 +415,16 @@
     <EmbeddedResource Include="Migrations\202012041112400_DeleteUserDTO.resx">
       <DependentUpon>202012041112400_DeleteUserDTO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.resx">
+      <DependentUpon>202012100942332_ajout de %27contenu%27 dans %27Message%27.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

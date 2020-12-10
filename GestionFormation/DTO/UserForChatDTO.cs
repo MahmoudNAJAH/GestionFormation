@@ -24,17 +24,21 @@ namespace GestionFormation.DTO
         }
         public UserForChatDTO(Apprenant ap)
         {
-            Id = ap.ApprenantId;
-            Prenom_N_ = $"{ap.Prenom}" + " " + $"{ap.Nom.Substring(0, 1)}.";
-            ListeDesSalons = ApprenantDAO.GetSessionsDeCursus(ap).Select(s =>
-                                  new SelectListItem()
-                                  {
-                                      Text = $"{s.Cursus.Nom}",
-                                      Value = $"{s.SessionDeCursusId}"
+            this.Id = ap.ApprenantId;
+            this.Prenom_N_ = $"{ap.Prenom}" + " " + $"{ap.Nom.Substring(0, 1)}.";
+            List<SessionDeCursus> sdc = ApprenantDAO.GetSessionsDeCursus(ap);
+            if (sdc.Count() == 1) SalonSelectionne = sdc.First().SessionDeCursusId.ToString();
+            
+            this.ListeDesSalons = sdc.Select(s =>
+                            new SelectListItem()
+                            {
+                                Text = $"{s.Cursus.Nom}",
+                                Value = $"{s.SessionDeCursusId}"
 
-                                  });
-            Role = UserRole.ATTENDANT;
-           
+                            });
+            this.Role = UserRole.ATTENDANT;
+
+
         }
 
     }

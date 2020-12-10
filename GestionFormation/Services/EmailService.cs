@@ -31,7 +31,7 @@ namespace GestionFormation.Services
             if (emailAEnvoyer.ToId.StartsWith("A"))
             {
                 // toEmail = AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
-                toEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+                toEmail = Properties.Settings.Default.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
                  destinataire = AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
                 Console.WriteLine($"Email envoyé (mais pas vraiment) à " + AdminDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email);
 
@@ -40,7 +40,7 @@ namespace GestionFormation.Services
             {
 
                 // toEmail = FormateurDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
-                toEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+                toEmail = Properties.Settings.Default.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
                 destinataire = FormateurDAO.FindById(int.Parse(emailAEnvoyer.ToId.Substring(1))).Email;
 
 
@@ -49,7 +49,7 @@ namespace GestionFormation.Services
 
 
             //string fromEmail = ApprenantDAO.FindById(emailAEnvoyer.FromId).Email;
-            string fromEmail = Properties.Resource.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
+            string fromEmail = Properties.Settings.Default.AdresseMail; // BOUCHON : envoi uniquement sur la boite du projet
 
             using (MailMessage message = new MailMessage(fromEmail, toEmail))
             {
@@ -63,17 +63,16 @@ namespace GestionFormation.Services
                 {
                     Attachment attachment = new Attachment(emailAEnvoyer.AttachementPath);
                     message.Attachments.Add(attachment);
-
                 }
 
 
                 using (SmtpClient client = new SmtpClient())
                 {
-                    client.Host = Properties.Resource.GmailHost;
-                    client.Port = int.Parse(Properties.Resource.GmailPort);
+                    client.Host = Properties.Settings.Default.GmailHost;
+                    client.Port = Properties.Settings.Default.GmailPort;
 
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential(Properties.Resource.AdresseMail, Properties.Resource.MotDePasse);
+                    client.Credentials = new NetworkCredential(Properties.Settings.Default.AdresseMail, Properties.Settings.Default.MotDePasse);
                     client.EnableSsl = true;
                     client.Send(message);
                 }
@@ -130,7 +129,7 @@ namespace GestionFormation.Services
             {
                 return Properties.Resource.FichierVide;
             }
-            else if (fichierAEnvoyer.ContentLength > int.Parse(Properties.Resource.TailleMaxPieceJointe))
+            else if (fichierAEnvoyer.ContentLength > Properties.Settings.Default.TailleMaxPieceJointe)
             {
                 return Properties.Resource.FichierTropVolumineux;
             }
