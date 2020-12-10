@@ -8,7 +8,8 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/StyleLayout.css" rel="stylesheet" />
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -44,7 +45,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer class="footer">
+        <footer class="basdepage">
             <p>&copy; 2000-@DateTime.Now.Year - DAWAN</p>
         </footer>
     </div>

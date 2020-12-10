@@ -9,31 +9,32 @@
     @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/pagedaceuil.css" rel="stylesheet">
+<div class="header">
+    <img src="~/Images/header.jpg" alt="Formez vous à distance" height="300" width="1250" />
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="menu">
+
+    <button class="p p1" onclick="location.href='@Url.Action("Index", "Home")';return false;"><p><h3>Acceuil</h3><h5>formations, à propos, contact...</h5></p></button>
+
+    <button class="p p2" onclick="location.href='@Url.Action("Index", "Formation")';"><p><h3>Formations</h3><h5>listes des formations, formateurs...</h5></p></button>
+
+
+    <button class="p p3" onclick="location.href='@Url.Action("Index", "SessionDeFormations")';return false;"><p><h3>Sessions formations</h3><h5><br /></h5></p></button>
+
+
+    <button class="p p4" onclick="location.href='@Url.Action("Index", "Apprenant")';return false;"><p><h3>Apprenant</h3><h5>se Connecter</h5></p></button>
+
+
+    <button class="p p5" onclick="location.href='@Url.Action("Index", "Help")';return false;"><p><h3>API</h3><h5><br /></h5></p></button>
+
+
+    <button class="p p6" onclick="location.href='@Url.Action("About", "Home")';return false;"><p><h3>A propos</h3><h5>Notre emplacement, venez nous visiter</h5></p></button>
+
+
+    <button class="p p7" onclick="location.href='@Url.Action("Contact", "Home")';return false;"><p><h3>Contact</h3><h5>Contactez-nous</h5></p></button>
+
 </div>
 

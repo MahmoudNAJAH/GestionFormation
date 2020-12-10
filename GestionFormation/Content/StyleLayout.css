@@ -1,0 +1,24 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.navbar-fixed-top {
+    background-color: brown
+}
+
+.navbar-nav {
+    color: red
+}
+
+.basdepage {
+    margin-left: 41%
+}
