@@ -295,6 +295,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
+    <Content Include="Content\PartageFichier.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
