@@ -33,7 +33,6 @@ namespace GestionFormation.Controllers
                 }); ;
             }
 
-
             if (dirPath != null) model.DirectoryModel = GetDirectoryModel(dirPath);
 
             //Dans le cas ou une seul SessionDeCursus, on pourrait rediriger dès maintenant vers le display du dossier
@@ -69,7 +68,7 @@ namespace GestionFormation.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult CreateFile(string dirPath, HttpPostedFileBase myFile)
         {
             string combinedPath = Path.Combine(GetFullPath(dirPath), Path.GetFileName(myFile.FileName));
@@ -77,7 +76,7 @@ namespace GestionFormation.Controllers
             // sauvegarde sur le serveur
             myFile.SaveAs(combinedPath);
 
-            return RedirectToAction("Details", "PartageFichier", new { dirPath = GetFullPath(dirPath) });
+            return RedirectToAction("Index", "PartageFichier", new { dirPath = GetFullPath(dirPath) });
         }
 
         public FileResult Download(string fileName)
