@@ -4,6 +4,7 @@ using GestionFormation.Entities;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,8 @@ namespace GestionFormation.DTO
         public string Email { get; set; }
         public byte[] MotDePasse { get; set; }
         public UserRole Role { get; set; }
+        [DisplayName("Nombre de jours d'abscence")]
+        public string nbre { get; set; }
 
         public void GetUserFromEmail(string email)
         {

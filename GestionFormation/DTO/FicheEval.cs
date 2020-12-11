@@ -9,6 +9,45 @@ namespace GestionFormation.DTO
     {
   
 
+
+       public  string fiche1 { get; set; }
+       public  string fiche2 { get; set; }
+       public  string fiche3 { get; set; }
+       public  string fiche4 { get; set; }
+       public  string fiche5 { get; set; }
+       public  string fiche6 { get; set; }
+       public  string fiche7 { get; set; }
+       public  string fiche8 { get; set; }
+       public  string fiche9 { get; set; }
+       public  string fiche10 { get; set; }
+       public  string fiche11{ get; set; }
+       public  string fiche12{ get; set; }
+       public  string fiche13{ get; set; }
+       public  string fiche14{ get; set; }
+       public  string fiche15{ get; set; }
+       public  string fiche16{ get; set; }
+        public string vb { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public bool Excellent{ get; set; }
         public bool TresBon{ get; set; }
         public bool Bon{ get; set; }
@@ -95,16 +134,17 @@ namespace GestionFormation.DTO
         public bool Bon12 { get; set; }
         public bool Moyen12{ get; set; }
         public bool Passable12{ get; set; }
-        public bool Question{ get; set; }
-        public bool Question1{ get; set; }
-        public bool Question2{ get; set; }
-        public bool Question3{ get; set; }
+        public string Question{ get; set; }
+        public string Question1{ get; set; }
+        public string Question2{ get; set; }
+        public string  Question3{ get; set; }
 
 
-        public bool Commentaire { get; set; }
-        public bool Commentaire1 { get; set; }
-        public bool Commentaire2 { get; set; }
-        public bool Commentaire3 { get; set; }
+        public string Commentaire { get; set; }
+        public string Commentaire1 { get; set; }
+        public string Commentaire2 { get; set; }
+        public string Commentaire3 { get; set; }
+        public string Commentaire4 { get; set; }
 
     }
 

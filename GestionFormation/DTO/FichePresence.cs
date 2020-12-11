@@ -7,6 +7,6 @@ namespace GestionFormation.DTO
 {
     public class FichePresence
     {
-        public bool nbreAbscence { get; set;  }
+        public string nbreAbscence { get; set;  }
     }
 }

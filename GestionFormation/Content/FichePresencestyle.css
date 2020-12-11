@@ -1,0 +1,36 @@
+﻿.titre {
+    margin-left: 700px;
+    margin-top: -20px;
+    /*margin-bottom: 150px;*/
+   
+}
+h5 {
+    margin-right: 700px;
+    margin-top: -480px;
+    margin-left: 120px;
+    text-decoration:underline; 
+    /*margin-bottom: 150px;*/
+    
+    min-width: 820px;
+
+
+}
+strong{
+    font-size:16px; 
+}
+.boutton {
+    margin-top: 600px;
+    margin-bottom: 0px;
+    
+}
+h3 {
+    text-align: center;
+    margin-top: 4px;
+}
+.signature{
+    margin-top:500px; 
+
+}
+.identifiant{
+    background-color:aqua;  
+}
