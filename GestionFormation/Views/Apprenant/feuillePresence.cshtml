@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = "Feuille de présence ";
 }
-<link rel="stylesheet" href="~/Content/FichePresencestyle.css">
+
 
 <img src="~/Images/image1.PNG" alt="logo Dawan" />
 <h6 class="titre">
     Feuille de Présence
     <br />
-    <strong>Semaine de formation</strong>  
+    <strong>Semaine de formation</strong>
     <br />
     @ViewData["date1"] au  @ViewData["date2"]
     <br />
@@ -70,5 +70,6 @@
             <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
         </div>
     </form>
+    <link rel="stylesheet" href="~/Content/FichePresencestyle.css">
 
 }

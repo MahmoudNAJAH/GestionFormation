@@ -67,7 +67,7 @@ h4 {
 }
 strong {
     color: red;
-    background-color:aqua;
+    
 }
 span{
 text-align:center;
@@ -77,9 +77,8 @@ h2 {
     margin-top:4px; 
 }
 .Evironement{
-    /*min-height:720px;*/
-    margin-top:150px; 
+    margin-top:50px; 
     min-width:720px;
-    background-color:aquamarine;
+    
     
 }

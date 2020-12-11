@@ -254,39 +254,45 @@ namespace GestionFormation.Controllers
             List<SessionDeFormation> SessionDeFormations = userconnected.GetSessionDeFormations();
             //2)récupération de cursus de userconnected 
             List<SessionDeCursus> sessionDeCursus = userconnected.GetSessionDeCursus();
-            foreach (SessionDeFormation SessionForm in SessionDeFormations)
+            EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
+            List<JourneeDTO> Mesformations = emploi.ListDates;
+            DateTime aujourdhui = DateTime.Now;
+
+            foreach (JourneeDTO j in Mesformations)
             {
-                //DateTime aujourdhui = DateTime.Now;
-                //DateTraitement = SessionForm.DateDebut;
-                //if (aujourdhui <= FirstDayOfWeek && aujourdhui <= LastDayOfWeek)
-                //if (DateTraitement == FirstDayOfWeek || DateTraitement == FirstDayOfWeek.AddDays(1))
-
-                EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
-                List<JourneeDTO> MesFormation = new List<JourneeDTO>();
-                MesFormation = emploi.ListDates;
-                DateTime aujourdhui = DateTime.Now;
-                if (aujourdhui >= SessionForm.DateDebut && aujourdhui <= (SessionForm.DateDebut).AddDays(SessionForm.Formation.Dure))
+                if (j.Date.DayOfYear == DateTime.Now.DayOfYear && j.Date.Year == DateTime.Now.Year)
                 {
-                    NomFormateur = SessionForm.Formateur.Nom;
-                    ViewBag.Message6 = NomFormateur;
-                    
-                    PrenomFormateur = SessionForm.Formateur.Prenom;
-                    ViewBag.Message7 = PrenomFormateur;
-                    //NomFormation = SessionForm.Formation.Nom;
-                    //ViewBag.Message5 = NomFormation;
-                    eval.vb= SessionForm.Formation.Nom;
-                    ViewBag.Message5 = eval.vb;
+                    foreach (SessionDeFormation SessionForm in SessionDeFormations)
+                    {
+                        //DateTime aujourdhui = DateTime.Now;
+                        //DateTraitement = SessionForm.DateDebut;
+                        //if (aujourdhui <= FirstDayOfWeek && aujourdhui <= LastDayOfWeek)
+                        //if (DateTraitement == FirstDayOfWeek || DateTraitement == FirstDayOfWeek.AddDays(1))
 
-                    //foreach (SessionDeCursus cursus in sessionDeCursus)
-                    //{
-                    //    NomCursus = cursus.Cursus.Nom;
-                    //    ViewBag.Message3 = NomCursus;
-                    //}
+
+                        if (j.Formation.FormationId == SessionForm.Formation.FormationId && j.Formateur.FormateurId == SessionForm.Formateur.FormateurId)
+                        {
+                            NomFormateur = SessionForm.Formateur.Nom;
+                            ViewBag.Message6 = NomFormateur;
+
+                            PrenomFormateur = SessionForm.Formateur.Prenom;
+                            ViewBag.Message7 = PrenomFormateur;
+                            //NomFormation = SessionForm.Formation.Nom;
+                            //ViewBag.Message5 = NomFormation;
+                            eval.vb = SessionForm.Formation.Nom;
+                            ViewBag.Message5 = eval.vb;
+
+                            //foreach (SessionDeCursus cursus in sessionDeCursus)
+                            //{
+                            //    NomCursus = cursus.Cursus.Nom;
+                            //    ViewBag.Message3 = NomCursus;
+                            //}
+                        }
+                        ViewBag.Message8 = userconnected.Nom;
+                        ViewBag.Message9 = userconnected.Prenom;
+                        ViewBag.Message10 = userconnected.Email;
+                    }
                 }
-                ViewBag.Message8 = userconnected.Nom;
-                ViewBag.Message9 = userconnected.Prenom;
-                ViewBag.Message10 = userconnected.Email; 
-
 
 
             }
@@ -330,49 +336,41 @@ namespace GestionFormation.Controllers
             List<SessionDeFormation> SessionDeFormations = userconnected.GetSessionDeFormations();
             //2)récupération de cursus de userconnected 
             List<SessionDeCursus> sessionDeCursus = userconnected.GetSessionDeCursus();
-            foreach (SessionDeFormation SessionForm in SessionDeFormations)
+            EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
+            List<JourneeDTO> Mesformations = emploi.ListDates;
+            DateTime aujourdhui = DateTime.Now;
+
+            foreach (JourneeDTO j in Mesformations)
             {
-                //DateTime aujourdhui = DateTime.Now;
-                //DateTraitement = SessionForm.DateDebut;
-                //if (aujourdhui <= FirstDayOfWeek && aujourdhui <= LastDayOfWeek)
-                //if (DateTraitement == FirstDayOfWeek || DateTraitement == FirstDayOfWeek.AddDays(1))
-                DateTime aujourdhui = DateTime.Now;
-                if (aujourdhui >= SessionForm.DateDebut && aujourdhui <= (SessionForm.DateDebut).AddDays(SessionForm.Formation.Dure))
+                if (j.Date.DayOfYear == DateTime.Now.DayOfYear && j.Date.Year == DateTime.Now.Year)
                 {
-                    NomFormateur = SessionForm.Formateur.Nom;
-                    ViewBag.Message6 = NomFormateur;
+                    foreach (SessionDeFormation SessionForm in SessionDeFormations)
+                    {
+                        if (j.Formation.FormationId == SessionForm.Formation.FormationId && j.Formateur.FormateurId == SessionForm.Formateur.FormateurId)
+                        {
+                            NomFormateur = SessionForm.Formateur.Nom;
+                            ViewBag.Message6 = NomFormateur;
 
-                    PrenomFormateur = SessionForm.Formateur.Prenom;
-                    ViewBag.Message7 = PrenomFormateur;
-                    //NomFormation = SessionForm.Formation.Nom;
-                    //ViewBag.Message5 = NomFormation;
+                            PrenomFormateur = SessionForm.Formateur.Prenom;
+                            ViewBag.Message7 = PrenomFormateur;
+                            //NomFormation = SessionForm.Formation.Nom;
+                            //ViewBag.Message5 = NomFormation;
 
-                    ViewBag.Message5 = SessionForm.Formation.Nom;
-                    ViewBag.Message8 = userconnected.Nom;
-                    ViewBag.Message9 = userconnected.Prenom;
-                    ViewBag.Message10 = userconnected.Email;
-                }
+                            ViewBag.Message5 = SessionForm.Formation.Nom;
+                            ViewBag.Message8 = userconnected.Nom;
+                            ViewBag.Message9 = userconnected.Prenom;
+                            ViewBag.Message10 = userconnected.Email;
+                        }
+                    }
 
-                    //foreach (SessionDeCursus cursus in sessionDeCursus)
-                    //{
-                    //    NomCursus = cursus.Cursus.Nom;
-                    //    ViewBag.Message3 = NomCursus;
-                    //}
-                  
+                }  
             }
 
-            
-
            
-
-
-
                 //f.vb = NomFormation; 
             //ici je dois renvoyer la lfeuille d'evaluation rempli
             return new ViewAsPdf("feuilleEvaluation", f);
         }
-
-
 
     }
 }
