@@ -106,7 +106,6 @@ namespace GestionFormation.Controllers
                         //si la date de début de formation est lundi ou Mardi de la semaine courante je peux afficher 
                         //tout les coordonné concernant l'utilisateur connecté 
 
-
                         //if (aujourdhui >= SessionForm.DateDebut && aujourdhui <= (SessionForm.DateDebut).AddDays(SessionForm.Formation.Dure))
                         //{
                         //je vais parcourir la liste des dates 

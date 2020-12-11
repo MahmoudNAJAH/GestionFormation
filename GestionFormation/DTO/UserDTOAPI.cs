@@ -7,7 +7,7 @@ using System.Web;
 
 namespace GestionFormation.DTO
 {
-    public class UserDTO2 
+    public class UserDTOAPI 
     {
        
         public int Id { get; set; }

@@ -237,7 +237,7 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="DTO\UserDTO2.cs" />
+    <Compile Include="DTO\UserDTOAPI.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
     <Compile Include="Entities\Chat.cs" />

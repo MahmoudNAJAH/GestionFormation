@@ -32,7 +32,7 @@ namespace GestionFormation.WebServices
 
         // POST: api/ApprenantAPI
         //ici je vais passer un string 
-        public void   Post([FromBody] UserDTO2 ap )
+        public void   Post([FromBody] UserDTOAPI ap )
         {
             Apprenant ap1 = new Apprenant();
             ap1.ApprenantId = ap.Id;
@@ -50,7 +50,7 @@ namespace GestionFormation.WebServices
         }
 
         // PUT: api/ApprenantAPI/5
-        public void Put(int id, [FromBody] UserDTO2  ap )
+        public void Put(int id, [FromBody] UserDTOAPI  ap )
         {
             // putt c'est l'appdate
 

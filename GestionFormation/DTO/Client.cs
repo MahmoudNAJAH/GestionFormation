@@ -10,7 +10,7 @@ namespace GestionFormation.DTO
     public class Client
     {
 
-        private static async Task GetApprenant(UserDTO2 apprenant)
+        private static async Task GetApprenant(UserDTOAPI apprenant)
         {
             HttpClient httpClient = new HttpClient
             {
@@ -22,7 +22,7 @@ namespace GestionFormation.DTO
             if (response.IsSuccessStatusCode)
             {
                 // installer si nécessaire le package nuget Microsoft.AspNet.WebApi.Client
-                UserDTO2 user = await response.Content.ReadAsAsync<UserDTO2>();
+                UserDTOAPI user = await response.Content.ReadAsAsync<UserDTOAPI>();
 
 
             }
