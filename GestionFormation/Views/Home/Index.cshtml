@@ -1,47 +1,59 @@
-﻿@model GestionFormation.DTO.LoginDTO
+﻿
+@using GestionFormation.DTO
 
-
-@using (Html.BeginForm("Login", "Authentification", FormMethod.Post))
+@{
+    ViewBag.Title = "Home Page";
+}
+@if (Session["userConnected"] != null)
 {
-    @Html.AntiForgeryToken()
-
-
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-
-    <link href="~/Content/pagecnx.css" rel="stylesheet">
-    <div class="form-horizontal">
-        <img class="logodawan" src="~/Images/dawan.png" />
-        <h3 classe="title">Connectez vous</h3>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Adresse mail" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-
-
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.MotDePasse, new { htmlAttributes = new { @class = "form-control", @placeholder = "Mot de passe" } })
-            @Html.ValidationMessageFor(model => model.MotDePasse, "", new { @class = "text-danger" })
-        </div>
-        @if (ViewBag.Referer != null)
-        {
-            <input type="hidden" name="referer" value="@ViewBag.Referer" />
-        }
-
-        <div class="form-group-sm">
-            <input type="submit" value="connexion" class="btn btn-default btn-primary" style="width:220px; height:50px" />
-        </div>
-    </div>
+    <h3>Bonjour @(((UserDTO)Session["userConnected"]).Prenom) !!!</h3>
+    @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
 }
 
-<div class="back">
-    @Html.ActionLink("Retour à l'acceuil", "index", "Home")
+<link href="~/Content/bootstrap.min.css" rel="stylesheet">
+<link href="~/Content/pagedaceuil.css" rel="stylesheet">
+<div class="header">
+    <img src="~/Images/header.jpg" alt="Formez vous à distance" height="300" width="1250" />
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div class="menu">
+
+    <button class="p p1" onclick="location.href='@Url.Action("Index", "Home")';return false;"><p><h3>Acceuil</h3><h5>formations, à propos, contact...</h5></p></button>
+
+    <button class="p p2" onclick="location.href='@Url.Action("Index", "Formation")';"><p><h3>Formations</h3><h5>listes des formations, formateurs...</h5></p></button>
+
+
+    <button class="p p3" onclick="location.href='@Url.Action("Index", "SessionDeFormations")';return false;"><p><h3>Sessions formations</h3><h5><br /></h5></p></button>
+
+    @if (Session["userConnected"] != null)
+    {
+        <button class="p p4" onclick="location.href='@Url.Action("Index", "Apprenant")';return false;"><p><h3>Apprenant</h3><h5>Profil, envoyez un mail à votre formateur...</h5></p></button>
+    }
+
+    @if (Session["userConnected"] == null)
+    {
+        <button class="p p4" onclick="location.href='@Url.Action("Login", "Authentification")';return false;"><p><h3>Apprenant</h3><h5>Se connecter</h5></p></button>
+    }
+
+
+
+    <button class="p p5" onclick="location.href='@Url.Action("Index", "Help")';return false;"><p><h3>API</h3><h5><br /></h5></p></button>
+
+
+    <button class="p p6" onclick="location.href='@Url.Action("About", "Home")';return false;"><p><h3>A propos</h3><h5>Notre emplacement, venez nous visiter</h5></p></button>
+
+
+    <button class="p p7" onclick="location.href='@Url.Action("Contact", "Home")';return false;"><p><h3>Contact</h3><h5>Contactez-nous</h5></p></button>
+
+    @if (Session["userConnected"] != null)
+    {
+        <button class="p p8" onclick="location.href='@Url.Action("Index", "EmploiDuTemps")';return false;"><p><h3>Emploi du temps</h3></p></button>
+        @*<li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>*@
+        <i class="fas fa-power-off"></i>
+        @*<button class="fas fa-power-off" onclick="location.href='@Url.Action("Logout", "Authentification")';return false;"><p><h3>Se décoonecter</h3></p></button>*@
+    }
+
+</div>
+
+
 
