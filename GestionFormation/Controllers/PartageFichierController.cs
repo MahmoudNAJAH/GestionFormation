@@ -37,7 +37,8 @@ namespace GestionFormation.Controllers
             return View(model);
         }
 
-        // GET: PartageFichier/Details/5
+        
+        [HttpPost]
         public ActionResult Details(string dirPath)
         {
             string combinedPath = GetFullPath(dirPath);
@@ -47,12 +48,13 @@ namespace GestionFormation.Controllers
             DirectoryModel model = new DirectoryModel();
 
             model.DirPath = dirPath;
-            foreach (string str in Directory.EnumerateDirectories(combinedPath)) model.Directories.Add(str);
-            foreach (string str in Directory.EnumerateFiles(combinedPath)) model.Files.Add(str);
+            //item.Split('\\')[item.Split('\\').Length - 1]
+            foreach (string str in Directory.EnumerateDirectories(combinedPath)) model.Directories.Add(str.Split('\\')[str.Split('\\').Length - 1]);
+            foreach (string str in Directory.EnumerateFiles(combinedPath)) model.Files.Add(str.Split('\\')[str.Split('\\').Length - 1]);
             //Ce sont tous des string
             //On peut tout mettre dans un SortedSet pour les trier
 
-            return View(model);
+            return PartialView("_Details", model);
         }
 
         // GET: PartageFichier/Create

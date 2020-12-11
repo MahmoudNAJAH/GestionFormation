@@ -387,7 +387,7 @@
     <Content Include="Views\Apprenant\Chat.cshtml" />
     <Content Include="Views\Shared\_ChatConnected.cshtml" />
     <Content Include="Views\PartageFichier\Index.cshtml" />
-    <Content Include="Views\PartageFichier\Details.cshtml" />
+    <Content Include="Views\PartageFichier\_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

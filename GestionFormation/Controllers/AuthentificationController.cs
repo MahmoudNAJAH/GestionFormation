@@ -56,13 +56,15 @@ namespace GestionFormation.Controllers
 
                 if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
                 else RedirectToAction("Index", "Home");
+
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 ViewBag.Message = "Erreur de connexion ";
             }
             ViewBag.Referer = referer;
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Authentification");
         }
 
 
