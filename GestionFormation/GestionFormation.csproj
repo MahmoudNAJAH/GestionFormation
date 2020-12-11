@@ -253,6 +253,7 @@
     <Content Include="Content\EmploiDuTemps.css" />
     <Content Include="Content\FichePresencestyle.css" />
     <Content Include="Content\FicheEvalstyle.css" />
+    <Content Include="Content\IndexApprenant.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

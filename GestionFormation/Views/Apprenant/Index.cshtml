@@ -11,35 +11,35 @@
 
 
 <p>
-        @Html.ActionLink("Imprimer ma feuille de présence ", "feuillePresence")
-    </p>
-
-<p>
-    @Html.ActionLink(" feuille d'évaluation  ", "feuilleEvaluation")
+    @Html.ActionLink("Imprimer ma feuille de présence ", "feuillePresence")
 </p>
 
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Prenom)
-        </th>
-        <th>
+<p>
+    
+    @Html.ActionLink(" feuille d'évaluation  ", "feuilleEvaluation")
+</p>
+<link rel="stylesheet" href="~/Content/IndexApprenant.css">
 
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.MotDePasse)
-            </th>*@
-        <th></th>
-    </tr>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Prenom)
+            </th>
+            <th scope="col">
+
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+
+        </tr>
+    </thead>
     <tr>
-        
+
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)</td>
         <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)</td>
 
@@ -47,10 +47,5 @@
 
 
     </tr>
-
-    @*<a href="https://localhost:44326/api/ApprenantAPI/@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Id)" />*@
-
-
-
 
 </table>

@@ -251,7 +251,9 @@ namespace GestionFormation.Controllers
             //je vais récupérer le nom de la formation 
 
 
-            List<SessionDeFormation> SessionDeFormations = userconnected.GetSessionDeFormations();
+            List<SessionDeFormation> SessionDeFormations = new List<SessionDeFormation>();
+
+            SessionDeFormations = userconnected.GetSessionDeFormations();
             //2)récupération de cursus de userconnected 
             List<SessionDeCursus> sessionDeCursus = userconnected.GetSessionDeCursus();
             EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
