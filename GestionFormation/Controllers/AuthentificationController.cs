@@ -51,7 +51,7 @@ namespace GestionFormation.Controllers
                         Session.Add("userConnected", user);
 
                         if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
-                        else RedirectToAction("Index", "Home");
+                        else return RedirectToAction("Index", "Home");
                     }
 
 
@@ -70,7 +70,7 @@ namespace GestionFormation.Controllers
 
 
 
-            return View();
+            return View(p);
         }
 
 
