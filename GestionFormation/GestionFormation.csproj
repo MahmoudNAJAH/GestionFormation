@@ -302,10 +302,10 @@
     <Content Include="Images\admin.png" />
     <Content Include="Images\apprenant.png" />
     <Content Include="Images\dawan.png" />
-    <Content Include="Images\folder.jpg" />
+    <Content Include="Images\folder.png" />
     <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
-    <Content Include="Images\send-file.png" />
+    <Content Include="Images\file.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />

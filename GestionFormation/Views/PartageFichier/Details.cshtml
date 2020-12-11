@@ -2,33 +2,29 @@
 
 @model GestionFormation.Models.DirectoryModel
 
-<h2>Details</h2>
+<h3>Liste des dossiers et fichier de cette SessionDeCursus</h3>
 
-<table class="table">
-    <tr>
-        <th>Nom des dossiers / fichiers</th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model.Directories)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Details", new { dirPath = item } )
-            </td>
-        </tr>
-    }
+@foreach (var item in Model.Directories)
+{
+    @Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Details", new { dirPath = item })
 
-    @foreach (var item in Model.Files)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Split('\\')[item.Split('\\').Length-1], "Download", new { fileName = item})
-            </td>
-        </tr>
-    }
+    <a>
+        <img src="~/Images/folder.png" alt=""/>
+        <span>@item.Split('\\')[item.Split('\\').Length - 1]</span>
+    </a>
+}
 
-</table>
+@foreach (var item in Model.Files)
+{
+    @Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Download", new { fileName = item })
+
+    <a>
+        <img src="~/Images/file.png" />
+        <span>@item.Split('\\')[item.Split('\\').Length - 1]</span>
+    </a>
+}
+
 
 <div>
     @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))

@@ -14,20 +14,19 @@ namespace GestionFormation.Controllers
     [LoginRequiredFilter]
     public class EmploiDuTempsController : Controller
     {
-        //L'emploi du temps de mon utilisateur
-        private EmploiDuTempsDTO EDT { get; set; }
-
         public EmploiDuTempsController()
         {
-            //On charge toutes les dates + formations + formateur dans mon controller
-            if(!(System.Web.HttpContext.Current.Session["userConnected"] == null || ((UserDTO)System.Web.HttpContext.Current.Session["userConnected"])?.Id == null))
-                EDT = new EmploiDuTempsDTO((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]);  
+            UserDTO user = (UserDTO)System.Web.HttpContext.Current.Session["userConnected"];
+
+            //On charge toutes l'EDT pour la Session si besoin
+            if (System.Web.HttpContext.Current.Session["EDT"] == null)
+                System.Web.HttpContext.Current.Session.Add("EDT", new EmploiDuTempsDTO(user));
         }
 
         // GET: EmploiDuTemps
         public ActionResult Index()
         {
-            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek( EDT.ListDates, DateTime.Now);
+            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek( ((EmploiDuTempsDTO)System.Web.HttpContext.Current.Session["EDT"]).ListDates, DateTime.Now);
 
             ViewBag.User = (UserDTO)Session["userConnected"]; 
 
@@ -48,7 +47,7 @@ namespace GestionFormation.Controllers
         
         public ActionResult NextWeek(DateTime dateReference)
         {
-            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(EDT.ListDates, dateReference);
+            List<JourneeDTO> WeeklyEDT = EmploiDuTempsService.GetWeek(((EmploiDuTempsDTO)System.Web.HttpContext.Current.Session["EDT"]).ListDates, dateReference);
 
             ViewBag.DateLundi = EmploiDuTempsService.DatePreviousMonday(dateReference);
 
