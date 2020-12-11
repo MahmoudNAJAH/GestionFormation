@@ -198,6 +198,7 @@
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.Designer.cs">
       <DependentUpon>202012100942332_ajout de %27contenu%27 dans %27Message%27.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartageFichierModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -302,6 +303,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
+    <Content Include="Content\PartageFichier.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="Content\FichePresencestyle.css" />
     <Content Include="Content\FicheEvalstyle.css" />
@@ -313,7 +315,7 @@
     <Content Include="Images\admin.png" />
     <Content Include="Images\apprenant.png" />
     <Content Include="Images\dawan.png" />
-    <Content Include="Images\folder.jpg" />
+    <Content Include="Images\folder.png" />
     <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
@@ -321,6 +323,7 @@
     <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Images\send-file.png" />
+    <Content Include="Images\file.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
@@ -408,6 +411,7 @@
     <Content Include="Views\Apprenant\Details.cshtml" />
     <Content Include="Views\Shared\_UserConnected.cshtml" />
     <Content Include="Views\Apprenant\feuilleEvaluation.cshtml" />
+    <Content Include="Views\PartageFichier\_Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

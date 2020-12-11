@@ -1,0 +1,48 @@
+﻿@using System.Configuration;
+
+@model GestionFormation.Models.DirectoryModel
+
+@if (Model.DirPath != null)
+{
+    <h3>Liste des dossiers et fichier de cette SessionDeCursus</h3>
+
+
+    foreach (var item in Model.Directories)
+    {
+        <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
+            <img src="~/Images/folder.png" alt="" class="image-folder" />
+            <span>@item</span>
+        </a>
+    }
+
+    foreach (var item in Model.Files)
+    {
+        @Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Download", new { fileName = item })
+
+        @*<a>
+                <img src="~/Images/file.png" />
+                <span>@item.Split('\\')[item.Split('\\').Length - 1]</span>
+            </a>*@
+    }
+
+    <div>
+        @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
+        {
+            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+            <input type="text" name="dirName" id="dirName" />
+            <button type="submit">Créer le Dossier</button>
+        }
+
+    </div>
+    <div>
+        @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            //@Html.AntiForgeryToken();
+            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+            <input type="file" name="myFile" id="myFile" />
+            <button type="submit">Déposer le fichier</button>
+        }
+    </div>
+
+}
+
