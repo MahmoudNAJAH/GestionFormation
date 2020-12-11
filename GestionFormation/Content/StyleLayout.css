@@ -12,13 +12,15 @@ body {
 }
 
 .navbar-fixed-top {
-    background-color: brown
+    background-color: 
 }
 
 .navbar-nav {
-    color: red
+    color: black;
+        
 }
 
 .basdepage {
     margin-left: 45%
 }
+
