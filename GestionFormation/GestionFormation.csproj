@@ -361,6 +361,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Saves\1\mes1-presence-tanguy.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -404,7 +405,6 @@
     <Content Include="Views\Apprenant\Chat.cshtml" />
     <Content Include="Views\Shared\_ChatConnected.cshtml" />
     <Content Include="Views\PartageFichier\Index.cshtml" />
-    <Content Include="Views\PartageFichier\Details.cshtml" />
     <Content Include="Views\Shared\_vue1.cshtml" />
     <Content Include="Views\Apprenant\feuillePresence.cshtml" />
     <Content Include="Views\Apprenant\Create.cshtml" />
@@ -415,7 +415,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Saves\" />
+    <Folder Include="Saves\1\OnCreerUnDossier\NvDossier2\" />
+    <Folder Include="Saves\1\OnCreerUnDossier\NvDossier3\" />
+    <Folder Include="Saves\1\OnCreerUnDossier\NvDossier\" />
+    <Folder Include="Saves\1\Test\OnCheck\ontest\" />
+    <Folder Include="Saves\1\Test\UnNouveauDossier\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>
   <ItemGroup>

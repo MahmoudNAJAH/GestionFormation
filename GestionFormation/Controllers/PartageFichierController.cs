@@ -81,8 +81,8 @@ namespace GestionFormation.Controllers
 
         public FileResult Download(string fileName)
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(fileName);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName.Split('\\')[fileName.Split('\\').Length - 1]);
+            byte[] fileBytes = System.IO.File.ReadAllBytes(GetFullPath(fileName));
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
         private string GetFullPath(string dir)
