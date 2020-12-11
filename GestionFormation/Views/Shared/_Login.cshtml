@@ -17,6 +17,7 @@
         <h3 classe="title">Connectez vous</h3>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Role)
 
 
         <div class="col-md-10">
