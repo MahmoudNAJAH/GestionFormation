@@ -77,7 +77,7 @@ namespace GestionFormation.Controllers
             //Session.Clear();
             Session.Abandon();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Authentification");
         }
 
 
