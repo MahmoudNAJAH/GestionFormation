@@ -1,0 +1,75 @@
+﻿@model GestionFormation.DTO.UserDTO
+
+@{
+    ViewBag.Title = "Feuille de présence ";
+}
+
+
+<img src="~/Images/image1.PNG" alt="logo Dawan" />
+<h6 class="titre">
+    Feuille de Présence
+    <br />
+    <strong>Semaine de formation</strong>
+    <br />
+    @ViewData["date1"] au  @ViewData["date2"]
+    <br />
+    <strong>n° de la semaine </strong>@((ViewData["date"]))
+
+</h6>
+<link rel="stylesheet" href="~/Content/FichePresencestyle.css">
+<h3>
+    @*Nom de la Formation*@
+    <br />
+    <br />
+    <br />
+    @ViewBag.Message2
+</h3>
+@using (Html.BeginForm("PrintFPresence", "Apprenant", FormMethod.Post))
+{
+    <form>
+        <div>
+            <br />
+            <br />
+            <br />
+            <h4 class="identifiant">
+                Nom et Prenom du stagiaire:
+                @*@Html.DisplayNameFor(model => model.Nom)*@
+                @*@Html.DisplayNameFor(model => model.Prenom)*@
+                @Html.DisplayFor(model => model.Nom)
+                @Html.DisplayFor(model => model.Prenom)
+            </h4>
+            <br />
+            <h4>
+                @Html.DisplayNameFor(model => model.Email):
+                @Html.DisplayFor(model => model.Email)
+            </h4>
+
+            <br />
+
+            <h4>
+                Formateur: @ViewBag.Message   @ViewBag.Message1
+            </h4>
+            <br />
+            <h4>
+                @Html.DisplayNameFor(model => model.nbre)
+                @Html.TextBoxFor(model => model.nbre)
+            </h4>
+
+            <br />
+            <h5>
+                <strong>Cursus</strong>
+                @ViewBag.Message3
+            </h5>
+            <h4 class="signature">
+                signature
+
+            </h4>
+            <br />
+        </div>
+        <div class="boutton">
+            <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
+        </div>
+    </form>
+
+
+}

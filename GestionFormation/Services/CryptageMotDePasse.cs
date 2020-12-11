@@ -18,8 +18,9 @@ namespace GestionFormation.Services
             }
             public CryptageMotDePasse(byte[] hashBytes)
             {
-                Array.Copy(hashBytes, 0, _salt = new byte[SaltSize], 0, SaltSize);
-                Array.Copy(hashBytes, SaltSize, _hash = new byte[HashSize], 0, HashSize);
+                Array.Copy(hashBytes, 0, _salt = new byte[SaltSize],0, SaltSize);
+                
+            Array.Copy(hashBytes, SaltSize, _hash = new byte[HashSize], 0, HashSize);
             }
             public CryptageMotDePasse(byte[] salt, byte[] hash)
             {

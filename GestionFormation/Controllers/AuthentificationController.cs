@@ -30,39 +30,47 @@ namespace GestionFormation.Controllers
             UserDTO user = new UserDTO { Role = p.Role };
 
             user.GetUserFromEmail(p.Email);
-                        
+
             // ici j'ai recupéréer l'apprenant qui corresspond au mem mail et password entré dans la 
             //fonction Login
 
-            //CryptageMotDePasse hash2 = new CryptageMotDePasse(p.MotDePasse);
-            //byte[] hashBytes2 = hash2.ToArray();
-
-            //Apprenant apprenant = new Apprenant();
-            //apprenant.MotDePasse = hashBytes2;
-            //ApprenantDAO.Create(apprenant);
-            if (user.MotDePasse != null )
+            
+            try
             {
-                //session =  propriété du controleur
-                // elle spécifique à un utilisateur qur un navigateur (stocké coté serveur)
-                //Donc Pas partagé entre les utilisateurs 
+                if (user.MotDePasse != null)
+                {
+                    //session =  propriété du controleur
+                    // elle spécifique à un utilisateur qur un navigateur (stocké coté serveur)
+                    //Donc Pas partagé entre les utilisateurs 
 
-                byte[] hashBytes = user.MotDePasse;//read from store.
-                CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
 
-                if (!hash.Verify(p.MotDePasse))
-                    throw new System.UnauthorizedAccessException();
+                    byte[] hashBytes = user.MotDePasse;//read from store.
+                    CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+                    if (hash.Verify(p.MotDePasse))
+                    {
+                        Session.Add("userConnected", user);
 
-                Session.Add("userConnected", user);
+                        if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
+                        else return RedirectToAction("Index", "Home");
+                    }
 
-                if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
-                else RedirectToAction("Index", "Home");
+
+                    else
+                    {
+                       
+                        ViewBag.Message = "Erreur de connexion ";
+                    }
+                    ViewBag.Referer = referer;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ViewBag.Message = "Erreur de connexion ";
+                Console.WriteLine(ex.Message); 
             }
-            ViewBag.Referer = referer;
-            return RedirectToAction("Index", "Home");
+
+
+
+            return View(p);
         }
 
 
@@ -77,7 +85,7 @@ namespace GestionFormation.Controllers
             //Session.Clear();
             Session.Abandon();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Authentification");
         }
 
 

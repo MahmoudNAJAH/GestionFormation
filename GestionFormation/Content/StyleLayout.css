@@ -1,0 +1,26 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.navbar-fixed-top {
+    background-color: 
+}
+
+.navbar-nav {
+    color: black;
+        
+}
+
+.basdepage {
+    margin-left: 45%
+}
+

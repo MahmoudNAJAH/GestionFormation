@@ -4,40 +4,81 @@ body {
 }
 
 body {
-    display: -ms-flexbox;
-    display: flex;
     -ms-flex-align: center;
     align-items: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
     background-color: #f5f5f5;
 }
 
-
-
-/*.div1 input[type="image"] {
-    
-    padding: 0;
-    margin-left: 50px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}*/
-
-
-
-
-img.mb-4 {
-    display: inline-flex;
-    margin-top: 5px;
-    margin-left: 300px;
-    margin-right: auto;
-    align-items: center
+.header {
+    margin-top: -5%;
+    margin-left: -10%;
+    border: 3px solid black
 }
 
-div.images {
-    display: inline-flex;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center
+
+.menu {
+    margin-top: 3.5%;
+    padding: 5px;
+    margin-left: 7.5%;
+    height: 400px;
+    width: 900px
+}
+
+.p {
+    display: block;
+    background-color: burlywood;
+    border-style: solid;
+    border-radius: 25px;
+    border-color: #09C;
+    height: 150px;
+    width: 150px;
+}
+
+.p1 {
+    margin-left: 3%;
+    margin-top: 1%
+}
+
+
+
+.p2 {
+    margin-left: 28%;
+    margin-top: -17%
+}
+
+.p3 {
+    margin-left: 54%;
+    margin-top: -17%
+}
+
+.p4 {
+    margin-left: 80%;
+    margin-top: -17%
+}
+
+.p5 {
+    margin-left: 3%;
+    margin-top: 5%
+}
+
+.p6 {
+    margin-left: 28%;
+    margin-top: -17%
+}
+
+.p7 {
+    margin-left: 54%;
+    margin-top: -17%
+}
+
+.navbar-fixed-top {
+    display: none
+}
+
+
+.p8 {
+    margin-left: 80%;
+    margin-top: -17%
 }

@@ -18,7 +18,7 @@ namespace GestionFormation
 
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Authentification", action = "PageConnexionChoixRole", id = UrlParameter.Optional }
+                defaults: new { controller = "Authentification", action = "Login", id = UrlParameter.Optional }
             );
         }
     }
