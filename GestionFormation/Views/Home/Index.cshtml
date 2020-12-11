@@ -48,9 +48,6 @@
     @if (Session["userConnected"] != null)
     {
         <button class="p p8" onclick="location.href='@Url.Action("Index", "EmploiDuTemps")';return false;"><p><h3>Emploi du temps</h3></p></button>
-        @*<li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>*@
-        <i class="fas fa-power-off"></i>
-        @*<button class="fas fa-power-off" onclick="location.href='@Url.Action("Logout", "Authentification")';return false;"><p><h3>Se décoonecter</h3></p></button>*@
     }
 
 </div>
