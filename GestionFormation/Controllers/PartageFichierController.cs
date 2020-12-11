@@ -14,17 +14,18 @@ namespace GestionFormation.Controllers
     public class PartageFichierController : Controller
     {
         // GET: PartageFichier
-        public ActionResult Index()
+        public ActionResult Index(string dirPath = null)
         {
             //Model pour notre View()
-            List<SessionDeCursus_PartageFichier_Model> model = new List<SessionDeCursus_PartageFichier_Model>();
+            PartageFichierModel model = new PartageFichierModel();
+            model.listSessionCursus = new List<SessionDeCursus_PartageFichier_Model>();
 
             //L'utilisateur devra choisir la SessionDeCursus
             List<SessionDeCursus> listSessionDeCursus = ((UserDTO)Session["userConnected"]).GetSessionDeCursus();
 
             foreach (SessionDeCursus ses in listSessionDeCursus)
             {
-                model.Add(new SessionDeCursus_PartageFichier_Model
+                model.listSessionCursus.Add(new SessionDeCursus_PartageFichier_Model
                 {
                     Id = ses.SessionDeCursusId.ToString(),
                     Nom = ses.Cursus.Nom,
@@ -32,27 +33,24 @@ namespace GestionFormation.Controllers
                 }); ;
             }
 
+
+            if (dirPath != null) model.DirectoryModel = GetDirectoryModel(dirPath);
+
             //Dans le cas ou une seul SessionDeCursus, on pourrait rediriger dès maintenant vers le display du dossier
 
             return View(model);
         }
 
-        
+
         [HttpPost]
         public ActionResult Details(string dirPath)
         {
             string combinedPath = GetFullPath(dirPath);
 
+            //Pour les SessionDeCursus, si le dossier n'existe pas, on le créé
             if (!Directory.Exists(combinedPath)) Directory.CreateDirectory(combinedPath);
 
-            DirectoryModel model = new DirectoryModel();
-
-            model.DirPath = dirPath;
-            //item.Split('\\')[item.Split('\\').Length - 1]
-            foreach (string str in Directory.EnumerateDirectories(combinedPath)) model.Directories.Add(str.Split('\\')[str.Split('\\').Length - 1]);
-            foreach (string str in Directory.EnumerateFiles(combinedPath)) model.Files.Add(str.Split('\\')[str.Split('\\').Length - 1]);
-            //Ce sont tous des string
-            //On peut tout mettre dans un SortedSet pour les trier
+            DirectoryModel model = GetDirectoryModel(dirPath);
 
             return PartialView("_Details", model);
         }
@@ -67,7 +65,7 @@ namespace GestionFormation.Controllers
             Directory.CreateDirectory(Path.Combine(combinedPath, dirName));
 
             //Même si on a créé le dossier, on reste dans le dossier parent pour l'affichage
-            return RedirectToAction("Details", "PartageFichier", new { dirPath = combinedPath });
+            return RedirectToAction("Index", "PartageFichier", new { dirPath = combinedPath });
         }
 
         [HttpPost]
@@ -97,6 +95,19 @@ namespace GestionFormation.Controllers
             string combinedPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, relativePath);
 
             return combinedPath;
+        }
+
+        private DirectoryModel GetDirectoryModel(string dirPath)
+        {
+            DirectoryModel result = new DirectoryModel();
+
+            string combinedPath = GetFullPath(dirPath);
+
+            result.DirPath = dirPath;
+            foreach (string str in Directory.EnumerateDirectories(combinedPath)) result.Directories.Add(str.Split('\\')[str.Split('\\').Length - 1]);
+            foreach (string str in Directory.EnumerateFiles(combinedPath)) result.Files.Add(str.Split('\\')[str.Split('\\').Length - 1]);
+
+            return result;
         }
 
     }

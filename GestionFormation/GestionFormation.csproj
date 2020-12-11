@@ -195,6 +195,7 @@
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.Designer.cs">
       <DependentUpon>202012100942332_ajout de %27contenu%27 dans %27Message%27.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\PartageFichierModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

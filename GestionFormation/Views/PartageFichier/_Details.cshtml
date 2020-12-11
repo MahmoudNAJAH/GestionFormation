@@ -9,26 +9,10 @@
 
     foreach (var item in Model.Directories)
     {
-        @*@Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Details", new { dirPath = item })*@
-
-        @*@Ajax.ActionLink(
-                    item.Split('\\')[item.Split('\\').Length - 1],                      // texte à afficher
-                    "Details/" + $"{item}",                                             // Action
-                    "PartageFichier",                                                   // Controller
-
-                    // les options
-                    new AjaxOptions
-                    {
-                        UpdateTargetId = "Details",           // id de l'élément du DOM à modifier
-                        InsertionMode = InsertionMode.Replace,  // stratégie de remplissage de la cible du DOM
-                        HttpMethod = "GET"                      // Méthode HTTP
-                    }
-            )*@
-
-        <button onclick="RefreshDetails(@(Path.Combine(Model.DirPath,item)))" class="partageFichier-folder">
-            @*<img src="~/Images/folder.png" alt="" />*@
+        <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
+            <img src="~/Images/folder.png" alt="" class="image-folder"/>
             <span>@item</span>
-        </button>
+        </a>
     }
 
     foreach (var item in Model.Files)
@@ -41,15 +25,15 @@
             </a>*@
     }
 
+<div>
+    @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
+    {
+        <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+        <input type="text" name="dirName" id="dirName" />
+        <button type="submit">Créer le Dossier</button>
+    }
 
-    <div>
-        @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
-        {
-            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-            <input type="text" name="dirName" id="dirName" />
-            <button type="submit">Créer le Dossier</button>
-        }
-    </div>
+</div>
     <div>
         @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
@@ -61,10 +45,4 @@
     </div>
 
 }
-@*else
-    {
-        <div>
-            pas de répertoire
-        </div>
-    }*@
 

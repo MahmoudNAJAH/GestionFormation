@@ -1,6 +1,8 @@
 ﻿@using GestionFormation.Models
 
-@model IEnumerable<GestionFormation.Models.SessionDeCursus_PartageFichier_Model>
+@model GestionFormation.Models.PartageFichierModel
+
+@Styles.Render("~/Content/PartageFichier.css")
 
 <h2>Choississez La Session de Cursus pour laquelle vous voulez consulter/déposer un fichier</h2>
 
@@ -16,62 +18,23 @@
             });
         });
 
-        //function SessionCursus() {
-        //    fetch("/PartageFichier/Details?dirPath=" + $("#SessionCursus").val())
-        //        .then(function (response) {
-        //            // The API call was successful!
-        //            return response.text();
-        //        }).then(function (html) {
-        //            $("#Details").html(html);
-        //        }).catch(function (err) {
-        //            // There was an error
-        //            console.warn('Something went wrong.', err);
-        //        });
-        //};
-
-        //function RefreshDetails(dirPath) {
-        //        fetch("/PartageFichier/Details?dirPath=" + dirPath)
-        //            .then(function (response) {
-        //                // The API call was successful!
-        //                return response.text();
-        //            }).then(function (html) {
-        //                $("#Details").html(html);
-        //            }).catch(function (err) {
-        //                // There was an error
-        //                console.warn('Something went wrong.', err);
-        //            });
-        //};
-
         function SessionCursus() {
             const obj = {
                 dirPath: $("#SessionCursus").val(),
             }
 
-            const options = {
-                method: 'POST',
-                body: JSON.stringify(obj),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-
-            fetch("/PartageFichier/Details", options)
-                .then(function (response) {
-                    // The API call was successful!
-                    return response.text();
-                }).then(function (html) {
-                    $("#Details").html(html);
-                }).catch(function (err) {
-                    // There was an error
-                    console.warn('Something went wrong.', err);
-                });
+            GetDetails(obj);
         };
 
         function RefreshDetails(param) {
             const obj = {
-                dirPath: param,
+                dirpath: param,
             }
 
+            GetDetails(obj);
+        };
+
+        function GetDetails(obj) {
             const options = {
                 method: 'POST',
                 body: JSON.stringify(obj),
@@ -90,7 +53,7 @@
                     // There was an error
                     console.warn('Something went wrong.', err);
                 });
-        };
+        }
 
     </script>
 }
@@ -98,7 +61,7 @@
 <select name="SessionCursus" id="SessionCursus">
     <option value="">Sélectionnez votre Session de Cursus</option>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.listSessionCursus)
     {
         <option value="@item.Id"> @item.Nom </option>
     }
@@ -108,7 +71,7 @@
 
 <div id="Details">
     <!-- De base, le model de détail est vide car on a pas sélectionné de SessionDeCursus -->
-    @Html.Partial("_Details", new DirectoryModel())
+    @Html.Partial("_Details", Model.DirectoryModel)
 </div>
 
 
