@@ -280,37 +280,7 @@ namespace GestionFormation.Controllers
                         //if (aujourdhui <= FirstDayOfWeek && aujourdhui <= LastDayOfWeek)
                         //if (DateTraitement == FirstDayOfWeek || DateTraitement == FirstDayOfWeek.AddDays(1))
 
-        public ActionResult Chat()
-        {
-            Apprenant ap = ApprenantDAO.FindById(((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]).Id);
-
-            UserForChatDTO userForChat = new UserForChatDTO(ap);
-          
-
-
-           // return View(ap);
-           return View(userForChat);
-        }
-
-        [HttpPost]
-        public ActionResult ShowChat(UserForChatDTO userForChat)
-        {
-            
-            return View("Chat", userForChat);
-        }
-
-        // GET: Apprenant/Details/5
-        //public ActionResult Details(int id)
-        //{
-
-        //    return View((UserDTO)Session["userConnected"]);
-        //}
-
-        //// GET: Apprenant/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        
 
                         if (j.Formation.FormationId == SessionForm.Formation.FormationId && j.Formateur.FormateurId == SessionForm.Formateur.FormateurId)
                         {
@@ -413,6 +383,39 @@ namespace GestionFormation.Controllers
             //ici je dois renvoyer la lfeuille d'evaluation rempli
             return new ViewAsPdf("feuilleEvaluation", f);
         }
+
+
+        public ActionResult Chat()
+        {
+            Apprenant ap = ApprenantDAO.FindById(((UserDTO)System.Web.HttpContext.Current.Session["userConnected"]).Id);
+
+            UserForChatDTO userForChat = new UserForChatDTO(ap);
+
+
+
+            // return View(ap);
+            return View(userForChat);
+        }
+
+        [HttpPost]
+        public ActionResult ShowChat(UserForChatDTO userForChat)
+        {
+
+            return View("Chat", userForChat);
+        }
+
+        // GET: Apprenant/Details/5
+        //public ActionResult Details(int id)
+        //{
+
+        //    return View((UserDTO)Session["userConnected"]);
+        //}
+
+        //// GET: Apprenant/Create
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
     }
 }
