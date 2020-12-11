@@ -22,7 +22,7 @@ namespace GestionFormation.Controllers
     public class ApprenantController : Controller
     {
         // GET: Apprenant
-        public static UserDTO userconnected;
+        
         //public static  List<FicheEval> FeuilleEvaluation = new List<FicheEval>();
         static Calendar cal = new GregorianCalendar();
         public static string NomFormation;
@@ -42,11 +42,10 @@ namespace GestionFormation.Controllers
                 ViewBag.EmailMessage = TempData["emailMessage"];
             }
             // je dois afficher la page web get byID de web service
-            UserDTO ap = new UserDTO();
+            
 
 
-            ap = (UserDTO)Session["userConnected"];
-            userconnected = ap;
+           
             //(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)
 
 
@@ -58,7 +57,9 @@ namespace GestionFormation.Controllers
 
         public ActionResult feuillePresence()
         {
-
+            UserDTO ap = new UserDTO();
+            ap = (UserDTO)Session["userConnected"];
+            UserDTO   userconnected = ap;
             string NomFormateur;
             string PrenomFormateur;
            
@@ -148,6 +149,9 @@ namespace GestionFormation.Controllers
         [HttpPost]
         public ActionResult PrintFPresence(UserDTO f)
         {
+            UserDTO ap = new UserDTO();
+            ap = (UserDTO)Session["userConnected"];
+            UserDTO userconnected = ap;
             f = userconnected; 
            string NomFormateur;
             string PrenomFormateur;
@@ -236,6 +240,9 @@ namespace GestionFormation.Controllers
 
         public ActionResult feuilleEvaluation()
         {
+            UserDTO ap = new UserDTO();
+            ap = (UserDTO)Session["userConnected"];
+            UserDTO userconnected = ap;
 
             string NomFormateur;
             string PrenomFormateur; 
@@ -321,6 +328,9 @@ namespace GestionFormation.Controllers
 
         public ActionResult PrintEval(FicheEval f,string NomFormation)
         {
+            UserDTO ap = new UserDTO();
+            ap = (UserDTO)Session["userConnected"];
+            UserDTO userconnected = ap;
 
             string NomFormateur;
             string PrenomFormateur;
