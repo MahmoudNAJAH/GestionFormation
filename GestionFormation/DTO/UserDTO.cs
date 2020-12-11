@@ -4,6 +4,7 @@ using GestionFormation.Entities;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,6 +26,8 @@ namespace GestionFormation.DTO
 
         //Pour différencier Apprenant - Formateur - Admin
         public UserRole Role { get; set; }
+        [DisplayName("Nombre de jours d'abscence")]
+        public string nbre { get; set; }
 
         //On ne doit pas avoir d'utilisateur sans Role
         //Ou ca ferait rien ne fonctionnerait dans l'appli

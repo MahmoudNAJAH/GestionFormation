@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GestionFormation.DTO;
-using GestionFormation.Entities;
-using GestionFormation.Services;
+//using GestionFormation.DTO;
+//using GestionFormation.Entities;
+//using GestionFormation.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests_GestionFormation.DTO

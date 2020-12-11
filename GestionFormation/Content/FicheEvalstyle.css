@@ -1,0 +1,84 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  
+    
+}
+
+/* Set padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+h4 {
+    text-align: justify;
+    color: red;
+    text-decoration: underline;
+    width: 200px;
+
+    text-align: justify;
+    display: inline-block;
+    vertical-align: top;
+}
+.form-group1{
+
+    margin-top:100px; 
+}
+/*.form-group {
+    text-align:center; 
+}*/
+    .img {
+    position: absolute;
+    top: 30px;
+    left: 208px;
+}
+.titre {
+
+    margin-left:700px;
+    margin-top:-100px; 
+    margin-bottom:150px; 
+}
+.semaine {
+    margin: 10px -10px -60px 400px;
+    font-size: 16px;
+}
+
+.Apprenant{
+    color:blue;
+    font-size:16px; 
+    margin-top:10px; 
+    margin-bottom:-80px
+    
+}
+strong {
+    color: red;
+    
+}
+span{
+text-align:center;
+}
+h2 {
+    text-align: center;
+    margin-top:4px; 
+}
+.Evironement{
+    margin-top:50px; 
+    min-width:720px;
+    
+    
+}

@@ -70,6 +70,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -209,6 +212,8 @@
     <Compile Include="Models\SessionDeCursus_PartageFichier_Model.cs" />
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
+    <Compile Include="DTO\FicheEval.cs" />
+    <Compile Include="DTO\FichePresence.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
     <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -217,6 +222,7 @@
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\FormateurDAO.cs" />
     <Compile Include="DAO\SessionDeCursusDAO.cs" />
+    <Compile Include="DTO\Client.cs" />
     <Compile Include="DTO\EmailAEnvoyerDTO.cs" />
     <Compile Include="DTO\EmploiDuTempsDTO.cs" />
     <Compile Include="DTO\FormationDTO.cs" />
@@ -231,6 +237,7 @@
     <Compile Include="DTO\LoginDTO.cs" />
     <Compile Include="DTO\SessionDeFormationDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
+    <Compile Include="DTO\UserDTO2.cs" />
     <Compile Include="Entities\Admin.cs" />
     <Compile Include="Entities\Apprenant.cs" />
     <Compile Include="Entities\Chat.cs" />
@@ -296,6 +303,9 @@
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
     <Content Include="Content\StyleLayout.css" />
+    <Content Include="Content\FichePresencestyle.css" />
+    <Content Include="Content\FicheEvalstyle.css" />
+    <Content Include="Content\IndexApprenant.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -305,6 +315,10 @@
     <Content Include="Images\dawan.png" />
     <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
@@ -341,6 +355,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -385,6 +400,12 @@
     <Content Include="Views\Shared\_ChatConnected.cshtml" />
     <Content Include="Views\PartageFichier\Index.cshtml" />
     <Content Include="Views\PartageFichier\Details.cshtml" />
+    <Content Include="Views\Shared\_vue1.cshtml" />
+    <Content Include="Views\Apprenant\feuillePresence.cshtml" />
+    <Content Include="Views\Apprenant\Create.cshtml" />
+    <Content Include="Views\Apprenant\Details.cshtml" />
+    <Content Include="Views\Shared\_UserConnected.cshtml" />
+    <Content Include="Views\Apprenant\feuilleEvaluation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

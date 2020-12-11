@@ -2,6 +2,15 @@
 
 @Html.Partial("_Login", Model)
 
-@ViewBag.Message 
+
+@if (ViewBag.Message != null)
+{
+    @*<h4 class="@ViewBag.AlertVisibility text-center"><span class="glyphicon glyphicon-ok-sign"></span> @ViewBag.Message</h4>*@
+    <div class="errormsg  alert alert-danger">
+            @ViewBag.message
+        </div>
+}
+
+@*@ViewBag.Message*@
 
 
