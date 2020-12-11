@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionFormation.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -17,8 +18,20 @@ namespace GestionFormation.DTO
 
         [Required]
         [DisplayName("Mot de passe")]
-        
+
         [DataType(DataType.Password)]
         public string MotDePasse { get; set; }
+
+        public UserRole Role { get; set; }
+
+        public LoginDTO(UserRole Role)
+        {
+            this.Role = Role;
+        }
+
+        public LoginDTO()
+        {
+
+        }
     }
 }

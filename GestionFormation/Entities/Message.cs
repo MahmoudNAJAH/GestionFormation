@@ -10,5 +10,7 @@ namespace GestionFormation.Entities
         public int MessageId { get; set; }
         public DateTime DateDePublication { get; set; }
         public Apprenant Apprenant { get; set; }
+
+        public string Contenu { get; set; }
     }
 }

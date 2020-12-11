@@ -1,0 +1,21 @@
+﻿@model IEnumerable<GestionFormation.Models.SessionDeCursus_PartageFichier_Model>
+
+<h2>Choississez La Session de Cursus pour laquelle vous voulez consulter/déposer un fichier</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.ActionLink(item.Nom, "Details", new { dirPath = item.Id }) 
+    </td>
+</tr>
+}
+
+</table>

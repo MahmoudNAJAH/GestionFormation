@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
+using System.Data.Entity;
+
 
 namespace GestionFormation.DAO
 {
@@ -32,10 +34,25 @@ namespace GestionFormation.DAO
                 context.SaveChanges();
             }
         }
+
+        public static List<SessionDeCursus> GetSessionsDeCursus(Apprenant apprenant)
+        {
+            using (BDDContext context = new BDDContext())
+            {
+                  return context.Apprenants.Where(a => a.ApprenantId == apprenant.ApprenantId).SelectMany(a=> a.SessionDeCursus).Include(sdc => sdc.Cursus).Distinct().ToList();
+
+                //List<SessionDeCursus> lc = context.SessionDeCursus.Include(sdc => sdc.Cursus).Where(sdc => sdc.Apprenants.Exists(a => a.ApprenantId == apprenant.ApprenantId)).ToList();
+
+                //return lc;
+            }
+        }
+
         public static Apprenant FindById(int apprenantId)
         {
             using (BDDContext context = new BDDContext())
             {
+                context.Configuration.LazyLoadingEnabled = false;
+
                 return context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(ap => ap.ApprenantId == apprenantId);
             }
         }
@@ -87,7 +104,7 @@ namespace GestionFormation.DAO
 
         public static Apprenant FindByLgMD(string mail)
         {
-            using(BDDContext context = new BDDContext())
+            using (BDDContext context = new BDDContext())
             {
                 Apprenant ap = context.Apprenants.FirstOrDefault(a => a.Email == mail);
                 return (ap);
