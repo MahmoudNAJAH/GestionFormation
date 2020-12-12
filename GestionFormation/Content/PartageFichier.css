@@ -1,16 +1,40 @@
-﻿.partageFichier-fenetre {
+﻿#Details {
+    background-color: lightgreen;
+}
+
+.DataGrid {
+    border: 2px solid rgba(255, 0, 0, 0.5);
+}
+
+.CreateDirectory {
+    background-color: rgba(255, 0, 0, 0.5);
+    display: inline-block;
+    float: left;
+    padding-left: 25px;
+    padding-top: 3px;
+    width: 270px;
+    height: 30px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+}
+
+.FileDeposite{
+    display: inline-block;
+    float: right;
+}
+
+.partageFichier-fenetre {
     background-color: yellow;
     display: inline-block;
     width: 100px;
-    height: 100px;
+    min-height: 100px;
     justify-content: center;
     text-align: center;
+    word-wrap: break-word;
 }
 
 .icon-partageFichier {
     width: 70px;
 }
 
-#Details {
-    background-color: lightgreen;
-}
+

@@ -6,40 +6,49 @@
 {
     <h3>Liste des dossiers et fichier de cette SessionDeCursus</h3>
 
-
-    foreach (var item in Model.Directories)
-    {
-        <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
-            <img src="~/Images/folder.png" alt="" class="icon-partageFichier" />
-            <p>@item</p>
-        </a>
-    }
-
-    foreach (var item in Model.Files)
-    {
-        @Html.ActionLink(item, "Download", new { fileName = item })
-
-        @*<a href='@Url.Action("Download", "PartageFichier", new { fileName = item })' class="partageFichier-fenetre">
-                <img src="~/Images/file.png" />
-                <p>@item</p>
-            </a>*@
-
-
-        @*<a>
-                <img src="~/Images/file.png" />
-                <span>@item.Split('\\')[item.Split('\\').Length - 1]</span>
-            </a>*@
-    }
-
-    <div>
+    <div class="CreateDirectory">
         @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
         {
+            <button type="submit">Create</button>
             <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-            <input type="text" name="dirName" id="dirName" />
-            <button type="submit">Créer le Dossier</button>
+            <input type="text" name="dirName" id="dirName" value="Nouveau dossier ..." />
         }
 
     </div>
+
+    <div class="FileDeposit">
+        @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            //@Html.AntiForgeryToken();
+            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+            <input type="file" name="myFile" id="myFile" />
+            <button type="submit">Déposer le fichier</button>
+        }
+    </div>
+
+    <div class="DataGrid">
+
+        @foreach (var item in Model.Directories)
+        {
+            <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
+                <img src="~/Images/Img_PartageFichier/folder.png" alt="" class="icon-partageFichier" />
+                <p>@item</p>
+            </a>
+        }
+
+        @foreach (var item in Model.Files)
+        {
+
+            <a href='@Url.Action("Download", "PartageFichier", new { fileName = Path.Combine(Model.DirPath, item).Replace("\\", "\\\\") })' class="partageFichier-fenetre">
+                <img src="~/Images/Img_PartageFichier/file.png" class="icon-partageFichier" />
+                <p>@item</p>
+            </a>
+
+        }
+
+    </div>
+
+
     <div>
         @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
