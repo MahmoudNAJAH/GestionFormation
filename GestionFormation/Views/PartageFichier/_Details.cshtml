@@ -2,31 +2,61 @@
 
 @model GestionFormation.Models.DirectoryModel
 
+@*@(
+
+    ATTENTION Il faut le faire en JS sinon, on ne peut remonter que 1 dossier ......
+    (@Model.DirPath en c# n'est pas regénéré avec le js)
+
+        string[] table = Model.DirPath.Split('\\');     //Chaque dossier du chemin est dans une case du tableau
+        int longueur = table[table.Length - 1].Length;  //Le nombre de caractère dans le dernier dossier
+        int longeurDirPath = Model.DirPath.Length;      //Le nombre de caractère dans mon DirPath
+        //On veut le dirPath sans le dernier dossier
+        //on prend du caractère 0 jusqu'au dernier dossier
+        string prevDir = Model.DirPath.Substring(0, longeurDirPath - longueur - 1);     //On résonne en index => -1 
+
+    "RefreshDetails('@(Model.DirPath.Substring(0, Model.DirPath.Length - 1 - Model.DirPath.Split('\\')[Model.DirPath.Split('\\').Length - 1].Length).Replace("\\","\\\\"))')"
+    )*@
+
 @if (Model.DirPath != null)
 {
+
+
     <h3>Liste des dossiers et fichier de cette SessionDeCursus</h3>
 
-    <div class="CreateDirectory">
-        @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
-        {
-            <button type="submit">Create</button>
-            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-            <input type="text" name="dirName" id="dirName" value="Nouveau dossier ..." />
-        }
+    <div class="onglet-container">
+        <div class="previous-directory onglet">
 
+            <a onclick="RefreshDetails('@(Model.DirPath.Substring(0, Model.DirPath.Length - Model.DirPath.Split('\\')[Model.DirPath.Split('\\').Length - 1].Length).Replace("\\","\\\\"))')"
+               class="btn-partage-fichier btn-partage-fichier-previous">
+                <img src="~/Images/Img_PartageFichier/LeftArrow.png" alt="" class="btn-icon-arrow" />
+            </a>
+            <label class="directory-path-label">@Model.DirPath</label>
+        </div>
+
+        <div class="create-directory onglet">
+            @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
+            {
+                <button type="submit" class="btn-partage-fichier">Create</button>
+                <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+                <input type="text" name="dirName" id="dirName" value="Nouveau dossier ..." />
+            }
+
+        </div>
+
+        <div class="file-deposit onglet">
+            @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken();
+                <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
+                <input type="file" name="myFile" id="myFile" class="input-file" />
+                <button type="submit" class="btn-partage-fichier">Add</button>
+
+            }
+        </div>
     </div>
 
-    <div class="FileDeposit">
-        @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            //@Html.AntiForgeryToken();
-            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-            <input type="file" name="myFile" id="myFile" />
-            <button type="submit">Déposer le fichier</button>
-        }
-    </div>
 
-    <div class="DataGrid">
+    <div class="datagrid">
 
         @foreach (var item in Model.Directories)
         {
@@ -47,16 +77,4 @@
         }
 
     </div>
-
-
-    <div>
-        @using (Html.BeginForm("CreateFile", "PartageFichier", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            //@Html.AntiForgeryToken();
-            <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-            <input type="file" name="myFile" id="myFile" />
-            <button type="submit">Déposer le fichier</button>
-        }
-    </div>
-
 }

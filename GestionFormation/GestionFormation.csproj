@@ -322,6 +322,7 @@
     <Content Include="Images\Img_PartageFichier\csv.svg" />
     <Content Include="Images\Img_PartageFichier\file.png" />
     <Content Include="Images\Img_PartageFichier\folder.png" />
+    <Content Include="Images\Img_PartageFichier\LeftArrow.png" />
     <Content Include="Images\Img_PartageFichier\PDF_file_icon.svg" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />

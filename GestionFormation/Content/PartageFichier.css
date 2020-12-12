@@ -1,36 +1,83 @@
 ﻿#Details {
-    background-color: lightgreen;
+    /*background-color: lightgreen;*/
 }
 
-.DataGrid {
+.datagrid {
     border: 2px solid rgba(255, 0, 0, 0.5);
+    padding: 5px;
+    height: 620px;
+    overflow: auto;
 }
 
-.CreateDirectory {
+.onglet-container{
+    justify-content: space-between;
+}
+
+.onglet {
     background-color: rgba(255, 0, 0, 0.5);
     display: inline-block;
-    float: left;
-    padding-left: 25px;
-    padding-top: 3px;
-    width: 270px;
-    height: 30px;
+    height: 34px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
+    padding-left: 28px;
+    padding-top: 5px;
 }
 
-.FileDeposite{
+.previous-directory{
+    width: 250px;
+}
+
+.create-directory {
+    width: 270px;
+}
+
+.file-deposit {
+    width: 350px;
+}
+
+.btn-partage-fichier {
     display: inline-block;
-    float: right;
+    border: none;
+    background-color: #337ab7;
+    color: white;
+    height: 24px;
+    border-radius: 5px;
+}
+
+.btn-partage-fichier-previous{
+    width: 30px;
+}
+
+.btn-icon-arrow{
+    width: 30px;
+    transform: rotate(-90deg);
+    margin-top: -3px;
+    margin-left: -1px;
+}
+
+.directory-path-label {
+    background-color: white;
+    width: 150px;
+    height: 22px;
+    border: 1px solid black;
+    padding-left: 3px;
+    text-overflow: ellipsis;
+}
+
+.input-file {
+    display: inline-block;
+    float: left;
 }
 
 .partageFichier-fenetre {
     background-color: yellow;
     display: inline-block;
-    width: 100px;
-    min-height: 100px;
+    width: 120px;
+    min-height: 110px;
     justify-content: center;
-    text-align: center;
+    text-align: center; 
     word-wrap: break-word;
+    text-overflow: ellipsis;
 }
 
 .icon-partageFichier {

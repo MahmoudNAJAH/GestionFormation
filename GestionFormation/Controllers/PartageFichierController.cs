@@ -68,7 +68,7 @@ namespace GestionFormation.Controllers
         }
 
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult CreateFile(string dirPath, HttpPostedFileBase myFile)
         {
             string combinedPath = Path.Combine(GetFullPath(dirPath), Path.GetFileName(myFile.FileName));
