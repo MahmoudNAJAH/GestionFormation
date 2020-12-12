@@ -17,7 +17,7 @@
 
     foreach (var item in Model.Files)
     {
-        @Html.ActionLink(item.Split('\\')[item.Split('\\').Length - 1], "Download", new { fileName = item })
+        @Html.ActionLink(item, "Download", new { fileName = item })
 
         @*<a href='@Url.Action("Download", "PartageFichier", new { fileName = item })' class="partageFichier-fenetre">
                 <img src="~/Images/file.png" />

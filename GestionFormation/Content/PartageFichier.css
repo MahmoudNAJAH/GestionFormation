@@ -1,9 +1,16 @@
-﻿.partageFichier-folder {
-    background-color: green;
-    width: 50px;
-    height: 50px;
+﻿.partageFichier-fenetre {
+    background-color: yellow;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    justify-content: center;
+    text-align: center;
 }
 
-.image-folder{
-    width: 50px;
+.icon-partageFichier {
+    width: 70px;
+}
+
+#Details {
+    background-color: lightgreen;
 }
