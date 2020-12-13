@@ -45,38 +45,61 @@ namespace GestionFormation.Controllers
         public ActionResult Details(string dirPath)
         {
             string combinedPath = GetFullPath(dirPath);
-
             //Pour les SessionDeCursus, si le dossier n'existe pas, on le créé
             if (!Directory.Exists(combinedPath)) Directory.CreateDirectory(combinedPath);
 
-            DirectoryModel model = GetDirectoryModel(dirPath);
+            return PartialView("_Details", GetDirectoryModel(dirPath));
+        }
 
-            return PartialView("_Details", model);
+        //On utiise une fonction différente pour faire les calculs ici et non dans le js
+        [HttpPost]
+        public ActionResult PreviousFolder(string dirPath)
+        {
+            if (dirPath.Split('\\').Length > 1) //On ne doit pas pouvoir aller dans les dossier d'une autre session de cursus
+            {
+                string[] table = dirPath.Split('\\');               //Chaque dossier du chemin est dans une case du tableau
+                int longueur = table[table.Length - 1].Length;      //Le nombre de caractère dans le dernier dossier
+                int longeurDirPath = dirPath.Length;                //Le nombre de caractère dans mon DirPath
+                                                                    //On veut le dirPath sans le dernier dossier
+                                                                    //on prend du caractère 0 jusqu'au dernier dossier
+                dirPath = dirPath.Substring(0, longeurDirPath - longueur); //le -2 pour enlever les accolades
+
+                //Si on utilise le bouton à plusieurs reprise,
+                //Le dernier caractère est \\
+                //=> table[table.Length] == ""  => on ne change plus de folder
+                if (dirPath[dirPath.Length - 1] == '\\') dirPath = dirPath.Substring(0, dirPath.Length - 1);
+
+            }
+
+            string combinedPath = GetFullPath(dirPath); 
+            //Pour les SessionDeCursus, si le dossier n'existe pas, on le créé
+            if (!Directory.Exists(combinedPath)) Directory.CreateDirectory(combinedPath);
+
+            return PartialView("_Details", GetDirectoryModel(dirPath));
         }
 
         // GET: PartageFichier/Create
         public ActionResult CreateDirectory(string dirPath, string dirName)
         {
-            //On récupère le path du dossier parent
-            string combinedPath = GetFullPath(dirPath);
-
             //On créé le dossier ave
-            Directory.CreateDirectory(Path.Combine(combinedPath, dirName));
+            Directory.CreateDirectory(Path.Combine(GetFullPath(dirPath), dirName));
 
             //Même si on a créé le dossier, on reste dans le dossier parent pour l'affichage
-            return RedirectToAction("Index", "PartageFichier", new { dirPath = combinedPath });
+            return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult CreateFile(string dirPath, HttpPostedFileBase myFile)
         {
-            string combinedPath = Path.Combine(GetFullPath(dirPath), Path.GetFileName(myFile.FileName));
+            if(myFile != null)
+            {
+                string combinedPath = Path.Combine(GetFullPath(dirPath), Path.GetFileName(myFile.FileName));
 
-            // sauvegarde sur le serveur
-            myFile.SaveAs(combinedPath);
+                // sauvegarde sur le serveur
+                myFile.SaveAs(combinedPath);
+            }
 
-            return RedirectToAction("Index", "PartageFichier", new { dirPath = GetFullPath(dirPath) });
+            return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
         }
 
         public FileResult Download(string fileName)

@@ -4,11 +4,11 @@
 
 @Styles.Render("~/Content/PartageFichier.css")
 
-<h3>Choississez La Session de Cursus pour laquelle vous voulez consulter/déposer un fichier</h3>
-
 @section scripts
 {
     @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
+
+    @Scripts.Render("~/Scripts/dotdotdot-js-master/dist/dotdotdot.js")
 
     <script>
         $(document).ready(function () {
@@ -34,6 +34,31 @@
             GetDetails(obj);
         };
 
+        function PreviousFolder(param) {
+            const obj = {
+                dirPath: param,
+            }
+
+            const options = {
+                method: 'POST',
+                body: JSON.stringify(obj),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            fetch("/PartageFichier/PreviousFolder", options)
+                .then(function (response) {
+                    // The API call was successful!
+                    return response.text();
+                }).then(function (html) {
+                    $("#Details").html(html);
+                }).catch(function (err) {
+                    // There was an error
+                    console.warn('Something went wrong.', err);
+                });
+        }
+
         function GetDetails(obj) {
             const options = {
                 method: 'POST',
@@ -55,19 +80,46 @@
                 });
         }
 
+        //const DataGrid = document.getElementById('datagrid');
+        //DataGrid.onchange = () => {
+        //    document.getElementById("btn-file").disabled = true;
+        //}
+
+        //const fileInput = document.getElementById('myFile');
+        //fileInput.onchange = () => {
+        //    document.getElementById("btn-file").disabled = false;
+        //}
+
+        const datagrid = document.getElementById('Details');
+        datagrid.addEventListener("DOMContentLoaded", () => {
+            let wrapper = document.querySelector("#partage-fichier-icon-texte");
+            let options = {
+                callback: function (isTruncated) { },
+                ellipsis: "\u2026 ",
+                height: null,
+                keep: null,
+                tolerance: 0,
+                truncate: "word",
+                watch: "window",
+            };
+            new Dotdotdot(wrapper, options);
+        });
+
     </script>
 }
 
-<select name="SessionCursus" id="SessionCursus">
-    <option value="">Sélectionnez votre Session de Cursus</option>
+<div class="partage-fichier-header">
+    <p>Sélectionner la Session de Cursus</p>
 
-    @foreach (var item in Model.listSessionCursus)
-    {
-        <option value="@item.Id"> @item.Nom </option>
-    }
-</select>
+    <select name="SessionCursus" id="SessionCursus">
+        <option value="">Sélectionnez votre Session de Cursus</option>
 
-<br />
+        @foreach (var item in Model.listSessionCursus)
+        {
+            <option value="@item.Id"> @item.Nom </option>
+        }
+    </select>
+</div>
 
 <div id="Details">
     <!-- De base, le model de détail est vide car on a pas sélectionné de SessionDeCursus -->

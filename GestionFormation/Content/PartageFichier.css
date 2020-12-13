@@ -2,29 +2,60 @@
     /*background-color: lightgreen;*/
 }
 
+.container {
+    --color: rgba(255, 0, 0, 0.7);
+}
+
+.partage-fichier-header {
+    margin-top: 50px;
+    width: 700px;
+    height: 40px;
+    background-color: var(--color);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    vertical-align: central;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 7px;
+    margin-bottom: 40px;
+}
+
 .datagrid {
-    border: 2px solid rgba(255, 0, 0, 0.5);
+    border: 2px solid var(--color);
     padding: 5px;
     height: 620px;
     overflow: auto;
 }
 
-.onglet-container{
+.onglet-container {
+    display: flex;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
 .onglet {
-    background-color: rgba(255, 0, 0, 0.5);
-    display: inline-block;
+    background-color: var(--color);
     height: 34px;
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    padding-left: 28px;
-    padding-top: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding-top: 6px;
 }
 
-.previous-directory{
-    width: 250px;
+.onglet-padding {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.previous-directory {
+    width: 350px;
 }
 
 .create-directory {
@@ -44,24 +75,27 @@
     border-radius: 5px;
 }
 
-.btn-partage-fichier-previous{
+.btn-partage-fichier-previous {
     width: 30px;
 }
 
-.btn-icon-arrow{
+.btn-icon-arrow {
+    display: inline-block;
     width: 30px;
     transform: rotate(-90deg);
     margin-top: -3px;
-    margin-left: -1px;
 }
 
 .directory-path-label {
+    display: inline-block;
     background-color: white;
-    width: 150px;
+    width: 250px;
     height: 22px;
     border: 1px solid black;
     padding-left: 3px;
+    white-space: nowrap; /*Pour forcer le texte sur une seule ligne*/
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .input-file {
@@ -75,7 +109,7 @@
     width: 120px;
     min-height: 110px;
     justify-content: center;
-    text-align: center; 
+    text-align: center;
     word-wrap: break-word;
     text-overflow: ellipsis;
 }
@@ -84,4 +118,8 @@
     width: 70px;
 }
 
+.partage-fichier-icon-texte {
+    width: 120px;
+    height: 40px;
+}
 
