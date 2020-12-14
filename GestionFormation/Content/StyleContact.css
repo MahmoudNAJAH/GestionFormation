@@ -4,7 +4,7 @@
 }
 
 .contact-section {
-    background: url(/Images/pixnio-205867.jpg) no-repeat center;
+    background: url(/Images/background.jpg) no-repeat center;
     background-size: cover;
     padding: 140px 20px;
 }
@@ -24,7 +24,7 @@
 .contact-form {
     max-width: 600px;
     margin: auto;
-    margin-left: 37.5%;
+    margin-left: 30%;
     padding: 0 10px;
     overflow: hidden;
 }
@@ -60,7 +60,7 @@ textarea.contact-form-text {
     border-radius: 20px;
     cursor: pointer;
     transition: 0.5s;
-    margin-right: 62.5%
+    margin-right: 52.5%
 }
 
 .contact-form-btn:hover {
