@@ -30,6 +30,10 @@
     padding: 5px;
     height: 620px;
     overflow: auto;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .onglet-container {
@@ -104,17 +108,15 @@
 }
 
 .partageFichier-fenetre {
+    margin: 2px;
     display: inline-block;
     width: 120px;
-    min-height: 110px;
-    justify-content: center;
+    height: 110px;
     text-align: center;
-    word-wrap: break-word;
-    text-overflow: ellipsis;
 }
 
 .icon-partageFichier {
-    width: 70px;
+    height: 70px;
 }
 
 .partage-fichier-icon-texte {

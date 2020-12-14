@@ -217,6 +217,7 @@
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
     <Compile Include="DTO\FicheEval.cs" />
     <Compile Include="DTO\FichePresence.cs" />
+    <Compile Include="Services\PartageFichierService.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
     <Compile Include="Controllers\EmploiDuTempsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -320,12 +321,12 @@
     <Content Include="Images\folder.png" />
     <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
-    <Content Include="Images\Img_PartageFichier\104647.png" />
-    <Content Include="Images\Img_PartageFichier\csv.svg" />
+    <Content Include="Images\Img_PartageFichier\csv.png" />
+    <Content Include="Images\Img_PartageFichier\pdf.png" />
+    <Content Include="Images\Img_PartageFichier\txt.png" />
     <Content Include="Images\Img_PartageFichier\file.png" />
     <Content Include="Images\Img_PartageFichier\folder.png" />
     <Content Include="Images\Img_PartageFichier\LeftArrow.png" />
-    <Content Include="Images\Img_PartageFichier\PDF_file_icon.svg" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />
