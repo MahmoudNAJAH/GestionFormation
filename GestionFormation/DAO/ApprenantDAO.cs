@@ -102,6 +102,10 @@ namespace GestionFormation.DAO
         {
             using (BDDContext context = new BDDContext())
             {
+                
+                Message mes = new Message();
+               mes= context.Messages.Find(context.Messages.FirstOrDefault(m => m.Apprenant.ApprenantId == id));
+                context.Messages.Remove(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
                 context.Apprenants.Remove(context.Apprenants.FirstOrDefault(app => app.ApprenantId == id));
                 context.SaveChanges();
             }

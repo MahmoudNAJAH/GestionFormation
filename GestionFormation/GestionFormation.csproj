@@ -283,6 +283,7 @@
     <Compile Include="WebServices\AdminController.cs" />
     <Compile Include="WebServices\ApprenantAPIController.cs" />
     <Compile Include="WebServices\FormationAPIController.cs" />
+    <Compile Include="WebServices\PasswordController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

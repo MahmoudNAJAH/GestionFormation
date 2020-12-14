@@ -1,4 +1,5 @@
-﻿using GestionFormation.Entities;
+﻿using GestionFormation.DAO;
+using GestionFormation.Entities;
 using GestionFormation.Services;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,13 @@ namespace GestionFormation.WebServices
         // DELETE: api/CursusAPI/5
         public void Delete(int id)
         {
+            using (BDDContext context = new BDDContext())
+            {
+                
+                
+                context.Cursus.Remove(context.Cursus.FirstOrDefault(m => m.CursusId == id));
+                context.SaveChanges(); 
+            }
         }
     }
 }

@@ -92,19 +92,26 @@ namespace GestionFormation.WebServices
 
             }
 
-
-
-
-
-
-
-
         }
 
         // DELETE: api/ApprenantAPI/5
         public void Delete(int id)
         {
-            ApprenantDAO.Delete(id); 
+          
+            using (BDDContext context = new BDDContext())
+            {
+              
+
+                context.Messages.Remove(context.Messages.FirstOrDefault(m=>m.Apprenant.ApprenantId==id));
+                context.SaveChanges();
+                context.Apprenants.Remove(context.Apprenants.FirstOrDefault(k => k.ApprenantId == id));
+                context.SaveChanges();
+
+            }
+           
         }
+     
+
+       
     }
 }
