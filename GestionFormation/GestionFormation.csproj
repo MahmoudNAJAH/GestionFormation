@@ -335,6 +335,7 @@
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Images\send-file.png" />
     <Content Include="Images\file.png" />
+    <Content Include="Saves\1\OnCreerUnDossie\31087.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
@@ -378,6 +379,12 @@
     <Content Include="Scripts\dotdotdot-js-master\package.json" />
     <Content Include="Scripts\dotdotdot-js-master\README.md" />
     <Content Include="Scripts\dotdotdot-js-master\tsconfig.json" />
+    <Content Include="Saves\1\OnCreerUnDossi\mes1-presence-tanguy.pdf" />
+    <Content Include="Saves\1\OnCreerUnDossi\tanguy.pdf" />
+    <Content Include="Saves\1\OnCreerUnDossie\mes1-presence-tanguy.pdf" />
+    <Content Include="Saves\1\OnCreerUnDossie\tanguy.pdf" />
+    <Content Include="Saves\1\Test499\mes1-presence-tanguy.pdf" />
+    <Content Include="Saves\1\tanguy.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\dotdotdot-js-master\.gitignore" />
     <Content Include="Scripts\dotdotdot-js-master\dist\dotdotdot.es6.js" />
@@ -439,11 +446,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Saves\1\AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\" />
+    <Folder Include="Saves\1\EncoreUnTest\" />
+    <Folder Include="Saves\1\Etencore1\" />
+    <Folder Include="Saves\1\jpp\nouveau Test\" />
+    <Folder Include="Saves\1\jpp\test\" />
+    <Folder Include="Saves\1\Nouveau dossier\" />
+    <Folder Include="Saves\1\Nouveau Test\" />
     <Folder Include="Saves\1\OnCreerUnDossier\NvDossier2\" />
     <Folder Include="Saves\1\OnCreerUnDossier\NvDossier3\" />
     <Folder Include="Saves\1\OnCreerUnDossier\NvDossier\" />
+    <Folder Include="Saves\1\OnTestAvecUnNomVraimentTreLongPourVoirCeQueCaFait\" />
     <Folder Include="Saves\1\Test\OnCheck\ontest\" />
     <Folder Include="Saves\1\Test\UnNouveauDossier\" />
+    <Folder Include="Saves\1\Tes\" />
+    <Folder Include="Saves\1\_PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP\" />
     <Folder Include="Views\Email\" />
   </ItemGroup>
   <ItemGroup>

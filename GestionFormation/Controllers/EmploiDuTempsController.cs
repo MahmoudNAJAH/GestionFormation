@@ -19,7 +19,7 @@ namespace GestionFormation.Controllers
             UserDTO user = (UserDTO)System.Web.HttpContext.Current.Session["userConnected"];
 
             //On charge toutes l'EDT pour la Session si besoin
-            if (System.Web.HttpContext.Current.Session["EDT"] == null)
+            if (System.Web.HttpContext.Current.Session["EDT"] == null && user != null)
                 System.Web.HttpContext.Current.Session.Add("EDT", new EmploiDuTempsDTO(user));
         }
 
