@@ -10,7 +10,7 @@
             <input type="text" class="contact-form-text" placeholder="votre nom" />
             <input type="text" class="contact-form-text" placeholder="Votre prénom" />
             <input type="email" class="contact-form-text" placeholder="Votre adresse mail" />
-            <input type="tel" class="contact-form-text" placeholder="Votre numéro de téléphone" />
+
         }
 
         @if (Session["userConnected"] != null)
@@ -20,10 +20,16 @@
             <input type="email" class="contact-form-text" value="@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)" />
         }
 
+        <input type="tel" class="contact-form-text" placeholder="Votre numéro de téléphone" />
+        <select class="contact-form-text">
+            <option selected>Sélectionner le service à contacter</option>
+            <option >Service commercial</option>
+            <option >Administration</option>
+            <option >Réclamations</option>
+        </select>
 
+        <textarea cols="30" rows="10" class="contact-form-text" placeholder="Votre message"></textarea>
 
-
-        <textarea  cols="30" rows="10" class="contact-form-text" placeholder="Votre message"></textarea>
         <input type="button" class="btn btn-default btn-primary envoyer" value="Envoyer" />
 
     </form>

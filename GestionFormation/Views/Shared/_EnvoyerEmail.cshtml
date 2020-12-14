@@ -1,7 +1,7 @@
 ﻿@model GestionFormation.DTO.EmailAEnvoyerDTO
 
 
-@using (Html.BeginForm("Envoyer", "Email", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Envoyer", "Email", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
