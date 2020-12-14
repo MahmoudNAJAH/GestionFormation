@@ -286,6 +286,7 @@
     <Compile Include="WebServices\AdminController.cs" />
     <Compile Include="WebServices\ApprenantAPIController.cs" />
     <Compile Include="WebServices\FormationAPIController.cs" />
+    <Compile Include="WebServices\PasswordController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -307,6 +308,7 @@
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
     <Content Include="Content\PartageFichier.css" />
+    <Content Include="Content\StyleContact.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="Content\FichePresencestyle.css" />
     <Content Include="Content\FicheEvalstyle.css" />

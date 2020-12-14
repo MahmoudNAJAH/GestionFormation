@@ -1,74 +1,102 @@
-﻿@model IEnumerable<GestionFormation.DTO.UserDTOAPI>
-<br />
-<br />
-<img src="~/Images/image1.PNG" alt="logo Dawan" />
-<h2>Bienvenue chez Dawan !!</h2>
-
-
-@{
+﻿@{
     ViewBag.Title = "Index";
     GestionFormation.DTO.EmailAEnvoyerDTO emailAEnvoyerDTO = ViewBag.emailAEnvoyerDTO != null ? ViewBag.emailAEnvoyerDTO : new GestionFormation.DTO.EmailAEnvoyerDTO(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Id);
 
 }
-
-
-<p>
-    @Html.ActionLink("Imprimer ma feuille de présence ", "feuillePresence")
-</p>
-
-<p>
-    
-    @Html.ActionLink(" feuille d'évaluation  ", "feuilleEvaluation")
-</p>
 <link rel="stylesheet" href="~/Content/IndexApprenant.css">
+<br />
+<br />
+<div class="text-center">
+    <img src="~/Images/image1.PNG" alt="logo Dawan" />
+    <h2>
+        Bienvenue @(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom) @(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom) !
+    </h2>
+</div>
+
+<div class="menu-all">
+    <div class="menu col-md-6">
+        <div>
+            <a role="button" onclick="location.href='@Url.Action("Index", "EmploiDuTemps")';return false;">
+                <div class="panel panel-default p">
+                    <h3>
+                        Emploi du temps
+                    </h3>
+                </div>
+            </a>
+        </div>
+
+        <div>
+            <a role="button" onclick="location.href='@Url.Action("Index", "PartageFichier")';return false;">
+                <div class="panel panel-default p">
+                    <h3>
+                        Partage de fichier
+                    </h3>
 
 
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th scope="col">
-                @Html.DisplayNameFor(model => model.Prenom)
-            </th>
-            <th scope="col">
+                </div>
+            </a>
+        </div>
+        <div>
+            <a role="button" onclick="window.open('@Url.Action("Chat", "Apprenant")','popup','width=600,height=800,scrollbars=no,resizable=no,titlebar=no,toolbar=no'); return false;">
+                <div class="panel panel-default p">
+                    <h3>
+                        Chat
+                    </h3>
+                    <h5>
+                        Ouvrira une pop up
+                    </h5>
 
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
+                </div>
+            </a>
+        </div>
+        <div>
+            <a role="button" onclick="location.href='@Url.Action("Logout", "Authentification")';return false;">
+                <div class="panel panel-default p">
+                    <h3>
+                        Deconnexion
+                    </h3>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="panel-group col-md-6 accordeon-panel" id="accordion" role="tablist" aria-multiselectable="true">
 
+        <div class="panel panel-invisible ">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="panel-heading p" role="tab" id="headingTwo">
+                    <h3>
+                        Imprimer un document
+                    </h3>
+                </div>
+            </a>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body panel-body-white">
+                    <button class="p bw" onclick="location.href='@Url.Action("feuillePresence", "Apprenant")';return false;"><h5>Feuille de présence</h5></button>
 
-        </tr>
-    </thead>
-    <tr>
+                    <button class="p bw" onclick="location.href='@Url.Action("feuilleEvaluation", "Apprenant")';return false;"><h5>Feuille d'évaluation</h5></button>
+                </div>
+            </div>
+        </div>
 
-        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)</td>
-        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)</td>
-
-        <td>@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)</td>
-
-
-    </tr>
-
-</table>
-
-@* BlOC POUR ENVOYER DES EMAIL *@
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseBlockEmail" aria-expanded="false" aria-controls="collapseBlockEmail">
-    Ouvrir/Fermer envoi Email
-</button>
-</p>
-<div class="collapse" id="collapseBlockEmail">
-    <div class="card card-body">
-        @Html.Partial("_EnvoyerEmail", emailAEnvoyerDTO)
+        <div class="panel panel-invisible col-md-12">
+            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <div class="panel-heading p" role="tab" id="headingOne">
+                    <h3>
+                        Envoyer un mail
+                    </h3>
+                </div>
+            </a>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body panel-body-white">
+                    @Html.Partial("_EnvoyerEmail", emailAEnvoyerDTO)
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-@* BLOC POUR LANCER LA MESSAGERIE DANS UNE AUTRE FENETRE ???????????*@
-@Html.ActionLink("Ouvrir une fenetre de chat", "Chat", new { controller = "Apprenant" }, new { target = "_blank" })
-<br/>
-<a href="https://localhost:44326/Apprenant/Chat"
-   target="popup"
-   onclick="window.open('https://localhost:44326/Apprenant/Chat','popup','width=600,height=800,scrollbars=no,resizable=no,titlebar=no,toolbar=no'); return false;">
-    Open Link in Popup
-</a>
+<div class="row col-md-12"></div>
+
+
+
 
