@@ -41,17 +41,7 @@ namespace GestionFormation.Controllers
             {
                 ViewBag.EmailMessage = TempData["emailMessage"];
             }
-            // je dois afficher la page web get byID de web service
-            
-
-
-           
-            //(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)
-
-
-            // (((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)
-
-
+     
             return View();
         }
 
@@ -146,8 +136,9 @@ namespace GestionFormation.Controllers
         }
 
         [HttpPost]
-        public ActionResult PrintFPresence(UserDTO f)
+        public ActionResult PrintFPresence(UserDTO f  )
         {
+        
             UserDTO ap = new UserDTO();
             ap = (UserDTO)Session["userConnected"];
             UserDTO userconnected = ap;
@@ -274,6 +265,7 @@ namespace GestionFormation.Controllers
             EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
             List<JourneeDTO> Mesformations = emploi.ListDates;
             DateTime aujourdhui = DateTime.Now;
+
 
             foreach (JourneeDTO j in Mesformations)
             {

@@ -19,8 +19,9 @@ strong{
     font-size:16px; 
 }
 .boutton {
-    margin-top: 400px;
-    margin-bottom: 0px;
+    margin-top: 150px;
+    /*visibility:hidden; */
+    /*margin-bottom: 0px;*/
     
 }
 h3 {
@@ -33,4 +34,7 @@ h3 {
 }
 .identifiant{
     /*background-color:aqua;  */
+}
+.navbar{
+    display:none; 
 }
