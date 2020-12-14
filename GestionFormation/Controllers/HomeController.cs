@@ -24,7 +24,7 @@ namespace GestionFormation.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contactez-nous";
 
             return View();
         }

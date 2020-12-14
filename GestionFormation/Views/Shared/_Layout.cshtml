@@ -33,18 +33,13 @@
                     <li>@Html.ActionLink("Formations", "Index", "Formation")</li>
                     <li>@Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")</li>
                     <li>@Html.ActionLink("Apprenant", "Index", "Apprenant")</li>
-                    
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-
-
-
-
 
                     @if (Session["userConnected"] != null)
                     {
-                        <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
                         <li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
                         <li>@Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")</li>
+                        <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
                     }
                 </ul>
             </div>
@@ -54,9 +49,11 @@
         @RenderBody()
         <hr />
         <footer class="basdepage">
-            <p>&copy; 2000-@DateTime.Now.Year - DAWAN</p>
+            <p>&copy; @DateTime.Now.Year - DAWAN</p>
         </footer>
     </div>
+    <div id="boxscroll2" style="overflow: auto; position: relative;" tabindex="5001"></div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

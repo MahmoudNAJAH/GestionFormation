@@ -1,17 +1,34 @@
-﻿@{
-    ViewBag.Title = "Contact";
-}
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+﻿
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+@model GestionFormation.DTO.UserDTO
+<link rel="stylesheet" href="~/Content/StyleContact.css" />
+<div class="contact-section">
+    <h1> Contactez-nous</h1>
+    <form class="contact-form">
+        @if (Session["userConnected"] == null)
+        {
+            <input type="text" class="contact-form-text" placeholder="votre nom" />
+            <input type="text" class="contact-form-text" placeholder="Votre prénom" />
+            <input type="email" class="contact-form-text" placeholder="Votre adresse mail" />
+            <input type="tel" class="contact-form-text" placeholder="Votre numéro de téléphone" />
+        }
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        @if (Session["userConnected"] != null)
+        {
+            <input type="text" class="contact-form-text" value="@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Nom)" />
+            <input type="text" class="contact-form-text" value="@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Prenom)" />
+            <input type="email" class="contact-form-text" value="@(((GestionFormation.DTO.UserDTO)Session["userConnected"]).Email)" />
+        }
+
+
+
+
+        <textarea  cols="30" rows="10" class="contact-form-text" placeholder="Votre message"></textarea>
+        <input type="button" class="btn btn-default btn-primary envoyer" value="Envoyer" />
+
+    </form>
+</div>
+@*<address class="adresses">
+        <strong>Service commercial :</strong><a href="mailto:commercial@dawan.fr" target="outlook">Commercial@dawan.fr</a><br />
+        <strong>Direction :</strong> <a href="mailto:direction@dawan.fr">Direction@dawan.fr</a>
+    </address>*@

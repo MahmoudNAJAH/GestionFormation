@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<GestionFormation.DTO.UserDTOAPI>
 <br />
 <br />
-<img src="~/Images/image1.PNG" alt="logo Dawan" />
-<h2>Bienvenue chez Dawan !!</h2>
+
+
 
 
 @{
@@ -12,19 +12,13 @@
 }
 
 
-<p>
-    @Html.ActionLink("Imprimer ma feuille de présence ", "feuillePresence")
-</p>
 
-<p>
-    
-    @Html.ActionLink(" feuille d'évaluation  ", "feuilleEvaluation")
-</p>
 <link rel="stylesheet" href="~/Content/IndexApprenant.css">
 
 
 <table class="table">
     <thead class="thead-dark">
+        <h2 class="texteprofil">Votre profil</h2>
         <tr>
             <th scope="col">
                 @Html.DisplayNameFor(model => model.Nom)
@@ -63,9 +57,18 @@
     </div>
 </div>
 
+<p>
+    @Html.ActionLink("Imprimer ma feuille de présence ", "feuillePresence")
+</p>
+
+<p>
+
+    @Html.ActionLink(" feuille d'évaluation  ", "feuilleEvaluation")
+</p>
+
 @* BLOC POUR LANCER LA MESSAGERIE DANS UNE AUTRE FENETRE ???????????*@
 @Html.ActionLink("Ouvrir une fenetre de chat", "Chat", new { controller = "Apprenant" }, new { target = "_blank" })
-<br/>
+<br />
 <a href="https://localhost:44326/Apprenant/Chat"
    target="popup"
    onclick="window.open('https://localhost:44326/Apprenant/Chat','popup','width=600,height=800,scrollbars=no,resizable=no,titlebar=no,toolbar=no'); return false;">
