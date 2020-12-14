@@ -53,6 +53,10 @@
                     return response.text();
                 }).then(function (html) {
                     $("#Details").html(html);
+                    return $("#Details");
+                }).then(function (html) {
+                    GetDotDotDot();
+                    GetImageSrc();
                 }).catch(function (err) {
                     // There was an error
                     console.warn('Something went wrong.', err);
@@ -74,36 +78,56 @@
                     return response.text();
                 }).then(function (html) {
                     $("#Details").html(html);
-                }).catch(function (err) {
+                    return $("#Details");
+                }).then(function (html) {
+                    GetDotDotDot();
+                    GetImageSrc();
+                })
+                .catch(function (err) {
                     // There was an error
                     console.warn('Something went wrong.', err);
                 });
         }
 
-        //const DataGrid = document.getElementById('datagrid');
-        //DataGrid.onchange = () => {
-        //    document.getElementById("btn-file").disabled = true;
-        //}
+        function GetImageSrc() {
+            let images = document.querySelectorAll(".icon-partageFichier-file");
+            images.forEach(function (img) {
+                switch (img.name) {
+                    case 'txt':
+                        img.src = "/Images/Img_PartageFichier/txt.png";
+                        break;
+                    case 'pdf':
+                        img.src = "/Images/Img_PartageFichier/pdf.png";
+                        break;
+                    case 'csv':
+                        img.src = "/Images/Img_PartageFichier/csv.png";
+                        break;
+                    default:
+                        img.src = "/Images/Img_PartageFichier/file.png";
+                }
+            });
+        }
 
-        //const fileInput = document.getElementById('myFile');
-        //fileInput.onchange = () => {
-        //    document.getElementById("btn-file").disabled = false;
-        //}
-
-        const datagrid = document.getElementById('Details');
-        datagrid.addEventListener("DOMContentLoaded", () => {
-            let wrapper = document.querySelector("#partage-fichier-icon-texte");
-            let options = {
-                callback: function (isTruncated) { },
-                ellipsis: "\u2026 ",
-                height: null,
-                keep: null,
-                tolerance: 0,
-                truncate: "word",
-                watch: "window",
-            };
-            new Dotdotdot(wrapper, options);
-        });
+        function GetDotDotDot() {
+            let wrapper = document.querySelectorAll(".partage-fichier-icon-texte");
+            wrapper.forEach(function (w) {
+                let options = {
+                    callback: function (isTruncated) { },
+                    ellipsis: "\u2026 ",
+                    height: null,
+                    keep: null,
+                    tolerance: 0,
+                    truncate: "letter",
+                    watch: "window",
+                };
+                try {
+                    new Dotdotdot(w, options);
+                }
+                catch{
+                    console.error(w.innerHTML);
+                }
+            });
+        }
 
     </script>
 }

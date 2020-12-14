@@ -39,20 +39,21 @@
 
         @foreach (var item in Model.Directories)
         {
-            <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
+            <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" 
+               class="partageFichier-fenetre">
                 <img src="~/Images/Img_PartageFichier/folder.png" alt="" class="icon-partageFichier" />
-                <p class="partage-fichier-icon-texte"><span>@item</span></p>
+                <p class="partage-fichier-icon-texte">@item</p>
             </a>
         }
 
         @foreach (var item in Model.Files)
         {
-
-            <a href='@Url.Action("Download", "PartageFichier", new { fileName = Path.Combine(Model.DirPath, item).Replace("\\", "\\\\") })' class="partageFichier-fenetre">
-                <img src="~/Images/Img_PartageFichier/file.png" class="icon-partageFichier" />
-                <p class="partage-fichier-icon-texte" id="partage-fichier-icon-texte">@item</p>
+            <a href='@Url.Action("Download", "PartageFichier", new { fileName = Path.Combine(Model.DirPath, item).Replace("\\", "\\\\") })' 
+               class="partageFichier-fenetre">
+                <img name="@(item.Split('.')[item.Split('.').Length-1])" 
+                     class="icon-partageFichier icon-partageFichier-file"/>
+                <p class="partage-fichier-icon-texte">@item</p>
             </a>
-
         }
 
     </div>
