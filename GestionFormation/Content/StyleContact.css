@@ -4,9 +4,21 @@
 }
 
 .contact-section {
-    background: url(/Images/background.jpg) no-repeat center;
+
+
+{
     background-size: cover;
-    padding: 140px 20px;
+    padding: 200px 20px;
+    min-height: 100%;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5em;
+    font-family: Calibri, Times New Roman, Arial, Verdana, Times, sans-serif;
+    font-size: 1.1em;
+    border-style: ridge;
+    border-width: 5px;
+} 
 }
 
     .contact-section h1 {
@@ -24,7 +36,7 @@
 .contact-form {
     max-width: 600px;
     margin: auto;
-    margin-left: 30%;
+    margin-left: 0%;
     padding: 0 10px;
     overflow: hidden;
 }
@@ -65,4 +77,28 @@ textarea.contact-form-text {
 
 .contact-form-btn:hover {
     background: #2980b9;
+}
+#map {
+    padding: 1.0em;
+    margin-left : 35%;
+    margin-top: -52%;
+    padding-top: 2px;
+    overflow: hidden;
+    text-align: center;
+
+} 
+
+#titre1 {
+    text-align :center;
+    
+}
+
+#titre2 {
+    text-align :center;
+    color :black;
+    
+}
+
+.divprincipale{
+    margin-top: 10%
 }
