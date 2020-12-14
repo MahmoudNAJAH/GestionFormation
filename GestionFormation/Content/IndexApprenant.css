@@ -1,7 +1,4 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-}
+﻿
 
 /* Set padding to keep content from hitting the edges */
 
@@ -29,5 +26,92 @@ textarea {
     margin-right: auto;*/
     /*align-content: center;
     width: 350px;*/
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: #f5f5f5;
+}
+
+
+.header {
+    margin-top: -5%;
+    margin-left: -10%;
+    border: 3px solid black
+}
+
+
+.menu {
+    margin-top: 3.5%;
+    padding: 5px;
+    margin-left: 7.5%;
+    height: 400px;
+    width: 900px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap : wrap;
+    justify-content: space-between;
+}
+.menu-all {
+    display: flex;
+    flex-direction: row;
+    margin-top:20px;
+}
+
+.p {
+    background-color: burlywood;
+    border: solid 1px #09C;
+    border-radius: 25px;
+    height: 150px;
+    width: 150px;
+    margin: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.panel-invisible {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel-body-white{
+    background: white;
+}
+
+.bw {
+    background-color: white;
+    border-color: black;
+    height: auto;
+    width: 150px;
+    margin: 25px;
+}
+.accordeon-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
