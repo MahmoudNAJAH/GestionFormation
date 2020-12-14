@@ -41,6 +41,7 @@ else
     else
     {
 <div class="container col-md-5 d-flex flex-column justify-content-center">
+    <label id="displayname"></label>
     <div id="discussion" style="overflow-y: scroll; max-height:500px">
     </div>
     <div class="col-12">
@@ -111,20 +112,27 @@ else
                     messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 
                 };
+
+                chat.client.sendListName = function (listName) {
+                    console.log('hey!');
+                    console.log(listName);
+
+                    document.getElementById('usersConnected').innerHTML = listName;
+
+                }
                 // Get the user name and store it to prepend to messages.
                 //$('#displayname').val(prompt('Enter your name:', ''));
                 // Set initial focus to message input box.
                 $('#message').focus();
                 // Start the connection.
                 $.connection.hub.start().done(function () {
-                    chat.server.joinRoom($('#salonId').val());
+                    chat.server.joinRoom($('#salonId').val(), $('#displayname').val());
                     chat.server.recuperatioDesMessagesEnBDD($('#salonId').val());
                     // ajout de l'envoi en appuyant sur "Entree"
                     $('#message').keyup(({ key }) => {
                         if (key === "Enter") {
                             // Call the Send method on the hub.
                             chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val(), $('#senderId').val());
-                            console.log("i'm here with enter!");
                             //chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val());
                             // Clear text box and reset focus for next comment.
                             $('#message').val('').focus();
@@ -134,7 +142,6 @@ else
 
                         // Call the Send method on the hub.
                         chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val(), $('#senderId').val());
-                        console.log("i'm here !");
 
                         // Clear text box and reset focus for next comment.
                         $('#message').val('').focus();

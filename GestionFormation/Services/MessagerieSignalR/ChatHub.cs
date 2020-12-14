@@ -13,9 +13,14 @@ namespace GestionFormation.Services.MessagerieSignalR
 {
     public class ChatHub : Hub
     {
-        public static Dictionary<string, UserForChatDTO> Dico = new Dictionary<string, UserForChatDTO>();
+        /// <summary>
+        /// 1- salon
+        /// 2- connectionId
+        /// 3- nom
+        /// </summary>
+        public static Dictionary<string, Dictionary<string, string>> ListAllUsersConnected = new Dictionary<string, Dictionary<string, string>>();
 
-        public void Send(string name, string message, string salon, string senderId)
+        public void Send(string name, string message, string roomName, string senderId)
         //public void Send(string name, string message, string salon)
         {
             string date= $"Aujourd'hui {DateTime.Now.ToString("H:mm")}";
@@ -26,17 +31,36 @@ namespace GestionFormation.Services.MessagerieSignalR
             };
 
             //ChatDAO.AddMessageToDB(m, int.Parse(salon) , int.Parse(senderId));
-            ChatDAO.AddMessageToDB(m, int.Parse(salon) , int.Parse(senderId));
+            ChatDAO.AddMessageToDB(m, int.Parse(roomName) , int.Parse(senderId));
 
             // Call the addNewMessageToPage method to update clients.
-            Clients.Group(salon).addNewMessageToPage(name, message, date);
+            Clients.Group(roomName).addNewMessageToPage(name, message, date);
         }
 
        
    
-        public void JoinRoom(string roomName)
+        public void JoinRoom(string roomName, string name)
         {
              Groups.Add(Context.ConnectionId, roomName);
+            Dictionary<string, string> UserConnectedInthisRoom;
+            if (!ListAllUsersConnected.ContainsKey(roomName))
+            {
+                 UserConnectedInthisRoom = new Dictionary<string, string>();
+                ListAllUsersConnected.Add(roomName, UserConnectedInthisRoom);
+            }
+            else
+            {
+                 UserConnectedInthisRoom = ListAllUsersConnected[roomName];
+            }
+            UserConnectedInthisRoom.Add(Context.ConnectionId, name);
+
+            string listName = "";
+            foreach (string item in UserConnectedInthisRoom.Values)
+            {
+                 listName += (item + " - ");
+            }
+            listName = listName.Substring(0, listName.Length - 4);
+            Clients.Group(roomName).sendListName(listName);
 
         }
 
