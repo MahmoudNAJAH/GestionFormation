@@ -195,6 +195,7 @@
     <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="DAO\ChatDAO.cs" />
     <Compile Include="Controllers\PartageFichierController.cs" />
+    <Compile Include="DTO\ServiceClientDTO.cs" />
     <Compile Include="DTO\UserForChatDTO.cs" />
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.cs" />
     <Compile Include="Migrations\202012100942332_ajout de %27contenu%27 dans %27Message%27.Designer.cs">
