@@ -20,6 +20,7 @@
 .p {
     display: block;
     background-color: #e11e1e;
+    color :white;
     border-style: solid;
     border-radius: 25px;
     border-color: #09C;
@@ -51,4 +52,16 @@
     margin-left: 106%;
     margin-top: -17%
 }
+
+.p6 {
+    margin-left: 40%;
+    margin-top: 5%
+}
+
+
+.p7 {
+    margin-left: 70%;
+    margin-top: -17%
+}
+
 

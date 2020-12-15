@@ -67,7 +67,7 @@ body {
 }
 
 .p {
-    background-color: burlywood;
+    background-color: #e11e1e;
     border: solid 1px #09C;
     border-radius: 25px;
     height: 150px;
@@ -75,6 +75,7 @@ body {
     margin: 25px;
     text-align: center;
     display: flex;
+    color :white;
     flex-direction: column;
     justify-content: center;
     align-items: center;
