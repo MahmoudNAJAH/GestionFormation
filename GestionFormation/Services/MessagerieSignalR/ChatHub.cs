@@ -108,6 +108,7 @@ namespace GestionFormation.Services.MessagerieSignalR
 
                     //Renvoi de la list
                     SendListUserConnected(UserConnectedInthisRoom, roomName);
+                    Groups.Remove(Context.ConnectionId, roomName);
                 }
             }
             return base.OnDisconnected(stopCalled);

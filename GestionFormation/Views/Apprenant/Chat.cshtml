@@ -115,10 +115,9 @@ else
                     };
 
                     chat.client.sendListName = function (listName) {
-                        console.log('hey!');
-                        console.log(listName);
 
-                        document.getElementById('usersConnected').innerHTML = listName;
+
+                        $('#usersConnected').text(listName);
 
                     }
                     // Get the user name and store it to prepend to messages.
