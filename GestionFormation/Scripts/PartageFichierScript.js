@@ -1,4 +1,19 @@
 ﻿
+//Quand on appelle l'action Index du controller
+//On veut appliquer les différentes function js pour que ce soit plus jolie
+window.onload = function () {
+    RefreshDataGrid();
+}
+
+//Applique les 3 fonctions js ppour que ce soit plus jolie
+function RefreshDataGrid() {
+    GetDotDotDot(); //Pour les ... quand le texte est trop grand sur plusieurs lignes (dans le cas de nom de fichiers trop long par exemple)
+    GetImageSrc();  //Pour avoir une image correspondant à l'extension du fichier
+    DisplayDeleteButton();  //Pour afficher/cacher les croix rouges pour supprimer les fichiers
+}
+
+//On détecte le changement de sélection dans la combo box
+//Pour afficher le datagrid
 $(document).ready(function () {
     $("#SessionCursus").change(function () {
         if ($("#SessionCursus").val() != "") SessionCursus();
@@ -6,22 +21,25 @@ $(document).ready(function () {
     });
 });
 
+//Effectué quand on choisi une session de cursus 
 function SessionCursus() {
     const obj = {
         dirPath: $("#SessionCursus").val(),
     }
-
     GetDetails(obj);
 };
 
+//Effectué quand on clique sur un dosier pour s'y déplacer
 function GoInDirectory(param) {
     const obj = {
         dirpath: param,
     }
-
     GetDetails(obj);
 };
 
+//Fonction qui appelle l'action Detail dans le controller
+//Quand on veut refresh le datagrid sans ajout de données
+//  => quand on change de dossier ou de session de cursus 
 function GetDetails(obj) {
     const options = {
         method: 'POST',
@@ -48,6 +66,8 @@ function GetDetails(obj) {
         });
 }
 
+//Utilisé pour retourner dans le dossier parent
+//Appelle l'action PreviousFolder dans le controller
 function PreviousFolder(param) {
     const obj = {
         dirPath: param,
@@ -77,9 +97,12 @@ function PreviousFolder(param) {
         });
 }
 
+//Utilisé lors de na création d'un nouveau dossier
+//Appelle l'action CreateDirectory du controller
 function CreateDirectory() {
     const obj = {
-        dirPath: document.getElementById('createDirectory-dirPath').value,
+        //On récupère les valeur des inputs
+        dirPath: document.getElementById('createDirectory-dirPath').value,  
         dirName: document.getElementById('createDirectory-dirName').value,
     }
 
@@ -107,40 +130,8 @@ function CreateDirectory() {
         });
 }
 
-function CreateFile() {
-    "use strict";
-    const obj = {
-        dirPath: document.getElementById('createFile-dirPath').value,
-        //myFile: document.getElementById('createFile-myFile').files,
-        myFile: $("#createFile-myFile").get(0).files,
-    }
-
-    const options = {
-        method: 'POST',
-        body: JSON.stringify(obj),
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
-
-    fetch("/PartageFichier/CreateFile", options)
-        .then(function (response) {
-            // The API call was successful!
-            return response.text();
-        }).then(function (html) {
-            $("#Details").html(html);
-            return $("#Details");
-        }).then(function (html) {
-            RefreshDataGrid();
-        }).catch(function (err) {
-            // There was an error
-            console.warn('Something went wrong.', err);
-        });
-}
-
-
-
+//Pour effacer un dossier et son contenu
+//Appelle l'action DeleteDirectory du controller
 function DeleteDirectory(paramDirPath, paramDirName) {
     const obj = {
         dirPath: paramDirPath,
@@ -172,6 +163,8 @@ function DeleteDirectory(paramDirPath, paramDirName) {
         });
 }
 
+//Utilisé pour supprimer un fichier
+//Appelle l'action DeleteFile du controller
 function DeleteFile(paramDirPath, paramFileName) {
     const obj = {
         dirPath: paramDirPath,
@@ -203,6 +196,7 @@ function DeleteFile(paramDirPath, paramFileName) {
         });
 }
 
+//Permet de donner aux fichier l'image correspondant à leur extension
 function GetImageSrc() {
     let images = document.querySelectorAll(".icon-partageFichier-file");
     images.forEach(function (img) {
@@ -213,15 +207,13 @@ function GetImageSrc() {
             case 'pdf':
                 img.src = "/Images/Img_PartageFichier/pdf.png";
                 break;
-            case 'csv':
-                img.src = "/Images/Img_PartageFichier/csv.png";
-                break;
             default:
                 img.src = "/Images/Img_PartageFichier/file.png";
         }
     });
 }
 
+//Pour les icone de dossier/fichier, quand le texe est trop long, remplace ce qui dépasse par ...
 function GetDotDotDot() {
     let wrapper = document.querySelectorAll(".partage-fichier-icon-texte");
     wrapper.forEach(function (w) {
@@ -243,6 +235,7 @@ function GetDotDotDot() {
     });
 }
 
+//Pour afficher/cacher les croix de suppression de fichier/dossier
 function DisplayDeleteButton() {
     let wrapper = document.querySelectorAll(".icon-partageFichier-link-croix");
     wrapper.forEach(function (w) {
@@ -256,12 +249,4 @@ function DisplayDeleteButton() {
     });
 }
 
-function RefreshDataGrid() {
-    GetDotDotDot();
-    GetImageSrc();
-    DisplayDeleteButton();
-}
 
-window.onload = function () {
-    RefreshDataGrid();
-}

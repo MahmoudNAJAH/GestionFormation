@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SaveContext xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Personnes>
+    <SavePersonne>
+      <Id>1</Id>
+      <Nom>Russel</Nom>
+      <Prenom>Kurt</Prenom>
+      <Age />
+    </SavePersonne>
+    <SavePersonne>
+      <Id>2</Id>
+      <Nom>Emmerich</Nom>
+      <Prenom>Roland</Prenom>
+      <Age />
+    </SavePersonne>
+    <SavePersonne>
+      <Id>3</Id>
+      <Nom>Spader</Nom>
+      <Prenom>James</Prenom>
+      <Age />
+    </SavePersonne>
+  </Personnes>
+  <Films>
+    <SaveFilm>
+      <Id>1</Id>
+      <Titre>Stargate</Titre>
+      <Annee>1994</Annee>
+      <Realisateurs>
+        <int>2</int>
+      </Realisateurs>
+      <Producteurs />
+      <Acteurs>
+        <int>1</int>
+        <int>3</int>
+      </Acteurs>
+      <Roles>
+        <string>Colonel Jack O'Neil</string>
+        <string>Dr Jackson</string>
+      </Roles>
+    </SaveFilm>
+  </Films>
+</SaveContext>
