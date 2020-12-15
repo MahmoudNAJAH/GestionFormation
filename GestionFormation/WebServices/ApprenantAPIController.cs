@@ -32,20 +32,40 @@ namespace GestionFormation.WebServices
 
         // POST: api/ApprenantAPI
         //ici je vais passer un string 
-        public void   Post([FromBody] UserDTOAPI ap )
+        public  void   Post([FromBody] UserDTOAPI ap )
         {
             Apprenant ap1 = new Apprenant();
             ap1.ApprenantId = ap.Id;
             ap1.Email = ap.Email;
             ap1.Nom = ap.Nom;
             ap1.Prenom = ap.Prenom;
-            ap1.SessionDeCursus = ap.SessionDeCursus;
+            if(ap.SessionDeCursus != null)
+            {
+                foreach (SessionDeCursus Cs in ap.SessionDeCursus)
+                {
+                   List<SessionDeCursus> sessionCursus = new List<SessionDeCursus>();
+                    sessionCursus.Add(Cs);
+                    ap1.SessionDeCursus = sessionCursus; 
+                }
+            }
+           
+               
+
             ap1.Messages = ap.Messages;
 
             CryptageMotDePasse password = new CryptageMotDePasse(ap.MotDePasse);
             ap1.MotDePasse = password.ToArray();
-            ApprenantDAO.Create(ap1);
-            
+            //ApprenantDAO.Create(ap1);
+
+
+
+            using (BDDContext context = new BDDContext())
+            {
+           
+                context.Apprenants.Add(ap1);
+                context.SaveChanges();
+            }
+
 
         }
 
