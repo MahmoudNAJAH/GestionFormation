@@ -1,8 +1,9 @@
 ﻿@model GestionFormation.DTO.FicheEval
 
-
+@{int i = 0; }
 @using (Html.BeginForm("PrintEval", "Apprenant", FormMethod.Post))
 {
+   
 
     <!DOCTYPE html>
     <html lang="en">
@@ -42,6 +43,7 @@
                         <h5>Acceuil</h5>
                         Excellent
                         @Html.RadioButtonFor(m => m.fiche1, "excellent")
+
                         Trés Bon
                         @Html.RadioButtonFor(m => m.fiche1, "TresBon")
                         Bon
@@ -50,604 +52,374 @@
                         @Html.RadioButtonFor(m => m.fiche1, "Moyen")
                         Passable
                         @Html.RadioButtonFor(m => m.fiche1, "Passable")
+
                     </div>
 
                 </div>
             </div>
-
+            
             <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Salle de Formation</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche2, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche2, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche2, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche2, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche2, "Passable")
-                    </div>
+            <div class="col-md-10">
+                <div>
+                    <h5>Salle de Formation</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche2, "excellent")
 
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche2, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche2, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche2, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche2, "Passable")
                 </div>
 
             </div>
 
-            <div class="form-group">
+        </div>
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Moyen technique Mise en oeuvre</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche3, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche3, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche3, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche3, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche3, "Passable")
-                    </div>
+        <div class="form-group">
 
+            <div class="col-md-10">
+                <div>
+                    <h5>Moyen technique Mise en oeuvre</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche3, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche3, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche3, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche3, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche3, "Passable")
                 </div>
 
             </div>
 
-            <div class="form-group">
+        </div>
 
-                <div class="col-md-10">
-                    <div>
-                        <h4>Cours </h4>
-                        <h5>Richesse de cours </h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche4, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche4, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche4, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche4, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche4, "Passable")
-                    </div>
+        <div class="form-group">
 
+            <div class="col-md-10">
+                <div>
+                    <h4>Cours </h4>
+                    <h5>Richesse de cours </h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche4, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche4, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche4, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche4, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche4, "Passable")
                 </div>
+
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Progression logique du cours </h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche5, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche5, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche5, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche5, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche5, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Progression logique du cours </h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche5, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche5, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche5, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche5, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche5, "Passable")
                 </div>
+
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Choix des exemples et des exercices</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche6, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche6, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche6, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche6, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche6, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Choix des exemples et des exercices</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche6, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche6, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche6, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche6, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche6, "Passable")
                 </div>
+
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Support de références</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche14, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche14, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche14, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche14, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche14, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Support de références</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche14, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche14, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche14, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche14, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche14, "Passable")
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>commentaire</h5>
-                        @Html.TextAreaFor(model => model.Commentaire, new { style = "width: 500px;", @rows = 3 })
-                    </div>
 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>commentaire</h5>
+                    @Html.TextAreaFor(model => model.Commentaire, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h4>Adéquation à vos besoin </h4>
-                        <h5>Rythme de la formation</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche7, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche7, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche7, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche7, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche7, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h4>Adéquation à vos besoin </h4>
+                    <h5>Rythme de la formation</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche7, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche7, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche7, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche7, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche7, "Passable")
                 </div>
+
             </div>
-            <div class="form-group">
+        </div>
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Niveau Adapté à vos besoin </h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche8, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche8, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche8, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche8, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche8, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Niveau Adapté à vos besoin </h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche8, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche8, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche8, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche8, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche8, "Passable")
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Niveau Adapté à vos besoin </h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche9, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche9, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche9, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche9, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche9, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Niveau Adapté à vos besoin </h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche9, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche9, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche9, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche9, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche9, "Passable")
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h5>Réponse à vos besoins professionnels </h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche13, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche13, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche13, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche13, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche13, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h5>Réponse à vos besoins professionnels </h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche13, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche13, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche13, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche13, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche13, "Passable")
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>commentaire</h5>
-                        @Html.TextAreaFor(model => model.Commentaire1, new { style = "width: 500px;", @rows = 3 })
-                    </div>
 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>commentaire</h5>
+                    @Html.TextAreaFor(model => model.Commentaire1, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
-                        <h4>Formateur</h4>
-                        <h5>Maitrise Technique</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche10, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche10, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche10, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche10, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche10, "Passable")
-                    </div>
-
+            <div class="col-md-10">
+                <div>
+                    <h4>Formateur</h4>
+                    <h5>Maitrise Technique</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche10, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche10, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche10, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche10, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche10, "Passable")
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
+            <div class="col-md-10">
+                <div>
 
-                        <h5>Qualité de communication</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche11, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche11, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche11, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche11, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche11, "Passable")
-                    </div>
-
+                    <h5>Qualité de communication</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche11, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche11, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche11, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche11, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche11, "Passable")
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <div class="col-md-10">
-                    <div>
+            <div class="col-md-10">
+                <div>
 
-                        <h5>Capacité d'écoute et disponibilité</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche12, "excellent")
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche12, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche12, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche12, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche12, "Passable")
-                    </div>
-
+                    <h5>Capacité d'écoute et disponibilité</h5>
+                    Excellent
+                    @Html.RadioButtonFor(m => m.fiche12, "excellent")
+                    Trés Bon
+                    @Html.RadioButtonFor(m => m.fiche12, "TresBon")
+                    Bon
+                    @Html.RadioButtonFor(m => m.fiche12, "Bon")
+                    Moyen
+                    @Html.RadioButtonFor(m => m.fiche12, "Moyen")
+                    Passable
+                    @Html.RadioButtonFor(m => m.fiche12, "Passable")
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>commentaire</h5>
-                        @Html.TextAreaFor(model => model.Commentaire2, new { style = "width: 500px;", @rows = 3 })
-                    </div>
 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>commentaire</h5>
+                    @Html.TextAreaFor(model => model.Commentaire2, new { style = "width: 500px;", @rows = 3 })
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>Envisager vous de suivre une nouvelle formation ? (si oui laquelle?) </h5>
-                        @Html.TextAreaFor(model => model.Question, new { style = "width: 500px;", @rows = 3 })
-                    </div>
 
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>Envisager vous de suivre une nouvelle formation ? (si oui laquelle?) </h5>
+                    @Html.TextAreaFor(model => model.Question, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>Seriez-vous intéréssé(e) par une prestation de service (assistance technique, développement d'application, régi...) </h5>
-                        @Html.TextAreaFor(model => model.Question1, new { style = "width: 500px;", @rows = 3 })
-                    </div>
-
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>Seriez-vous intéréssé(e) par une prestation de service (assistance technique, développement d'application, ...) </h5>
+                    @Html.TextAreaFor(model => model.Question1, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>Avez vous des personnes à contacter dans votre entourage personnel ou professionnel pour un projet de formation? </h5>
-                        @Html.TextAreaFor(model => model.Question2, new { style = "width: 500px;", @rows = 3 })
-                    </div>
-
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>Avez vous des personnes à contacter dans votre entourage personnel ou professionnel pour un projet de formation? </h5>
+                    @Html.TextAreaFor(model => model.Question2, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>Avez vous des personnes à contacter dans votre entourage personnel ou professionnel pour un projet de formation? </h5>
-                        @Html.TextAreaFor(model => model.Question3, new { style = "width: 500px;", @rows = 3 })
-                    </div>
-
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>Remarques Complémentaires </h5>
+                    @Html.TextAreaFor(model => model.Question3, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>
 
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>commentaire</h5>
-                        @Html.TextAreaFor(model => model.Commentaire3, new { style = "width: 500px;", @rows = 3 })
-                    </div>
-
+        @*<div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>commentaire</h5>
+                    @Html.TextAreaFor(model => model.Commentaire3, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
+        </div>*@
 
-            <div class="form-group">
-                <div class="col-md-10">
-                    <div>
-                        <h5>Signature</h5>
-                        @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 3 })
-                    </div>
-
+        <div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <h5>Signature</h5>
+                    @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 3 })
                 </div>
+
             </div>
-            <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation"  />
-            @*<button type="button" class="btn btn-outline-danger">Feuille d'évaluation</button>*@
+            </div> <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
+                       @*<button type="button" class="btn btn-outline-danger">Feuille d'évaluation</button>*@
 
         </form>
 
     </body>
 </html>
-
-
-
-
-@*<form>
-        <h4 class="Environnement_travail"> Environnement de Travail</h4>
-        <p>
-            <h5>Acceuil</h5>
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent)
-            @Html.CheckBoxFor(model => model.Excellent)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable)
-
-        </p>
-        <p>
-            <h5>Salle de Formation </h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent1)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon1)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon1)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen1)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable1)
-        </p>
-        <p>
-            <h5>Moyen Technique Mis en oeuvre </h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent2)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon2)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon2)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen2)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable2)
-
-        </p>
-        <h5>Commentaires</h5>
-        @Html.TextAreaFor(model => model.Commentaire, new { style = "width: 500px;", @rows = 3 })
-
-        <h4> Cours</h4>
-        <p>
-            <h5>Richesse du cours</h5>
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent3)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon3)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon3)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen3)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable3)
-
-        </p>
-        <p>
-            <h5>Progression logique du cours </h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent4)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon4)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon4)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen4)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable4)
-        </p>
-        <p>
-            <h5>Choix des exemples et des exercices</h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent5)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon5)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon5)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen5)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable5)
-        </p>
-
-        <p>
-            <h5>Support de références</h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent6)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon6)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon6)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen6)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable6)
-        </p>
-        <h5>Commentaires</h5>
-        @Html.TextAreaFor(model => model.Commentaire1, new { style = "width: 500px;", @rows = 3 })
-
-        <h4> Adéquation à vos besoins </h4>
-        <p>
-            <h5>Rythme de la formation</h5>
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent7)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon7)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon7)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen7)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable7)
-
-        </p>
-        <p>
-            <h5>Niveau Adapté à vos besoin </h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent8)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon8)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon8)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen8)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable8)
-        </p>
-        <p>
-            <h5>Reponse à vos besoins Professionnels</h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent9)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon9)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon9)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen9)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable9)
-        </p>
-
-        <h5>Commentaires</h5>
-        @Html.TextAreaFor(model => model.Commentaire2, new { style = "width: 500px;", @rows = 3 })
-
-        <h4> Formateur </h4>
-        <p>
-            <h5>Maitrise Technique </h5>
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent10)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon10)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon10)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen10)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable10)
-
-        </p>
-        <p>
-            <h5>Qualité de Communication</h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent11)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon11)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon11)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen11)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable11)
-        </p>
-        <p>
-            <h5>RCapacité d'écoute et disponibilité</h5>
-
-            <label class="checkbox-inline">Excellent</label>
-            @Html.CheckBoxFor(model => model.Excellent12)
-            <label class="checkbox-inline">Trés Bon</label>
-            @Html.CheckBoxFor(model => model.TresBon12)
-            <label class="checkbox-inline">Bon</label>
-            @Html.CheckBoxFor(model => model.Bon12)
-            <label class="checkbox-inline">Moyen</label>
-            @Html.CheckBoxFor(model => model.Moyen12)
-            <label class="checkbox-inline">Passable</label>
-            @Html.CheckBoxFor(model => model.Passable12)
-        </p>
-        <h5>Commentaires</h5>
-        @Html.TextAreaFor(model => model.Commentaire3, new { style = "width: 500px;", @rows = 3 })
-
-
-
-        <h4>Envisager vous de suivre une nouvelle formation ? (si oui laquelle?) </h4>
-        @Html.TextAreaFor(model => model.Question, new { style = "width: 500px;", @rows = 3 })
-
-        <h4>Seriez-vous intéréssé(e) par une prestation de service (assistance technique, développement d'application, régi...) </h4>
-        @Html.TextAreaFor(model => model.Question1, new { style = "width: 500px;", @rows = 3 })
-
-        <h4>Avez vous des personnes à contacter dans votre entourage personnel ou professionnel pour un projet de formation?  </h4>
-        @Html.TextAreaFor(model => model.Question2, new { style = "width: 500px;", @rows = 3 })
-
-        <h4>Remarques complémentaires </h4>
-        @Html.TextAreaFor(model => model.Question3, new { style = "width: 500px;", @rows = 3 })
-
-        <h4>Signature</h4>
-
-
-        <input type="submit" value="télécharger Ma feuille d'évaluation" />
-    </form>*@
-
-
-
-
-
 
 
 }

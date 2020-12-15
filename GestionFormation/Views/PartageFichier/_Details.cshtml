@@ -15,13 +15,11 @@
         </div>
 
         <div class="create-directory onglet">
-            @using (Html.BeginForm("CreateDirectory", "PartageFichier", FormMethod.Get))
-            {
-                <button type="submit" class="btn-partage-fichier">Create</button>
-                <input type="hidden" name="dirPath" id="dirPath" value="@Model.DirPath" />
-                <input type="text" name="dirName" id="dirName" value="Nouveau dossier ..." />
-            }
-
+            <button type="button" class="btn-partage-fichier" onclick="CreateDirectory()">Create</button>
+            <input type="hidden" name="createDirectory-dirPath" id="createDirectory-dirPath" value="@Model.DirPath" />
+            <input type="text" name="createDirectory-dirName" id="createDirectory-dirName" 
+                   onfocus="if(this.value == 'Nouveau dossier ...')this.value = '';" value="Nouveau dossier ..." />
+            <button onclick="DisplayDeleteButton()" class="btn-partage-fichier">Delete</button>
         </div>
 
         <div class="file-deposit onglet">
@@ -39,20 +37,37 @@
 
         @foreach (var item in Model.Directories)
         {
-            <a onclick="RefreshDetails('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')" class="partageFichier-fenetre">
-                <img src="~/Images/Img_PartageFichier/folder.png" alt="" class="icon-partageFichier" />
-                <p class="partage-fichier-icon-texte"><span>@item</span></p>
-            </a>
+            <div class="partageFichier-fenetre">
+                <a onclick="DeleteDirectory('@Model.DirPath.Replace("\\","\\\\")', '@item')"
+                   class="icon-partageFichier-link-croix">
+                    <img src="~/Images/Img_PartageFichier/croix3.png" alt=""
+                         class="icon-partageFichier-link-croix" />
+                </a>
+                <a onclick="GoInDirectory('@(Path.Combine(Model.DirPath,item).Replace("\\","\\\\"))')"
+                   class="icon-partageFichier-link-file">
+                    <img src="~/Images/Img_PartageFichier/folder.png" alt="" class="icon-partageFichier" />
+                    <p class="partage-fichier-icon-texte">@item</p>
+                </a>
+            </div>
+
         }
 
         @foreach (var item in Model.Files)
         {
 
-            <a href='@Url.Action("Download", "PartageFichier", new { fileName = Path.Combine(Model.DirPath, item).Replace("\\", "\\\\") })' class="partageFichier-fenetre">
-                <img src="~/Images/Img_PartageFichier/file.png" class="icon-partageFichier" />
-                <p class="partage-fichier-icon-texte" id="partage-fichier-icon-texte">@item</p>
-            </a>
-
+            <div class="partageFichier-fenetre">
+                <a onclick="DeleteFile('@Model.DirPath.Replace("\\","\\\\")', '@item')"
+                   class="icon-partageFichier-link-croix">
+                    <img src="~/Images/Img_PartageFichier/croix3.png" alt=""
+                         class="icon-partageFichier-link-croix" />
+                </a>
+                <a href='@Url.Action("Download", "PartageFichier", new { fileName = Path.Combine(Model.DirPath, item).Replace("\\", "\\\\") })'
+                   class="icon-partageFichier-link-file">
+                    <img name="@(item.Split('.')[item.Split('.').Length-1])"
+                         class="icon-partageFichier icon-partageFichier-file" />
+                    <p class="partage-fichier-icon-texte">@item</p>
+                </a>
+            </div>
         }
 
     </div>

@@ -10,56 +10,99 @@
 </head>
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/StyleLayout.css" rel="stylesheet" />
-<body>
-    
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        
-        <div class="container">
-            
-            <div class="navbar-header">
-                <img class="logo" src="~/Images/dawan.png" alt="Logo DAWAN" width="50" height="50"/>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
-                    <li>@Html.ActionLink("À propos de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Formations", "Index", "Formation")</li>
-                    <li>@Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")</li>
-                    <li>@Html.ActionLink("Apprenant", "Index", "Apprenant")</li>
-                    
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
 
 
 
+    <body>
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+                    <img class="logo" src="~/Images/dawan.png" alt="Logo DAWAN" width="50" height="50" />
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                        <li>@Html.ActionLink("À propos de", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                       
+                        @*<li>@Html.ActionLink("Formations", "Index", "Formation")</li>
+        <li>@Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")</li>*@
+                        @*<li>@Html.ActionLink("Apprenant", "Index", "Apprenant")</li>*@
 
 
-                    @if (Session["userConnected"] != null)
-                    {
-                        <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
-                        <li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
-                        <li>@Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")</li>
-                    }
-                </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Les formations
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">
+                                    @Html.ActionLink("Formations", "Index", "Formation")
+                                </a>
+                                <br />
+                                <a class="dropdown-item" href="#">
+                                    @Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")
+                                </a>
+
+                            </div>
+                        </li>
+
+
+                        @if (Session["userConnected"] != null)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Apprenant
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">
+                                        @Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")
+                                    </a>
+
+                                    <a class="dropdown-item" href="#">
+                                        @Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                    @Html.ActionLink("Contact", "Contact", "Home")
+                                    </a>
+                                </div>
+                            </li>
+
+                        }
+
+                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+
+                        @if (Session["userConnected"] != null)
+                        {
+                            <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
+
+                            @*<li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
+            <li>@Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")</li>
+            <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>*@
+                        }
+                    </ul>
+                 
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer class="basdepage">
-            <p>&copy; 2000-@DateTime.Now.Year - DAWAN</p>
-        </footer>
-    </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer class="basdepage">
+                <p>&copy; @DateTime.Now.Year - DAWAN</p>
+            </footer>
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

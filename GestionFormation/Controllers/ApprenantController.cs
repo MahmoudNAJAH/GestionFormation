@@ -308,81 +308,92 @@ namespace GestionFormation.Controllers
             }
             return View(new FicheEval());
         }
-        //[HttpPost]
-        //public ActionResult feuilleEvaluation(FicheEval f)
-        //{
+        
+        public ActionResult FormulaireNonrempli()
+        {
+            
+            return View(); 
 
-        //    return new ActionAsPdf("feuilleEvaluation");
-
-        //}
+        }
         [HttpPost]
 
         public ActionResult PrintEval(FicheEval f,string NomFormation)
         {
-            UserDTO ap = new UserDTO();
-            ap = (UserDTO)Session["userConnected"];
-            UserDTO userconnected = ap;
-
-            string NomFormateur;
-            string PrenomFormateur;
-            DateTime DateTraitement = new DateTime();
-            DateTime FirstDayOfWeek = new DateTime();
-            FicheEval eval = new FicheEval();
-            //DateTime dt = new DateTime();
-            var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
-            var diff = DateTime.Now.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
-            if (diff < 0)
+            if(f.fiche1 !=null && f.fiche2 !=null && f.fiche3 !=null && f.fiche4 !=null && f.fiche5 !=null 
+              && f.fiche6 !=null && f.fiche7 !=null && f.fiche8 !=null && f.fiche9 !=null && f.fiche10 !=null 
+              && f.fiche11 != null && f.fiche12 !=null  && f.fiche13 !=null && f.fiche14 !=null)
             {
-                diff += 7;
-            }
-            FirstDayOfWeek = DateTime.Now.AddDays(-diff).Date;
-            FirstDayOfWeek.ToString("dd/mm/yyyy");
-            ViewData["date3"] = FirstDayOfWeek.ToString("dd/MM/yyyy");
+                UserDTO ap = new UserDTO();
+                ap = (UserDTO)Session["userConnected"];
+                UserDTO userconnected = ap;
 
-            DateTime LastDayOfWeek = FirstDayOfWeek.AddDays(6);
-            ViewData["date4"] = LastDayOfWeek.ToString("dd/MM/yyyy");
-            ViewData["date5"] = NomFormation;
-
-            //je vais récupérer le nom de la formation 
-
-
-            List<SessionDeFormation> SessionDeFormations = userconnected.GetSessionDeFormations();
-            //2)récupération de cursus de userconnected 
-            List<SessionDeCursus> sessionDeCursus = userconnected.GetSessionDeCursus();
-            EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
-            List<JourneeDTO> Mesformations = emploi.ListDates;
-            DateTime aujourdhui = DateTime.Now;
-
-            foreach (JourneeDTO j in Mesformations)
-            {
-                if (j.Date.DayOfYear == DateTime.Now.DayOfYear && j.Date.Year == DateTime.Now.Year)
+                string NomFormateur;
+                string PrenomFormateur;
+                DateTime DateTraitement = new DateTime();
+                DateTime FirstDayOfWeek = new DateTime();
+                FicheEval eval = new FicheEval();
+                //DateTime dt = new DateTime();
+                var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
+                var diff = DateTime.Now.DayOfWeek - culture.DateTimeFormat.FirstDayOfWeek;
+                if (diff < 0)
                 {
-                    foreach (SessionDeFormation SessionForm in SessionDeFormations)
+                    diff += 7;
+                }
+                FirstDayOfWeek = DateTime.Now.AddDays(-diff).Date;
+                FirstDayOfWeek.ToString("dd/mm/yyyy");
+                ViewData["date3"] = FirstDayOfWeek.ToString("dd/MM/yyyy");
+
+                DateTime LastDayOfWeek = FirstDayOfWeek.AddDays(6);
+                ViewData["date4"] = LastDayOfWeek.ToString("dd/MM/yyyy");
+                ViewData["date5"] = NomFormation;
+
+                //je vais récupérer le nom de la formation 
+
+
+                List<SessionDeFormation> SessionDeFormations = userconnected.GetSessionDeFormations();
+                //2)récupération de cursus de userconnected 
+                List<SessionDeCursus> sessionDeCursus = userconnected.GetSessionDeCursus();
+                EmploiDuTempsDTO emploi = new EmploiDuTempsDTO(userconnected);
+                List<JourneeDTO> Mesformations = emploi.ListDates;
+                DateTime aujourdhui = DateTime.Now;
+
+                foreach (JourneeDTO j in Mesformations)
+                {
+                    if (j.Date.DayOfYear == DateTime.Now.DayOfYear && j.Date.Year == DateTime.Now.Year)
                     {
-                        if (j.Formation.FormationId == SessionForm.Formation.FormationId && j.Formateur.FormateurId == SessionForm.Formateur.FormateurId)
+                        foreach (SessionDeFormation SessionForm in SessionDeFormations)
                         {
-                            NomFormateur = SessionForm.Formateur.Nom;
-                            ViewBag.Message6 = NomFormateur;
+                            if (j.Formation.FormationId == SessionForm.Formation.FormationId && j.Formateur.FormateurId == SessionForm.Formateur.FormateurId)
+                            {
+                                NomFormateur = SessionForm.Formateur.Nom;
+                                ViewBag.Message6 = NomFormateur;
 
-                            PrenomFormateur = SessionForm.Formateur.Prenom;
-                            ViewBag.Message7 = PrenomFormateur;
-                            //NomFormation = SessionForm.Formation.Nom;
-                            //ViewBag.Message5 = NomFormation;
+                                PrenomFormateur = SessionForm.Formateur.Prenom;
+                                ViewBag.Message7 = PrenomFormateur;
+                                //NomFormation = SessionForm.Formation.Nom;
+                                //ViewBag.Message5 = NomFormation;
 
-                            ViewBag.Message5 = SessionForm.Formation.Nom;
-                            ViewBag.Message8 = userconnected.Nom;
-                            ViewBag.Message9 = userconnected.Prenom;
-                            ViewBag.Message10 = userconnected.Email;
+                                ViewBag.Message5 = SessionForm.Formation.Nom;
+                                ViewBag.Message8 = userconnected.Nom;
+                                ViewBag.Message9 = userconnected.Prenom;
+                                ViewBag.Message10 = userconnected.Email;
+                            }
                         }
+
                     }
+                }
 
-                }  
-            }
 
-           
                 //f.vb = NomFormation; 
-            //ici je dois renvoyer la lfeuille d'evaluation rempli
-            return new ViewAsPdf("feuilleEvaluation", f);
+                //ici je dois renvoyer la lfeuille d'evaluation rempli
+                return new ViewAsPdf("feuilleEvaluation", f);
+            }
+            else
+            {
+                return  View("FormulaireNonrempli");
+            }
+            
+
         }
 
 
@@ -405,18 +416,6 @@ namespace GestionFormation.Controllers
             return View("Chat", userForChat);
         }
 
-        // GET: Apprenant/Details/5
-        //public ActionResult Details(int id)
-        //{
-
-        //    return View((UserDTO)Session["userConnected"]);
-        //}
-
-        //// GET: Apprenant/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
-
+  
     }
 }
