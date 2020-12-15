@@ -215,6 +215,7 @@
     <Compile Include="Models\DirectoryModel.cs" />
     <Compile Include="Models\SessionDeCursus_PartageFichier_Model.cs" />
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
+    <Compile Include="Services\MessagerieSignalR\ListUserConnectedSingleton.cs" />
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
     <Compile Include="DTO\FicheEval.cs" />
     <Compile Include="Services\PartageFichierService.cs" />
