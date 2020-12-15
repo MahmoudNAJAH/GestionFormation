@@ -38,10 +38,15 @@ namespace GestionFormation.Services.MessagerieSignalR
         }
 
        
-   
+   /// <summary>
+   ///  Rejoint la salle
+   ///  Envoi à tous la liste des utilisateurs connectés
+   /// </summary>
+   /// <param name="roomName"></param>
+   /// <param name="name"></param>
         public void JoinRoom(string roomName, string name)
         {
-             Groups.Add(Context.ConnectionId, roomName);
+            Groups.Add(Context.ConnectionId, roomName);
             Dictionary<string, string> UserConnectedInthisRoom;
             if (!ListAllUsersConnected.ContainsKey(roomName))
             {
@@ -52,15 +57,11 @@ namespace GestionFormation.Services.MessagerieSignalR
             {
                  UserConnectedInthisRoom = ListAllUsersConnected[roomName];
             }
+
             UserConnectedInthisRoom.Add(Context.ConnectionId, name);
 
-            string listName = "";
-            foreach (string item in UserConnectedInthisRoom.Values)
-            {
-                 listName += (item + " - ");
-            }
-            listName = listName.Substring(0, listName.Length - 4);
-            Clients.Group(roomName).sendListName(listName);
+            SendListUserConnected(UserConnectedInthisRoom, roomName);
+
 
         }
 
@@ -85,11 +86,49 @@ namespace GestionFormation.Services.MessagerieSignalR
                 string date = (m.DateDePublication.DayOfYear == DateTime.Now.DayOfYear && m.DateDePublication.Year == DateTime.Now.Year) ?
                      $"Aujourd'hui {m.DateDePublication.ToString("H:mm")}" :  m.DateDePublication.ToString("dd MMM H:mm");
                 Clients.Caller.addNewMessageToPage(sender, message, date);
-
             }
         }
 
+        /// <summary>
+        /// On retire la personne à la déconnexion
+        /// </summary>
+        /// <param name="stopCalled"></param>
+        /// <returns></returns>
+        public override Task OnDisconnected(bool stopCalled)
+        {
 
+            foreach (var item in ListAllUsersConnected)
+            {
+                if (item.Value.ContainsKey(Context.ConnectionId))
+                {
+                    Dictionary<string, string>  UserConnectedInthisRoom = new Dictionary<string, string>();
+                    string roomName = item.Key;
+                    UserConnectedInthisRoom = item.Value;
+                    UserConnectedInthisRoom.Remove(Context.ConnectionId);
 
+                    //Renvoi de la list
+                    SendListUserConnected(UserConnectedInthisRoom, roomName);
+                }
+            }
+            return base.OnDisconnected(stopCalled);
+        }
+
+        /// <summary>
+        /// Appelé à la connexion ou a la déconnexion d'un utilisateur
+        /// </summary>
+        /// <param name="UserConnectedInthisRoom"></param>
+        /// <param name="roomName"></param>
+        private void SendListUserConnected(Dictionary<string, string> UserConnectedInthisRoom, string roomName)
+        {
+            string listName = "";
+            foreach (string user in UserConnectedInthisRoom.Values)
+            {
+                listName += user;
+                listName += " - ";
+            }
+            listName = listName.Substring(0, listName.Length - 3);
+
+            Clients.Group(roomName).sendListName(listName);
+        }
     }
 }
