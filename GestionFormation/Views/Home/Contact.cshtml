@@ -3,6 +3,8 @@
 @model GestionFormation.DTO.UserDTO
 <link rel="stylesheet" href="~/Content/StyleContact.css" />
 <div class="divprincipale">
+
+
     <div class="contact-section">
 
         <form class="contact-form">
@@ -32,7 +34,7 @@
 
             <textarea cols="30" rows="10" class="contact-form-text" placeholder="Votre message"></textarea>
 
-            <input type="button" class="btn btn-default btn-primary envoyer" value="Envoyer"/>
+            <input type="button" class="btn btn-default btn-primary envoyer" value="Envoyer" />
 
 
         </form>
@@ -43,6 +45,16 @@
                 width="700" height="500" frameborder="0" style="border:double" allowfullscreen>
         </iframe>
     </div>
+    <div id="fbpage">
+        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FDawanFrance&amp;width=220&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=true&amp;height=285"
+                style="border:none; overflow:hidden; width:220px; height:285px; margin-bottom:20px;" allowTransparency="true">
+        </iframe>
+    </div>
+    <div id="pagelinkedin">
+        <a target="_blank" href="https://www.linkedin.com/company/dawan/?originalSubdomain=fr" >
+        <img class="imagein"src="~/Images/linkedin.png"></a>
+    </div>
+    
 </div>
 
 @*<address class="adresses">

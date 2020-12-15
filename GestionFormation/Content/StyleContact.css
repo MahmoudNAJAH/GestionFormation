@@ -103,3 +103,18 @@ textarea.contact-form-text {
 .basdepage{
     margin-top : 15%
 }
+
+#fbpage{
+    margin-left :-25%;
+    margin-top: -45%
+}
+
+#pagelinkedin{
+    margin-left :-25%;
+    margin-top :-10%;
+}
+
+.imagein{
+    height :150px;
+    width :150px
+}
