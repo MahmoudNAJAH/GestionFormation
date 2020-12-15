@@ -323,6 +323,8 @@
     <Content Include="Images\folder.png" />
     <Content Include="Images\formateur.png" />
     <Content Include="Images\image1.PNG" />
+    <Content Include="Images\Img_PartageFichier\croix.png" />
+    <Content Include="Images\Img_PartageFichier\croix2.png" />
     <Content Include="Images\Img_PartageFichier\csv.png" />
     <Content Include="Images\Img_PartageFichier\pdf.png" />
     <Content Include="Images\Img_PartageFichier\txt.png" />
@@ -408,6 +410,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\PartageFichierScript.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

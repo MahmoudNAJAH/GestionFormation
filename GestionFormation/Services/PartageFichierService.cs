@@ -42,10 +42,9 @@ namespace GestionFormation.Services
 
             //On efface les dossiers
             foreach (string str in Directory.EnumerateDirectories(dirPath))
-            {
                 DeleteFolder(str);
-                Directory.Delete(str);
-            }
+
+            Directory.Delete(GetFullPath(dirPath));
         }
     }
 }

@@ -100,31 +100,25 @@ namespace GestionFormation.Controllers
 
             }
 
-            string combinedPath = PartageFichierService.GetFullPath(dirPath); 
-            //Pour les SessionDeCursus, si le dossier n'existe pas, on le créé
-            if (!Directory.Exists(combinedPath)) Directory.CreateDirectory(combinedPath);
-
             return PartialView("_Details", PartageFichierService.GetDirectoryModel(dirPath));
         }
 
-        // GET: PartageFichier/Create
+        [HttpPost]
         public ActionResult CreateDirectory(string dirPath, string dirName)
         {
             //On créé le dossier
             Directory.CreateDirectory(Path.Combine(PartageFichierService.GetFullPath(dirPath), dirName));
 
-            //Même si on a créé le dossier, on reste dans le dossier parent pour l'affichage
-            return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
+            return PartialView("_Details", PartageFichierService.GetDirectoryModel(dirPath));
         }
 
         [HttpPost]
         public ActionResult CreateFile(string dirPath, HttpPostedFileBase myFile)
         {
-            //PPour bloquer le bouton si on a pas sélectionné de fichier
+            //Pour bloquer le bouton si on a pas sélectionné de fichier
             if(myFile != null)
             {
                 string combinedPath = Path.Combine(PartageFichierService.GetFullPath(dirPath), Path.GetFileName(myFile.FileName));
-
                 // sauvegarde sur le serveur
                 myFile.SaveAs(combinedPath);
             }
@@ -132,18 +126,22 @@ namespace GestionFormation.Controllers
             return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
         }
 
+        [HttpPost]
         public ActionResult DeleteDirectory(string dirPath, string dirName)
         {
             PartageFichierService.DeleteFolder(Path.Combine(PartageFichierService.GetFullPath(dirPath), dirName));
 
-            return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
+            //return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
+            return PartialView("_Details", PartageFichierService.GetDirectoryModel(dirPath));
         }
 
-        public ActionResult DeleteFFile(string dirPath, string fileName)
+        [HttpPost]
+        public ActionResult DeleteFile(string dirPath, string fileName)
         {
             System.IO.File.Delete(Path.Combine(PartageFichierService.GetFullPath(dirPath), fileName));
 
-            return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
+            //return RedirectToAction("Index", "PartageFichier", new { dirPath = dirPath });
+            return PartialView("_Details", PartageFichierService.GetDirectoryModel(dirPath));
         }
 
         /// <summary>
