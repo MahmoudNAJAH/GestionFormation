@@ -26,6 +26,7 @@ namespace GestionFormation.DTO
 
         //Pour différencier Apprenant - Formateur - Admin
         public UserRole Role { get; set; }
+
         [DisplayName("Nombre de jours d'abscence")]
         public string nbre { get; set; }
 

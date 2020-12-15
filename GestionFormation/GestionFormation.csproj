@@ -217,7 +217,6 @@
     <Compile Include="Services\MessagerieSignalR\ChatHub.cs" />
     <Compile Include="Services\MessagerieSignalR\StartUp.cs" />
     <Compile Include="DTO\FicheEval.cs" />
-    <Compile Include="DTO\FichePresence.cs" />
     <Compile Include="Services\PartageFichierService.cs" />
     <Compile Include="WebServices\CursusAPIController.cs" />
     <Compile Include="Controllers\EmploiDuTempsController.cs" />
@@ -309,7 +308,7 @@
     <Content Include="Content\pagecnx.css" />
     <Content Include="Content\pagedaceuil.css" />
     <Content Include="Content\PartageFichier.css" />
-    <Content Include="Content\StyleAbout.css" />
+    <Content Include="Content\formulairenonrempliStyle.css" />
     <Content Include="Content\StyleContact.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="Content\FichePresencestyle.css" />
@@ -328,6 +327,7 @@
     <Content Include="Images\Img_PartageFichier\croix.png" />
     <Content Include="Images\Img_PartageFichier\croix2.png" />
     <Content Include="Images\Img_PartageFichier\csv.png" />
+    <Content Include="Images\Img_PartageFichier\Formulairenonrempli.png" />
     <Content Include="Images\Img_PartageFichier\pdf.png" />
     <Content Include="Images\Img_PartageFichier\txt.png" />
     <Content Include="Images\Img_PartageFichier\file.png" />
@@ -448,6 +448,7 @@
     <Content Include="Views\Shared\_UserConnected.cshtml" />
     <Content Include="Views\Apprenant\feuilleEvaluation.cshtml" />
     <Content Include="Views\PartageFichier\_Details.cshtml" />
+    <Content Include="Views\Apprenant\FormulaireNonrempli.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
