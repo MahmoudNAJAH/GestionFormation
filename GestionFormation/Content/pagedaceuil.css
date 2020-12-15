@@ -1,15 +1,6 @@
-﻿html,
-body {
-    height: 100%;
-}
+﻿
 
-body {
-    -ms-flex-align: center;
-    align-items: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    background-color: #f5f5f5;
-}
+
 
 .header {
     margin-top: -5%;
@@ -21,14 +12,14 @@ body {
 .menu {
     margin-top: 3.5%;
     padding: 5px;
-    margin-left: 7.5%;
+    margin-left:1%;
     height: 400px;
     width: 900px
 }
 
 .p {
     display: block;
-    background-color: burlywood;
+    background-color: #e11e1e;
     border-style: solid;
     border-radius: 25px;
     border-color: #09C;
@@ -40,8 +31,6 @@ body {
     margin-left: 3%;
     margin-top: 1%
 }
-
-
 
 .p2 {
     margin-left: 28%;
@@ -59,26 +48,7 @@ body {
 }
 
 .p5 {
-    margin-left: 3%;
-    margin-top: 5%
-}
-
-.p6 {
-    margin-left: 28%;
+    margin-left: 106%;
     margin-top: -17%
 }
 
-.p7 {
-    margin-left: 54%;
-    margin-top: -17%
-}
-
-.navbar-fixed-top {
-    display: none
-}
-
-
-.p8 {
-    margin-left: 80%;
-    margin-top: -17%
-}

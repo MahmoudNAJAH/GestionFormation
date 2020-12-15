@@ -1,17 +1,15 @@
-﻿
-
-
-@model GestionFormation.DTO.LoginDTO
+﻿@model GestionFormation.DTO.LoginDTO
 
 
 @using (Html.BeginForm("Login", "Authentification", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-
+    <iframe class="videodawan" width="560" height="315" src="https://www.youtube.com/embed/0RM3_sCQPjA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
 
     <link href="~/Content/pagecnx.css" rel="stylesheet">
+    <link href="~/Content/pagedaceuil.css" rel="stylesheet">
     <div class="form-horizontal">
         <img class="logodawan" src="~/Images/dawan.png" />
         <h3 classe="title">Connectez vous</h3>
@@ -39,10 +37,24 @@
             <input type="submit" value="connexion" class="btn btn-default btn-primary" style="width:220px; height:50px" />
         </div>
     </div>
+    <div class="menu">
+
+
+        <button class="p p1" onclick="location.href='@Url.Action("Index", "Formation")';"><p><h4>Formations</h4><h6>listes des formations, formateurs...</h6></p></button>
+
+        <button class="p p2" onclick="location.href='@Url.Action("Index", "SessionDeFormations")';return false;"><p><h4>Sessions formations</h4><h6><br /></h6></p></button>
+
+        <button class="p p3" onclick="location.href='@Url.Action("Index", "Help")';return false;"><p><h4>API</h4><h6><br /></h6></p></button>
+
+        <button class="p p4" onclick="location.href='@Url.Action("About", "Home")';return false;"><p><h4>A propos</h4><h6>Mot du directeur</h6></p></button>
+
+        <button class="p p5" onclick="location.href='@Url.Action("Contact", "Home")';return false;"><p><h4>Contact</h4><h6>Notre emplacement, formulaire de contact, réseaux sociaux</h6></p></button>
+
+    </div>
 }
 
 <div class="back">
-    @Html.ActionLink("Retour à l'acceuil", "index", "Home")
+    @Html.ActionLink("Problèmes de connexion ?", "Contact", "Home")
 </div>
 
 @section Scripts {

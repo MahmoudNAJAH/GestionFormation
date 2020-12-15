@@ -4,14 +4,14 @@ body {
 }
 
 body {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 420px;
+    padding-bottom: 200px;
     background-color: #f5f5f5;
 }
 
 .form-horizontal {
     margin-left: 25%;
-    margin-top: 12%
+    margin-top: -35%
 }
 
 h3 {
@@ -29,8 +29,8 @@ h3 {
 }
 
 .back {
-    margin-left: 46%;
-    margin-top: 2%
+    margin-left: 43%;
+    margin-top: -10%
 }
 
 .form-control {
@@ -49,4 +49,9 @@ h3 {
 
 .footer{
     margin-left:45%
+}
+
+.videodawan{
+    margin-left :-25%;
+    margin-top : -30%
 }
