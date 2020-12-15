@@ -120,10 +120,13 @@ namespace GestionFormation.WebServices
           
             using (BDDContext context = new BDDContext())
             {
-              
 
-                context.Messages.Remove(context.Messages.FirstOrDefault(m=>m.Apprenant.ApprenantId==id));
-                context.SaveChanges();
+                Apprenant app = context.Apprenants.FirstOrDefault(m => m.ApprenantId == id);
+                if(app.Messages !=null && app.Messages.Count != 0) {
+                    context.Messages.Remove(context.Messages.FirstOrDefault(m => m.Apprenant.ApprenantId == id));
+                    context.SaveChanges();
+                }
+                
                 context.Apprenants.Remove(context.Apprenants.FirstOrDefault(k => k.ApprenantId == id));
                 context.SaveChanges();
 
