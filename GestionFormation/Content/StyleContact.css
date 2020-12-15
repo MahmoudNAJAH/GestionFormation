@@ -115,6 +115,11 @@ textarea.contact-form-text {
 }
 
 .imagein{
-    height :150px;
-    width :150px
+    height :80px;
+    width :80px
+}
+
+#pagetwitter{
+    margin-left :-15%;
+    margin-top : -7%
 }

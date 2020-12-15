@@ -30,10 +30,21 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                       
+                        <li>
+                            @if (Session["userConnected"] != null)
+                            {
+                                @Html.ActionLink("Accueil", "Index", "Home");
+                            }
+                            @if (Session["userConnected"] == null)
+                            {
+                                @Html.ActionLink("Accueil", "Login", "Authentification");
+                            }
+
+                        </li>
                         <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                       
+
                         @*<li>@Html.ActionLink("Formations", "Index", "Formation")</li>
         <li>@Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")</li>*@
                         @*<li>@Html.ActionLink("Apprenant", "Index", "Apprenant")</li>*@
@@ -71,7 +82,7 @@
                                         @Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")
                                     </a>
                                     <a class="dropdown-item" href="#">
-                                    @Html.ActionLink("Contact", "Contact", "Home")
+                                        @Html.ActionLink("Contact", "Contact", "Home")
                                     </a>
                                 </div>
                             </li>
