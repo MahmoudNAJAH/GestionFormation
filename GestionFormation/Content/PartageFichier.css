@@ -63,7 +63,9 @@
 }
 
 .create-directory {
-    width: 270px;
+    padding-left: 13px;
+    padding-right: 13px;
+    width: 340px;
 }
 
 .file-deposit {
@@ -116,7 +118,9 @@
 }
 
 .icon-partageFichier {
+    width: 70px;
     height: 70px;
+    z-index: 1;
 }
 
 .partage-fichier-icon-texte {
@@ -124,3 +128,17 @@
     height: 40px;
 }
 
+.icon-partageFichier-croix{
+    width: 10px;
+}
+
+.icon-partageFichier-link-croix {
+    display: block;
+    position: absolute;
+    margin-left: 55px;
+    width: 10px;
+}
+
+.icon-partageFichier-link-file {
+    display: block;
+}
