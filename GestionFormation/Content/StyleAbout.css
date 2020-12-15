@@ -1,0 +1,42 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.madiv1{
+    margin-top :9%;
+    background-color: #00ff21;
+    border-radius: 19px, 190px;
+    
+}
+
+.madiv122{
+    background-color : yellow;
+    border-radius :3px, 5px;
+    font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight :100;
+    margin-left :5%;
+    border-radius :5px;
+}
+
+.classestitre {
+    font-family:'Comic Sans MS';
+    font-weight: 100
+}
+
+.apart{
+
+}
+
+.textacoteimage{
+    margin-left :42%;
+    margin-top :-15%
+}
