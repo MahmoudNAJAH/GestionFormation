@@ -41,6 +41,7 @@ else
     else
     {
 <div class="container col-md-5 d-flex flex-column justify-content-center">
+    <label id="usersConnected"></label>
     <div id="discussion" style="overflow-y: scroll; max-height:500px">
     </div>
     <div class="col-12">
@@ -74,18 +75,18 @@ else
 
 
         <script>
-            var messageBody = document.querySelector('#discussion');
-            messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-            $(function () {
-                // Reference the auto-generated proxy for the hub.
-                var chat = $.connection.chatHub;
-                // Create a function that the hub can call back to display messages.
-                chat.client.addNewMessageToPage = function (name, message, date) {
-                    // Add the message to the page.
-                    if (name == $('#displayname').val()) {
-                        $('#discussion').append(
+                var messageBody = document.querySelector('#discussion');
+                messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+                $(function () {
+                    // Reference the auto-generated proxy for the hub.
+                    var chat = $.connection.chatHub;
+                    // Create a function that the hub can call back to display messages.
+                    chat.client.addNewMessageToPage = function (name, message, date) {
+                        // Add the message to the page.
+                        if (name == $('#displayname').val()) {
+                            $('#discussion').append(
 
-                            `<div class="panel panel-success" style="margin-right:10px">
+                                `<div class="panel panel-success" style="margin-right:10px">
                                             <div class= "panel-heading">
                                                 <div class="row">
                                                     <div class="col-md-6"><strong class="text-success"> Vous</strong></div> <div class="col-md-6 text-right">${htmlEncode(date)} </div>
@@ -94,9 +95,9 @@ else
                                             <div class="panel-body">${htmlEncode(message)}</div>
                                         </div>
                                           `);
-                    } else {
-                        $('#discussion').append(
-                            `<div class="panel panel-info" style="margin-right:10px">
+                        } else {
+                            $('#discussion').append(
+                                `<div class="panel panel-info" style="margin-right:10px">
                                             <div class= "panel-heading">
                                                 <div class="row">
                                                     <div class="col-md-6"><strong class="text-primary">${htmlEncode(name)} </strong> </div> <div class="col-md-6 text-right">${htmlEncode(date)} </div>
@@ -107,46 +108,58 @@ else
                                           `);
 
 
-                    }
-                    messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+                        }
+                        // conserver le scroll en bas de page
+                        messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 
-                };
-                // Get the user name and store it to prepend to messages.
-                //$('#displayname').val(prompt('Enter your name:', ''));
-                // Set initial focus to message input box.
-                $('#message').focus();
-                // Start the connection.
-                $.connection.hub.start().done(function () {
-                    chat.server.joinRoom($('#salonId').val());
-                    chat.server.recuperatioDesMessagesEnBDD($('#salonId').val());
-                    // ajout de l'envoi en appuyant sur "Entree"
-                    $('#message').keyup(({ key }) => {
-                        if (key === "Enter") {
+                    };
+
+                    chat.client.sendListName = function (listName) {
+
+
+                        $('#usersConnected').text(listName);
+
+                    }
+                    // Get the user name and store it to prepend to messages.
+                    //$('#displayname').val(prompt('Enter your name:', ''));
+                    // Set initial focus to message input box.
+                    $('#message').focus();
+                    // Start the connection.
+                    $.connection.hub.start().done(function () {
+                        
+                        chat.server.recuperatioDesMessagesEnBDD($('#salonId').val());
+                        // ajout de l'envoi en appuyant sur "Entree"
+                        $('#message').keyup(({ key }) => {
+                            if (key === "Enter") {
+                                // Call the Send method on the hub.
+                                chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val(), $('#senderId').val());
+                                //chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val());
+                                // Clear text box and reset focus for next comment.
+                                $('#message').val('').focus();
+                            }
+                        })
+                        $('#sendmessage').click(function () {
+
                             // Call the Send method on the hub.
                             chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val(), $('#senderId').val());
-                            console.log("i'm here with enter!");
-                            //chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val());
+
                             // Clear text box and reset focus for next comment.
                             $('#message').val('').focus();
-                        }
-                    })
-                    $('#sendmessage').click(function () {
+                        });
 
-                        // Call the Send method on the hub.
-                        chat.server.send($('#displayname').val(), $('#message').val(), $('#salonId').val(), $('#senderId').val());
-                        console.log("i'm here !");
+                        console.log($('#displayname').val());
+                        console.log('hey!');
 
-                        // Clear text box and reset focus for next comment.
-                        $('#message').val('').focus();
+                        chat.server.joinRoom($('#salonId').val(), $('#displayname').val());
+
                     });
-
                 });
-            });
-            // This optional function html-encodes messages for display in the page.
-            function htmlEncode(value) {
-                var encodedValue = $('<div />').text(value).html();
-                return encodedValue;
-            }
+                // This optional function html-encodes messages for display in the page.
+                function htmlEncode(value) {
+                    var encodedValue = $('<div />').text(value).html();
+                    return encodedValue;
+                }
+            
         </script>
 
     }
