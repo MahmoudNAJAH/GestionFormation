@@ -22,16 +22,16 @@ namespace GestionFormation.DAO
                         listMessages.Add(context.Messages.FirstOrDefault(m => m.MessageId == mes.MessageId));
                     ap.Messages = listMessages;
                 }
-                if (ap.SessionDeCursus != null)
+                if (!(ap.SessionDeCursus is null))
                 {
                     List<SessionDeCursus> listSessionDeCursus = new List<SessionDeCursus>();
                     foreach (SessionDeCursus mes in ap.SessionDeCursus)
                         listSessionDeCursus.Add(context.SessionDeCursus.FirstOrDefault(m => m.SessionDeCursusId == mes.SessionDeCursusId));
                     ap.SessionDeCursus = listSessionDeCursus;
-                }
-                
+            }
 
-                context.Apprenants.Add(ap);
+
+            context.Apprenants.Add(ap);
                 context.SaveChanges();
             }
         }
@@ -53,6 +53,7 @@ namespace GestionFormation.DAO
             using (BDDContext context = new BDDContext())
             {
                 context.Configuration.LazyLoadingEnabled = false;
+                //var query=
                 return context.Apprenants.Include("Messages").Include("SessionDeCursus").FirstOrDefault(ap => ap.ApprenantId == apprenantId);
                 
             }
