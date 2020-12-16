@@ -5,7 +5,7 @@
 {
     @Html.AntiForgeryToken()
 
-    
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet">
 
     <link href="~/Content/pagecnx.css" rel="stylesheet">
@@ -37,8 +37,8 @@
             <input type="submit" value="connexion" class="btn btn-default btn-primary" style="width:220px; height:50px" />
         </div>
     </div>
+}
     <div class="menu">
-
 
         <button class="p p1" onclick="location.href='@Url.Action("Index", "Formation")';"><p><h4>Formations</h4><h6>listes des formations, formateurs...</h6></p></button>
 
@@ -51,7 +51,7 @@
         <button class="p p5" onclick="location.href='@Url.Action("Contact", "Home")';return false;"><p><h4>Contact</h4><h6>Notre emplacement, formulaire de contact, réseaux sociaux</h6></p></button>
 
     </div>
-}
+
 
 <div class="back">
     @Html.ActionLink("Problèmes de connexion ?", "Contact", "Home")

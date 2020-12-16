@@ -38,8 +38,10 @@
         @for (int index_jours = 0; index_jours < 7; index_jours++)
         {
             classColumn = "edt-container-journee";
-            if (EmploiDuTempsService.EstFerie(ViewBag.DateLundi.AddDays(index_jours))) { 
-                classColumn += " edt-container-journee-ferie"; }
+            if (EmploiDuTempsService.EstFerie(ViewBag.DateLundi.AddDays(index_jours)))
+            {
+                classColumn += " edt-container-journee-ferie";
+            }
 
 
             //Dans tous les cas, on veut 7 colonnes
@@ -53,6 +55,9 @@
                             <div class=edt-container-journee-ue>
                                 <div class="edt-journee-formation">
                                     <span class="edt-journee-formation-nom">@item.Formation.Nom</span>
+                                </div>
+                                <div class="edt-journee-formateur">
+                                    <span class="edt-journee-formateur-nom">@item.Formation.Description </span>
                                 </div>
                                 <div class="edt-journee-formateur">
                                     <span class="edt-journee-formateur-nom">@item.Formateur.Nom  @item.Formateur.Prenom </span>
