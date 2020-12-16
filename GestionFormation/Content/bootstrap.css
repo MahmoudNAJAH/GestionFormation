@@ -4669,8 +4669,8 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-    margin-top: 2%;
-    background-color: #d5d5d5;
+   background-color: white;
+   padding-top: 2%;
 }
 .navbar-inverse .navbar-brand {
   color: #9d9d9d;
@@ -4683,6 +4683,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
     /*justify-content: space-around;*/
     position: relative;
     height: 80px;
+    background-color: #d5d5d5;
 }
     .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
         color: #fff;
