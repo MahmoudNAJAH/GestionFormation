@@ -53,14 +53,16 @@
                         if (item.Date.ToString("dd/MM/yyyy") == @ViewBag.DateLundi.AddDays(index_jours).ToString("dd/MM/yyyy"))
                         {
                             <div class=edt-container-journee-ue>
-                                <div class="edt-journee-formation">
-                                    <span class="edt-journee-formation-nom">@item.Formation.Nom</span>
+                                <div class="margin-top margin-bottom">
+                                    <p class="bold">@item.Formation.Nom</p>
                                 </div>
-                                <div class="edt-journee-formateur">
-                                    <span class="edt-journee-formateur-nom">@item.Formation.Description </span>
+                                <div class="text-justify margin-bottom">
+                                    <p class="bold">Description :</p>
+                                    <p>@item.Formation.Description </p>
                                 </div>
-                                <div class="edt-journee-formateur">
-                                    <span class="edt-journee-formateur-nom">@item.Formateur.Nom  @item.Formateur.Prenom </span>
+                                <div class="text-justify">
+                                    <p class="bold">Formateur :</p>
+                                    <p>@item.Formateur.Nom  @item.Formateur.Prenom </p>
                                 </div>
                             </div>
                         }

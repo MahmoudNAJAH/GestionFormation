@@ -64,24 +64,14 @@
 
 .edt-container-journee-ferie {
     background: repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255, 0, 0, 0.2) 20px, rgba(255, 0, 0, 0.2) 40px);
+    padding: 0px;
+    margin: 0px;
 }
 
 
 .edt-container-journee-ue {
     margin-top: 10px;
     margin-bottom: 30px;
-}
-S
-.edt-journee-formation {
-    margin-bottom: 7px;
-    font-weight: bold;
-}
-
-.edt-journee-formation-nom {
-    font-weight: bold;
-}
-
-.edt-journee-formateur {
 }
 
 .edt-btn-next-link {
@@ -109,19 +99,28 @@ S
     margin-right: var(--header-margin-right);
 }
 
+.bold {
+    font-weight: bold;
+}
+.margin-top{
+    margin-top: 50px;
+}
+.margin-bottom {
+    margin-bottom: 50px;
+}
 
 /*_EdtMonth*/
 
 #_EdtMonth {
     width: 15%;
     float: left;
-    min-height: 735px;
+    min-height: 743px;
     padding-top: 20px;
     padding-left: 1.5%;
     padding-right: 1.5%;
     padding-top: 6%;
 
-    /*background-color: green;*/
+   /* background-color: green;*/
 }
 
 .edt-month-header{
@@ -170,4 +169,7 @@ S
 .edt-mois-btn-jours-reference {
     background-color: #337ab7;
     color: white;
+}
+
+.basdepage{
 }
