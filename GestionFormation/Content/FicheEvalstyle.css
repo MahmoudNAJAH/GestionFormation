@@ -58,21 +58,20 @@ h4 {
 }
 .titre {
 
-    margin-left:700px;
+    margin-left:450px;
     margin-top:-100px; 
     margin-bottom:150px; 
 }
 .semaine {
-    margin: 10px -10px -60px 400px;
+    margin-left :35%;
     font-size: 16px;
 }
 
 .Apprenant{
     color:blue;
     font-size:16px; 
-    margin-top:10px; 
-    margin-bottom:-80px
-    
+    margin-top:-4%; 
+    margin-bottom:-80px   
 }
 strong {
     color: red;
@@ -98,4 +97,18 @@ h5 {
     font-weight: bold;
     font-size: 16px;
     
+}
+
+.feacceuil{
+    display :flex;
+    flex-direction :row;
+    justify-content :space-between;
+}
+
+.formulaire{
+    font-size :1.5em;
+}
+
+.boutonenvoyer{
+    margin-left :16%;
 }

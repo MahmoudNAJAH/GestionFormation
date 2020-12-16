@@ -1,6 +1,5 @@
 ﻿@model GestionFormation.DTO.FicheEval
 
-@{int i = 0; }
 @using (Html.BeginForm("PrintEval", "Apprenant", FormMethod.Post))
 {
    
@@ -14,8 +13,11 @@
         <link rel="stylesheet" href="~/Content/FicheEvalstyle.css">
     </head>
     <body>
-
-        <img src="~/Images/image1.PNG" alt="logo Dawan" />
+        <div>
+            
+            <img src="~/Images/image1.PNG" alt="logo Dawan"  />
+        </div>
+        
 
         <h2>@ViewBag.Message5</h2>
         <h5 class="titre">Feuille d'évaluation</h5>
@@ -35,23 +37,37 @@
 
         </h6>
 
-        <form>
+        <form class="formulaire">
             <div class="form-group1">
-                <div class="col-md-10">
+                <div class="col-md-8">
                     <div>
                         <h4 class="Evironement"> Environnement de Travail</h4>
                         <h5>Acceuil</h5>
-                        Excellent
-                        @Html.RadioButtonFor(m => m.fiche1, "excellent")
-
-                        Trés Bon
-                        @Html.RadioButtonFor(m => m.fiche1, "TresBon")
-                        Bon
-                        @Html.RadioButtonFor(m => m.fiche1, "Bon")
-                        Moyen
-                        @Html.RadioButtonFor(m => m.fiche1, "Moyen")
-                        Passable
-                        @Html.RadioButtonFor(m => m.fiche1, "Passable")
+                        <div class="feacceuil">
+                            <span>
+                                Excellent
+                                @Html.RadioButtonFor(m => m.fiche1, "excellent")
+                            </span>
+                            <span>
+                                Trés Bon
+                                @Html.RadioButtonFor(m => m.fiche1, "TresBon")
+                            </span>
+                            <span>
+                                Bon
+                                @Html.RadioButtonFor(m => m.fiche1, "Bon")
+                            </span>
+                            <span>
+                                Moyen
+                                @Html.RadioButtonFor(m => m.fiche1, "Moyen")
+                            </span>
+                            
+                            <span>
+                                Passable
+                                @Html.RadioButtonFor(m => m.fiche1, "Passable")
+                            </span>
+                            
+                        </div>
+                        
 
                     </div>
 
@@ -60,20 +76,33 @@
             
             <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Salle de Formation</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche2, "excellent")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche2, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche2, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche2, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche2, "Moyen")
+                        </span>
 
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche2, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche2, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche2, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche2, "Passable")
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche2, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -82,19 +111,33 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Moyen technique Mise en oeuvre</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche3, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche3, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche3, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche3, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche3, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche3, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche3, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche3, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche3, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche3, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -103,83 +146,139 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h4>Cours </h4>
                     <h5>Richesse de cours </h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche4, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche4, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche4, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche4, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche4, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche4, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche4, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche4, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche4, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche4, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Progression logique du cours </h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche5, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche5, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche5, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche5, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche5, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche5, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche5, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche5, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche5, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche5, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Choix des exemples et des exercices</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche6, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche6, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche6, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche6, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche6, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche6, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche6, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche6, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche6, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche6, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Support de références</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche14, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche14, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche14, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche14, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche14, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche7, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche7, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche7, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche7, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche7, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>commentaire</h5>
                     @Html.TextAreaFor(model => model.Commentaire, new { style = "width: 500px;", @rows = 3 })
@@ -190,39 +289,67 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h4>Adéquation à vos besoin </h4>
                     <h5>Rythme de la formation</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche7, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche7, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche7, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche7, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche7, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche8, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche8, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche8, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche8, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche8, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Niveau Adapté à vos besoin </h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche8, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche8, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche8, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche8, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche8, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche9, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche9, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche9, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche9, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche9, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -231,19 +358,33 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Niveau Adapté à vos besoin </h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche9, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche9, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche9, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche9, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche9, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche10, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche10, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche10, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche10, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche10, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -252,25 +393,39 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>Réponse à vos besoins professionnels </h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche13, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche13, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche13, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche13, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche13, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche11, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche11, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche11, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche11, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche11, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
         </div>
         <div class="form-group">
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h5>commentaire</h5>
                     @Html.TextAreaFor(model => model.Commentaire1, new { style = "width: 500px;", @rows = 3 })
@@ -281,20 +436,34 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
                     <h4>Formateur</h4>
                     <h5>Maitrise Technique</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche10, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche10, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche10, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche10, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche10, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche12, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche12, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche12, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche12, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche12, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -303,20 +472,34 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
 
                     <h5>Qualité de communication</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche11, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche11, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche11, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche11, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche11, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche13, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche13, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche13, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche13, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche13, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -325,20 +508,34 @@
 
         <div class="form-group">
 
-            <div class="col-md-10">
+            <div class="col-md-8">
                 <div>
 
                     <h5>Capacité d'écoute et disponibilité</h5>
-                    Excellent
-                    @Html.RadioButtonFor(m => m.fiche12, "excellent")
-                    Trés Bon
-                    @Html.RadioButtonFor(m => m.fiche12, "TresBon")
-                    Bon
-                    @Html.RadioButtonFor(m => m.fiche12, "Bon")
-                    Moyen
-                    @Html.RadioButtonFor(m => m.fiche12, "Moyen")
-                    Passable
-                    @Html.RadioButtonFor(m => m.fiche12, "Passable")
+                    <div class="feacceuil">
+                        <span>
+                            Excellent
+                            @Html.RadioButtonFor(m => m.fiche14, "excellent")
+                        </span>
+                        <span>
+                            Trés Bon
+                            @Html.RadioButtonFor(m => m.fiche14, "TresBon")
+                        </span>
+                        <span>
+                            Bon
+                            @Html.RadioButtonFor(m => m.fiche14, "Bon")
+                        </span>
+                        <span>
+                            Moyen
+                            @Html.RadioButtonFor(m => m.fiche14, "Moyen")
+                        </span>
+
+                        <span>
+                            Passable
+                            @Html.RadioButtonFor(m => m.fiche14, "Passable")
+                        </span>
+
+                    </div>
                 </div>
 
             </div>
@@ -395,26 +592,17 @@
         </div>
 
 
-        @*<div class="form-group">
-            <div class="col-md-10">
-                <div>
-                    <h5>commentaire</h5>
-                    @Html.TextAreaFor(model => model.Commentaire3, new { style = "width: 500px;", @rows = 3 })
-                </div>
-
-            </div>
-        </div>*@
 
         <div class="form-group">
             <div class="col-md-10">
                 <div>
                     <h5>Signature</h5>
-                    @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 9, @cols=8 })
+                    @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 3})
                 </div>
 
             </div>
          </div> 
-        <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
+        <input type="submit" class="btn btn-danger boutonenvoyer" value="télécharger Ma feuille d'évaluation" />
 
         </form>
 
