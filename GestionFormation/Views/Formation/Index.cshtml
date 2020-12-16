@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<GestionFormation.DTO.FormationDTO>
 
-@{
+@*@{
     ViewBag.Title = "Liste de Formations";
 }
 
@@ -8,34 +8,40 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th></th>
-    </tr>
+</p>*@
+<link rel="stylesheet" href="~/Content/FormationStyle.css" />
+<table class="table table-striped">
+    <thead >
+        <tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.FormationId */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.FormationId */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.FormationId */ })
-        </td>
-    </tr>
-}
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th class="colonne ">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+        </tr>
+    </thead>
+    @*<th></th>*@
+    
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
 
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+
+            <td class="colonne ">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.FormationId */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.FormationId */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.FormationId */ })
+                </td>*@
+        </tr>
+    }
+</tbody>
 </table>
