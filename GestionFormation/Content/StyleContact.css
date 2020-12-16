@@ -3,8 +3,11 @@
     padding: 0;
 }
 
-.contact-section {
+.divprincipale{
+    min-height: 600px;
+}
 
+.contact-section {
     background-size: cover;
     padding: 200px 20px;
     min-height: 100%;
@@ -13,7 +16,7 @@
     margin-right: auto;
     padding: 1.5em;
     font-family: Calibri, Times New Roman, Arial, Verdana, Times, sans-serif;
-    font-size: 1.1em;    
+    font-size: 1.1em;
     border-width: 5px;
 } 
 
@@ -101,7 +104,7 @@ textarea.contact-form-text {
 }
 
 .basdepage{
-    margin-top : 25%
+  /*  margin-top : 15%*/
 }
 
 #fbpage{
