@@ -14,7 +14,7 @@
 </div>
 
 <div class="menu-all">
-    <div class="menu col-md-6">
+    <div class="menu col-md-4">
         <div>
             <a role="button" onclick="location.href='@Url.Action("Index", "EmploiDuTemps")';return false;">
                 <div class="panel panel-default p">
@@ -43,13 +43,13 @@
                         Chat
                     </h3>
                     <h5>
-                        Acceder à la messagerie instantannée
+                        Ouvrira une pop up
                     </h5>
 
                 </div>
             </a>
         </div>
-        @*<div>
+        <div>
             <a role="button" onclick="location.href='@Url.Action("Logout", "Authentification")';return false;">
                 <div class="panel panel-default p">
                     <h3>
@@ -57,7 +57,10 @@
                     </h3>
                 </div>
             </a>
-        </div>*@
+        </div>
+    </div>
+    <div class="panel-group col-md-8 accordeon-panel" id="accordion" role="tablist" aria-multiselectable="true">
+
         <div class="panel panel-invisible ">
             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                 <div class="panel-heading p" role="tab" id="headingTwo">
@@ -70,7 +73,7 @@
                 <div class="panel-body panel-body-white">
                     <button class="p bw" onclick="location.href='@Url.Action("feuillePresence", "Apprenant")';return false;"><h5>Feuille de présence</h5></button>
 
-                    <button class="p bw" onclick="location.href='@Url.Action("feuilleEvaluation", "Apprenant")';return false;"><h5>Feuille d'évaluation</h5></button>
+                    <button class="p bw" onclick="location.href='@Url.Action("feuilleEvaluation ", "Apprenant")';return false;"><h5>Feuille d'évaluation</h5></button>
                 </div>
             </div>
         </div>
