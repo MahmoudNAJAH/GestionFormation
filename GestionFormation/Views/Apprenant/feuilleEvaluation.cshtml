@@ -388,7 +388,7 @@
             <div class="col-md-10">
                 <div>
                     <h5>Remarques Complémentaires </h5>
-                    @Html.TextAreaFor(model => model.Question3, new { style = "width: 500px;", @rows = 3 })
+                    @Html.TextAreaFor(model => model.Question3, new { style = "width: 500px;", @rows = 3})
                 </div>
 
             </div>
@@ -409,12 +409,12 @@
             <div class="col-md-10">
                 <div>
                     <h5>Signature</h5>
-                    @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 3 })
+                    @Html.TextAreaFor(model => model.Commentaire4, new { style = "width: 500px;", @rows = 9, @cols=8 })
                 </div>
 
             </div>
-            </div> <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
-                       @*<button type="button" class="btn btn-outline-danger">Feuille d'évaluation</button>*@
+         </div> 
+        <input type="submit" class="btn btn-danger" value="télécharger Ma feuille d'évaluation" />
 
         </form>
 

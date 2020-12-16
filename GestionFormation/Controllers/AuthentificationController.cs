@@ -13,6 +13,8 @@ namespace GestionFormation.Controllers
 {
     public class AuthentificationController : Controller
     {
+        
+       
         public ActionResult PageConnexionChoixRole()
         {
             return View();
@@ -30,13 +32,18 @@ namespace GestionFormation.Controllers
             UserDTO user = new UserDTO { Role = p.Role };
 
             user.GetUserFromEmail(p.Email);
+            Apprenant ap = new Apprenant();
+            ap = ApprenantDAO.FindByLgMD(p.Email);
 
             // ici j'ai recupéréer l'apprenant qui corresspond au mem mail et password entré dans la 
             //fonction Login
 
-            
+
             try
             {
+                byte[] hashBytes = user.MotDePasse;//read from store.
+                CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+
                 if (user.MotDePasse != null)
                 {
                     //session =  propriété du controleur
@@ -44,8 +51,10 @@ namespace GestionFormation.Controllers
                     //Donc Pas partagé entre les utilisateurs 
 
 
-                    byte[] hashBytes = user.MotDePasse;//read from store.
-                    CryptageMotDePasse hash = new CryptageMotDePasse(hashBytes);
+                    /*byte[] */
+                    hashBytes = user.MotDePasse;//read from store.
+                    /*CryptageMotDePass*//*e*/
+                    hash = new CryptageMotDePasse(hashBytes);
                     if (hash.Verify(p.MotDePasse))
                     {
                         Session.Add("userConnected", user);
@@ -53,22 +62,24 @@ namespace GestionFormation.Controllers
                         if (!string.IsNullOrEmpty(referer)) return Redirect(referer);
                         else return RedirectToAction("Index", "Home");
                     }
-
-
                     else
                     {
-                       
+
                         ViewBag.Message = "Erreur de connexion ";
                     }
-                    ViewBag.Referer = referer;
-                }
+                } 
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message); 
+                Console.WriteLine(ex.Message);
             }
 
+              if (ap == null)
+                {
+                    ViewBag.Message1 = "L'adresse Email  n'éxiste pas ";
+                }
 
+            ViewBag.Referer = referer;
 
             return View(p);
         }
