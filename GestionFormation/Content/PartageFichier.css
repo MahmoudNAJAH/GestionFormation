@@ -11,9 +11,6 @@
     width: 700px;
     height: 40px;
     background-color: var(--color);
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
     border-radius: 25px;
     display: flex;
     align-items: flex-start;
@@ -23,6 +20,19 @@
     padding-right: 40px;
     padding-top: 7px;
     margin-bottom: 40px;
+}
+
+.partage-fichier-header-par {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#SessionCursus{
+    margin-left: 30px;
+    color: black;
+    font-weight: normal;
+    font-size: 15px;
 }
 
 .datagrid {

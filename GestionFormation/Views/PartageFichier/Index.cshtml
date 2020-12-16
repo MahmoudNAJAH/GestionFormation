@@ -12,10 +12,10 @@
 }
 
 <div class="partage-fichier-header">
-    <p>Sélectionner la Session de Cursus</p>
+    <p class="partage-fichier-header-par">Sélectionner la Session de Cursus</pclass="partage-fichier-header">
 
     <select name="SessionCursus" id="SessionCursus">
-        <option value="">Sélectionnez votre Session de Cursus</option>
+        <option value="" selected>Sélectionnez votre Session de Cursus</option>
         @foreach (var item in Model.listSessionCursus)
         {
             <option value="@item.Id"> @item.Nom </option>

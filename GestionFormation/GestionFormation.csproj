@@ -316,6 +316,7 @@
     <Content Include="Content\FicheEvalstyle.css" />
     <Content Include="Content\IndexApprenant.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\Anton\OFL.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -373,6 +374,7 @@
     <Content Include="Content\js\bootstrap.bundle.min.js.map" />
     <Content Include="Content\js\bootstrap.js.map" />
     <Content Include="Content\js\bootstrap.min.js.map" />
+    <Content Include="fonts\Anton\Anton-Regular.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
