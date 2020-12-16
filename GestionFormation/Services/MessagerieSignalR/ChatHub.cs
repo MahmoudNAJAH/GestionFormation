@@ -122,12 +122,15 @@ namespace GestionFormation.Services.MessagerieSignalR
         private void SendListUserConnected(Dictionary<string, string> UserConnectedInthisRoom, string roomName)
         {
             string listName = "";
-            foreach (string user in UserConnectedInthisRoom.Values)
+            if (UserConnectedInthisRoom.Values.Count() > 0)
             {
-                listName += user;
-                listName += " - ";
+                foreach (string user in UserConnectedInthisRoom.Values)
+                {
+                    listName += user;
+                    listName += " - ";
+                }
+                listName = listName.Substring(0, listName.Length - 3);
             }
-            listName = listName.Substring(0, listName.Length - 3);
 
             Clients.Group(roomName).sendListName(listName);
         }
