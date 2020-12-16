@@ -12,7 +12,10 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav col-md-12">
-                <li><img class="navbar-logo" src="~/Images/dawan.png" alt="Logo DAWAN" /></li>
+                <li>
+                        <img class="navbar-logo" src="~/Images/dawan.png" alt="Logo DAWAN" />
+                </li>
+
                 <li>
                     @if (Session["userConnected"] != null)
                     {
@@ -26,10 +29,6 @@
                 </li>
                 <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
-                @*<li>@Html.ActionLink("Formations", "Index", "Formation")</li>
-                    <li>@Html.ActionLink("Session De Formation", "Index", "SessionDeFormations")</li>*@
-                @*<li>@Html.ActionLink("Apprenant", "Index", "Apprenant")</li>*@
 
 
                 <li class="nav-item dropdown">
@@ -52,7 +51,6 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</a></li>
                             <li><a class="dropdown-item" href="#">@Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")</a></li>
-                            <li><a class="dropdown-item" href="#">@Html.ActionLink("Contact", "Contact", "Home")</a></li>
                         </ul>
                     </li>
 
@@ -63,10 +61,6 @@
                 @if (Session["userConnected"] != null)
                 {
                     <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>
-
-                    @*<li>@Html.ActionLink("Emploi Du Temps", "Index", "EmploiDuTemps")</li>
-                        <li>@Html.ActionLink("Partage de Fichiers", "Index", "PartageFichier")</li>
-                        <li>@Html.ActionLink("Déconnexion", "Logout", "Authentification")</li>*@
                 }
             </ul>
 

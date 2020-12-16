@@ -12,6 +12,10 @@ html {
 body {
   margin: 0;
 }
+.basdepage {
+    text-align: center;
+}
+
 article,
 aside,
 details,
