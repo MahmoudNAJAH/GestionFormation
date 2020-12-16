@@ -19,7 +19,6 @@ body {
 }
 
 .madiv122{
-    background-color : yellow;
     border-radius :3px, 5px;
     font-family :'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight :100;
@@ -47,4 +46,13 @@ body {
 
 .overflow-hidden {
     overflow: hidden !important;
+}
+
+.basic-info-item__description{
+    margin-left :25%;
+    margin-top :-2.5%
+}
+
+.about-us__basic-info-list{
+    margin-left :30%
 }
