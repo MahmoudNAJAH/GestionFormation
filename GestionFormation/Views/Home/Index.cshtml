@@ -1,25 +1,13 @@
 ﻿
 @using GestionFormation.DTO
 
-@{
-    ViewBag.Title = "Home Page";
-}
-@if (Session["userConnected"] != null)
-{
-    <h3>Bonjour @(((UserDTO)Session["userConnected"]).Prenom) !!!</h3>
-    @Html.ActionLink("Se déconnecter", "Logout", "Authentification")
-}
-
 <link href="~/Content/pagedaceuil.css" rel="stylesheet">
-@*<link href="~/Content/bootstrap.min.css" rel="stylesheet">*@
 
 <div class="header">
-    <img src="~/Images/header.jpg" alt="Formez vous à distance" height="300" width="1250" />
+    <img src="~/Images/header.jpg" alt="Formez vous à distance" />
 </div>
 
 <div class="menu">
-
-   
 
     <button class="p p1" onclick="location.href='@Url.Action("Index", "Formation")';"><p><h3>Formations</h3><h5>listes des formations, formateurs...</h5></p></button>
 
