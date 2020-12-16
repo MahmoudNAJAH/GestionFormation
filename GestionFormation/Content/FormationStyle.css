@@ -35,3 +35,7 @@ textarea {
     text-align: justify; 
     /*justify-content: space-around;*/
 }
+.class="col-lg-push-7" {
+    text-align: justify;
+    width: 3em;
+}

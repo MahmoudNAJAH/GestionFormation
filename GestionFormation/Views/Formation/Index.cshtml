@@ -14,10 +14,11 @@
     <thead >
         <tr>
 
-            <th>
+            <th class="col-sm-5">
                 @Html.DisplayNameFor(model => model.Nom)
             </th>
-            <th class="colonne ">
+            
+            <th class="col-lg-sm-2">
                 @Html.DisplayNameFor(model => model.Description)
             </th>
         </tr>
@@ -29,11 +30,11 @@
     {
         <tr>
 
-            <td>
+            <td class="col-lg-push-8" >
                 @Html.DisplayFor(modelItem => item.Nom)
             </td>
 
-            <td class="colonne ">
+            <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             @*<td>
