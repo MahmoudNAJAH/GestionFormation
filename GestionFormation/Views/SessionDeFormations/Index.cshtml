@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<GestionFormation.DTO.SessionDeFormationDTO>
 
-@{
+@*@{
     ViewBag.Title = "Index";
 }
 
@@ -8,12 +8,12 @@
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+</p>*@
+<table class="table table-striped">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.SessionDeCursusId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.NomFormation)
         </th>
@@ -25,20 +25,20 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.SessionDeCursusId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.NomFormation)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NomFormateur)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SessionDeFormationId }) |
             @Html.ActionLink("Details", "Details", new { id=item.SessionDeFormationId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SessionDeFormationId })
-        </td>
+        </td>*@
     </tr>
 }
 
