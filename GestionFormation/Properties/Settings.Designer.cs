@@ -70,7 +70,7 @@ namespace GestionFormation.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("1048576")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1048576000")]
         public int TailleMaxPieceJointe {
             get {
                 return ((int)(this["TailleMaxPieceJointe"]));

@@ -18,7 +18,7 @@
       <Value Profile="(Default)">dawan742</Value>
     </Setting>
     <Setting Name="TailleMaxPieceJointe" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">1048576</Value>
+      <Value Profile="(Default)">1048576000</Value>
     </Setting>
   </Settings>
 </SettingsFile>
