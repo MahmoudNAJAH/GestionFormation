@@ -72,7 +72,7 @@ body {
     border-radius: 25px;
     height: 150px;
     width: 150px;
-    margin: 25px;
+    margin: 20px;
     text-align: center;
     display: flex;
     color :white;
@@ -103,7 +103,7 @@ a{
 }
 
 .bw {
-    background-color: white;
+    background-color: #808080;
     border-color: black;
     height: auto;
     width: 150px;
