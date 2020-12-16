@@ -14,7 +14,17 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><img class="navbar-logo" src="~/Images/dawan.png" alt="Logo DAWAN" /></li>
-                <li>@Html.ActionLink("Accueil", "Index", "Home")</li>
+                <li>
+                    @if (Session["userConnected"] != null)
+                    {
+                        @Html.ActionLink("Accueil", "Index", "Home");
+                    }
+                    @if (Session["userConnected"] == null)
+                    {
+                        @Html.ActionLink("Accueil", "Login", "Authentification");
+                    }
+
+                </li>
                 <li>@Html.ActionLink("À propos de", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
 
