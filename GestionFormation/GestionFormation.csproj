@@ -311,6 +311,7 @@
     <Content Include="Content\pagedaceuil.css" />
     <Content Include="Content\PartageFichier.css" />
     <Content Include="Content\formulairenonrempliStyle.css" />
+    <Content Include="Content\FormationStyle.css" />
     <Content Include="Content\StyleContact.css" />
     <Content Include="Content\StyleLayout.css" />
     <Content Include="Content\FichePresencestyle.css" />

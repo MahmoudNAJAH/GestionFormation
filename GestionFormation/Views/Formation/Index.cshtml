@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-striped">
     <tr>
         
         <th>
@@ -18,7 +18,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th></th>
+        @*<th></th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -30,11 +30,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
-        <td>
+        @*<td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.FormationId */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.FormationId */ }) |
             @Html.ActionLink("Delete", "Delete", new { /* id=item.FormationId */ })
-        </td>
+        </td>*@
     </tr>
 }
 
