@@ -17,7 +17,7 @@
         <div class="create-directory onglet">
             <button type="button" class="btn-partage-fichier" onclick="CreateDirectory()">Create</button>
             <input type="hidden" name="createDirectory-dirPath" id="createDirectory-dirPath" value="@Model.DirPath" />
-            <input type="text" name="createDirectory-dirName" id="createDirectory-dirName" 
+            <input type="text" name="createDirectory-dirName" id="createDirectory-dirName"
                    onfocus="if(this.value == 'Nouveau dossier ...')this.value = '';" value="Nouveau dossier ..." />
             <button onclick="DisplayDeleteButton()" class="btn-partage-fichier">Delete</button>
         </div>
@@ -38,7 +38,8 @@
         @foreach (var item in Model.Directories)
         {
             <div class="partageFichier-fenetre">
-                <a onclick="DeleteDirectory('@Model.DirPath.Replace("\\","\\\\")', '@item')"
+                <a @*onclick="DeleteDirectory('@Model.DirPath.Replace("\\","\\\\")', '@item')"*@
+                   data-toggle="modal" data-target="#fenetre-delete"
                    class="icon-partageFichier-link-croix">
                     <img src="~/Images/Img_PartageFichier/croix3.png" alt=""
                          class="icon-partageFichier-link-croix" />
@@ -56,7 +57,8 @@
         {
 
             <div class="partageFichier-fenetre">
-                <a onclick="DeleteFile('@Model.DirPath.Replace("\\","\\\\")', '@item')"
+                <a @*onclick="DeleteFile('@Model.DirPath.Replace("\\","\\\\")', '@item')"*@
+                   data-toggle="modal" data-target="#fenetre-delete"
                    class="icon-partageFichier-link-croix">
                     <img src="~/Images/Img_PartageFichier/croix3.png" alt=""
                          class="icon-partageFichier-link-croix" />
