@@ -444,7 +444,6 @@
     <Content Include="Views\EmploiDuTemps\_EdtBody.cshtml" />
     <Content Include="Views\EmploiDuTemps\_EdtMonth.cshtml" />
     <Content Include="Views\Apprenant\Chat.cshtml" />
-    <Content Include="Views\Shared\_ChatConnected.cshtml" />
     <Content Include="Views\PartageFichier\Index.cshtml" />
     <Content Include="Views\Shared\_vue1.cshtml" />
     <Content Include="Views\Apprenant\feuillePresence.cshtml" />

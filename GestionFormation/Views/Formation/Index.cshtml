@@ -10,38 +10,40 @@
     @Html.ActionLink("Create New", "Create")
 </p>*@
 <link rel="stylesheet" href="~/Content/FormationStyle.css" />
-<table class="table table-striped">
-    <thead >
-        <tr>
+<div class="matable">
+    <table class="table table-striped">
+        <thead>
+            <tr>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Nom)
-            </th>
-            <th class="colonne ">
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-        </tr>
-    </thead>
-    @*<th></th>*@
-    
-<tbody>
-    @foreach (var item in Model)
-    {
-        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th class="colonne ">
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+            </tr>
+        </thead>
+        @*<th></th>*@
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Nom)
-            </td>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
 
-            <td class="colonne ">
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.FormationId */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.FormationId */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.FormationId */ })
-                </td>*@
-        </tr>
-    }
-</tbody>
-</table>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nom)
+                    </td>
+
+                    <td class="colonne ">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    @*<td>
+                            @Html.ActionLink("Edit", "Edit", new { /* id=item.FormationId */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.FormationId */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.FormationId */ })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

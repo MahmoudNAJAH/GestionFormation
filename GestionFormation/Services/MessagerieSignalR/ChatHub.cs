@@ -44,23 +44,36 @@ namespace GestionFormation.Services.MessagerieSignalR
    /// </summary>
    /// <param name="roomName"></param>
    /// <param name="name"></param>
-        public void JoinRoom(string roomName, string name)
+        public async Task JoinRoom(string roomName, string name)
         {
-            Groups.Add(Context.ConnectionId, roomName);
+            await Groups.Add(Context.ConnectionId, roomName);
             Dictionary<string, string> UserConnectedInthisRoom;
             if (!ListAllUsersConnected.ContainsKey(roomName))
             {
                  UserConnectedInthisRoom = new Dictionary<string, string>();
                 ListAllUsersConnected.Add(roomName, UserConnectedInthisRoom);
             }
-            else
+             
             {
                  UserConnectedInthisRoom = ListAllUsersConnected[roomName];
             }
 
-            UserConnectedInthisRoom.Add(Context.ConnectionId, name);
+             UserConnectedInthisRoom.Add(Context.ConnectionId, name);
 
-            SendListUserConnected(UserConnectedInthisRoom, roomName);
+            string listName = "";
+            if (UserConnectedInthisRoom.Values.Count() > 0)
+            {
+                foreach (string user in UserConnectedInthisRoom.Values)
+                {
+                    listName += user;
+                    listName += " - ";
+                }
+                listName = listName.Substring(0, listName.Length - 3);
+            }
+
+             Clients.Group(roomName).sendListName(listName);
+
+           // SendListUserConnected(UserConnectedInthisRoom, roomName);
 
 
         }
@@ -107,7 +120,21 @@ namespace GestionFormation.Services.MessagerieSignalR
                     UserConnectedInthisRoom.Remove(Context.ConnectionId);
 
                     //Renvoi de la list
-                    SendListUserConnected(UserConnectedInthisRoom, roomName);
+                    //SendListUserConnected(UserConnectedInthisRoom, roomName);
+
+                    string listName = "";
+                    if (UserConnectedInthisRoom.Values.Count() > 0)
+                    {
+                        foreach (string user in UserConnectedInthisRoom.Values)
+                        {
+                            listName += user;
+                            listName += " - ";
+                        }
+                        listName = listName.Substring(0, listName.Length - 3);
+                    }
+
+                    Clients.Group(roomName).sendListName(listName);
+
                     Groups.Remove(Context.ConnectionId, roomName);
                 }
             }
